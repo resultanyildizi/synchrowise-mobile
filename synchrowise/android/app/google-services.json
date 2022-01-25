@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "701586192211",
+    "project_id": "synchrowise-mirror",
+    "storage_bucket": "synchrowise-mirror.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701586192211:android:47b2b4ac451d8ab80ad3a6",
+        "android_client_info": {
+          "package_name": "com.mirror.synchrowise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701586192211-fqp382obovl6rglhdnuae9jj6mhgfa8g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mirror.synchrowise",
+            "certificate_hash": "793bf017173319075f39804d7e5fa7b60ee879a7"
+          }
+        },
+        {
+          "client_id": "701586192211-smkg8k79ve0essrbc67p208h2unbi1ef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv0ZpC1ZKAdKmT8JAlESPd4ArjjRJM-gA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701586192211-smkg8k79ve0essrbc67p208h2unbi1ef.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "701586192211-788c7pjqs3eiqsgeh9j6ff1fl4kq83vc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mirror.synchrowise"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

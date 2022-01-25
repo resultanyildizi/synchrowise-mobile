@@ -1,4 +1,4 @@
-package com.example.synchrowise
+package com.mirror.synchrowise
 
 import io.flutter.embedding.android.FlutterActivity
 
