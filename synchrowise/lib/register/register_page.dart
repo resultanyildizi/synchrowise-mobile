@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/infrastructure/i_auth_facade.dart';
+import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -18,13 +22,13 @@ class RegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Spacer(),
-            Center(
-              child: Image.asset(
-                'assets/synchrowise-logo.png',
-                width: 115,
-                height: 115,
-              ),
-            ),
+            // Center(
+            //   child: Image.asset(
+            //     'assets/synchrowise-logo.png',
+            //     width: 115,
+            //     height: 115,
+            //   ),
+            // ),
             const SizedBox(height: 40),
             const Text(
               "Login to your account",
@@ -93,6 +97,13 @@ class RegisterPage extends StatelessWidget {
               child: CustomAnimatedContainer(
                 width: 40,
                 height: 40,
+                onTap: () async {
+                  final result =
+                      await getIt<IAuthFacade>().signInWithGoogleAuth();
+
+                  result.fold(
+                      (l) => log(l.toString()), (r) => log(r.toString()));
+                },
                 child: const Icon(Icons.mail),
                 decoration: BoxDecoration(
                     border: Border.all(color: secondaryColor),

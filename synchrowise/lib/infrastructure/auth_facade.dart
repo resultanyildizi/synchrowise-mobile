@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -34,9 +36,12 @@ class AuthFacade implements IAuthFacade {
         return left(const UserCancelledFailure());
       }
     } on PlatformException catch (_) {
+      log(_.toString());
+
       await _googleSignIn.signOut();
-      return left(const UknownAuthFailure());
+      return left(const UnkownAuthFailure());
     } on FirebaseAuthException catch (e) {
+      log(e.toString());
       await _googleSignIn.signOut();
       if (e.code == "account-exists-with-different-credential") {
         return left(const EmailAlreadyInUseFailure());
@@ -47,7 +52,7 @@ class AuthFacade implements IAuthFacade {
       } else if (e.code == "weak-password") {
         return left(const WeakPasswordFailure());
       } else {
-        return left(const UknownAuthFailure());
+        return left(const UnkownAuthFailure());
       }
     }
   }
@@ -71,7 +76,7 @@ class AuthFacade implements IAuthFacade {
       } else if (e.code == "weak-password") {
         return left(const WeakPasswordFailure());
       } else {
-        return left(const UknownAuthFailure());
+        return left(const UnkownAuthFailure());
       }
     }
   }
@@ -95,7 +100,7 @@ class AuthFacade implements IAuthFacade {
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
         return left(const InvalidCredentialsFailure());
       } else {
-        return left(const UknownAuthFailure());
+        return left(const UnkownAuthFailure());
       }
     }
   }
@@ -109,7 +114,7 @@ class AuthFacade implements IAuthFacade {
       if (e.code == "requires-recent-login") {
         return left(const InvalidEmailFailure());
       } else {
-        return left(const UknownAuthFailure());
+        return left(const UnkownAuthFailure());
       }
     }
   }
@@ -130,7 +135,7 @@ class AuthFacade implements IAuthFacade {
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
         return left(const InvalidCredentialsFailure());
       } else {
-        return left(const UknownAuthFailure());
+        return left(const UnkownAuthFailure());
       }
     }
   }

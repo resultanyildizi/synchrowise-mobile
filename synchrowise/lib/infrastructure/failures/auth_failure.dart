@@ -34,6 +34,6 @@ class RequiredRecentLoginFailure extends AuthFailure {
   const RequiredRecentLoginFailure();
 }
 
-class UknownAuthFailure extends AuthFailure {
-  const UknownAuthFailure();
+class UnkownAuthFailure extends AuthFailure {
+  const UnkownAuthFailure();
 }
