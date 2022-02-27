@@ -102,7 +102,16 @@ class RegisterPage extends StatelessWidget {
                       await getIt<IAuthFacade>().signInWithGoogleAuth();
 
                   result.fold(
-                      (l) => log(l.toString()), (r) => log(r.toString()));
+                    (l) => null,
+                    (r) async {
+                      final token = await r.user?.getIdTokenResult();
+
+                      log(token?.token ?? "null");
+                      log(r.credential?.toString() ?? "null");
+                      log(r.additionalUserInfo?.toString() ?? "null");
+                      log(r.user?.toString() ?? "null");
+                    },
+                  );
                 },
                 child: const Icon(Icons.mail),
                 decoration: BoxDecoration(
