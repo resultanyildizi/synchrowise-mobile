@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/ui/login/login_page.dart';
 import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -22,16 +24,16 @@ class RegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Spacer(),
-            // Center(
-            //   child: Image.asset(
-            //     'assets/synchrowise-logo.png',
-            //     width: 115,
-            //     height: 115,
-            //   ),
-            // ),
+            Center(
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 90,
+                height: 90,
+              ),
+            ),
             const SizedBox(height: 40),
             const Text(
-              "Login to your account",
+              "Create your account",
               style: TextStyle(
                 color: secondaryDarkColor,
                 fontSize: 24,
@@ -46,26 +48,29 @@ class RegisterPage extends StatelessWidget {
             _buildTextField(
                 "Confirm Password", Icons.lock, Icons.visibility_off),
             const SizedBox(height: 25),
-            CustomAnimatedContainer(
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: Text("Sign Up",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: whiteColor,
-                    )),
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    offset: const Offset(0, 4),
-                    blurRadius: 4,
-                  ),
-                ],
+            Center(
+              child: CustomAnimatedContainer(
+                width: MediaQuery.of(context).size.width - 200,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text("Sign Up",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: whiteColor,
+                      )),
+                ),
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(32),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      offset: const Offset(0, 4),
+                      blurRadius: 4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
@@ -75,12 +80,12 @@ class RegisterPage extends StatelessWidget {
                 Container(
                   width: 85,
                   height: 0.4,
-                  color: secondaryDarkColor.withOpacity(0.7),
+                  color: secondaryDarkColor,
                 ),
-                Text(
+                const Text(
                   "Or sign up with",
                   style: TextStyle(
-                    color: secondaryDarkColor.withOpacity(0.7),
+                    color: secondaryDarkColor,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
@@ -88,7 +93,7 @@ class RegisterPage extends StatelessWidget {
                 Container(
                   width: 85,
                   height: 0.4,
-                  color: secondaryDarkColor.withOpacity(0.7),
+                  color: secondaryDarkColor,
                 ),
               ],
             ),
@@ -104,13 +109,48 @@ class RegisterPage extends StatelessWidget {
                   result.fold(
                       (l) => log(l.toString()), (r) => log(r.toString()));
                 },
-                child: const Icon(Icons.mail),
+                child: const Icon(
+                  Icons.mail,
+                  color: primaryColor,
+                ),
                 decoration: BoxDecoration(
-                    border: Border.all(color: secondaryColor),
+                    border:
+                        Border.all(color: secondaryLightColor.withOpacity(0.5)),
                     borderRadius: BorderRadius.circular(2)),
               ),
             ),
             const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Don’t Have an Account?",
+                  style: TextStyle(
+                    color: secondaryDarkColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                CustomAnimatedContainer(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                      color: primaryColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -121,17 +161,14 @@ class RegisterPage extends StatelessWidget {
       [IconData? suffixIcon]) {
     return TextField(
       decoration: InputDecoration(
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: secondaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        ),
+        filled: true,
+        fillColor: secondaryLightColor.withOpacity(0.2),
         prefixIcon: Icon(
           prefixIcon,
-          color: secondaryColor,
+          color: primaryColor,
           size: 22,
         ),
         suffixIcon: CustomAnimatedContainer(
@@ -140,7 +177,7 @@ class RegisterPage extends StatelessWidget {
           onTap: () {},
           child: Icon(
             suffixIcon,
-            color: secondaryColor,
+            color: primaryColor,
             size: 20,
           ),
         ),
