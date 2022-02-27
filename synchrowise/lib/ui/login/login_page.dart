@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/infrastructure/i_auth_facade.dart';
+import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/ui/register/register_page.dart';
 import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,9 +25,9 @@ class LoginPage extends StatelessWidget {
             const Spacer(),
             Center(
               child: Image.asset(
-                'assets/synchrowise-logo.png',
-                width: 115,
-                height: 115,
+                'assets/images/logo.png',
+                width: 90,
+                height: 90,
               ),
             ),
             const SizedBox(height: 40),
@@ -87,26 +92,29 @@ class LoginPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 25),
-            CustomAnimatedContainer(
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: Text("Sign In",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: whiteColor,
-                    )),
-              ),
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    offset: const Offset(0, 4),
-                    blurRadius: 4,
-                  ),
-                ],
+            Center(
+              child: CustomAnimatedContainer(
+                width: MediaQuery.of(context).size.width - 200,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text("Sign In",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: whiteColor,
+                      )),
+                ),
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(32),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      offset: const Offset(0, 4),
+                      blurRadius: 4,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 70),
@@ -116,12 +124,12 @@ class LoginPage extends StatelessWidget {
                 Container(
                   width: 85,
                   height: 0.4,
-                  color: secondaryDarkColor.withOpacity(0.7),
+                  color: secondaryDarkColor,
                 ),
-                Text(
+                const Text(
                   "Or sign in with",
                   style: TextStyle(
-                    color: secondaryDarkColor.withOpacity(0.7),
+                    color: secondaryDarkColor,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
@@ -129,7 +137,7 @@ class LoginPage extends StatelessWidget {
                 Container(
                   width: 85,
                   height: 0.4,
-                  color: secondaryColor.withOpacity(0.7),
+                  color: secondaryDarkColor,
                 ),
               ],
             ),
@@ -138,10 +146,20 @@ class LoginPage extends StatelessWidget {
               child: CustomAnimatedContainer(
                 width: 40,
                 height: 40,
-                onTap: () {},
-                child: const Icon(Icons.mail),
+                onTap: () async {
+                  final result =
+                      await getIt<IAuthFacade>().signInWithGoogleAuth();
+
+                  result.fold(
+                      (l) => log(l.toString()), (r) => log(r.toString()));
+                },
+                child: const Icon(
+                  Icons.mail,
+                  color: primaryColor,
+                ),
                 decoration: BoxDecoration(
-                    border: Border.all(color: secondaryDarkColor),
+                    border:
+                        Border.all(color: secondaryLightColor.withOpacity(0.5)),
                     borderRadius: BorderRadius.circular(2)),
               ),
             ),
@@ -159,7 +177,13 @@ class LoginPage extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 CustomAnimatedContainer(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterPage()),
+                    );
+                  },
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
@@ -181,17 +205,14 @@ class LoginPage extends StatelessWidget {
       [IconData? suffixIcon]) {
     return TextField(
       decoration: InputDecoration(
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: secondaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        ),
+        filled: true,
+        fillColor: secondaryLightColor.withOpacity(0.2),
         prefixIcon: Icon(
           prefixIcon,
-          color: secondaryColor,
+          color: primaryColor,
           size: 22,
         ),
         suffixIcon: CustomAnimatedContainer(
@@ -200,7 +221,7 @@ class LoginPage extends StatelessWidget {
           onTap: () {},
           child: Icon(
             suffixIcon,
-            color: secondaryColor,
+            color: primaryColor,
             size: 20,
           ),
         ),
