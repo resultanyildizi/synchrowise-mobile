@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
-import 'package:synchrowise/ui_helpers/measure_size.dart';
+import 'package:synchrowise/presentation/helpers/measure_size.dart';
 
 // ignore: must_be_immutable
 class CustomAnimatedContainer extends StatefulWidget {

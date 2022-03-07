@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/infrastructure/i_auth_facade.dart';
-import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/login/login_page.dart';
-import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
+import 'package:synchrowise/presentation/helpers/custom_animated_container.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -102,21 +98,16 @@ class RegisterPage extends StatelessWidget {
               child: CustomAnimatedContainer(
                 width: 40,
                 height: 40,
-                onTap: () async {
-                  final result =
-                      await getIt<IAuthFacade>().signInWithGoogleAuth();
-
-                  result.fold(
-                      (l) => log(l.toString()), (r) => log(r.toString()));
-                },
+                onTap: () async {},
                 child: const Icon(
                   Icons.mail,
                   color: primaryColor,
                 ),
                 decoration: BoxDecoration(
-                    border:
-                        Border.all(color: secondaryLightColor.withOpacity(0.5)),
-                    borderRadius: BorderRadius.circular(2)),
+                  border:
+                      Border.all(color: secondaryLightColor.withOpacity(0.5)),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
             const Spacer(),

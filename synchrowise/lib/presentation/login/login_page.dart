@@ -5,7 +5,7 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/register/register_page.dart';
-import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
+import 'package:synchrowise/presentation/helpers/custom_animated_container.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -50,11 +50,12 @@ class LoginPage extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                            color:
-                                true ? Colors.transparent : secondaryDarkColor),
-                        color: true ? primaryColor : backgroundColor),
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(
+                        color: true ? Colors.transparent : secondaryDarkColor,
+                      ),
+                      color: true ? primaryColor : backgroundColor,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(
                         true ? 4.0 : 11.0,

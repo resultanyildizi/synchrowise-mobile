@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 import 'package:synchrowise/constants.dart';
 
@@ -8,32 +9,58 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: primaryColor,
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height / 5.5),
-            Image.asset(
-              appLogo,
-              width: 140,
-              height: 140,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              appName,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline2!
-                  .copyWith(color: primaryColor),
+            Padding(
+              padding: const EdgeInsets.only(top: 120.0),
+              child: Center(
+                child: Stack(
+                  children: [
+                    Transform.rotate(
+                      angle: -math.pi / 4,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: whiteColor,
+                          borderRadius: BorderRadius.circular(15.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              offset: const Offset(0, 4),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18, top: 18),
+                      child: Image.asset(
+                        'assets/synchrowise-logo.png',
+                        width: 115,
+                        height: 115,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             const Spacer(),
-            Text(
-              "from Mirror Technology",
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    color: primaryColor,
-                  ),
-            ),
-            const SizedBox(height: 24),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 32.0),
+              child: Text(
+                "synchrowise",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontFamily: "Open Sans",
+                  fontWeight: FontWeight.w700,
+                  color: whiteColor,
+                ),
+              ),
+            )
           ],
         ),
       ),
