@@ -50,11 +50,12 @@ class LoginPage extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                            color:
-                                true ? Colors.transparent : secondaryDarkColor),
-                        color: true ? primaryColor : backgroundColor),
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(
+                        color: true ? Colors.transparent : secondaryDarkColor,
+                      ),
+                      color: true ? primaryColor : backgroundColor,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(
                         true ? 4.0 : 11.0,
