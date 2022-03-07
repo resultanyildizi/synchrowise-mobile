@@ -3,8 +3,8 @@ import 'package:matrix4_transform/matrix4_transform.dart';
 import 'package:synchrowise/presentation/helpers/measure_size.dart';
 
 // ignore: must_be_immutable
-class CustomAnimatedContainer extends StatefulWidget {
-  CustomAnimatedContainer({
+class CustomAnimatedButton extends StatefulWidget {
+  CustomAnimatedButton({
     Key? key,
     required this.child,
     this.width,
@@ -28,11 +28,10 @@ class CustomAnimatedContainer extends StatefulWidget {
   bool isDelay;
   double scale = 0.96;
   @override
-  _CustomAnimatedContainerState createState() =>
-      _CustomAnimatedContainerState();
+  _CustomAnimatedButtonState createState() => _CustomAnimatedButtonState();
 }
 
-class _CustomAnimatedContainerState extends State<CustomAnimatedContainer> {
+class _CustomAnimatedButtonState extends State<CustomAnimatedButton> {
   bool isScale = false;
   Size measureSize = Size.zero;
   @override
