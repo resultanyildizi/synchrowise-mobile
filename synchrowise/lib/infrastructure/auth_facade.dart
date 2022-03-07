@@ -14,6 +14,7 @@ class AuthFacade implements IAuthFacade {
 
   const AuthFacade(this._firebaseAuth, this._googleSignIn);
 
+  @override
   Future<Either<AuthFailure, UserCredential>> signInWithGoogleAuth() async {
     try {
       if (_googleSignIn.currentUser != null) await _googleSignIn.signOut();

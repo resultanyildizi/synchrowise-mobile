@@ -1,5 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:synchrowise/ui/register/register_page.dart';
+import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/presentation/login/login_page.dart';
+import 'package:synchrowise/presentation/splash/splash.dart';
 
 class SynchrowiseApp extends StatelessWidget {
   const SynchrowiseApp({Key? key}) : super(key: key);
@@ -8,17 +11,29 @@ class SynchrowiseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
+      title: 'Synchrowise',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
+        primaryColor: primaryColor,
+        fontFamily: "Poppins",
         textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          headline1: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w700),
+          headline2: TextStyle(fontSize: 32.0, fontWeight: FontWeight.w700),
+          headline3: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700),
+          headline4: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),
+          headline5: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400),
+          subtitle1: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
+          subtitle2: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
+          bodyText1:
+              TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
+          bodyText2:
+              TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
         ),
       ),
-      home: const RegisterPage(),
+      home: AnimatedSplashScreen(
+        splash: SplashPage(),
+        nextScreen: LoginPage(),
+      ),
     );
   }
 }

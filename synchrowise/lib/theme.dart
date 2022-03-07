@@ -5,6 +5,6 @@ ThemeData themeData(BuildContext context) {
   return ThemeData.light().copyWith(
     primaryColor: primaryColor,
     scaffoldBackgroundColor: primaryLightColor,
-    appBarTheme: AppBarTheme(),
+    appBarTheme: const AppBarTheme(),
   );
 }

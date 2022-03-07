@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/ui/login/login_page.dart';
+import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -26,34 +25,79 @@ class RegisterPage extends StatelessWidget {
             const Spacer(),
             Center(
               child: Image.asset(
-                'assets/images/logo.png',
+                appLogo,
                 width: 90,
                 height: 90,
               ),
             ),
             const SizedBox(height: 40),
             const Text(
-              "Create your account",
+              "Login to your account",
               style: TextStyle(
-                color: secondaryDarkColor,
+                color: primaryDarkColor,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             _buildTextField("Enter your email", Icons.email),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             _buildTextField("Password", Icons.lock, Icons.visibility_off),
-            const SizedBox(height: 20),
-            _buildTextField(
-                "Confirm Password", Icons.lock, Icons.visibility_off),
+            const SizedBox(height: 25),
+            Row(
+              children: [
+                CustomAnimatedContainer(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                            color:
+                                true ? Colors.transparent : secondaryDarkColor),
+                        color: true ? primaryColor : backgroundColor),
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                        true ? 4.0 : 11.0,
+                      ),
+                      child: true
+                          ? Icon(
+                              Icons.check,
+                              size: 14.0,
+                              color: whiteColor,
+                            )
+                          : Container(),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  "Remember me",
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: secondaryDarkColor),
+                ),
+                const Spacer(),
+                CustomAnimatedContainer(
+                  onTap: () {},
+                  child: const Text(
+                    "Forgot Pasword?",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: primaryColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
             const SizedBox(height: 25),
             Center(
               child: CustomAnimatedContainer(
                 width: MediaQuery.of(context).size.width - 200,
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: Text("Sign Up",
+                  child: Text("Sign In",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -73,7 +117,7 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 70),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -83,7 +127,7 @@ class RegisterPage extends StatelessWidget {
                   color: secondaryDarkColor,
                 ),
                 const Text(
-                  "Or sign up with",
+                  "Or sign in with",
                   style: TextStyle(
                     color: secondaryDarkColor,
                     fontSize: 12,
@@ -124,33 +168,33 @@ class RegisterPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don’t Have an Account?",
+                  "Don't Have an Account?",
                   style: TextStyle(
-                    color: secondaryDarkColor,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
+                    color: secondaryDarkColor,
                   ),
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(width: 2),
                 CustomAnimatedContainer(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                          builder: (context) => const RegisterPage()),
                     );
                   },
                   child: const Text(
-                    "Login",
+                    "Sign Up",
                     style: TextStyle(
-                      color: primaryColor,
                       fontSize: 14,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
+                      color: primaryColor,
                     ),
                   ),
                 ),
               ],
-            ),
+            )
           ],
         ),
       ),
