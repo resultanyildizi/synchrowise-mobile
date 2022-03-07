@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/ui/register/register_page.dart';
-import 'package:synchrowise/ui_helpers/custom_animated_container.dart';
+import 'package:synchrowise/presentation/helpers/custom_animated_container.dart';
+import 'package:synchrowise/presentation/register/register_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

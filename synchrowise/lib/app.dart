@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:synchrowise/ui/register/register_page.dart';
+
+import 'presentation/register/register_page.dart';
 
 class SynchrowiseApp extends StatelessWidget {
   const SynchrowiseApp({Key? key}) : super(key: key);
