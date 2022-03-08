@@ -64,11 +64,7 @@ class SynchrowiseApp extends StatelessWidget {
               TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
         ),
       ),
-      home: AnimatedSplashScreen(
-        centered: false,
-        splash: const SplashPage(),
-        nextScreen: const AuthPage(),
-      ),
+      home: const SplashPage(),
     );
   }
 }
