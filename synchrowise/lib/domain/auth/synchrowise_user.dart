@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class SynchrowiseUser {
   final String username;
   final String firebaseId;
@@ -30,6 +32,28 @@ class SynchrowiseUser {
       avatarUrl ?? this.avatarUrl,
       loginProvider ?? this.loginProvider,
       firebaseIdTOken ?? this.firebaseIdTOken,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'username': username,
+      'firebase_id': firebaseId,
+      'synchrowise_id': synchrowiseId,
+      'avatar_url': avatarUrl,
+      'login_provider': loginProvider,
+      'firebase_id_token': firebaseIdTOken,
+    };
+  }
+
+  factory SynchrowiseUser.fromMap(Map<String, dynamic> map) {
+    return SynchrowiseUser(
+      map['username']!,
+      map['firebase_id']!,
+      map['synchrowise_id']!,
+      map['avatar_url']!,
+      map['login_provider']!,
+      map['firebase_id_token']!,
     );
   }
 }

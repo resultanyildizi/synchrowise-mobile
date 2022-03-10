@@ -1,39 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class AuthFailure extends Equatable {
-  const AuthFailure();
-  @override
-  List<Object?> get props => [];
-}
+part 'auth_failure.freezed.dart';
 
-class InvalidCredentialsFailure extends AuthFailure {
-  const InvalidCredentialsFailure();
-}
-
-class UserDisabledFailure extends AuthFailure {
-  const UserDisabledFailure();
-}
-
-class InvalidEmailFailure extends AuthFailure {
-  const InvalidEmailFailure();
-}
-
-class EmailAlreadyInUseFailure extends AuthFailure {
-  const EmailAlreadyInUseFailure();
-}
-
-class WeakPasswordFailure extends AuthFailure {
-  const WeakPasswordFailure();
-}
-
-class UserCancelledFailure extends AuthFailure {
-  const UserCancelledFailure();
-}
-
-class RequiredRecentLoginFailure extends AuthFailure {
-  const RequiredRecentLoginFailure();
-}
-
-class UnkownAuthFailure extends AuthFailure {
-  const UnkownAuthFailure();
+@freezed
+abstract class AuthFailure with _$AuthFailure {
+  const factory AuthFailure.invalidCredentials() = _InvalidCredentialsFailure;
+  const factory AuthFailure.userDisabled() = _UserDisabledFailure;
+  const factory AuthFailure.invalidEmail() = _InvalidEmailFailure;
+  const factory AuthFailure.emailAlreadyInUse() = _EmailAlreadyInUse;
+  const factory AuthFailure.weakPassword() = _WeakPassword;
+  const factory AuthFailure.userCancelled() = _UserCancelled;
+  const factory AuthFailure.signInRequired() = _SignInRequired;
+  const factory AuthFailure.connection() = _Connection;
+  const factory AuthFailure.unknown() = _Unknown;
 }

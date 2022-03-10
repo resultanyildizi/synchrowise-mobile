@@ -1,9 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart';
+import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
 
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
@@ -11,11 +15,44 @@ import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 class AuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-
-  const AuthFacade(this._firebaseAuth, this._googleSignIn);
+  final Client _client;
+  const AuthFacade(this._firebaseAuth, this._googleSignIn, this._client);
 
   @override
-  Future<Either<AuthFailure, UserCredential>> signInWithGoogleAuth() async {
+  Future<Either<AuthFailure, SynchrowiseUser>> getSignedInUser() async {
+    try {
+      final currentUser = _firebaseAuth.currentUser;
+      if (currentUser == null) {
+        return left(const AuthFailure.signInRequired());
+      } else {
+        const pathUrl = "backendurl/signIn";
+        final fidtoken = await currentUser.getIdToken();
+
+        final response = await _client.post(
+          Uri.parse(pathUrl),
+          body: {
+            "firebase_id": currentUser.uid,
+            "firebase_token": fidtoken,
+          },
+        );
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body) as Map<String, dynamic>;
+          return right(SynchrowiseUser.fromMap(data));
+        }
+
+        // Todo: handle failures and other status codes
+        return left(const AuthFailure.unknown());
+      }
+    } on SocketException catch (_) {
+      return left(const AuthFailure.connection());
+    } catch (_) {
+      return left(const AuthFailure.unknown());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithGoogleAuth() async {
     try {
       if (_googleSignIn.currentUser != null) await _googleSignIn.signOut();
 
@@ -32,28 +69,27 @@ class AuthFacade implements IAuthFacade {
         final userCredential =
             await _firebaseAuth.signInWithCredential(googleCred);
 
-        return right(userCredential);
+        log(userCredential.toString());
+
+        return right(unit);
       } else {
-        return left(const UserCancelledFailure());
+        return left(const AuthFailure.userCancelled());
       }
     } on PlatformException catch (_) {
-      log(_.toString());
-
       await _googleSignIn.signOut();
-      return left(const UnkownAuthFailure());
+      return left(const AuthFailure.unknown());
     } on FirebaseAuthException catch (e) {
-      log(e.toString());
       await _googleSignIn.signOut();
       if (e.code == "account-exists-with-different-credential") {
-        return left(const EmailAlreadyInUseFailure());
+        return left(const AuthFailure.emailAlreadyInUse());
       } else if (e.code == "user-disabled") {
-        return left(const UserDisabledFailure());
+        return left(const AuthFailure.userDisabled());
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
-        return left(const InvalidCredentialsFailure());
+        return left(const AuthFailure.invalidCredentials());
       } else if (e.code == "weak-password") {
-        return left(const WeakPasswordFailure());
+        return left(const AuthFailure.weakPassword());
       } else {
-        return left(const UnkownAuthFailure());
+        return left(const AuthFailure.unknown());
       }
     }
   }
@@ -71,13 +107,13 @@ class AuthFacade implements IAuthFacade {
       return right(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
-        return left(const InvalidEmailFailure());
+        return left(const AuthFailure.invalidEmail());
       } else if (e.code == "email-already-in-use") {
-        return left(const EmailAlreadyInUseFailure());
+        return left(const AuthFailure.emailAlreadyInUse());
       } else if (e.code == "weak-password") {
-        return left(const WeakPasswordFailure());
+        return left(const AuthFailure.weakPassword());
       } else {
-        return left(const UnkownAuthFailure());
+        return left(const AuthFailure.unknown());
       }
     }
   }
@@ -95,13 +131,13 @@ class AuthFacade implements IAuthFacade {
       return right(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
-        return left(const InvalidEmailFailure());
+        return left(const AuthFailure.invalidEmail());
       } else if (e.code == "user-disabled") {
-        return left(const UserDisabledFailure());
+        return left(const AuthFailure.userDisabled());
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
-        return left(const InvalidCredentialsFailure());
+        return left(const AuthFailure.invalidCredentials());
       } else {
-        return left(const UnkownAuthFailure());
+        return left(const AuthFailure.unknown());
       }
     }
   }
@@ -113,9 +149,9 @@ class AuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "requires-recent-login") {
-        return left(const InvalidEmailFailure());
+        return left(const AuthFailure.invalidEmail());
       } else {
-        return left(const UnkownAuthFailure());
+        return left(const AuthFailure.unknown());
       }
     }
   }
@@ -130,13 +166,13 @@ class AuthFacade implements IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
-        return left(const InvalidEmailFailure());
+        return left(const AuthFailure.invalidEmail());
       } else if (e.code == "user-disabled") {
-        return left(const UserDisabledFailure());
+        return left(const AuthFailure.userDisabled());
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
-        return left(const InvalidCredentialsFailure());
+        return left(const AuthFailure.invalidCredentials());
       } else {
-        return left(const UnkownAuthFailure());
+        return left(const AuthFailure.unknown());
       }
     }
   }
