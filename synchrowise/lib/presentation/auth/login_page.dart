@@ -1,13 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:synchrowise/application/bloc/auth_bloc.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/infrastructure/i_auth_facade.dart';
-import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -18,6 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: kcWhiteColor,
       body: SafeArea(
         child: Padding(

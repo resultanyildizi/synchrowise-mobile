@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_successful.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
@@ -82,8 +81,6 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
               ),
             ),
           ),
-
-          //* Bunun yerine show bottom dialog kullanman lazım @gulceselim
           if (isSuccesfull) ...[
             Container(
               color: Colors.black.withOpacity(0.6),

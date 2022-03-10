@@ -10,6 +10,7 @@ class RegisterSteps1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: kcWhiteColor,
       body: SafeArea(
         child: Padding(
