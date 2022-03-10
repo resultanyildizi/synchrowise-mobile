@@ -1,11 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:synchrowise/application/bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/register_page.dart';
+import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -95,11 +97,8 @@ class LoginPage extends StatelessWidget {
                   width: 50,
                   height: 50,
                   onTap: () async {
-                    final result =
-                        await getIt<IAuthFacade>().signInWithGoogleAuth();
-
-                    result.fold(
-                        (l) => log(l.toString()), (r) => log(r.toString()));
+                    final authBloc = context.read<AuthBloc>();
+                    authBloc.signinWithGoogle();
                   },
                   child: SvgPicture.asset(
                     "assets/svg/Google.svg",
@@ -121,12 +120,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(width: 2),
                   CustomAnimatedButton(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, '/signup');
                     },
                     child: Text(
                       "Sign Up",

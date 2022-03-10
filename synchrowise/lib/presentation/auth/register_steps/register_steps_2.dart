@@ -82,6 +82,8 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
               ),
             ),
           ),
+
+          //* Bunun yerine show bottom dialog kullanman lazım @gulceselim
           if (isSuccesfull) ...[
             Container(
               color: Colors.black.withOpacity(0.6),

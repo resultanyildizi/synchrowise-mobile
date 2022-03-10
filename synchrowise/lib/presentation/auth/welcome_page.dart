@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
-import 'package:synchrowise/presentation/auth/login_page.dart';
-import 'package:synchrowise/presentation/auth/register_page.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key}) : super(key: key);
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +39,7 @@ class AuthPage extends StatelessWidget {
               text: "Login",
               padding: 35,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
+                Navigator.pushNamed(context, '/login');
               },
             ),
             const SizedBox(height: 15),
@@ -55,10 +50,7 @@ class AuthPage extends StatelessWidget {
               text: "Sign Up",
               padding: 35,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterPage()),
-                );
+                Navigator.pushNamed(context, '/signup');
               },
             ),
             const SizedBox(height: 80),

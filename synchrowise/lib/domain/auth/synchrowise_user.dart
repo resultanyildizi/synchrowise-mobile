@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SynchrowiseUser {
   final String username;
   final String firebaseId;

@@ -11,8 +11,8 @@ import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class SignupPage extends StatelessWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +94,7 @@ class RegisterPage extends StatelessWidget {
                 child: CustomAnimatedButton(
                   width: 50,
                   height: 50,
-                  onTap: () async {
-                    final result =
-                        await getIt<IAuthFacade>().signInWithGoogleAuth();
-
-                    result.fold(
-                        (l) => log(l.toString()), (r) => log(r.toString()));
-                  },
+                  onTap: () async {},
                   child: SvgPicture.asset(
                     "assets/svg/Google.svg",
                   ),
@@ -121,12 +115,7 @@ class RegisterPage extends StatelessWidget {
                   const SizedBox(width: 2),
                   CustomAnimatedButton(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: Text(
                       "Login",

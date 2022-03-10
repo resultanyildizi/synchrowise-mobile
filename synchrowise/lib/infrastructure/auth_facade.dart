@@ -69,7 +69,24 @@ class AuthFacade implements IAuthFacade {
         final userCredential =
             await _firebaseAuth.signInWithCredential(googleCred);
 
-        log(userCredential.toString());
+        final additionalUserInfo = userCredential.additionalUserInfo;
+        final credential = userCredential.credential;
+        final user = userCredential.user;
+
+        if (user != null) {
+          final firebaseToken = await user.getIdToken();
+
+          log({
+            'firebase_uid': user.uid,
+            'firebase_id_token': firebaseToken,
+            'email_address': user.email,
+            'email_verified': user.emailVerified,
+            'is_new_user': additionalUserInfo?.isNewUser,
+            'signin_method': credential?.signInMethod ?? 'null',
+            'firebase_creation_time': user.metadata.creationTime,
+            'firebase_last_signin_time': user.metadata.lastSignInTime
+          }.toString());
+        }
 
         return right(unit);
       } else {
