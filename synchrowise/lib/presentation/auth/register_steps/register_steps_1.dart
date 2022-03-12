@@ -31,7 +31,11 @@ class RegisterSteps1 extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(height: 30),
-              const DefaultTextField(icon: null, hintText: "Username"),
+              DefaultTextField(
+                icon: null,
+                hintText: "Username",
+                onChanged: (text) => text,
+              ),
               const SizedBox(height: 35),
               DefaultButton(
                 backgroundColor: primaryColor,

@@ -44,9 +44,17 @@ class LoginPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const Spacer(),
-              const DefaultTextField(icon: Icons.email, hintText: "Email"),
+              DefaultTextField(
+                icon: Icons.email, hintText: "Email",
+                //TODO : onChanged
+                onChanged: (text) => text,
+              ),
               const SizedBox(height: 25),
-              const DefaultTextField(icon: Icons.lock, hintText: "Password"),
+              DefaultTextField(
+                icon: Icons.lock, hintText: "Password",
+                //TODO : onChanged
+                onChanged: (text) => text,
+              ),
               const SizedBox(height: 50),
               DefaultButton(
                 backgroundColor: primaryColor,

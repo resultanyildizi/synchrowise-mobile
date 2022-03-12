@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/auth/register_steps/register_steps_1.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
@@ -43,12 +45,29 @@ class SignupPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const Spacer(),
-              const DefaultTextField(icon: Icons.email, hintText: "Email"),
+              DefaultTextField(
+                icon: Icons.email,
+                hintText: "Email",
+                onChanged: (text) => context.read<SignupFormBloc>().add(
+                      SignupFormEvent.updateEmailText(email: text),
+                    ),
+              ),
               const SizedBox(height: 25),
-              const DefaultTextField(icon: Icons.lock, hintText: "Password"),
+              DefaultTextField(
+                icon: Icons.lock,
+                hintText: "Password",
+                onChanged: (text) => context.read<SignupFormBloc>().add(
+                      SignupFormEvent.updatePasswordText(password: text),
+                    ),
+              ),
               const SizedBox(height: 25),
-              const DefaultTextField(
-                  icon: Icons.lock, hintText: "Confirm Password"),
+              DefaultTextField(
+                icon: Icons.lock,
+                hintText: "Confirm Password",
+                onChanged: (text) => context.read<SignupFormBloc>().add(
+                      SignupFormEvent.updatePasswordText(password: text),
+                    ),
+              ),
               const SizedBox(height: 50),
               DefaultButton(
                 backgroundColor: primaryColor,
@@ -57,10 +76,16 @@ class SignupPage extends StatelessWidget {
                 text: "Sign Up",
                 padding: 50,
                 onTap: () {
+                  final signupFormBloc = context.read<SignupFormBloc>();
+                  signupFormBloc.signupWithEmailAndPassword(
+                    email: "deneme",
+                    password: "deneme1",
+                  );
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const RegisterSteps1(),
+                      fullscreenDialog: true,
                     ),
                   );
                 },

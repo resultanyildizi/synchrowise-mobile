@@ -111,6 +111,7 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
+  @override
   Future<Either<AuthFailure, UserCredential>> createUserWithEmailAndPassword({
     required String email,
     required String password,
@@ -120,6 +121,8 @@ class AuthFacade implements IAuthFacade {
         email: email,
         password: password,
       );
+
+      log(userCredential.toString());
 
       return right(userCredential);
     } on FirebaseAuthException catch (e) {

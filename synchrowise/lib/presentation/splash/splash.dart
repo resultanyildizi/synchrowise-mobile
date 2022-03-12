@@ -1,7 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
@@ -10,18 +7,8 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +17,10 @@ class _SplashPageState extends State<SplashPage> {
         final nextPage = state.when(
           initial: () => const WelcomePage(),
           unauthorized: () => const WelcomePage(),
-          // Todo : home page @gulceselim
           authorized: (user) => HomePage(username: user.username),
         );
 
-        Timer(const Duration(seconds: 3), (() {
-          log("hey");
+        Future.delayed(const Duration(seconds: 3), () {
           Navigator.push(
             context,
             PageTransition(
@@ -44,9 +29,10 @@ class _SplashPageState extends State<SplashPage> {
               child: nextPage,
               type: PageTransitionType.fade,
               alignment: Alignment.bottomCenter,
+              fullscreenDialog: true,
             ),
           );
-        }));
+        });
 
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -81,10 +67,5 @@ class _SplashPageState extends State<SplashPage> {
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:synchrowise/constants.dart';
 
 class DefaultTextField extends StatelessWidget {
@@ -7,10 +6,12 @@ class DefaultTextField extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.hintText,
+    required this.onChanged,
   }) : super(key: key);
 
   final IconData? icon;
   final String hintText;
+  final Function(String text) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,7 @@ class DefaultTextField extends StatelessWidget {
                   hintStyle: Theme.of(context).textTheme.subtitle1,
                   hintText: hintText,
                 ),
+                onChanged: (text) => onChanged(text),
               ),
             ),
           ],

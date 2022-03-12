@@ -4,7 +4,7 @@ class SynchrowiseUser {
   final String synchrowiseId;
   final String avatarUrl;
   final String loginProvider;
-  final String firebaseIdTOken;
+  final String firebaseIdToken;
 
   const SynchrowiseUser(
     this.username,
@@ -12,7 +12,7 @@ class SynchrowiseUser {
     this.synchrowiseId,
     this.avatarUrl,
     this.loginProvider,
-    this.firebaseIdTOken,
+    this.firebaseIdToken,
   );
 
   SynchrowiseUser copyWith({
@@ -21,7 +21,7 @@ class SynchrowiseUser {
     String? synchrowiseId,
     String? avatarUrl,
     String? loginProvider,
-    String? firebaseIdTOken,
+    String? firebaseIdToken,
   }) {
     return SynchrowiseUser(
       username ?? this.username,
@@ -29,7 +29,7 @@ class SynchrowiseUser {
       synchrowiseId ?? this.synchrowiseId,
       avatarUrl ?? this.avatarUrl,
       loginProvider ?? this.loginProvider,
-      firebaseIdTOken ?? this.firebaseIdTOken,
+      firebaseIdToken ?? this.firebaseIdToken,
     );
   }
 
@@ -40,7 +40,7 @@ class SynchrowiseUser {
       'synchrowise_id': synchrowiseId,
       'avatar_url': avatarUrl,
       'login_provider': loginProvider,
-      'firebase_id_token': firebaseIdTOken,
+      'firebase_id_token': firebaseIdToken,
     };
   }
 
