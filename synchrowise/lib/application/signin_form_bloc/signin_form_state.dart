@@ -6,6 +6,7 @@ class SigninFormState with _$SigninFormState {
     required Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
     required Option<Either<ValueFailure, String>> failureOrEmailOption,
     required Option<Either<ValueFailure, String>> failureOrPasswordOption,
+    required bool showErrors,
   }) = _SigninFormState;
 
   factory SigninFormState.initial() {
@@ -13,6 +14,7 @@ class SigninFormState with _$SigninFormState {
       failureOrUserOption: none(),
       failureOrEmailOption: none(),
       failureOrPasswordOption: none(),
+      showErrors: false,
     );
   }
 }

@@ -34,6 +34,8 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
     on<SigninFormEvent>((event, emit) {
       event.map(
         signinWithEmailAndPassword: (_) async {
+          emit(state.copyWith(failureOrUserOption: none(), showErrors: true));
+
           final email = state.failureOrEmailOption.fold(
             () => null,
             (failureOrEmail) =>
@@ -51,12 +53,30 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
               email: email,
               password: password,
             );
+
             emit(state.copyWith(failureOrUserOption: some(failureOrUser)));
           }
         },
         signinWithGoogle: (_) async {},
-        updateEmailText: (event) async {},
-        updatePasswordText: (event) async {},
+        updateEmailText: (event) async {
+          final validatedEmail = validateEmail(email: event.email);
+          final newstate = state.copyWith(
+            failureOrUserOption: none(),
+            failureOrEmailOption: some(validatedEmail),
+          );
+          emit(newstate);
+        },
+        updatePasswordText: (event) async {
+          final validatedPass =
+              validateSigninPassword(password: event.password);
+
+          final newstate = state.copyWith(
+            failureOrUserOption: none(),
+            failureOrPasswordOption: some(validatedPass),
+          );
+
+          emit(newstate);
+        },
       );
     });
   }

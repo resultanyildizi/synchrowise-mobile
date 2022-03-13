@@ -710,11 +710,13 @@ class _$SigninFormStateTearOff {
       {required Option<Either<AuthFailure, SynchrowiseUser>>
           failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
-      required Option<Either<ValueFailure, String>> failureOrPasswordOption}) {
+      required Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      required bool showErrors}) {
     return _SigninFormState(
       failureOrUserOption: failureOrUserOption,
       failureOrEmailOption: failureOrEmailOption,
       failureOrPasswordOption: failureOrPasswordOption,
+      showErrors: showErrors,
     );
   }
 }
@@ -730,6 +732,7 @@ mixin _$SigninFormState {
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrPasswordOption =>
       throw _privateConstructorUsedError;
+  bool get showErrors => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SigninFormStateCopyWith<SigninFormState> get copyWith =>
@@ -744,7 +747,8 @@ abstract class $SigninFormStateCopyWith<$Res> {
   $Res call(
       {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
-      Option<Either<ValueFailure, String>> failureOrPasswordOption});
+      Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      bool showErrors});
 }
 
 /// @nodoc
@@ -761,6 +765,7 @@ class _$SigninFormStateCopyWithImpl<$Res>
     Object? failureOrUserOption = freezed,
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
+    Object? showErrors = freezed,
   }) {
     return _then(_value.copyWith(
       failureOrUserOption: failureOrUserOption == freezed
@@ -775,6 +780,10 @@ class _$SigninFormStateCopyWithImpl<$Res>
           ? _value.failureOrPasswordOption
           : failureOrPasswordOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
+      showErrors: showErrors == freezed
+          ? _value.showErrors
+          : showErrors // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -789,7 +798,8 @@ abstract class _$SigninFormStateCopyWith<$Res>
   $Res call(
       {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
-      Option<Either<ValueFailure, String>> failureOrPasswordOption});
+      Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      bool showErrors});
 }
 
 /// @nodoc
@@ -808,6 +818,7 @@ class __$SigninFormStateCopyWithImpl<$Res>
     Object? failureOrUserOption = freezed,
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
+    Object? showErrors = freezed,
   }) {
     return _then(_SigninFormState(
       failureOrUserOption: failureOrUserOption == freezed
@@ -822,6 +833,10 @@ class __$SigninFormStateCopyWithImpl<$Res>
           ? _value.failureOrPasswordOption
           : failureOrPasswordOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
+      showErrors: showErrors == freezed
+          ? _value.showErrors
+          : showErrors // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -832,7 +847,8 @@ class _$_SigninFormState implements _SigninFormState {
   const _$_SigninFormState(
       {required this.failureOrUserOption,
       required this.failureOrEmailOption,
-      required this.failureOrPasswordOption});
+      required this.failureOrPasswordOption,
+      required this.showErrors});
 
   @override
   final Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption;
@@ -840,10 +856,12 @@ class _$_SigninFormState implements _SigninFormState {
   final Option<Either<ValueFailure, String>> failureOrEmailOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrPasswordOption;
+  @override
+  final bool showErrors;
 
   @override
   String toString() {
-    return 'SigninFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption)';
+    return 'SigninFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption, showErrors: $showErrors)';
   }
 
   @override
@@ -856,7 +874,9 @@ class _$_SigninFormState implements _SigninFormState {
             const DeepCollectionEquality()
                 .equals(other.failureOrEmailOption, failureOrEmailOption) &&
             const DeepCollectionEquality().equals(
-                other.failureOrPasswordOption, failureOrPasswordOption));
+                other.failureOrPasswordOption, failureOrPasswordOption) &&
+            const DeepCollectionEquality()
+                .equals(other.showErrors, showErrors));
   }
 
   @override
@@ -864,7 +884,8 @@ class _$_SigninFormState implements _SigninFormState {
       runtimeType,
       const DeepCollectionEquality().hash(failureOrUserOption),
       const DeepCollectionEquality().hash(failureOrEmailOption),
-      const DeepCollectionEquality().hash(failureOrPasswordOption));
+      const DeepCollectionEquality().hash(failureOrPasswordOption),
+      const DeepCollectionEquality().hash(showErrors));
 
   @JsonKey(ignore: true)
   @override
@@ -877,8 +898,8 @@ abstract class _SigninFormState implements SigninFormState {
       {required Option<Either<AuthFailure, SynchrowiseUser>>
           failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
-      required Option<Either<ValueFailure, String>>
-          failureOrPasswordOption}) = _$_SigninFormState;
+      required Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      required bool showErrors}) = _$_SigninFormState;
 
   @override
   Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption;
@@ -886,6 +907,8 @@ abstract class _SigninFormState implements SigninFormState {
   Option<Either<ValueFailure, String>> get failureOrEmailOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrPasswordOption;
+  @override
+  bool get showErrors;
   @override
   @JsonKey(ignore: true)
   _$SigninFormStateCopyWith<_SigninFormState> get copyWith =>

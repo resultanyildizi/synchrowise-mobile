@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
@@ -12,16 +13,18 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
         final nextPage = state.when(
           initial: () => const WelcomePage(),
           unauthorized: () => const WelcomePage(),
           authorized: (user) => HomePage(username: user.username),
         );
 
-        Future.delayed(const Duration(seconds: 3), () {
-          Navigator.push(
+        log(nextPage.toString());
+
+        Future.delayed(const Duration(seconds: 1), () {
+          Navigator.pushReplacement(
             context,
             PageTransition(
               duration: const Duration(seconds: 1),
@@ -33,7 +36,8 @@ class SplashPage extends StatelessWidget {
             ),
           );
         });
-
+      },
+      builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: kcWhiteColor,

@@ -38,7 +38,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
           signupWithEmailAndPassword: (event) async {
             if (_email.isEmpty && _password.isEmpty) {
               emit(SignupFormState.failureOrUser(
-                failureOrUser: left(const ValueFailure.passwordNotEmpty()),
+                failureOrUser: left(const ValueFailure.emptyPassword()),
               ));
             } else {
               final failureOrUser =

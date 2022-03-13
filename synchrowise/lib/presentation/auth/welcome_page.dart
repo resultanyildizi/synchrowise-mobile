@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class WelcomePage extends StatelessWidget {

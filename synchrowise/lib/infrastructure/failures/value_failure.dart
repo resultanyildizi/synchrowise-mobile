@@ -10,6 +10,6 @@ abstract class ValueFailure with _$ValueFailure implements Failure {
   const factory ValueFailure.invalidUsername() = _InvalidUsernameFailure;
   const factory ValueFailure.invalidEmail() = _InvalidEmailFailure;
   const factory ValueFailure.passwordsAreNotSame() = _NotSamePasswordsFailure;
-  const factory ValueFailure.passwordNotEmpty() =
+  const factory ValueFailure.emptyPassword() =
       _InvalidEmailOrPasswordNotEmptyFailure;
 }

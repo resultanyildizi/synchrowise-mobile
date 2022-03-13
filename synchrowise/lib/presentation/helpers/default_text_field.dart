@@ -7,9 +7,13 @@ class DefaultTextField extends StatelessWidget {
     required this.icon,
     required this.hintText,
     required this.onChanged,
+    this.obscrueText = false,
+    this.errorText,
   }) : super(key: key);
 
   final IconData? icon;
+  final String? errorText;
+  final bool obscrueText;
   final String hintText;
   final Function(String text) onChanged;
 
@@ -53,6 +57,7 @@ class DefaultTextField extends StatelessWidget {
                   border: InputBorder.none,
                   hintStyle: Theme.of(context).textTheme.subtitle1,
                   hintText: hintText,
+                  errorText: errorText,
                 ),
                 onChanged: (text) => onChanged(text),
               ),

@@ -42,7 +42,7 @@ Either<ValueFailure, String> validateSigninPassword({
   required String password,
 }) {
   if (password.isEmpty) {
-    return left(const ValueFailure.passwordNotEmpty());
+    return left(const ValueFailure.emptyPassword());
   }
   return right(password);
 }
