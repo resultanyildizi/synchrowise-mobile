@@ -8,14 +8,16 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/env.dart';
+import 'package:synchrowise/infrastructure/core/string_values.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
-
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 
 class AuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final Client _client;
+
   const AuthFacade(this._firebaseAuth, this._googleSignIn, this._client);
 
   @override
@@ -52,7 +54,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogleAuth() async {
+  Future<Either<AuthFailure, SynchrowiseUser>> signInWithGoogleAuth() async {
     try {
       if (_googleSignIn.currentUser != null) await _googleSignIn.signOut();
 
@@ -69,26 +71,7 @@ class AuthFacade implements IAuthFacade {
         final userCredential =
             await _firebaseAuth.signInWithCredential(googleCred);
 
-        final additionalUserInfo = userCredential.additionalUserInfo;
-        final credential = userCredential.credential;
-        final user = userCredential.user;
-
-        if (user != null) {
-          final firebaseToken = await user.getIdToken();
-
-          log({
-            'firebase_uid': user.uid,
-            'firebase_id_token': firebaseToken,
-            'email_address': user.email,
-            'email_verified': user.emailVerified,
-            'is_new_user': additionalUserInfo?.isNewUser,
-            'signin_method': credential?.signInMethod ?? 'null',
-            'firebase_creation_time': user.metadata.creationTime,
-            'firebase_last_signin_time': user.metadata.lastSignInTime
-          }.toString());
-        }
-
-        return right(unit);
+        return _sendRequestToApi(userCredential);
       } else {
         return left(const AuthFailure.userCancelled());
       }
@@ -112,7 +95,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, UserCredential>> createUserWithEmailAndPassword({
+  Future<Either<AuthFailure, SynchrowiseUser>> createUserWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -122,9 +105,7 @@ class AuthFacade implements IAuthFacade {
         password: password,
       );
 
-      log(userCredential.toString());
-
-      return right(userCredential);
+      return _sendRequestToApi(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
         return left(const AuthFailure.invalidEmail());
@@ -139,7 +120,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, UserCredential>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, SynchrowiseUser>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -149,7 +130,7 @@ class AuthFacade implements IAuthFacade {
         password: password,
       );
 
-      return right(userCredential);
+      return _sendRequestToApi(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
         return left(const AuthFailure.invalidEmail());
@@ -167,6 +148,9 @@ class AuthFacade implements IAuthFacade {
     try {
       _firebaseAuth.currentUser?.delete();
       _googleSignIn.signOut();
+
+      // Todo send request to backend api
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "requires-recent-login") {
@@ -196,5 +180,49 @@ class AuthFacade implements IAuthFacade {
         return left(const AuthFailure.unknown());
       }
     }
+  }
+
+  Future<Either<AuthFailure, SynchrowiseUser>> _sendRequestToApi(
+      UserCredential userCredential) async {
+    final additionalUserInfo = userCredential.additionalUserInfo;
+    final credential = userCredential.credential;
+    final user = userCredential.user;
+
+    if (user != null) {
+      final firebaseToken = await user.getIdToken();
+
+      final uri = Uri.parse("$baseApiUrl/sign_in");
+
+      final requestBody = {
+        'firebase_uid': user.uid,
+        'firebase_id_token': firebaseToken,
+        'email_address': user.email,
+        'email_verified': user.emailVerified,
+        'is_new_user': additionalUserInfo?.isNewUser,
+        'signin_method': credential?.signInMethod ?? 'null',
+        'firebase_creation_time':
+            user.metadata.creationTime?.millisecondsSinceEpoch,
+        'firebase_last_signin_time':
+            user.metadata.lastSignInTime?.millisecondsSinceEpoch,
+      };
+
+      final result = await _client.post(
+        uri,
+        body: jsonEncode(requestBody),
+        headers: {HeaderKeys.contentType: HeaderValues.contentType},
+      );
+
+      log(requestBody.toString());
+      log(result.statusCode.toString());
+
+      final map = {
+        'synchrowise_id': 'qw123411',
+        'username': user.email,
+        'avatar_url': user.emailVerified,
+      };
+      return right(SynchrowiseUser.fromMap(map));
+    }
+
+    return left(const AuthFailure.unknown());
   }
 }

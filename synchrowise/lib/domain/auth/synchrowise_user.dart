@@ -1,36 +1,40 @@
-class SynchrowiseUser {
-  final String username;
+import 'package:equatable/equatable.dart';
+
+import 'package:synchrowise/domain/auth/premium.dart';
+
+class SynchrowiseUser extends Equatable {
   final String firebaseId;
   final String synchrowiseId;
   final String avatarUrl;
   final String loginProvider;
   final String firebaseIdToken;
+  final String? username;
+  final String? emailAddress;
+  final Premium premium;
 
-  const SynchrowiseUser(
-    this.username,
-    this.firebaseId,
-    this.synchrowiseId,
-    this.avatarUrl,
-    this.loginProvider,
-    this.firebaseIdToken,
-  );
+  const SynchrowiseUser({
+    required this.username,
+    required this.firebaseId,
+    required this.synchrowiseId,
+    required this.avatarUrl,
+    required this.loginProvider,
+    required this.firebaseIdToken,
+    required this.emailAddress,
+    required this.premium,
+  });
 
-  SynchrowiseUser copyWith({
-    String? username,
-    String? firebaseId,
-    String? synchrowiseId,
-    String? avatarUrl,
-    String? loginProvider,
-    String? firebaseIdToken,
-  }) {
-    return SynchrowiseUser(
-      username ?? this.username,
-      firebaseId ?? this.firebaseId,
-      synchrowiseId ?? this.synchrowiseId,
-      avatarUrl ?? this.avatarUrl,
-      loginProvider ?? this.loginProvider,
-      firebaseIdToken ?? this.firebaseIdToken,
-    );
+  @override
+  List<Object?> get props {
+    return [
+      username,
+      firebaseId,
+      synchrowiseId,
+      avatarUrl,
+      loginProvider,
+      firebaseIdToken,
+      emailAddress,
+      premium,
+    ];
   }
 
   Map<String, dynamic> toMap() {
@@ -41,17 +45,43 @@ class SynchrowiseUser {
       'avatar_url': avatarUrl,
       'login_provider': loginProvider,
       'firebase_id_token': firebaseIdToken,
+      'email_address': emailAddress,
+      'premium_type': premium.value,
     };
   }
 
   factory SynchrowiseUser.fromMap(Map<String, dynamic> map) {
     return SynchrowiseUser(
-      map['username']!,
-      map['firebase_id']!,
-      map['synchrowise_id']!,
-      map['avatar_url']!,
-      map['login_provider']!,
-      map['firebase_id_token']!,
+      username: map['username']!,
+      firebaseId: map['firebase_id']!,
+      synchrowiseId: map['synchrowise_id']!,
+      avatarUrl: map['avatar_url']!,
+      loginProvider: map['login_provider']!,
+      firebaseIdToken: map['firebase_id_token']!,
+      emailAddress: map['email_address'],
+      premium: Premium.fromValue(map['premium_type']),
+    );
+  }
+
+  SynchrowiseUser copyWith({
+    String? firebaseId,
+    String? synchrowiseId,
+    String? avatarUrl,
+    String? loginProvider,
+    String? firebaseIdToken,
+    String? username,
+    String? emailAddress,
+    Premium? premium,
+  }) {
+    return SynchrowiseUser(
+      firebaseId: firebaseId ?? this.firebaseId,
+      synchrowiseId: synchrowiseId ?? this.synchrowiseId,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      loginProvider: loginProvider ?? this.loginProvider,
+      firebaseIdToken: firebaseIdToken ?? this.firebaseIdToken,
+      username: username ?? this.username,
+      emailAddress: emailAddress ?? this.emailAddress,
+      premium: premium ?? this.premium,
     );
   }
 }
