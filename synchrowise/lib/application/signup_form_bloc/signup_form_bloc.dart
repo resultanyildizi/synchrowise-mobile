@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
+import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
 import 'package:synchrowise/infrastructure/failures/failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
@@ -50,7 +51,8 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                 (failure) => emit(SignupFormState.failureOrUser(
                     failureOrUser: left(failure))),
                 (user) => emit(
-                    SignupFormState.failureOrUser(failureOrUser: right(user))),
+                  SignupFormState.failureOrUser(failureOrUser: right(user)),
+                ),
               );
             }
           },

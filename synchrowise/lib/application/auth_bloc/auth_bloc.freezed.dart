@@ -25,10 +25,6 @@ class _$AuthEventTearOff {
   _AuthSignoutEvent signout() {
     return const _AuthSignoutEvent();
   }
-
-  _AuthSigninWithGoogle signinWithGoogle() {
-    return const _AuthSigninWithGoogle();
-  }
 }
 
 /// @nodoc
@@ -40,21 +36,18 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() check,
     required TResult Function() signout,
-    required TResult Function() signinWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,21 +55,18 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthCheckEvent value) check,
     required TResult Function(_AuthSignoutEvent value) signout,
-    required TResult Function(_AuthSigninWithGoogle value) signinWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,7 +129,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() check,
     required TResult Function() signout,
-    required TResult Function() signinWithGoogle,
   }) {
     return check();
   }
@@ -149,7 +138,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
   }) {
     return check?.call();
   }
@@ -159,7 +147,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
     required TResult orElse(),
   }) {
     if (check != null) {
@@ -173,7 +160,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthCheckEvent value) check,
     required TResult Function(_AuthSignoutEvent value) signout,
-    required TResult Function(_AuthSigninWithGoogle value) signinWithGoogle,
   }) {
     return check(this);
   }
@@ -183,7 +169,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
   }) {
     return check?.call(this);
   }
@@ -193,7 +178,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
     required TResult orElse(),
   }) {
     if (check != null) {
@@ -250,7 +234,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() check,
     required TResult Function() signout,
-    required TResult Function() signinWithGoogle,
   }) {
     return signout();
   }
@@ -260,7 +243,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
   }) {
     return signout?.call();
   }
@@ -270,7 +252,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? check,
     TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
     required TResult orElse(),
   }) {
     if (signout != null) {
@@ -284,7 +265,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthCheckEvent value) check,
     required TResult Function(_AuthSignoutEvent value) signout,
-    required TResult Function(_AuthSigninWithGoogle value) signinWithGoogle,
   }) {
     return signout(this);
   }
@@ -294,7 +274,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
   }) {
     return signout?.call(this);
   }
@@ -304,7 +283,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
     TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
     required TResult orElse(),
   }) {
     if (signout != null) {
@@ -316,117 +294,6 @@ class _$_AuthSignoutEvent implements _AuthSignoutEvent {
 
 abstract class _AuthSignoutEvent implements AuthEvent {
   const factory _AuthSignoutEvent() = _$_AuthSignoutEvent;
-}
-
-/// @nodoc
-abstract class _$AuthSigninWithGoogleCopyWith<$Res> {
-  factory _$AuthSigninWithGoogleCopyWith(_AuthSigninWithGoogle value,
-          $Res Function(_AuthSigninWithGoogle) then) =
-      __$AuthSigninWithGoogleCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$AuthSigninWithGoogleCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AuthSigninWithGoogleCopyWith<$Res> {
-  __$AuthSigninWithGoogleCopyWithImpl(
-      _AuthSigninWithGoogle _value, $Res Function(_AuthSigninWithGoogle) _then)
-      : super(_value, (v) => _then(v as _AuthSigninWithGoogle));
-
-  @override
-  _AuthSigninWithGoogle get _value => super._value as _AuthSigninWithGoogle;
-}
-
-/// @nodoc
-
-class _$_AuthSigninWithGoogle implements _AuthSigninWithGoogle {
-  const _$_AuthSigninWithGoogle();
-
-  @override
-  String toString() {
-    return 'AuthEvent.signinWithGoogle()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AuthSigninWithGoogle);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() check,
-    required TResult Function() signout,
-    required TResult Function() signinWithGoogle,
-  }) {
-    return signinWithGoogle();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? check,
-    TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
-  }) {
-    return signinWithGoogle?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? check,
-    TResult Function()? signout,
-    TResult Function()? signinWithGoogle,
-    required TResult orElse(),
-  }) {
-    if (signinWithGoogle != null) {
-      return signinWithGoogle();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckEvent value) check,
-    required TResult Function(_AuthSignoutEvent value) signout,
-    required TResult Function(_AuthSigninWithGoogle value) signinWithGoogle,
-  }) {
-    return signinWithGoogle(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
-  }) {
-    return signinWithGoogle?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
-    TResult Function(_AuthSigninWithGoogle value)? signinWithGoogle,
-    required TResult orElse(),
-  }) {
-    if (signinWithGoogle != null) {
-      return signinWithGoogle(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthSigninWithGoogle implements AuthEvent {
-  const factory _AuthSigninWithGoogle() = _$_AuthSigninWithGoogle;
 }
 
 /// @nodoc

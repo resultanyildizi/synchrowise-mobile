@@ -139,7 +139,7 @@ class SignupPage extends StatelessWidget {
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: Text(
-                      "Login",
+                      "Sign in",
                       style: Theme.of(context)
                           .textTheme
                           .headline5!

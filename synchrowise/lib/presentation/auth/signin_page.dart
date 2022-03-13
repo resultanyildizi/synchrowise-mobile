@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/sign_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SigninPage extends StatelessWidget {
+  const SigninPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,7 @@ class LoginPage extends StatelessWidget {
                 backgroundColor: primaryColor,
                 borderColor: null,
                 textColor: kcWhiteColor,
-                text: "Login",
+                text: "Sign in",
                 padding: 50,
                 onTap: () => context.read<SigninFormBloc>().add(
                       const SigninFormEvent.signinWithEmailAndPassword(),
@@ -108,8 +107,8 @@ class LoginPage extends StatelessWidget {
                   width: 50,
                   height: 50,
                   onTap: () async {
-                    final authBloc = context.read<AuthBloc>();
-                    authBloc.signinWithGoogle();
+                    // final authBloc = context.read<AuthBloc>();
+                    // authBloc.signinWithGoogle();
                   },
                   child: SvgPicture.asset(
                     "assets/svg/Google.svg",
@@ -134,7 +133,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.pushReplacementNamed(context, '/signup');
                     },
                     child: Text(
-                      "Sign Up",
+                      "Sign up",
                       style: Theme.of(context)
                           .textTheme
                           .headline5!

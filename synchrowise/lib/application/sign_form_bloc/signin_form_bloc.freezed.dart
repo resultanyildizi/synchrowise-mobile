@@ -707,7 +707,8 @@ class _$SigninFormStateTearOff {
   const _$SigninFormStateTearOff();
 
   _SigninFormState call(
-      {required Option<Either<AuthFailure, UserCredential>> failureOrUserOption,
+      {required Option<Either<AuthFailure, SynchrowiseUser>>
+          failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption}) {
     return _SigninFormState(
@@ -723,7 +724,7 @@ const $SigninFormState = _$SigninFormStateTearOff();
 
 /// @nodoc
 mixin _$SigninFormState {
-  Option<Either<AuthFailure, UserCredential>> get failureOrUserOption =>
+  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrEmailOption =>
       throw _privateConstructorUsedError;
@@ -741,7 +742,7 @@ abstract class $SigninFormStateCopyWith<$Res> {
           SigninFormState value, $Res Function(SigninFormState) then) =
       _$SigninFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, UserCredential>> failureOrUserOption,
+      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption});
 }
@@ -765,7 +766,7 @@ class _$SigninFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, UserCredential>>,
+              as Option<Either<AuthFailure, SynchrowiseUser>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -786,7 +787,7 @@ abstract class _$SigninFormStateCopyWith<$Res>
       __$SigninFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, UserCredential>> failureOrUserOption,
+      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption});
 }
@@ -812,7 +813,7 @@ class __$SigninFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, UserCredential>>,
+              as Option<Either<AuthFailure, SynchrowiseUser>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -834,7 +835,7 @@ class _$_SigninFormState implements _SigninFormState {
       required this.failureOrPasswordOption});
 
   @override
-  final Option<Either<AuthFailure, UserCredential>> failureOrUserOption;
+  final Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrEmailOption;
   @override
@@ -873,13 +874,14 @@ class _$_SigninFormState implements _SigninFormState {
 
 abstract class _SigninFormState implements SigninFormState {
   const factory _SigninFormState(
-      {required Option<Either<AuthFailure, UserCredential>> failureOrUserOption,
+      {required Option<Either<AuthFailure, SynchrowiseUser>>
+          failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>>
           failureOrPasswordOption}) = _$_SigninFormState;
 
   @override
-  Option<Either<AuthFailure, UserCredential>> get failureOrUserOption;
+  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrEmailOption;
   @override

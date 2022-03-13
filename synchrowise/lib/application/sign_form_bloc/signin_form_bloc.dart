@@ -3,7 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:synchrowise/app.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
+import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
 import 'package:synchrowise/infrastructure/failures/failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
@@ -46,7 +48,9 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
 
           if (email != null && password != null) {
             final failureOrUser = await _iAuthFacade.signInWithEmailAndPassword(
-                email: email, password: password);
+              email: email,
+              password: password,
+            );
             emit(state.copyWith(failureOrUserOption: some(failureOrUser)));
           }
         },

@@ -14,7 +14,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void check() => add(const AuthEvent.check());
   void signout() => add(const AuthEvent.signout());
-  void signinWithGoogle() => add(const AuthEvent.signinWithGoogle());
 
   AuthBloc(this._iAuthFacade) : super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) {
@@ -22,9 +21,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         check: (_) async {
           final result = await _iAuthFacade.getSignedInUser();
           log(result.toString());
-        },
-        signinWithGoogle: (_) async {
-          await _iAuthFacade.signInWithGoogleAuth();
         },
         signout: (event) {},
       );
