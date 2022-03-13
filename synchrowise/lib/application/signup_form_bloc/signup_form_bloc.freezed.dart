@@ -771,7 +771,7 @@ class _$SignupFormStateTearOff {
   }
 
   _SignupFormFailureOrUserState failureOrUser(
-      {required Either<AuthFailure, UserCredential> failureOrUser}) {
+      {required Either<Failure, UserCredential> failureOrUser}) {
     return _SignupFormFailureOrUserState(
       failureOrUser: failureOrUser,
     );
@@ -802,7 +802,7 @@ mixin _$SignupFormState {
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -814,7 +814,7 @@ mixin _$SignupFormState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -824,7 +824,7 @@ mixin _$SignupFormState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -924,7 +924,7 @@ class _$_SignupFormInitialState implements _SignupFormInitialState {
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -939,7 +939,7 @@ class _$_SignupFormInitialState implements _SignupFormInitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -952,7 +952,7 @@ class _$_SignupFormInitialState implements _SignupFormInitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1084,7 +1084,7 @@ class _$_SignupFormFailureOrUnitState implements _SignupFormFailureOrUnitState {
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -1099,7 +1099,7 @@ class _$_SignupFormFailureOrUnitState implements _SignupFormFailureOrUnitState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1112,7 +1112,7 @@ class _$_SignupFormFailureOrUnitState implements _SignupFormFailureOrUnitState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1184,7 +1184,7 @@ abstract class _$SignupFormFailureOrUserStateCopyWith<$Res> {
           _SignupFormFailureOrUserState value,
           $Res Function(_SignupFormFailureOrUserState) then) =
       __$SignupFormFailureOrUserStateCopyWithImpl<$Res>;
-  $Res call({Either<AuthFailure, UserCredential> failureOrUser});
+  $Res call({Either<Failure, UserCredential> failureOrUser});
 }
 
 /// @nodoc
@@ -1208,7 +1208,7 @@ class __$SignupFormFailureOrUserStateCopyWithImpl<$Res>
       failureOrUser: failureOrUser == freezed
           ? _value.failureOrUser
           : failureOrUser // ignore: cast_nullable_to_non_nullable
-              as Either<AuthFailure, UserCredential>,
+              as Either<Failure, UserCredential>,
     ));
   }
 }
@@ -1219,7 +1219,7 @@ class _$_SignupFormFailureOrUserState implements _SignupFormFailureOrUserState {
   const _$_SignupFormFailureOrUserState({required this.failureOrUser});
 
   @override
-  final Either<AuthFailure, UserCredential> failureOrUser;
+  final Either<Failure, UserCredential> failureOrUser;
 
   @override
   String toString() {
@@ -1251,7 +1251,7 @@ class _$_SignupFormFailureOrUserState implements _SignupFormFailureOrUserState {
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -1266,7 +1266,7 @@ class _$_SignupFormFailureOrUserState implements _SignupFormFailureOrUserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1279,7 +1279,7 @@ class _$_SignupFormFailureOrUserState implements _SignupFormFailureOrUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1336,10 +1336,10 @@ class _$_SignupFormFailureOrUserState implements _SignupFormFailureOrUserState {
 
 abstract class _SignupFormFailureOrUserState implements SignupFormState {
   const factory _SignupFormFailureOrUserState(
-          {required Either<AuthFailure, UserCredential> failureOrUser}) =
+          {required Either<Failure, UserCredential> failureOrUser}) =
       _$_SignupFormFailureOrUserState;
 
-  Either<AuthFailure, UserCredential> get failureOrUser;
+  Either<Failure, UserCredential> get failureOrUser;
   @JsonKey(ignore: true)
   _$SignupFormFailureOrUserStateCopyWith<_SignupFormFailureOrUserState>
       get copyWith => throw _privateConstructorUsedError;
@@ -1419,7 +1419,7 @@ class _$_SignupFormFailureOrEmailState
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -1434,7 +1434,7 @@ class _$_SignupFormFailureOrEmailState
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1447,7 +1447,7 @@ class _$_SignupFormFailureOrEmailState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1587,7 +1587,7 @@ class _$_SignupFormFailureOrPasswordState
     required TResult Function() initial,
     required TResult Function(Either<AuthFailure, Unit> failureOrUnit)
         failureOrUnit,
-    required TResult Function(Either<AuthFailure, UserCredential> failureOrUser)
+    required TResult Function(Either<Failure, UserCredential> failureOrUser)
         failureOrUser,
     required TResult Function(Either<ValueFailure, String> failureOrEmail)
         email,
@@ -1602,7 +1602,7 @@ class _$_SignupFormFailureOrPasswordState
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,
@@ -1615,7 +1615,7 @@ class _$_SignupFormFailureOrPasswordState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Either<AuthFailure, Unit> failureOrUnit)? failureOrUnit,
-    TResult Function(Either<AuthFailure, UserCredential> failureOrUser)?
+    TResult Function(Either<Failure, UserCredential> failureOrUser)?
         failureOrUser,
     TResult Function(Either<ValueFailure, String> failureOrEmail)? email,
     TResult Function(Either<ValueFailure, String> failureOrPassword)? password,

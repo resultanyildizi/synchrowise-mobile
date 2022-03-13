@@ -7,7 +7,7 @@ class SignupFormState with _$SignupFormState {
           {required Either<AuthFailure, Unit> failureOrUnit}) =
       _SignupFormFailureOrUnitState;
   const factory SignupFormState.failureOrUser(
-          {required Either<AuthFailure, UserCredential> failureOrUser}) =
+          {required Either<Failure, UserCredential> failureOrUser}) =
       _SignupFormFailureOrUserState;
   const factory SignupFormState.email(
           {required Either<ValueFailure, String> failureOrEmail}) =

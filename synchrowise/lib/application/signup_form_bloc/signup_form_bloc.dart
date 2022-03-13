@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
+import 'package:synchrowise/infrastructure/failures/failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 
@@ -34,18 +35,24 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
       (event, emit) {
         event.map(
           signupWithEmailAndPassword: (event) async {
-            final failureOrUser =
-                await _iAuthFacade.createUserWithEmailAndPassword(
-              email: event.email,
-              password: event.password,
-            );
+            if (_email.isEmpty && _password.isEmpty) {
+              emit(SignupFormState.failureOrUser(
+                failureOrUser: left(const ValueFailure.passwordNotEmpty()),
+              ));
+            } else {
+              final failureOrUser =
+                  await _iAuthFacade.createUserWithEmailAndPassword(
+                email: event.email,
+                password: event.password,
+              );
 
-            failureOrUser.fold(
-              (failure) => emit(
-                  SignupFormState.failureOrUser(failureOrUser: left(failure))),
-              (user) => emit(
-                  SignupFormState.failureOrUser(failureOrUser: right(user))),
-            );
+              failureOrUser.fold(
+                (failure) => emit(SignupFormState.failureOrUser(
+                    failureOrUser: left(failure))),
+                (user) => emit(
+                    SignupFormState.failureOrUser(failureOrUser: right(user))),
+              );
+            }
           },
           signupWithGoogle: (_) async {
             final failureOrUser = await _iAuthFacade.signInWithGoogleAuth();
@@ -58,15 +65,14 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
             );
           },
           updateEmailText: (event) async {
+            _email = event.email.trim();
             emit(SignupFormState.email(
-              failureOrEmail: validateEmail(
-                email: event.email.trim(),
-              ),
+              failureOrEmail: validateEmail(email: _email),
             ));
           },
           updatePasswordText: (event) async {
             if (_password.isNotEmpty) {
-              final failureOrPassword = validatePasswordsAreSame(
+              final failureOrPassword = validatePassword(
                 password: _password,
                 confirmPassword: event.password,
               );

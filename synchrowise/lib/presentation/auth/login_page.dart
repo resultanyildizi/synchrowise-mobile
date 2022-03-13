@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/sign_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
@@ -45,15 +46,19 @@ class LoginPage extends StatelessWidget {
               ),
               const Spacer(),
               DefaultTextField(
-                icon: Icons.email, hintText: "Email",
-                //TODO : onChanged
-                onChanged: (text) => text,
+                icon: Icons.email,
+                hintText: "Email",
+                onChanged: (email) => context
+                    .read<SigninFormBloc>()
+                    .add(SigninFormEvent.updateEmailText(email: email)),
               ),
               const SizedBox(height: 25),
               DefaultTextField(
-                icon: Icons.lock, hintText: "Password",
-                //TODO : onChanged
-                onChanged: (text) => text,
+                icon: Icons.lock,
+                hintText: "Password",
+                onChanged: (password) => context.read<SigninFormBloc>().add(
+                      SigninFormEvent.updatePasswordText(password: password),
+                    ),
               ),
               const SizedBox(height: 50),
               DefaultButton(
@@ -62,7 +67,9 @@ class LoginPage extends StatelessWidget {
                 textColor: kcWhiteColor,
                 text: "Login",
                 padding: 50,
-                onTap: () {},
+                onTap: () => context.read<SigninFormBloc>().add(
+                      const SigninFormEvent.signinWithEmailAndPassword(),
+                    ),
               ),
               const SizedBox(height: 16),
               Center(

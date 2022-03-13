@@ -138,6 +138,7 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
+  @override
   Future<Either<AuthFailure, UserCredential>> signInWithEmailAndPassword({
     required String email,
     required String password,

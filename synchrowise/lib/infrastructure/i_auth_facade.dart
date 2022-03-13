@@ -10,4 +10,8 @@ abstract class IAuthFacade {
     required String email,
     required String password,
   });
+  Future<Either<AuthFailure, UserCredential>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
 }
