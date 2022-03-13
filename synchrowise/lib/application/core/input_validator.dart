@@ -24,18 +24,15 @@ Either<ValueFailure, String> validateUsername({required String username}) {
   return right(username);
 }
 
-Either<ValueFailure, String> validatePassword({
+Either<ValueFailure, String> validateConfirmPassword({
   required String password,
-  String? confirmPassword,
+  required String confirmPassword,
 }) {
-  if (password.length < 8) {
-    return left(const ValueFailure.minLength(8));
-  } else if (confirmPassword != null) {
-    if (password != confirmPassword) {
-      return left(const ValueFailure.passwordsAreNotSame());
-    }
+  if (password == confirmPassword) {
+    return right(password);
+  } else {
+    return left(const ValueFailure.passwordsNotSame());
   }
-  return right(password);
 }
 
 Either<ValueFailure, String> validateSigninPassword({

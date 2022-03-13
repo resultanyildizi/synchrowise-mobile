@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
@@ -16,74 +15,81 @@ part 'signup_form_state.dart';
 class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
   final IAuthFacade _iAuthFacade;
 
-  String _email = "";
-  String _password = "";
-
-  void signupWithEmailAndPassword(
-          {required String email, required String password}) =>
-      add(SignupFormEvent.signupWithEmailAndPassword(
-          email: email, password: password));
+  void signupWithEmailAndPassword() =>
+      add(const SignupFormEvent.signupWithEmailAndPassword());
   void signupWithGoogle() => add(const SignupFormEvent.signupWithGoogle());
   void updateEmailText({required String email}) =>
       add(SignupFormEvent.updateEmailText(email: email));
   void updatePasswordText({required String password}) =>
       add(SignupFormEvent.updatePasswordText(password: password));
+  void updateConfirmPasswordText({required String password}) =>
+      add(SignupFormEvent.updatePasswordText(password: password));
 
   SignupFormBloc(
     this._iAuthFacade,
-  ) : super(const SignupFormState.initial()) {
+  ) : super(SignupFormState.initial()) {
     on<SignupFormEvent>(
-      (event, emit) {
-        event.map(
-          signupWithEmailAndPassword: (event) async {
-            if (_email.isEmpty && _password.isEmpty) {
-              emit(SignupFormState.failureOrUser(
-                failureOrUser: left(const ValueFailure.emptyPassword()),
-              ));
-            } else {
-              final failureOrUser =
-                  await _iAuthFacade.createUserWithEmailAndPassword(
-                email: event.email,
-                password: event.password,
-              );
+      (event, emit) async {
+        await event.map(
+          signupWithEmailAndPassword: (_) async {
+            final password = state.failureOrPasswordOption.fold(
+              () => null,
+              (fop) => fop.fold((_) => null, (p) => p),
+            );
 
-              failureOrUser.fold(
-                (failure) => emit(SignupFormState.failureOrUser(
-                    failureOrUser: left(failure))),
-                (user) => emit(
-                  SignupFormState.failureOrUser(failureOrUser: right(user)),
-                ),
+            final email = state.failureOrEmailOption.fold(
+              () => null,
+              (foe) => foe.fold((_) => null, (e) => e),
+            );
+
+            if (email != null && password != null) {
+              await _iAuthFacade.createUserWithEmailAndPassword(
+                email: email,
+                password: password,
               );
             }
           },
           signupWithGoogle: (_) async {
-            final failureOrUser = await _iAuthFacade.signInWithGoogleAuth();
-
-            failureOrUser.fold(
-              (failure) => emit(
-                  SignupFormState.failureOrUnit(failureOrUnit: left(failure))),
-              (_) => emit(
-                  SignupFormState.failureOrUnit(failureOrUnit: right(unit))),
-            );
+            await _iAuthFacade.signInWithGoogleAuth();
           },
           updateEmailText: (event) async {
-            _email = event.email.trim();
-            emit(SignupFormState.email(
-              failureOrEmail: validateEmail(email: _email),
-            ));
+            final validatedEmail = validateEmail(email: event.email);
+            final newstate = state.copyWith(
+              failureOrUserOption: none(),
+              failureOrEmailOption: some(validatedEmail),
+            );
+            emit(newstate);
           },
           updatePasswordText: (event) async {
-            if (_password.isNotEmpty) {
-              final failureOrPassword = validatePassword(
-                password: _password,
-                confirmPassword: event.password,
-              );
-              emit(SignupFormState.password(
-                failureOrPassword: failureOrPassword,
-              ));
-            } else {
-              _password = event.password;
-            }
+            final validatedPass =
+                validateSigninPassword(password: event.password);
+
+            final newstate = state.copyWith(
+              failureOrUserOption: none(),
+              failureOrPasswordOption: some(validatedPass),
+            );
+
+            emit(newstate);
+          },
+          updateConfirmPasswordText: (event) async {
+            final newState = state.failureOrPasswordOption.fold(
+              () => state,
+              (failureOrPassw) => failureOrPassw.fold(
+                (f) => state,
+                (p) {
+                  final newConfPass = validateConfirmPassword(
+                    password: p,
+                    confirmPassword: event.password,
+                  );
+
+                  return state.copyWith(
+                    failureOrPasswordOption: some(newConfPass),
+                  );
+                },
+              ),
+            );
+
+            emit(newState);
           },
         );
       },

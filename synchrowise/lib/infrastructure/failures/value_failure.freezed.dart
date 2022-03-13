@@ -38,12 +38,12 @@ class _$ValueFailureTearOff {
     return const _InvalidEmailFailure();
   }
 
-  _NotSamePasswordsFailure passwordsAreNotSame() {
-    return const _NotSamePasswordsFailure();
+  _PasswordsNotSameFailure passwordsNotSame() {
+    return const _PasswordsNotSameFailure();
   }
 
-  _InvalidEmailOrPasswordNotEmptyFailure emptyPassword() {
-    return const _InvalidEmailOrPasswordNotEmptyFailure();
+  _EmptyPasswordsFailure emptyPassword() {
+    return const _EmptyPasswordsFailure();
   }
 }
 
@@ -58,7 +58,7 @@ mixin _$ValueFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,7 +68,7 @@ mixin _$ValueFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,7 +78,7 @@ mixin _$ValueFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) =>
@@ -89,10 +89,8 @@ mixin _$ValueFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,9 +99,8 @@ mixin _$ValueFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,9 +109,8 @@ mixin _$ValueFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -205,7 +201,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
     return minLength(length);
@@ -218,7 +214,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
     return minLength?.call(length);
@@ -231,7 +227,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
@@ -248,10 +244,8 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
     return minLength(this);
   }
@@ -263,9 +257,8 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
     return minLength?.call(this);
   }
@@ -277,9 +270,8 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
     if (minLength != null) {
@@ -367,7 +359,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
     return maxLength(length);
@@ -380,7 +372,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
     return maxLength?.call(length);
@@ -393,7 +385,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
@@ -410,10 +402,8 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
     return maxLength(this);
   }
@@ -425,9 +415,8 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
     return maxLength?.call(this);
   }
@@ -439,9 +428,8 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
     if (maxLength != null) {
@@ -505,7 +493,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
     return invalidUsername();
@@ -518,7 +506,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
     return invalidUsername?.call();
@@ -531,7 +519,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
@@ -548,10 +536,8 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
     return invalidUsername(this);
   }
@@ -563,9 +549,8 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
     return invalidUsername?.call(this);
   }
@@ -577,9 +562,8 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
     if (invalidUsername != null) {
@@ -638,7 +622,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
     return invalidEmail();
@@ -651,7 +635,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
     return invalidEmail?.call();
@@ -664,7 +648,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
@@ -681,10 +665,8 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
     return invalidEmail(this);
   }
@@ -696,9 +678,8 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
     return invalidEmail?.call(this);
   }
@@ -710,9 +691,8 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -727,39 +707,39 @@ abstract class _InvalidEmailFailure implements ValueFailure {
 }
 
 /// @nodoc
-abstract class _$NotSamePasswordsFailureCopyWith<$Res> {
-  factory _$NotSamePasswordsFailureCopyWith(_NotSamePasswordsFailure value,
-          $Res Function(_NotSamePasswordsFailure) then) =
-      __$NotSamePasswordsFailureCopyWithImpl<$Res>;
+abstract class _$PasswordsNotSameFailureCopyWith<$Res> {
+  factory _$PasswordsNotSameFailureCopyWith(_PasswordsNotSameFailure value,
+          $Res Function(_PasswordsNotSameFailure) then) =
+      __$PasswordsNotSameFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NotSamePasswordsFailureCopyWithImpl<$Res>
+class __$PasswordsNotSameFailureCopyWithImpl<$Res>
     extends _$ValueFailureCopyWithImpl<$Res>
-    implements _$NotSamePasswordsFailureCopyWith<$Res> {
-  __$NotSamePasswordsFailureCopyWithImpl(_NotSamePasswordsFailure _value,
-      $Res Function(_NotSamePasswordsFailure) _then)
-      : super(_value, (v) => _then(v as _NotSamePasswordsFailure));
+    implements _$PasswordsNotSameFailureCopyWith<$Res> {
+  __$PasswordsNotSameFailureCopyWithImpl(_PasswordsNotSameFailure _value,
+      $Res Function(_PasswordsNotSameFailure) _then)
+      : super(_value, (v) => _then(v as _PasswordsNotSameFailure));
 
   @override
-  _NotSamePasswordsFailure get _value =>
-      super._value as _NotSamePasswordsFailure;
+  _PasswordsNotSameFailure get _value =>
+      super._value as _PasswordsNotSameFailure;
 }
 
 /// @nodoc
 
-class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
-  const _$_NotSamePasswordsFailure();
+class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
+  const _$_PasswordsNotSameFailure();
 
   @override
   String toString() {
-    return 'ValueFailure.passwordsAreNotSame()';
+    return 'ValueFailure.passwordsNotSame()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _NotSamePasswordsFailure);
+        (other.runtimeType == runtimeType && other is _PasswordsNotSameFailure);
   }
 
   @override
@@ -772,10 +752,10 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
-    return passwordsAreNotSame();
+    return passwordsNotSame();
   }
 
   @override
@@ -785,10 +765,10 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
-    return passwordsAreNotSame?.call();
+    return passwordsNotSame?.call();
   }
 
   @override
@@ -798,12 +778,12 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
-    if (passwordsAreNotSame != null) {
-      return passwordsAreNotSame();
+    if (passwordsNotSame != null) {
+      return passwordsNotSame();
     }
     return orElse();
   }
@@ -815,12 +795,10 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
-    return passwordsAreNotSame(this);
+    return passwordsNotSame(this);
   }
 
   @override
@@ -830,11 +808,10 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
-    return passwordsAreNotSame?.call(this);
+    return passwordsNotSame?.call(this);
   }
 
   @override
@@ -844,50 +821,44 @@ class _$_NotSamePasswordsFailure implements _NotSamePasswordsFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
-    if (passwordsAreNotSame != null) {
-      return passwordsAreNotSame(this);
+    if (passwordsNotSame != null) {
+      return passwordsNotSame(this);
     }
     return orElse();
   }
 }
 
-abstract class _NotSamePasswordsFailure implements ValueFailure {
-  const factory _NotSamePasswordsFailure() = _$_NotSamePasswordsFailure;
+abstract class _PasswordsNotSameFailure implements ValueFailure {
+  const factory _PasswordsNotSameFailure() = _$_PasswordsNotSameFailure;
 }
 
 /// @nodoc
-abstract class _$InvalidEmailOrPasswordNotEmptyFailureCopyWith<$Res> {
-  factory _$InvalidEmailOrPasswordNotEmptyFailureCopyWith(
-          _InvalidEmailOrPasswordNotEmptyFailure value,
-          $Res Function(_InvalidEmailOrPasswordNotEmptyFailure) then) =
-      __$InvalidEmailOrPasswordNotEmptyFailureCopyWithImpl<$Res>;
+abstract class _$EmptyPasswordsFailureCopyWith<$Res> {
+  factory _$EmptyPasswordsFailureCopyWith(_EmptyPasswordsFailure value,
+          $Res Function(_EmptyPasswordsFailure) then) =
+      __$EmptyPasswordsFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InvalidEmailOrPasswordNotEmptyFailureCopyWithImpl<$Res>
+class __$EmptyPasswordsFailureCopyWithImpl<$Res>
     extends _$ValueFailureCopyWithImpl<$Res>
-    implements _$InvalidEmailOrPasswordNotEmptyFailureCopyWith<$Res> {
-  __$InvalidEmailOrPasswordNotEmptyFailureCopyWithImpl(
-      _InvalidEmailOrPasswordNotEmptyFailure _value,
-      $Res Function(_InvalidEmailOrPasswordNotEmptyFailure) _then)
-      : super(
-            _value, (v) => _then(v as _InvalidEmailOrPasswordNotEmptyFailure));
+    implements _$EmptyPasswordsFailureCopyWith<$Res> {
+  __$EmptyPasswordsFailureCopyWithImpl(_EmptyPasswordsFailure _value,
+      $Res Function(_EmptyPasswordsFailure) _then)
+      : super(_value, (v) => _then(v as _EmptyPasswordsFailure));
 
   @override
-  _InvalidEmailOrPasswordNotEmptyFailure get _value =>
-      super._value as _InvalidEmailOrPasswordNotEmptyFailure;
+  _EmptyPasswordsFailure get _value => super._value as _EmptyPasswordsFailure;
 }
 
 /// @nodoc
 
-class _$_InvalidEmailOrPasswordNotEmptyFailure
-    implements _InvalidEmailOrPasswordNotEmptyFailure {
-  const _$_InvalidEmailOrPasswordNotEmptyFailure();
+class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
+  const _$_EmptyPasswordsFailure();
 
   @override
   String toString() {
@@ -897,8 +868,7 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _InvalidEmailOrPasswordNotEmptyFailure);
+        (other.runtimeType == runtimeType && other is _EmptyPasswordsFailure);
   }
 
   @override
@@ -911,7 +881,7 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
-    required TResult Function() passwordsAreNotSame,
+    required TResult Function() passwordsNotSame,
     required TResult Function() emptyPassword,
   }) {
     return emptyPassword();
@@ -924,7 +894,7 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
   }) {
     return emptyPassword?.call();
@@ -937,7 +907,7 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
-    TResult Function()? passwordsAreNotSame,
+    TResult Function()? passwordsNotSame,
     TResult Function()? emptyPassword,
     required TResult orElse(),
   }) {
@@ -954,10 +924,8 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_NotSamePasswordsFailure value)
-        passwordsAreNotSame,
-    required TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)
-        emptyPassword,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
   }) {
     return emptyPassword(this);
   }
@@ -969,9 +937,8 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
   }) {
     return emptyPassword?.call(this);
   }
@@ -983,9 +950,8 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_NotSamePasswordsFailure value)? passwordsAreNotSame,
-    TResult Function(_InvalidEmailOrPasswordNotEmptyFailure value)?
-        emptyPassword,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     required TResult orElse(),
   }) {
     if (emptyPassword != null) {
@@ -995,7 +961,6 @@ class _$_InvalidEmailOrPasswordNotEmptyFailure
   }
 }
 
-abstract class _InvalidEmailOrPasswordNotEmptyFailure implements ValueFailure {
-  const factory _InvalidEmailOrPasswordNotEmptyFailure() =
-      _$_InvalidEmailOrPasswordNotEmptyFailure;
+abstract class _EmptyPasswordsFailure implements ValueFailure {
+  const factory _EmptyPasswordsFailure() = _$_EmptyPasswordsFailure;
 }

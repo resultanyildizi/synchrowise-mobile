@@ -48,25 +48,28 @@ class SignupPage extends StatelessWidget {
               DefaultTextField(
                 icon: Icons.email,
                 hintText: "Email",
-                onChanged: (text) => context.read<SignupFormBloc>().add(
-                      SignupFormEvent.updateEmailText(email: text),
-                    ),
+                onChanged: (text) {
+                  final signupFormBloc = context.read<SignupFormBloc>();
+                  signupFormBloc.updateEmailText(email: text);
+                },
               ),
               const SizedBox(height: 25),
               DefaultTextField(
                 icon: Icons.lock,
                 hintText: "Password",
-                onChanged: (text) => context.read<SignupFormBloc>().add(
-                      SignupFormEvent.updatePasswordText(password: text),
-                    ),
+                onChanged: (text) {
+                  final signupFormBloc = context.read<SignupFormBloc>();
+                  signupFormBloc.updatePasswordText(password: text);
+                },
               ),
               const SizedBox(height: 25),
               DefaultTextField(
                 icon: Icons.lock,
                 hintText: "Confirm Password",
-                onChanged: (text) => context.read<SignupFormBloc>().add(
-                      SignupFormEvent.updatePasswordText(password: text),
-                    ),
+                onChanged: (text) {
+                  final signupFormBloc = context.read<SignupFormBloc>();
+                  signupFormBloc.updateConfirmPasswordText(password: text);
+                },
               ),
               const SizedBox(height: 50),
               DefaultButton(
@@ -77,17 +80,14 @@ class SignupPage extends StatelessWidget {
                 padding: 50,
                 onTap: () {
                   final signupFormBloc = context.read<SignupFormBloc>();
-                  signupFormBloc.signupWithEmailAndPassword(
-                    email: "deneme",
-                    password: "deneme1",
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegisterSteps1(),
-                      fullscreenDialog: true,
-                    ),
-                  );
+                  signupFormBloc.signupWithEmailAndPassword();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const RegisterSteps1(),
+                  //     fullscreenDialog: true,
+                  //   ),
+                  // );
                 },
               ),
               const Spacer(),
@@ -115,10 +115,11 @@ class SignupPage extends StatelessWidget {
                 child: CustomAnimatedButton(
                   width: 50,
                   height: 50,
-                  onTap: () async {},
-                  child: SvgPicture.asset(
-                    "assets/svg/Google.svg",
-                  ),
+                  onTap: () async {
+                    final signupFormBloc = context.read<SignupFormBloc>();
+                    signupFormBloc.signupWithGoogle();
+                  },
+                  child: SvgPicture.asset("assets/svg/Google.svg"),
                   decoration: BoxDecoration(
                     border: Border.all(color: grayColor.withOpacity(0.4)),
                     borderRadius: BorderRadius.circular(50),

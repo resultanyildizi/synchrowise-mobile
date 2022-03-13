@@ -40,6 +40,7 @@ class AuthFacade implements IAuthFacade {
 
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body) as Map<String, dynamic>;
+          log(data.toString());
           return right(SynchrowiseUser.fromMap(data));
         }
 
@@ -191,7 +192,7 @@ class AuthFacade implements IAuthFacade {
     if (user != null) {
       final firebaseToken = await user.getIdToken();
 
-      final uri = Uri.parse("$baseApiUrl/sign_in");
+      final uri = Uri.parse("$baseApiUrl/api/User");
 
       final requestBody = {
         'firebase_uid': user.uid,
@@ -206,21 +207,24 @@ class AuthFacade implements IAuthFacade {
             user.metadata.lastSignInTime?.millisecondsSinceEpoch,
       };
 
+      log(requestBody.toString());
+
       final result = await _client.post(
         uri,
         body: jsonEncode(requestBody),
         headers: {HeaderKeys.contentType: HeaderValues.contentType},
       );
 
-      log(requestBody.toString());
       log(result.statusCode.toString());
+      log(result.body);
 
-      final map = {
-        'synchrowise_id': 'qw123411',
-        'username': user.email,
-        'avatar_url': user.emailVerified,
-      };
-      return right(SynchrowiseUser.fromMap(map));
+      if (result.statusCode == 200) {
+        final data = jsonDecode(result.body) as Map<String, dynamic>;
+        log(data.toString());
+        return right(SynchrowiseUser.fromMap(data));
+      } else {
+        // TODO backend failures
+      }
     }
 
     return left(const AuthFailure.unknown());

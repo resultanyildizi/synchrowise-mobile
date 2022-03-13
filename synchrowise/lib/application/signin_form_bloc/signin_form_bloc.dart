@@ -1,13 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
-import 'package:synchrowise/app.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
-import 'package:synchrowise/infrastructure/failures/failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 import 'package:synchrowise/infrastructure/i_auth_facade.dart';
 
@@ -57,7 +54,9 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
             emit(state.copyWith(failureOrUserOption: some(failureOrUser)));
           }
         },
-        signinWithGoogle: (_) async {},
+        signinWithGoogle: (_) async {
+          await _iAuthFacade.signInWithGoogleAuth();
+        },
         updateEmailText: (event) async {
           final validatedEmail = validateEmail(email: event.email);
           final newstate = state.copyWith(
