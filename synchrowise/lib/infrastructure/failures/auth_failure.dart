@@ -14,4 +14,5 @@ abstract class AuthFailure with _$AuthFailure implements Failure {
   const factory AuthFailure.signInRequired() = _SignInRequired;
   const factory AuthFailure.connection() = _Connection;
   const factory AuthFailure.unknown() = _Unknown;
+  const factory AuthFailure.failedToPickImage() = _FailedToPickImage;
 }

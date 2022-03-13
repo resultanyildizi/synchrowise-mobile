@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
@@ -26,6 +27,9 @@ class SynchrowiseApp extends StatelessWidget {
         ),
         BlocProvider<SignupFormBloc>(
           create: (context) => getIt<SignupFormBloc>(),
+        ),
+        BlocProvider<RegisterStepsBloc>(
+          create: (context) => getIt<RegisterStepsBloc>(),
         ),
       ],
       child: MaterialApp(

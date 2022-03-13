@@ -53,6 +53,10 @@ class _$AuthFailureTearOff {
   _Unknown unknown() {
     return const _Unknown();
   }
+
+  _FailedToPickImage failedToPickImage() {
+    return const _FailedToPickImage();
+  }
 }
 
 /// @nodoc
@@ -71,6 +75,7 @@ mixin _$AuthFailure {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +89,7 @@ mixin _$AuthFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +103,7 @@ mixin _$AuthFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +119,7 @@ mixin _$AuthFailure {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -125,6 +133,7 @@ mixin _$AuthFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +147,7 @@ mixin _$AuthFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -211,6 +221,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return invalidCredentials();
   }
@@ -227,6 +238,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return invalidCredentials?.call();
   }
@@ -243,6 +255,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -264,6 +277,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return invalidCredentials(this);
   }
@@ -280,6 +294,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -296,6 +311,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -359,6 +375,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return userDisabled();
   }
@@ -375,6 +392,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return userDisabled?.call();
   }
@@ -391,6 +409,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -412,6 +431,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return userDisabled(this);
   }
@@ -428,6 +448,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return userDisabled?.call(this);
   }
@@ -444,6 +465,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -507,6 +529,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return invalidEmail();
   }
@@ -523,6 +546,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return invalidEmail?.call();
   }
@@ -539,6 +563,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -560,6 +585,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return invalidEmail(this);
   }
@@ -576,6 +602,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return invalidEmail?.call(this);
   }
@@ -592,6 +619,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -655,6 +683,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return emailAlreadyInUse();
   }
@@ -671,6 +700,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -687,6 +717,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -708,6 +739,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -724,6 +756,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -740,6 +773,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -802,6 +836,7 @@ class _$_WeakPassword implements _WeakPassword {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return weakPassword();
   }
@@ -818,6 +853,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return weakPassword?.call();
   }
@@ -834,6 +870,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -855,6 +892,7 @@ class _$_WeakPassword implements _WeakPassword {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return weakPassword(this);
   }
@@ -871,6 +909,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return weakPassword?.call(this);
   }
@@ -887,6 +926,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -949,6 +989,7 @@ class _$_UserCancelled implements _UserCancelled {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return userCancelled();
   }
@@ -965,6 +1006,7 @@ class _$_UserCancelled implements _UserCancelled {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return userCancelled?.call();
   }
@@ -981,6 +1023,7 @@ class _$_UserCancelled implements _UserCancelled {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (userCancelled != null) {
@@ -1002,6 +1045,7 @@ class _$_UserCancelled implements _UserCancelled {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return userCancelled(this);
   }
@@ -1018,6 +1062,7 @@ class _$_UserCancelled implements _UserCancelled {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return userCancelled?.call(this);
   }
@@ -1034,6 +1079,7 @@ class _$_UserCancelled implements _UserCancelled {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (userCancelled != null) {
@@ -1097,6 +1143,7 @@ class _$_SignInRequired implements _SignInRequired {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return signInRequired();
   }
@@ -1113,6 +1160,7 @@ class _$_SignInRequired implements _SignInRequired {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return signInRequired?.call();
   }
@@ -1129,6 +1177,7 @@ class _$_SignInRequired implements _SignInRequired {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (signInRequired != null) {
@@ -1150,6 +1199,7 @@ class _$_SignInRequired implements _SignInRequired {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return signInRequired(this);
   }
@@ -1166,6 +1216,7 @@ class _$_SignInRequired implements _SignInRequired {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return signInRequired?.call(this);
   }
@@ -1182,6 +1233,7 @@ class _$_SignInRequired implements _SignInRequired {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (signInRequired != null) {
@@ -1244,6 +1296,7 @@ class _$_Connection implements _Connection {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return connection();
   }
@@ -1260,6 +1313,7 @@ class _$_Connection implements _Connection {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return connection?.call();
   }
@@ -1276,6 +1330,7 @@ class _$_Connection implements _Connection {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -1297,6 +1352,7 @@ class _$_Connection implements _Connection {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return connection(this);
   }
@@ -1313,6 +1369,7 @@ class _$_Connection implements _Connection {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return connection?.call(this);
   }
@@ -1329,6 +1386,7 @@ class _$_Connection implements _Connection {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -1389,6 +1447,7 @@ class _$_Unknown implements _Unknown {
     required TResult Function() signInRequired,
     required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
   }) {
     return unknown();
   }
@@ -1405,6 +1464,7 @@ class _$_Unknown implements _Unknown {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
   }) {
     return unknown?.call();
   }
@@ -1421,6 +1481,7 @@ class _$_Unknown implements _Unknown {
     TResult Function()? signInRequired,
     TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1442,6 +1503,7 @@ class _$_Unknown implements _Unknown {
     required TResult Function(_SignInRequired value) signInRequired,
     required TResult Function(_Connection value) connection,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
   }) {
     return unknown(this);
   }
@@ -1458,6 +1520,7 @@ class _$_Unknown implements _Unknown {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
   }) {
     return unknown?.call(this);
   }
@@ -1474,6 +1537,7 @@ class _$_Unknown implements _Unknown {
     TResult Function(_SignInRequired value)? signInRequired,
     TResult Function(_Connection value)? connection,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1485,4 +1549,158 @@ class _$_Unknown implements _Unknown {
 
 abstract class _Unknown implements AuthFailure {
   const factory _Unknown() = _$_Unknown;
+}
+
+/// @nodoc
+abstract class _$FailedToPickImageCopyWith<$Res> {
+  factory _$FailedToPickImageCopyWith(
+          _FailedToPickImage value, $Res Function(_FailedToPickImage) then) =
+      __$FailedToPickImageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FailedToPickImageCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$FailedToPickImageCopyWith<$Res> {
+  __$FailedToPickImageCopyWithImpl(
+      _FailedToPickImage _value, $Res Function(_FailedToPickImage) _then)
+      : super(_value, (v) => _then(v as _FailedToPickImage));
+
+  @override
+  _FailedToPickImage get _value => super._value as _FailedToPickImage;
+}
+
+/// @nodoc
+
+class _$_FailedToPickImage implements _FailedToPickImage {
+  const _$_FailedToPickImage();
+
+  @override
+  String toString() {
+    return 'AuthFailure.failedToPickImage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _FailedToPickImage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() invalidCredentials,
+    required TResult Function() userDisabled,
+    required TResult Function() invalidEmail,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userCancelled,
+    required TResult Function() signInRequired,
+    required TResult Function() connection,
+    required TResult Function() unknown,
+    required TResult Function() failedToPickImage,
+  }) {
+    return failedToPickImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userCancelled,
+    TResult Function()? signInRequired,
+    TResult Function()? connection,
+    TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
+  }) {
+    return failedToPickImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userCancelled,
+    TResult Function()? signInRequired,
+    TResult Function()? connection,
+    TResult Function()? unknown,
+    TResult Function()? failedToPickImage,
+    required TResult orElse(),
+  }) {
+    if (failedToPickImage != null) {
+      return failedToPickImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentials,
+    required TResult Function(_UserDisabledFailure value) userDisabled,
+    required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserCancelled value) userCancelled,
+    required TResult Function(_SignInRequired value) signInRequired,
+    required TResult Function(_Connection value) connection,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_FailedToPickImage value) failedToPickImage,
+  }) {
+    return failedToPickImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserCancelled value)? userCancelled,
+    TResult Function(_SignInRequired value)? signInRequired,
+    TResult Function(_Connection value)? connection,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
+  }) {
+    return failedToPickImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserCancelled value)? userCancelled,
+    TResult Function(_SignInRequired value)? signInRequired,
+    TResult Function(_Connection value)? connection,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_FailedToPickImage value)? failedToPickImage,
+    required TResult orElse(),
+  }) {
+    if (failedToPickImage != null) {
+      return failedToPickImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FailedToPickImage implements AuthFailure {
+  const factory _FailedToPickImage() = _$_FailedToPickImage;
 }
