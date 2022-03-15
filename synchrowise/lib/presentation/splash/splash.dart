@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
@@ -10,33 +8,23 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
         final nextPage = state.when(
           initial: () => const WelcomePage(),
           unauthorized: () => const WelcomePage(),
-          // Todo : home page @gulceselim
           authorized: (user) => HomePage(username: user.username),
         );
 
-        Timer(const Duration(seconds: 3), (() {
-          log("hey");
-          Navigator.push(
+        log(nextPage.toString());
+
+        Future.delayed(const Duration(seconds: 1), () {
+          Navigator.pushReplacement(
             context,
             PageTransition(
               duration: const Duration(seconds: 1),
@@ -44,10 +32,12 @@ class _SplashPageState extends State<SplashPage> {
               child: nextPage,
               type: PageTransitionType.fade,
               alignment: Alignment.bottomCenter,
+              fullscreenDialog: true,
             ),
           );
-        }));
-
+        });
+      },
+      builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: kcWhiteColor,
@@ -81,10 +71,5 @@ class _SplashPageState extends State<SplashPage> {
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

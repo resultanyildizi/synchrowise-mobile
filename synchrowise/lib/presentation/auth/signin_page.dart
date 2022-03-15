@@ -1,23 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({Key? key}) : super(key: key);
+class SigninPage extends StatelessWidget {
+  const SigninPage({Key? key}) : super(key: key);
+
+  String? _getEmailError(SigninFormState state) {
+    return state.showErrors
+        ? state.failureOrEmailOption.fold(
+            () {
+              return null;
+            },
+            (foe) {
+              return foe.fold(
+                (l) {
+                  return l.maybeMap(
+                    invalidEmail: (_) {
+                      return "Invalid email";
+                    },
+                    orElse: () {
+                      return null;
+                    },
+                  );
+                },
+                (_) => null,
+              );
+            },
+          )
+        : null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SignupFormBloc>(
+    return BlocProvider<SigninFormBloc>(
       create: (context) {
-        return getIt<SignupFormBloc>();
+        return getIt<SigninFormBloc>();
       },
-      child: BlocConsumer<SignupFormBloc, SignupFormState>(
+      child: BlocConsumer<SigninFormBloc, SigninFormState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -44,60 +69,63 @@ class SignupPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     Text(
-                      "Hi!",
+                      "Welcome!",
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     Text(
-                      "Create a new account",
+                      "Sign in to continue",
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     const Spacer(),
                     DefaultTextField(
                       icon: Icons.email,
                       hintText: "Email",
-                      onChanged: (text) {
-                        final signupFormBloc = context.read<SignupFormBloc>();
-                        signupFormBloc.updateEmailText(email: text);
+                      onChanged: (email) {
+                        final signinBloc = context.read<SigninFormBloc>();
+                        signinBloc.updateEmailText(email: email);
                       },
-                      errorText: "",
+                      errorText: _getEmailError(state),
                     ),
                     const SizedBox(height: 25),
                     DefaultTextField(
                       icon: Icons.lock,
                       hintText: "Password",
-                      onChanged: (text) {
-                        final signupFormBloc = context.read<SignupFormBloc>();
-                        signupFormBloc.updatePasswordText(password: text);
+                      onChanged: (password) {
+                        final signinBloc = context.read<SigninFormBloc>();
+                        signinBloc.updatePasswordText(password: password);
                       },
-                    ),
-                    const SizedBox(height: 25),
-                    DefaultTextField(
-                      icon: Icons.lock,
-                      hintText: "Confirm Password",
-                      onChanged: (text) {
-                        final signupFormBloc = context.read<SignupFormBloc>();
-                        signupFormBloc.updateConfirmPasswordText(
-                            password: text);
-                      },
+                      errorText: state.showErrors
+                          ? state.failureOrPasswordOption.fold(
+                              () => null,
+                              (fop) => fop.fold(
+                                (l) => l.toString(),
+                                (_) => null,
+                              ),
+                            )
+                          : null,
                     ),
                     const SizedBox(height: 50),
                     DefaultButton(
                       backgroundColor: primaryColor,
                       borderColor: null,
                       textColor: kcWhiteColor,
-                      text: "Sign Up",
+                      text: "Sign in",
                       padding: 50,
                       onTap: () {
-                        final signupFormBloc = context.read<SignupFormBloc>();
-                        signupFormBloc.signupWithEmailAndPassword();
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const RegisterSteps1(),
-                        //     fullscreenDialog: true,
-                        //   ),
-                        // );
+                        final signinBloc = context.read<SigninFormBloc>();
+                        signinBloc.signupWithEmailAndPassword();
                       },
+                    ),
+                    const SizedBox(height: 16),
+                    Center(
+                      child: Text(
+                        "Forgot password?",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: primaryColor),
+                      ),
                     ),
                     const Spacer(),
                     Row(
@@ -125,8 +153,8 @@ class SignupPage extends StatelessWidget {
                         width: 50,
                         height: 50,
                         onTap: () async {
-                          final signupFormBloc = context.read<SignupFormBloc>();
-                          signupFormBloc.signupWithGoogle();
+                          final signinBloc = context.read<SigninFormBloc>();
+                          signinBloc.signupWithGoogle();
                         },
                         child: SvgPicture.asset("assets/svg/Google.svg"),
                         decoration: BoxDecoration(
@@ -146,10 +174,10 @@ class SignupPage extends StatelessWidget {
                         const SizedBox(width: 2),
                         CustomAnimatedButton(
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, '/login');
+                            Navigator.pushReplacementNamed(context, '/signup');
                           },
                           child: Text(
-                            "Sign in",
+                            "Sign up",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline5!

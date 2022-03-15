@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
+import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/login_page.dart';
+import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
@@ -14,12 +16,22 @@ class SynchrowiseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthBloc>(
-      create: (context) {
-        final authBloc = getIt<AuthBloc>();
-        authBloc.check();
-        return authBloc;
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) {
+            final authBloc = getIt<AuthBloc>();
+            authBloc.check();
+            return authBloc;
+          },
+        ),
+        BlocProvider<SignupFormBloc>(
+          create: (context) => getIt<SignupFormBloc>(),
+        ),
+        BlocProvider<RegisterStepsBloc>(
+          create: (context) => getIt<RegisterStepsBloc>(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Synchrowise',
@@ -77,7 +89,7 @@ class SynchrowiseApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/welcome': (context) => const WelcomePage(),
-          '/login': (context) => const LoginPage(),
+          '/login': (context) => const SigninPage(),
           '/signup': (context) => const SignupPage(),
           '/home': (context) => const HomePage(),
         },

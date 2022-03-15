@@ -40,6 +40,7 @@ class AuthFacade implements IAuthFacade {
 
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body) as Map<String, dynamic>;
+          log(data.toString());
           return right(SynchrowiseUser.fromMap(data));
         }
 
@@ -94,6 +95,7 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
+  @override
   Future<Either<AuthFailure, SynchrowiseUser>> createUserWithEmailAndPassword({
     required String email,
     required String password,
@@ -118,6 +120,7 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
+  @override
   Future<Either<AuthFailure, SynchrowiseUser>> signInWithEmailAndPassword({
     required String email,
     required String password,
@@ -189,20 +192,22 @@ class AuthFacade implements IAuthFacade {
     if (user != null) {
       final firebaseToken = await user.getIdToken();
 
-      final uri = Uri.parse("$baseApiUrl/sign_in");
+      final uri = Uri.parse("$baseApiUrl/api/User");
 
       final requestBody = {
         'firebase_uid': user.uid,
         'firebase_id_token': firebaseToken,
-        'email_address': user.email,
+        'email': user.email,
         'email_verified': user.emailVerified,
-        'is_new_user': additionalUserInfo?.isNewUser,
+        'is_New_user': additionalUserInfo?.isNewUser,
         'signin_method': credential?.signInMethod ?? 'null',
-        'firebase_creation_time':
+        'firebase_Creation_Time':
             user.metadata.creationTime?.millisecondsSinceEpoch,
-        'firebase_last_signin_time':
+        'firebase_Last_Signin_Time':
             user.metadata.lastSignInTime?.millisecondsSinceEpoch,
       };
+
+      log(requestBody.toString());
 
       final result = await _client.post(
         uri,
@@ -210,15 +215,16 @@ class AuthFacade implements IAuthFacade {
         headers: {HeaderKeys.contentType: HeaderValues.contentType},
       );
 
-      log(requestBody.toString());
       log(result.statusCode.toString());
+      log(result.body);
 
-      final map = {
-        'synchrowise_id': 'qw123411',
-        'username': user.email,
-        'avatar_url': user.emailVerified,
-      };
-      return right(SynchrowiseUser.fromMap(map));
+      if (result.statusCode == 200) {
+        final data = jsonDecode(result.body) as Map<String, dynamic>;
+        log(data.toString());
+        return right(SynchrowiseUser.fromMap(data));
+      } else {
+        // TODO backend failures
+      }
     }
 
     return left(const AuthFailure.unknown());
