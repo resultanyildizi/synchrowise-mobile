@@ -36,7 +36,7 @@ class SynchrowiseApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Synchrowise',
         theme: ThemeData(
-          brightness: Brightness.dark,
+          brightness: Brightness.light,
           primaryColor: primaryColor,
           fontFamily: "Poppins",
           textTheme: const TextTheme(

@@ -15,6 +15,9 @@ const Color grayLightColor = Color.fromARGB(127, 224, 224, 224);
 const defaultPadding = 20.0;
 
 const String appName = "synchrowise";
+final String redCardImagePath = "assets/svg/Red.svg";
+final String blueCardImagePath = "assets/svg/Blue.svg";
+final String whiteCardImagePath = "assets/svg/White.svg";
 
 final Image appLogo = Image.asset(
   "assets/images/logo.png",

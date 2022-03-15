@@ -1,0 +1,17 @@
+<svg width="335" height="155" viewBox="0 0 335 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 20.6667C0 9.25278 9.25278 0 20.6667 0H314.333C325.747 0 335 9.25278 335 20.6667V134.333C335 145.747 325.747 155 314.333 155H20.6667C9.25279 155 0 145.747 0 134.333V20.6667Z" fill="#2B41A2"/>
+<mask id="mask0_140_4798" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="335" height="155">
+<path d="M0 20.6667C0 9.25278 9.25278 0 20.6667 0H314.333C325.747 0 335 9.25278 335 20.6667V134.333C335 145.747 325.747 155 314.333 155H20.6667C9.25279 155 0 145.747 0 134.333V20.6667Z" fill="#EFB637"/>
+</mask>
+<g mask="url(#mask0_140_4798)">
+<rect x="-14" y="-12" width="75" height="70" fill="#3248A6"/>
+<rect y="109" width="70" height="45" fill="#3248A6"/>
+<rect x="98" y="-18" width="69" height="52" fill="#3248A6"/>
+<rect x="133" y="108" width="66" height="72" fill="#3248A6"/>
+<rect x="273" y="-6" width="66" height="37" fill="#3248A6"/>
+<rect width="16" height="30" transform="matrix(-1 0 0 1 113 69)" fill="#3248A6"/>
+<rect x="300" y="56" width="28" height="34" fill="#3248A6"/>
+<rect x="242" y="112" width="89" height="44" fill="#3248A6"/>
+<rect x="206" y="43" width="38" height="36" fill="#3248A6"/>
+</g>
+</svg>
