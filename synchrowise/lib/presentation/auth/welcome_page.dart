@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/forgot_password_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
@@ -41,13 +40,7 @@ class WelcomePage extends StatelessWidget {
               text: "Login",
               padding: 35,
               onTap: () {
-                // Navigator.pushNamed(context, '/login');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ForgotPasswordPage(),
-                  ),
-                );
+                Navigator.pushNamed(context, '/login');
               },
             ),
             const SizedBox(height: 15),
