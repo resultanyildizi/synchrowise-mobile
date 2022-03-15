@@ -11,6 +11,31 @@ import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 class SigninPage extends StatelessWidget {
   const SigninPage({Key? key}) : super(key: key);
 
+  String? _getEmailError(SigninFormState state) {
+    return state.showErrors
+        ? state.failureOrEmailOption.fold(
+            () {
+              return null;
+            },
+            (foe) {
+              return foe.fold(
+                (l) {
+                  return l.maybeMap(
+                    invalidEmail: (_) {
+                      return "Invalid email";
+                    },
+                    orElse: () {
+                      return null;
+                    },
+                  );
+                },
+                (_) => null,
+              );
+            },
+          )
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SigninFormBloc>(
@@ -59,24 +84,7 @@ class SigninPage extends StatelessWidget {
                         final signinBloc = context.read<SigninFormBloc>();
                         signinBloc.updateEmailText(email: email);
                       },
-                      errorText: state.showErrors
-                          ? state.failureOrEmailOption.fold(
-                              () => null,
-                              (foe) => foe.fold(
-                                (l) {
-                                  return l.maybeMap(
-                                    invalidEmail: (_) {
-                                      return "Invalid email";
-                                    },
-                                    orElse: () {
-                                      return null;
-                                    },
-                                  );
-                                },
-                                (_) => null,
-                              ),
-                            )
-                          : null,
+                      errorText: _getEmailError(state),
                     ),
                     const SizedBox(height: 25),
                     DefaultTextField(

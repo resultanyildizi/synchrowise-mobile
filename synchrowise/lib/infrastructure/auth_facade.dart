@@ -197,13 +197,13 @@ class AuthFacade implements IAuthFacade {
       final requestBody = {
         'firebase_uid': user.uid,
         'firebase_id_token': firebaseToken,
-        'email_address': user.email,
+        'email': user.email,
         'email_verified': user.emailVerified,
-        'is_new_user': additionalUserInfo?.isNewUser,
+        'is_New_user': additionalUserInfo?.isNewUser,
         'signin_method': credential?.signInMethod ?? 'null',
-        'firebase_creation_time':
+        'firebase_Creation_Time':
             user.metadata.creationTime?.millisecondsSinceEpoch,
-        'firebase_last_signin_time':
+        'firebase_Last_Signin_Time':
             user.metadata.lastSignInTime?.millisecondsSinceEpoch,
       };
 
