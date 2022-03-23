@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,7 +25,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
   void updatePasswordText({required String password}) =>
       add(SignupFormEvent.updatePasswordText(password: password));
   void updateConfirmPasswordText({required String password}) =>
-      add(SignupFormEvent.updatePasswordText(password: password));
+      add(SignupFormEvent.updateConfirmPasswordText(password: password));
 
   SignupFormBloc(
     this._iAuthFacade,
@@ -32,6 +34,12 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
       (event, emit) async {
         await event.map(
           signupWithEmailAndPassword: (_) async {
+            emit(state.copyWith(
+              failureOrUserOption: none(),
+              showErrors: true,
+              isSigningEmail: true,
+            ));
+
             final password = state.failureOrPasswordOption.fold(
               () => null,
               (fop) => fop.fold((_) => null, (p) => p),
@@ -43,14 +51,32 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
             );
 
             if (email != null && password != null) {
-              await _iAuthFacade.createUserWithEmailAndPassword(
+              final failureOrUser =
+                  await _iAuthFacade.createUserWithEmailAndPassword(
                 email: email,
                 password: password,
               );
+
+              emit(state.copyWith(
+                failureOrUserOption: some(failureOrUser),
+                isSigningEmail: false,
+              ));
+            } else {
+              emit(state.copyWith(isSigningEmail: false));
             }
           },
           signupWithGoogle: (_) async {
-            await _iAuthFacade.signInWithGoogleAuth();
+            emit(state.copyWith(
+              failureOrUserOption: none(),
+              isSigningGoogle: true,
+            ));
+
+            final failureOrUser = await _iAuthFacade.signInWithGoogleAuth();
+
+            emit(state.copyWith(
+              failureOrUserOption: some(failureOrUser),
+              isSigningGoogle: false,
+            ));
           },
           updateEmailText: (event) async {
             final validatedEmail = validateEmail(email: event.email);
@@ -73,9 +99,30 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
           },
           updateConfirmPasswordText: (event) async {
             final newState = state.failureOrPasswordOption.fold(
-              () => state,
+              () {
+                log("xxxx");
+                return state;
+              },
               (failureOrPassw) => failureOrPassw.fold(
-                (f) => state,
+                (f) {
+                  final newState = f.maybeMap(
+                    passwordsNotSame: (vf) {
+                      final newConfPass = validateConfirmPassword(
+                        password: vf.password,
+                        confirmPassword: event.password,
+                      );
+
+                      return state.copyWith(
+                        failureOrPasswordOption: some(newConfPass),
+                      );
+                    },
+                    orElse: () {
+                      return state;
+                    },
+                  );
+
+                  return newState;
+                },
                 (p) {
                   final newConfPass = validateConfirmPassword(
                     password: p,
@@ -88,6 +135,8 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                 },
               ),
             );
+
+            log(newState.toString());
 
             emit(newState);
           },

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,10 +30,14 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
   SigninFormBloc(
     this._iAuthFacade,
   ) : super(SigninFormState.initial()) {
-    on<SigninFormEvent>((event, emit) {
-      event.map(
+    on<SigninFormEvent>((event, emit) async {
+      await event.map(
         signinWithEmailAndPassword: (_) async {
-          emit(state.copyWith(failureOrUserOption: none(), showErrors: true));
+          emit(state.copyWith(
+            failureOrUserOption: none(),
+            showErrors: true,
+            isSigningEmail: true,
+          ));
 
           final email = state.failureOrEmailOption.fold(
             () => null,
@@ -51,11 +57,26 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
               password: password,
             );
 
-            emit(state.copyWith(failureOrUserOption: some(failureOrUser)));
+            emit(state.copyWith(
+              failureOrUserOption: some(failureOrUser),
+              isSigningEmail: false,
+            ));
+          } else {
+            emit(state.copyWith(isSigningEmail: false));
           }
         },
         signinWithGoogle: (_) async {
-          await _iAuthFacade.signInWithGoogleAuth();
+          emit(state.copyWith(
+            failureOrUserOption: none(),
+            isSigningGoogle: true,
+          ));
+
+          final failureOrUser = await _iAuthFacade.signInWithGoogleAuth();
+
+          emit(state.copyWith(
+            failureOrUserOption: some(failureOrUser),
+            isSigningGoogle: false,
+          ));
         },
         updateEmailText: (event) async {
           final validatedEmail = validateEmail(email: event.email);

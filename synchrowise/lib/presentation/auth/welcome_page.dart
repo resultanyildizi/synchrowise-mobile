@@ -9,7 +9,6 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kcWhiteColor,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +39,7 @@ class WelcomePage extends StatelessWidget {
               text: "Login",
               padding: 35,
               onTap: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushNamed(context, '/signin');
               },
             ),
             const SizedBox(height: 15),

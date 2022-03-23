@@ -29,7 +29,6 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
       builder: (context, state) {
         final registerStepsBloc = context.read<RegisterStepsBloc>();
         return Scaffold(
-          backgroundColor: kcWhiteColor,
           body: Stack(
             children: [
               SafeArea(

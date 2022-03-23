@@ -89,7 +89,7 @@ class SynchrowiseApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/welcome': (context) => const WelcomePage(),
-          '/login': (context) => const SigninPage(),
+          '/signin': (context) => const SigninPage(),
           '/signup': (context) => const SignupPage(),
           '/home': (context) => const HomePage(),
         },

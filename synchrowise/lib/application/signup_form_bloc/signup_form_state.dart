@@ -7,6 +7,8 @@ class SignupFormState with _$SignupFormState {
     required Option<Either<ValueFailure, String>> failureOrEmailOption,
     required Option<Either<ValueFailure, String>> failureOrPasswordOption,
     required bool showErrors,
+    required bool isSigningGoogle,
+    required bool isSigningEmail,
   }) = _SignupFormState;
 
   factory SignupFormState.initial() {
@@ -14,6 +16,8 @@ class SignupFormState with _$SignupFormState {
       failureOrUserOption: none(),
       failureOrEmailOption: none(),
       failureOrPasswordOption: none(),
+      isSigningGoogle: false,
+      isSigningEmail: false,
       showErrors: false,
     );
   }

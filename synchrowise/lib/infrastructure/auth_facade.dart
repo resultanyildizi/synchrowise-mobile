@@ -117,6 +117,8 @@ class AuthFacade implements IAuthFacade {
       } else {
         return left(const AuthFailure.unknown());
       }
+    } catch (_) {
+      return left(const AuthFailure.unknown());
     }
   }
 
@@ -215,15 +217,28 @@ class AuthFacade implements IAuthFacade {
         headers: {HeaderKeys.contentType: HeaderValues.contentType},
       );
 
-      log(result.statusCode.toString());
-      log(result.body);
-
       if (result.statusCode == 200) {
-        final data = jsonDecode(result.body) as Map<String, dynamic>;
-        log(data.toString());
-        return right(SynchrowiseUser.fromMap(data));
+        final body = jsonDecode(result.body) as Map<String, dynamic>;
+        body['firebaseId'] = user.uid;
+        body['firebaseIdToken'] = firebaseToken;
+        body['signInMethod'] = credential?.signInMethod;
+        body['email'] = user.email;
+
+        log(body.toString());
+        return right(SynchrowiseUser.fromMap(body['data']));
+      } else if (result.statusCode == 500) {
+        return left(const AuthFailure.unknown());
       } else {
-        // TODO backend failures
+        final body = jsonDecode(result.body) as Map<String, dynamic>;
+        final error = body["error"] as Map<String, dynamic>;
+        final errorList = (error['errors'] as List<dynamic>).cast();
+
+        log(errorList.toString());
+
+        if (errorList.contains('This is user is exist')) {
+          log(true.toString());
+          return left(const AuthFailure.emailAlreadyInUse());
+        }
       }
     }
 

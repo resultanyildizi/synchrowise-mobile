@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -15,7 +18,7 @@ class SigninPage extends StatelessWidget {
     return state.showErrors
         ? state.failureOrEmailOption.fold(
             () {
-              return null;
+              return "Email is required";
             },
             (foe) {
               return foe.fold(
@@ -36,6 +39,31 @@ class SigninPage extends StatelessWidget {
         : null;
   }
 
+  String? _getPasswordError(SigninFormState state) {
+    return state.showErrors
+        ? state.failureOrPasswordOption.fold(
+            () {
+              return "Password is required";
+            },
+            (fop) {
+              return fop.fold(
+                (l) {
+                  return l.maybeMap(
+                    emptyPassword: (_) {
+                      return "Password is required";
+                    },
+                    orElse: () {
+                      return null;
+                    },
+                  );
+                },
+                (_) => null,
+              );
+            },
+          )
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SigninFormBloc>(
@@ -43,11 +71,22 @@ class SigninPage extends StatelessWidget {
         return getIt<SigninFormBloc>();
       },
       child: BlocConsumer<SigninFormBloc, SigninFormState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          log(state.toString());
+          state.failureOrUserOption.fold(
+            () => null,
+            (failureOrUser) {
+              log(failureOrUser.toString());
+              failureOrUser.fold(
+                (failure) => handleAuthFailures(failure),
+                (user) => null,
+              );
+            },
+          );
+        },
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: kcWhiteColor,
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -90,19 +129,12 @@ class SigninPage extends StatelessWidget {
                     DefaultTextField(
                       icon: Icons.lock,
                       hintText: "Password",
+                      obscrueText: true,
                       onChanged: (password) {
                         final signinBloc = context.read<SigninFormBloc>();
                         signinBloc.updatePasswordText(password: password);
                       },
-                      errorText: state.showErrors
-                          ? state.failureOrPasswordOption.fold(
-                              () => null,
-                              (fop) => fop.fold(
-                                (l) => l.toString(),
-                                (_) => null,
-                              ),
-                            )
-                          : null,
+                      errorText: _getPasswordError(state),
                     ),
                     const SizedBox(height: 50),
                     DefaultButton(
@@ -111,9 +143,12 @@ class SigninPage extends StatelessWidget {
                       textColor: kcWhiteColor,
                       text: "Sign in",
                       padding: 50,
+                      showProgress: state.isSigningEmail,
                       onTap: () {
-                        final signinBloc = context.read<SigninFormBloc>();
-                        signinBloc.signupWithEmailAndPassword();
+                        if (!state.isSigningEmail) {
+                          final signinBloc = context.read<SigninFormBloc>();
+                          signinBloc.signupWithEmailAndPassword();
+                        }
                       },
                     ),
                     const SizedBox(height: 16),
@@ -153,10 +188,20 @@ class SigninPage extends StatelessWidget {
                         width: 50,
                         height: 50,
                         onTap: () async {
-                          final signinBloc = context.read<SigninFormBloc>();
-                          signinBloc.signupWithGoogle();
+                          if (!state.isSigningGoogle) {
+                            final signinBloc = context.read<SigninFormBloc>();
+                            signinBloc.signupWithGoogle();
+                          }
                         },
-                        child: SvgPicture.asset("assets/svg/Google.svg"),
+                        child: state.isSigningGoogle
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  color: primaryColor,
+                                ),
+                              )
+                            : SvgPicture.asset("assets/svg/Google.svg"),
                         decoration: BoxDecoration(
                           border: Border.all(color: grayColor.withOpacity(0.4)),
                           borderRadius: BorderRadius.circular(50),

@@ -17,7 +17,6 @@ class RegisterSteps1 extends StatelessWidget {
         final registerStepsBloc = context.read<RegisterStepsBloc>();
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: kcWhiteColor,
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(

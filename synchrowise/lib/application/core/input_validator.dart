@@ -31,15 +31,22 @@ Either<ValueFailure, String> validateConfirmPassword({
   if (password == confirmPassword) {
     return right(password);
   } else {
-    return left(const ValueFailure.passwordsNotSame());
+    return left(ValueFailure.passwordsNotSame(password));
   }
 }
 
 Either<ValueFailure, String> validateSigninPassword({
   required String password,
 }) {
-  if (password.isEmpty) {
+  if (password.trim().isEmpty) {
     return left(const ValueFailure.emptyPassword());
   }
+
+  if (password.length < 8 ||
+      password.toLowerCase() == password ||
+      password.toUpperCase() == password) {
+    return left(const ValueFailure.weakPassword());
+  }
+
   return right(password);
 }

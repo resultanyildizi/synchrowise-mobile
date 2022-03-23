@@ -40,26 +40,26 @@ class SynchrowiseUser extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'username': username,
-      'firebase_id': firebaseId,
-      'synchrowise_id': synchrowiseId,
-      'avatar_url': avatarUrl,
-      'login_provider': loginProvider,
-      'firebase_id_token': firebaseIdToken,
-      'email_address': emailAddress,
-      'premium_type': premium.value,
+      'firebaseId': firebaseId,
+      'guid': synchrowiseId,
+      'avatar': avatarUrl,
+      'signInMethod': loginProvider,
+      'firebaseIdToken': firebaseIdToken,
+      'email': emailAddress,
+      'premiumType': premium.value,
     };
   }
 
   factory SynchrowiseUser.fromMap(Map<String, dynamic> map) {
     return SynchrowiseUser(
-      username: map['username']!,
-      firebaseId: map['firebase_id']!,
-      synchrowiseId: map['synchrowise_id']!,
-      avatarUrl: map['avatar_url']!,
-      loginProvider: map['login_provider']!,
-      firebaseIdToken: map['firebase_id_token']!,
-      emailAddress: map['email_address'],
-      premium: Premium.fromValue(map['premium_type']),
+      username: map['username'],
+      firebaseId: map['firebaseId']!,
+      synchrowiseId: map['guid']!,
+      avatarUrl: map['avatar']!,
+      loginProvider: map['signInMethod']!,
+      firebaseIdToken: map['firebaseIdToken']!,
+      emailAddress: map['email'],
+      premium: Premium.fromValue(map['premiumType']),
     );
   }
 

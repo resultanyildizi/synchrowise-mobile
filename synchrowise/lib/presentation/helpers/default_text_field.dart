@@ -62,6 +62,7 @@ class DefaultTextField extends StatelessWidget {
                       hintText: hintText,
                     ),
                     onChanged: (text) => onChanged(text),
+                    obscureText: obscrueText,
                   ),
                 ),
               ],

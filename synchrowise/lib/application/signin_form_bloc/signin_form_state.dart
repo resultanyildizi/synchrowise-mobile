@@ -7,6 +7,8 @@ class SigninFormState with _$SigninFormState {
     required Option<Either<ValueFailure, String>> failureOrEmailOption,
     required Option<Either<ValueFailure, String>> failureOrPasswordOption,
     required bool showErrors,
+    required bool isSigningGoogle,
+    required bool isSigningEmail,
   }) = _SigninFormState;
 
   factory SigninFormState.initial() {
@@ -15,6 +17,8 @@ class SigninFormState with _$SigninFormState {
       failureOrEmailOption: none(),
       failureOrPasswordOption: none(),
       showErrors: false,
+      isSigningGoogle: false,
+      isSigningEmail: false,
     );
   }
 }

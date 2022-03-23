@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:synchrowise/constants.dart';
 
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
@@ -11,6 +13,7 @@ class DefaultButton extends StatelessWidget {
     required this.text,
     required this.padding,
     required this.onTap,
+    this.showProgress = false,
   }) : super(key: key);
 
   final Color backgroundColor;
@@ -18,6 +21,7 @@ class DefaultButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final double padding;
+  final bool showProgress;
   final Function() onTap;
 
   @override
@@ -35,12 +39,21 @@ class DefaultButton extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style:
-              Theme.of(context).textTheme.headline4!.copyWith(color: textColor),
-        ),
+        child: showProgress
+            ? const SpinKitWave(
+                color: kcWhiteColor,
+                itemCount: 3,
+                size: 14,
+                duration: Duration(milliseconds: 1500),
+              )
+            : Text(
+                text,
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4!
+                    .copyWith(color: textColor),
+              ),
       ),
     );
   }

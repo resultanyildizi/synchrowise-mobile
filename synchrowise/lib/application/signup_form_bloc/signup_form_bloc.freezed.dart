@@ -936,12 +936,16 @@ class _$SignupFormStateTearOff {
           failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
-      required bool showErrors}) {
+      required bool showErrors,
+      required bool isSigningGoogle,
+      required bool isSigningEmail}) {
     return _SignupFormState(
       failureOrUserOption: failureOrUserOption,
       failureOrEmailOption: failureOrEmailOption,
       failureOrPasswordOption: failureOrPasswordOption,
       showErrors: showErrors,
+      isSigningGoogle: isSigningGoogle,
+      isSigningEmail: isSigningEmail,
     );
   }
 }
@@ -958,6 +962,8 @@ mixin _$SignupFormState {
   Option<Either<ValueFailure, String>> get failureOrPasswordOption =>
       throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
+  bool get isSigningGoogle => throw _privateConstructorUsedError;
+  bool get isSigningEmail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignupFormStateCopyWith<SignupFormState> get copyWith =>
@@ -973,7 +979,9 @@ abstract class $SignupFormStateCopyWith<$Res> {
       {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
-      bool showErrors});
+      bool showErrors,
+      bool isSigningGoogle,
+      bool isSigningEmail});
 }
 
 /// @nodoc
@@ -991,6 +999,8 @@ class _$SignupFormStateCopyWithImpl<$Res>
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
     Object? showErrors = freezed,
+    Object? isSigningGoogle = freezed,
+    Object? isSigningEmail = freezed,
   }) {
     return _then(_value.copyWith(
       failureOrUserOption: failureOrUserOption == freezed
@@ -1009,6 +1019,14 @@ class _$SignupFormStateCopyWithImpl<$Res>
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSigningGoogle: isSigningGoogle == freezed
+          ? _value.isSigningGoogle
+          : isSigningGoogle // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSigningEmail: isSigningEmail == freezed
+          ? _value.isSigningEmail
+          : isSigningEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1024,7 +1042,9 @@ abstract class _$SignupFormStateCopyWith<$Res>
       {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
-      bool showErrors});
+      bool showErrors,
+      bool isSigningGoogle,
+      bool isSigningEmail});
 }
 
 /// @nodoc
@@ -1044,6 +1064,8 @@ class __$SignupFormStateCopyWithImpl<$Res>
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
     Object? showErrors = freezed,
+    Object? isSigningGoogle = freezed,
+    Object? isSigningEmail = freezed,
   }) {
     return _then(_SignupFormState(
       failureOrUserOption: failureOrUserOption == freezed
@@ -1062,6 +1084,14 @@ class __$SignupFormStateCopyWithImpl<$Res>
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSigningGoogle: isSigningGoogle == freezed
+          ? _value.isSigningGoogle
+          : isSigningGoogle // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSigningEmail: isSigningEmail == freezed
+          ? _value.isSigningEmail
+          : isSigningEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1073,7 +1103,9 @@ class _$_SignupFormState implements _SignupFormState {
       {required this.failureOrUserOption,
       required this.failureOrEmailOption,
       required this.failureOrPasswordOption,
-      required this.showErrors});
+      required this.showErrors,
+      required this.isSigningGoogle,
+      required this.isSigningEmail});
 
   @override
   final Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption;
@@ -1083,10 +1115,14 @@ class _$_SignupFormState implements _SignupFormState {
   final Option<Either<ValueFailure, String>> failureOrPasswordOption;
   @override
   final bool showErrors;
+  @override
+  final bool isSigningGoogle;
+  @override
+  final bool isSigningEmail;
 
   @override
   String toString() {
-    return 'SignupFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption, showErrors: $showErrors)';
+    return 'SignupFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption, showErrors: $showErrors, isSigningGoogle: $isSigningGoogle, isSigningEmail: $isSigningEmail)';
   }
 
   @override
@@ -1101,7 +1137,11 @@ class _$_SignupFormState implements _SignupFormState {
             const DeepCollectionEquality().equals(
                 other.failureOrPasswordOption, failureOrPasswordOption) &&
             const DeepCollectionEquality()
-                .equals(other.showErrors, showErrors));
+                .equals(other.showErrors, showErrors) &&
+            const DeepCollectionEquality()
+                .equals(other.isSigningGoogle, isSigningGoogle) &&
+            const DeepCollectionEquality()
+                .equals(other.isSigningEmail, isSigningEmail));
   }
 
   @override
@@ -1110,7 +1150,9 @@ class _$_SignupFormState implements _SignupFormState {
       const DeepCollectionEquality().hash(failureOrUserOption),
       const DeepCollectionEquality().hash(failureOrEmailOption),
       const DeepCollectionEquality().hash(failureOrPasswordOption),
-      const DeepCollectionEquality().hash(showErrors));
+      const DeepCollectionEquality().hash(showErrors),
+      const DeepCollectionEquality().hash(isSigningGoogle),
+      const DeepCollectionEquality().hash(isSigningEmail));
 
   @JsonKey(ignore: true)
   @override
@@ -1124,7 +1166,9 @@ abstract class _SignupFormState implements SignupFormState {
           failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
-      required bool showErrors}) = _$_SignupFormState;
+      required bool showErrors,
+      required bool isSigningGoogle,
+      required bool isSigningEmail}) = _$_SignupFormState;
 
   @override
   Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption;
@@ -1134,6 +1178,10 @@ abstract class _SignupFormState implements SignupFormState {
   Option<Either<ValueFailure, String>> get failureOrPasswordOption;
   @override
   bool get showErrors;
+  @override
+  bool get isSigningGoogle;
+  @override
+  bool get isSigningEmail;
   @override
   @JsonKey(ignore: true)
   _$SignupFormStateCopyWith<_SignupFormState> get copyWith =>
