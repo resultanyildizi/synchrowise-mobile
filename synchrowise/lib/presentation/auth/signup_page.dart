@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,14 +17,14 @@ class SignupPage extends StatelessWidget {
     return state.showErrors
         ? state.failureOrEmailOption.fold(
             () {
-              return "Email is required";
+              return "email_is_required".tr();
             },
             (foe) {
               return foe.fold(
                 (l) {
                   return l.maybeMap(
                     invalidEmail: (_) {
-                      return "Invalid email";
+                      return "email_is_invalid".tr();
                     },
                     orElse: () {
                       return null;
@@ -43,17 +42,17 @@ class SignupPage extends StatelessWidget {
     return state.showErrors
         ? state.failureOrPasswordOption.fold(
             () {
-              return "Password is required";
+              return "password_is_required".tr();
             },
             (fop) {
               return fop.fold(
                 (l) {
                   return l.maybeMap(
                     emptyPassword: (_) {
-                      return "Password is required";
+                      return "password_is_required".tr();
                     },
                     weakPassword: (_) {
-                      return "Password is weak";
+                      return "password_is_weak".tr();
                     },
                     orElse: () {
                       return null;
@@ -69,7 +68,7 @@ class SignupPage extends StatelessWidget {
 
   String? _getConfirmPasswordError(SignupFormState state) {
     return state.showErrors
-        ? state.failureOrPasswordOption.fold(
+        ? state.failureOrConfirmOption.fold(
             () {
               return null;
             },
@@ -78,7 +77,7 @@ class SignupPage extends StatelessWidget {
                 (l) {
                   return l.maybeMap(
                     passwordsNotSame: (_) {
-                      return "Passwords are not same";
+                      return "passwords_do_not_match".tr();
                     },
                     orElse: () {
                       return null;
@@ -134,17 +133,17 @@ class SignupPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     Text(
-                      "Hi!",
+                      "hi_exclamation".tr(),
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     Text(
-                      "Create a new account",
+                      "create_a_new_account".tr(),
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     const Spacer(),
                     DefaultTextField(
                       icon: Icons.email,
-                      hintText: "Email",
+                      hintText: "email".tr(),
                       errorText: _getEmailError(state),
                       onChanged: (text) {
                         final signupFormBloc = context.read<SignupFormBloc>();
@@ -154,7 +153,7 @@ class SignupPage extends StatelessWidget {
                     const SizedBox(height: 25),
                     DefaultTextField(
                       icon: Icons.lock,
-                      hintText: "Password",
+                      hintText: "password".tr(),
                       obscrueText: true,
                       errorText: _getPasswordError(state),
                       onChanged: (text) {
@@ -165,7 +164,7 @@ class SignupPage extends StatelessWidget {
                     const SizedBox(height: 25),
                     DefaultTextField(
                       icon: Icons.lock,
-                      hintText: "Confirm Password",
+                      hintText: "confirm_password".tr(),
                       obscrueText: true,
                       errorText: _getConfirmPasswordError(state),
                       onChanged: (text) {
@@ -180,7 +179,7 @@ class SignupPage extends StatelessWidget {
                       backgroundColor: primaryColor,
                       borderColor: null,
                       textColor: kcWhiteColor,
-                      text: "Sign Up",
+                      text: "sign_up".tr(),
                       padding: 50,
                       showProgress: state.isSigningEmail,
                       onTap: () {
@@ -198,7 +197,7 @@ class SignupPage extends StatelessWidget {
                           color: grayDarkColor,
                         ),
                         Text(
-                          "or countinue with",
+                          "or_continue_with".tr(),
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         Container(
@@ -229,16 +228,16 @@ class SignupPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't Have an Account?",
+                          "already_have_an_account".tr(),
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         const SizedBox(width: 2),
                         CustomAnimatedButton(
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, '/login');
+                            Navigator.pushReplacementNamed(context, '/signin');
                           },
                           child: Text(
-                            "Sign in",
+                            "sign_in".tr(),
                             style: Theme.of(context)
                                 .textTheme
                                 .headline5!

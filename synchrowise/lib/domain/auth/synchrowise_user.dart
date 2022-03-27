@@ -52,13 +52,13 @@ class SynchrowiseUser extends Equatable {
 
   factory SynchrowiseUser.fromMap(Map<String, dynamic> map) {
     return SynchrowiseUser(
-      username: map['username'],
-      firebaseId: map['firebaseId']!,
-      synchrowiseId: map['guid']!,
       avatarUrl: map['avatar']!,
+      username: map['username'],
+      emailAddress: map['email'],
+      synchrowiseId: map['guid']!,
+      firebaseId: map['firebaseId']!,
       loginProvider: map['signInMethod']!,
       firebaseIdToken: map['firebaseIdToken']!,
-      emailAddress: map['email'],
       premium: Premium.fromValue(map['premiumType']),
     );
   }

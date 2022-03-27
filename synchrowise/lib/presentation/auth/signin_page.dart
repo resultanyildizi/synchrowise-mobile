@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
@@ -18,14 +20,14 @@ class SigninPage extends StatelessWidget {
     return state.showErrors
         ? state.failureOrEmailOption.fold(
             () {
-              return "Email is required";
+              return "email_is_required".tr();
             },
             (foe) {
               return foe.fold(
                 (l) {
                   return l.maybeMap(
                     invalidEmail: (_) {
-                      return "Invalid email";
+                      return "email_is_invalid".tr();
                     },
                     orElse: () {
                       return null;
@@ -43,14 +45,14 @@ class SigninPage extends StatelessWidget {
     return state.showErrors
         ? state.failureOrPasswordOption.fold(
             () {
-              return "Password is required";
+              return "password_is_required".tr();
             },
             (fop) {
               return fop.fold(
                 (l) {
                   return l.maybeMap(
                     emptyPassword: (_) {
-                      return "Password is required";
+                      return "password_is_required".tr();
                     },
                     orElse: () {
                       return null;
@@ -78,8 +80,13 @@ class SigninPage extends StatelessWidget {
             (failureOrUser) {
               log(failureOrUser.toString());
               failureOrUser.fold(
-                (failure) => handleAuthFailures(failure),
-                (user) => null,
+                (failure) {
+                  handleAuthFailures(failure);
+                },
+                (_) {
+                  Navigator.pushReplacementNamed(context, "/home");
+                  context.read<AuthBloc>().check();
+                },
               );
             },
           );
@@ -108,17 +115,17 @@ class SigninPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     Text(
-                      "Welcome!",
+                      "welcome_exclamation".tr(),
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     Text(
-                      "Sign in to continue",
+                      "sign_in_to_continue".tr(),
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                     const Spacer(),
                     DefaultTextField(
                       icon: Icons.email,
-                      hintText: "Email",
+                      hintText: "email".tr(),
                       onChanged: (email) {
                         final signinBloc = context.read<SigninFormBloc>();
                         signinBloc.updateEmailText(email: email);
@@ -128,7 +135,7 @@ class SigninPage extends StatelessWidget {
                     const SizedBox(height: 25),
                     DefaultTextField(
                       icon: Icons.lock,
-                      hintText: "Password",
+                      hintText: "password".tr(),
                       obscrueText: true,
                       onChanged: (password) {
                         final signinBloc = context.read<SigninFormBloc>();
@@ -141,7 +148,7 @@ class SigninPage extends StatelessWidget {
                       backgroundColor: primaryColor,
                       borderColor: null,
                       textColor: kcWhiteColor,
-                      text: "Sign in",
+                      text: "sign_in".tr(),
                       padding: 50,
                       showProgress: state.isSigningEmail,
                       onTap: () {
@@ -154,7 +161,7 @@ class SigninPage extends StatelessWidget {
                     const SizedBox(height: 16),
                     Center(
                       child: Text(
-                        "Forgot password?",
+                        "forgot_password".tr(),
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
@@ -172,7 +179,7 @@ class SigninPage extends StatelessWidget {
                           color: grayDarkColor,
                         ),
                         Text(
-                          "or countinue with",
+                          "or_continue_with".tr(),
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         Container(
@@ -213,7 +220,7 @@ class SigninPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't Have an Account?",
+                          "dont_have_an_account".tr(),
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         const SizedBox(width: 2),
@@ -222,7 +229,7 @@ class SigninPage extends StatelessWidget {
                             Navigator.pushReplacementNamed(context, '/signup');
                           },
                           child: Text(
-                            "Sign up",
+                            "sign_up".tr(),
                             style: Theme.of(context)
                                 .textTheme
                                 .headline5!

@@ -932,10 +932,10 @@ class _$SignupFormStateTearOff {
   const _$SignupFormStateTearOff();
 
   _SignupFormState call(
-      {required Option<Either<AuthFailure, SynchrowiseUser>>
-          failureOrUserOption,
+      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      required Option<Either<ValueFailure, String>> failureOrConfirmOption,
       required bool showErrors,
       required bool isSigningGoogle,
       required bool isSigningEmail}) {
@@ -943,6 +943,7 @@ class _$SignupFormStateTearOff {
       failureOrUserOption: failureOrUserOption,
       failureOrEmailOption: failureOrEmailOption,
       failureOrPasswordOption: failureOrPasswordOption,
+      failureOrConfirmOption: failureOrConfirmOption,
       showErrors: showErrors,
       isSigningGoogle: isSigningGoogle,
       isSigningEmail: isSigningEmail,
@@ -955,11 +956,13 @@ const $SignupFormState = _$SignupFormStateTearOff();
 
 /// @nodoc
 mixin _$SignupFormState {
-  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption =>
+  Option<Either<AuthFailure, Unit>> get failureOrUserOption =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrEmailOption =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrPasswordOption =>
+      throw _privateConstructorUsedError;
+  Option<Either<ValueFailure, String>> get failureOrConfirmOption =>
       throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   bool get isSigningGoogle => throw _privateConstructorUsedError;
@@ -976,9 +979,10 @@ abstract class $SignupFormStateCopyWith<$Res> {
           SignupFormState value, $Res Function(SignupFormState) then) =
       _$SignupFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
+      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      Option<Either<ValueFailure, String>> failureOrConfirmOption,
       bool showErrors,
       bool isSigningGoogle,
       bool isSigningEmail});
@@ -998,6 +1002,7 @@ class _$SignupFormStateCopyWithImpl<$Res>
     Object? failureOrUserOption = freezed,
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
+    Object? failureOrConfirmOption = freezed,
     Object? showErrors = freezed,
     Object? isSigningGoogle = freezed,
     Object? isSigningEmail = freezed,
@@ -1006,7 +1011,7 @@ class _$SignupFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, SynchrowiseUser>>,
+              as Option<Either<AuthFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -1014,6 +1019,10 @@ class _$SignupFormStateCopyWithImpl<$Res>
       failureOrPasswordOption: failureOrPasswordOption == freezed
           ? _value.failureOrPasswordOption
           : failureOrPasswordOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
+      failureOrConfirmOption: failureOrConfirmOption == freezed
+          ? _value.failureOrConfirmOption
+          : failureOrConfirmOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
       showErrors: showErrors == freezed
           ? _value.showErrors
@@ -1039,9 +1048,10 @@ abstract class _$SignupFormStateCopyWith<$Res>
       __$SignupFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
+      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      Option<Either<ValueFailure, String>> failureOrConfirmOption,
       bool showErrors,
       bool isSigningGoogle,
       bool isSigningEmail});
@@ -1063,6 +1073,7 @@ class __$SignupFormStateCopyWithImpl<$Res>
     Object? failureOrUserOption = freezed,
     Object? failureOrEmailOption = freezed,
     Object? failureOrPasswordOption = freezed,
+    Object? failureOrConfirmOption = freezed,
     Object? showErrors = freezed,
     Object? isSigningGoogle = freezed,
     Object? isSigningEmail = freezed,
@@ -1071,7 +1082,7 @@ class __$SignupFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, SynchrowiseUser>>,
+              as Option<Either<AuthFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -1079,6 +1090,10 @@ class __$SignupFormStateCopyWithImpl<$Res>
       failureOrPasswordOption: failureOrPasswordOption == freezed
           ? _value.failureOrPasswordOption
           : failureOrPasswordOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
+      failureOrConfirmOption: failureOrConfirmOption == freezed
+          ? _value.failureOrConfirmOption
+          : failureOrConfirmOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
       showErrors: showErrors == freezed
           ? _value.showErrors
@@ -1103,16 +1118,19 @@ class _$_SignupFormState implements _SignupFormState {
       {required this.failureOrUserOption,
       required this.failureOrEmailOption,
       required this.failureOrPasswordOption,
+      required this.failureOrConfirmOption,
       required this.showErrors,
       required this.isSigningGoogle,
       required this.isSigningEmail});
 
   @override
-  final Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption;
+  final Option<Either<AuthFailure, Unit>> failureOrUserOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrEmailOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrPasswordOption;
+  @override
+  final Option<Either<ValueFailure, String>> failureOrConfirmOption;
   @override
   final bool showErrors;
   @override
@@ -1122,7 +1140,7 @@ class _$_SignupFormState implements _SignupFormState {
 
   @override
   String toString() {
-    return 'SignupFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption, showErrors: $showErrors, isSigningGoogle: $isSigningGoogle, isSigningEmail: $isSigningEmail)';
+    return 'SignupFormState(failureOrUserOption: $failureOrUserOption, failureOrEmailOption: $failureOrEmailOption, failureOrPasswordOption: $failureOrPasswordOption, failureOrConfirmOption: $failureOrConfirmOption, showErrors: $showErrors, isSigningGoogle: $isSigningGoogle, isSigningEmail: $isSigningEmail)';
   }
 
   @override
@@ -1137,6 +1155,8 @@ class _$_SignupFormState implements _SignupFormState {
             const DeepCollectionEquality().equals(
                 other.failureOrPasswordOption, failureOrPasswordOption) &&
             const DeepCollectionEquality()
+                .equals(other.failureOrConfirmOption, failureOrConfirmOption) &&
+            const DeepCollectionEquality()
                 .equals(other.showErrors, showErrors) &&
             const DeepCollectionEquality()
                 .equals(other.isSigningGoogle, isSigningGoogle) &&
@@ -1150,6 +1170,7 @@ class _$_SignupFormState implements _SignupFormState {
       const DeepCollectionEquality().hash(failureOrUserOption),
       const DeepCollectionEquality().hash(failureOrEmailOption),
       const DeepCollectionEquality().hash(failureOrPasswordOption),
+      const DeepCollectionEquality().hash(failureOrConfirmOption),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(isSigningGoogle),
       const DeepCollectionEquality().hash(isSigningEmail));
@@ -1162,20 +1183,22 @@ class _$_SignupFormState implements _SignupFormState {
 
 abstract class _SignupFormState implements SignupFormState {
   const factory _SignupFormState(
-      {required Option<Either<AuthFailure, SynchrowiseUser>>
-          failureOrUserOption,
+      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
+      required Option<Either<ValueFailure, String>> failureOrConfirmOption,
       required bool showErrors,
       required bool isSigningGoogle,
       required bool isSigningEmail}) = _$_SignupFormState;
 
   @override
-  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption;
+  Option<Either<AuthFailure, Unit>> get failureOrUserOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrEmailOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrPasswordOption;
+  @override
+  Option<Either<ValueFailure, String>> get failureOrConfirmOption;
   @override
   bool get showErrors;
   @override

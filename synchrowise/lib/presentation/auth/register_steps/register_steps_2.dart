@@ -6,28 +6,26 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
-class RegisterSteps2 extends StatefulWidget {
+class RegisterSteps2 extends StatelessWidget {
   const RegisterSteps2({Key? key}) : super(key: key);
-
-  @override
-  State<RegisterSteps2> createState() => _RegisterSteps2State();
-}
-
-class _RegisterSteps2State extends State<RegisterSteps2> {
-  late bool isSuccesfull;
-
-  @override
-  void initState() {
-    isSuccesfull = false;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterStepsBloc, RegisterStepsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        // todo handle failure
+      },
       builder: (context, state) {
         final registerStepsBloc = context.read<RegisterStepsBloc>();
+
+        final showSuccessDialog = state.registerFailureOrUnitOption.fold(
+          () => false,
+          (failureOrUnit) => failureOrUnit.fold(
+            (failure) => false,
+            (unit) => true,
+          ),
+        );
+
         return Scaffold(
           body: Stack(
             children: [
@@ -71,24 +69,23 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
                             size: 48,
                           ),
                           onTap: () {
-                            registerStepsBloc.updateImageFile();
+                            registerStepsBloc.updateAvatarImage();
                           },
                         ),
                         (failureOrImage) => failureOrImage.fold(
                           (failure) => Text(failure.toString()),
-                          (image) => Container(
-                            height: MediaQuery.of(context).size.width - 70,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: image != null
-                                ? Image.asset(
-                                    image.path,
-                                    height:
-                                        MediaQuery.of(context).size.width - 70,
-                                  )
-                                : Container(),
-                          ),
+                          (image) {
+                            return Container(
+                              height: MediaQuery.of(context).size.width - 70,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Image.asset(
+                                image.path,
+                                height: MediaQuery.of(context).size.width - 70,
+                              ),
+                            );
+                          },
                         ),
                       ),
                       const SizedBox(height: 35),
@@ -99,19 +96,15 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
                         text: "Complete",
                         padding: 0,
                         onTap: () {
-                          setState(() {
-                            isSuccesfull = true;
-                          });
+                          registerStepsBloc.registerFields();
                         },
                       ),
                     ],
                   ),
                 ),
               ),
-              if (isSuccesfull) ...[
-                Container(
-                  color: Colors.black.withOpacity(0.6),
-                ),
+              if (showSuccessDialog) ...[
+                Container(color: Colors.black.withOpacity(0.6)),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -140,7 +133,7 @@ class _RegisterSteps2State extends State<RegisterSteps2> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Now, you can start to synchrowise.",
+                            "Now, you can start to use synchrowise.",
                             style: Theme.of(context).textTheme.subtitle1,
                             textAlign: TextAlign.center,
                           ),

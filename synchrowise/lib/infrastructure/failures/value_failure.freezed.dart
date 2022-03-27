@@ -48,8 +48,10 @@ class _$ValueFailureTearOff {
     return const _EmptyPasswordsFailure();
   }
 
-  _WeakPasswordFailure weakPassword() {
-    return const _WeakPasswordFailure();
+  _WeakPasswordFailure weakPassword(String password) {
+    return _WeakPasswordFailure(
+      password,
+    );
   }
 }
 
@@ -66,7 +68,7 @@ mixin _$ValueFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,7 +79,7 @@ mixin _$ValueFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,7 +90,7 @@ mixin _$ValueFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -215,7 +217,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return minLength(length);
   }
@@ -229,7 +231,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return minLength?.call(length);
   }
@@ -243,7 +245,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (minLength != null) {
@@ -379,7 +381,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return maxLength(length);
   }
@@ -393,7 +395,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return maxLength?.call(length);
   }
@@ -407,7 +409,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (maxLength != null) {
@@ -519,7 +521,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return invalidUsername();
   }
@@ -533,7 +535,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return invalidUsername?.call();
   }
@@ -547,7 +549,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (invalidUsername != null) {
@@ -654,7 +656,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return invalidEmail();
   }
@@ -668,7 +670,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return invalidEmail?.call();
   }
@@ -682,7 +684,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -815,7 +817,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return passwordsNotSame(password);
   }
@@ -829,7 +831,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return passwordsNotSame?.call(password);
   }
@@ -843,7 +845,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (passwordsNotSame != null) {
@@ -956,7 +958,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
     return emptyPassword();
   }
@@ -970,7 +972,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
     return emptyPassword?.call();
   }
@@ -984,7 +986,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (emptyPassword != null) {
@@ -1049,6 +1051,7 @@ abstract class _$WeakPasswordFailureCopyWith<$Res> {
   factory _$WeakPasswordFailureCopyWith(_WeakPasswordFailure value,
           $Res Function(_WeakPasswordFailure) then) =
       __$WeakPasswordFailureCopyWithImpl<$Res>;
+  $Res call({String password});
 }
 
 /// @nodoc
@@ -1061,26 +1064,50 @@ class __$WeakPasswordFailureCopyWithImpl<$Res>
 
   @override
   _WeakPasswordFailure get _value => super._value as _WeakPasswordFailure;
+
+  @override
+  $Res call({
+    Object? password = freezed,
+  }) {
+    return _then(_WeakPasswordFailure(
+      password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_WeakPasswordFailure implements _WeakPasswordFailure {
-  const _$_WeakPasswordFailure();
+  const _$_WeakPasswordFailure(this.password);
+
+  @override
+  final String password;
 
   @override
   String toString() {
-    return 'ValueFailure.weakPassword()';
+    return 'ValueFailure.weakPassword(password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _WeakPasswordFailure);
+        (other.runtimeType == runtimeType &&
+            other is _WeakPasswordFailure &&
+            const DeepCollectionEquality().equals(other.password, password));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(password));
+
+  @JsonKey(ignore: true)
+  @override
+  _$WeakPasswordFailureCopyWith<_WeakPasswordFailure> get copyWith =>
+      __$WeakPasswordFailureCopyWithImpl<_WeakPasswordFailure>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1091,9 +1118,9 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function() invalidEmail,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
-    required TResult Function() weakPassword,
+    required TResult Function(String password) weakPassword,
   }) {
-    return weakPassword();
+    return weakPassword(password);
   }
 
   @override
@@ -1105,9 +1132,9 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
   }) {
-    return weakPassword?.call();
+    return weakPassword?.call(password);
   }
 
   @override
@@ -1119,11 +1146,11 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidEmail,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
-    TResult Function()? weakPassword,
+    TResult Function(String password)? weakPassword,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
-      return weakPassword();
+      return weakPassword(password);
     }
     return orElse();
   }
@@ -1176,5 +1203,10 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
 }
 
 abstract class _WeakPasswordFailure implements ValueFailure {
-  const factory _WeakPasswordFailure() = _$_WeakPasswordFailure;
+  const factory _WeakPasswordFailure(String password) = _$_WeakPasswordFailure;
+
+  String get password;
+  @JsonKey(ignore: true)
+  _$WeakPasswordFailureCopyWith<_WeakPasswordFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
+import 'package:synchrowise/infrastructure/auth/failure/auth_failure.dart';
 
 void handleAuthFailures(AuthFailure failure) {
   failure.maybeMap(

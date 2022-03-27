@@ -184,6 +184,14 @@ class _$SplashStateTearOff {
   _SplashInitialState initial() {
     return const _SplashInitialState();
   }
+
+  _SplashOutOfDateState outOfDate() {
+    return const _SplashOutOfDateState();
+  }
+
+  _SplashUpToDateState upToDate() {
+    return const _SplashUpToDateState();
+  }
 }
 
 /// @nodoc
@@ -194,32 +202,44 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() outOfDate,
+    required TResult Function() upToDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SplashInitialState value) initial,
+    required TResult Function(_SplashOutOfDateState value) outOfDate,
+    required TResult Function(_SplashUpToDateState value) upToDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -283,6 +303,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() outOfDate,
+    required TResult Function() upToDate,
   }) {
     return initial();
   }
@@ -291,6 +313,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
   }) {
     return initial?.call();
   }
@@ -299,6 +323,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -311,6 +337,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SplashInitialState value) initial,
+    required TResult Function(_SplashOutOfDateState value) outOfDate,
+    required TResult Function(_SplashUpToDateState value) upToDate,
   }) {
     return initial(this);
   }
@@ -319,6 +347,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
   }) {
     return initial?.call(this);
   }
@@ -327,6 +357,8 @@ class _$_SplashInitialState implements _SplashInitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -338,4 +370,226 @@ class _$_SplashInitialState implements _SplashInitialState {
 
 abstract class _SplashInitialState implements SplashState {
   const factory _SplashInitialState() = _$_SplashInitialState;
+}
+
+/// @nodoc
+abstract class _$SplashOutOfDateStateCopyWith<$Res> {
+  factory _$SplashOutOfDateStateCopyWith(_SplashOutOfDateState value,
+          $Res Function(_SplashOutOfDateState) then) =
+      __$SplashOutOfDateStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SplashOutOfDateStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res>
+    implements _$SplashOutOfDateStateCopyWith<$Res> {
+  __$SplashOutOfDateStateCopyWithImpl(
+      _SplashOutOfDateState _value, $Res Function(_SplashOutOfDateState) _then)
+      : super(_value, (v) => _then(v as _SplashOutOfDateState));
+
+  @override
+  _SplashOutOfDateState get _value => super._value as _SplashOutOfDateState;
+}
+
+/// @nodoc
+
+class _$_SplashOutOfDateState implements _SplashOutOfDateState {
+  const _$_SplashOutOfDateState();
+
+  @override
+  String toString() {
+    return 'SplashState.outOfDate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SplashOutOfDateState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() outOfDate,
+    required TResult Function() upToDate,
+  }) {
+    return outOfDate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
+  }) {
+    return outOfDate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
+    required TResult orElse(),
+  }) {
+    if (outOfDate != null) {
+      return outOfDate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashInitialState value) initial,
+    required TResult Function(_SplashOutOfDateState value) outOfDate,
+    required TResult Function(_SplashUpToDateState value) upToDate,
+  }) {
+    return outOfDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
+  }) {
+    return outOfDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
+    required TResult orElse(),
+  }) {
+    if (outOfDate != null) {
+      return outOfDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SplashOutOfDateState implements SplashState {
+  const factory _SplashOutOfDateState() = _$_SplashOutOfDateState;
+}
+
+/// @nodoc
+abstract class _$SplashUpToDateStateCopyWith<$Res> {
+  factory _$SplashUpToDateStateCopyWith(_SplashUpToDateState value,
+          $Res Function(_SplashUpToDateState) then) =
+      __$SplashUpToDateStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SplashUpToDateStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res>
+    implements _$SplashUpToDateStateCopyWith<$Res> {
+  __$SplashUpToDateStateCopyWithImpl(
+      _SplashUpToDateState _value, $Res Function(_SplashUpToDateState) _then)
+      : super(_value, (v) => _then(v as _SplashUpToDateState));
+
+  @override
+  _SplashUpToDateState get _value => super._value as _SplashUpToDateState;
+}
+
+/// @nodoc
+
+class _$_SplashUpToDateState implements _SplashUpToDateState {
+  const _$_SplashUpToDateState();
+
+  @override
+  String toString() {
+    return 'SplashState.upToDate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SplashUpToDateState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() outOfDate,
+    required TResult Function() upToDate,
+  }) {
+    return upToDate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
+  }) {
+    return upToDate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? outOfDate,
+    TResult Function()? upToDate,
+    required TResult orElse(),
+  }) {
+    if (upToDate != null) {
+      return upToDate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SplashInitialState value) initial,
+    required TResult Function(_SplashOutOfDateState value) outOfDate,
+    required TResult Function(_SplashUpToDateState value) upToDate,
+  }) {
+    return upToDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
+  }) {
+    return upToDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SplashInitialState value)? initial,
+    TResult Function(_SplashOutOfDateState value)? outOfDate,
+    TResult Function(_SplashUpToDateState value)? upToDate,
+    required TResult orElse(),
+  }) {
+    if (upToDate != null) {
+      return upToDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SplashUpToDateState implements SplashState {
+  const factory _SplashUpToDateState() = _$_SplashUpToDateState;
 }

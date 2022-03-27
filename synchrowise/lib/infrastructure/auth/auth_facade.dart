@@ -7,18 +7,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/env.dart';
+import 'package:synchrowise/infrastructure/auth/failure/auth_failure.dart';
+import 'package:synchrowise/infrastructure/core/local_storage_keys.dart';
 import 'package:synchrowise/infrastructure/core/string_values.dart';
-import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
-import 'package:synchrowise/infrastructure/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/i_auth_facade.dart';
 
 class AuthFacade implements IAuthFacade {
+  ///* Dependencies
+  final LocalStorage _localStorage;
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final Client _client;
 
-  const AuthFacade(this._firebaseAuth, this._googleSignIn, this._client);
+  ///* Constructor
+  const AuthFacade(
+    this._firebaseAuth,
+    this._googleSignIn,
+    this._localStorage,
+    this._client,
+  );
 
   @override
   Future<Either<AuthFailure, SynchrowiseUser>> getSignedInUser() async {
@@ -27,25 +37,16 @@ class AuthFacade implements IAuthFacade {
       if (currentUser == null) {
         return left(const AuthFailure.signInRequired());
       } else {
-        const pathUrl = "backendurl/signIn";
-        final fidtoken = await currentUser.getIdToken();
+        final synchrowiseUserMap = await _localStorage.getItem(
+          LocalStorageKeys.synchrowiseUser,
+        ) as Map<String, dynamic>?;
 
-        final response = await _client.post(
-          Uri.parse(pathUrl),
-          body: {
-            "firebase_id": currentUser.uid,
-            "firebase_token": fidtoken,
-          },
-        );
-
-        if (response.statusCode == 200) {
-          final data = jsonDecode(response.body) as Map<String, dynamic>;
-          log(data.toString());
-          return right(SynchrowiseUser.fromMap(data));
+        if (synchrowiseUserMap != null) {
+          final synchrowiseUser = SynchrowiseUser.fromMap(synchrowiseUserMap);
+          return right(synchrowiseUser);
+        } else {
+          return left(const AuthFailure.signInRequired());
         }
-
-        // Todo: handle failures and other status codes
-        return left(const AuthFailure.unknown());
       }
     } on SocketException catch (_) {
       return left(const AuthFailure.connection());
@@ -55,7 +56,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, SynchrowiseUser>> signInWithGoogleAuth() async {
+  Future<Either<AuthFailure, Unit>> signInWithGoogleAuth() async {
     try {
       if (_googleSignIn.currentUser != null) await _googleSignIn.signOut();
 
@@ -72,7 +73,12 @@ class AuthFacade implements IAuthFacade {
         final userCredential =
             await _firebaseAuth.signInWithCredential(googleCred);
 
-        return _sendRequestToApi(userCredential);
+        final isNewUser = userCredential.additionalUserInfo?.isNewUser ?? false;
+
+        if (isNewUser) {
+          return _createUser(userCredential);
+        }
+        return right(unit);
       } else {
         return left(const AuthFailure.userCancelled());
       }
@@ -87,8 +93,6 @@ class AuthFacade implements IAuthFacade {
         return left(const AuthFailure.userDisabled());
       } else if (e.code == "user-not-found" || e.code == "wrong-password") {
         return left(const AuthFailure.invalidCredentials());
-      } else if (e.code == "weak-password") {
-        return left(const AuthFailure.weakPassword());
       } else {
         return left(const AuthFailure.unknown());
       }
@@ -96,7 +100,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, SynchrowiseUser>> createUserWithEmailAndPassword({
+  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -106,7 +110,7 @@ class AuthFacade implements IAuthFacade {
         password: password,
       );
 
-      return _sendRequestToApi(userCredential);
+      return _createUser(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
         return left(const AuthFailure.invalidEmail());
@@ -123,7 +127,7 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, SynchrowiseUser>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -133,7 +137,7 @@ class AuthFacade implements IAuthFacade {
         password: password,
       );
 
-      return _sendRequestToApi(userCredential);
+      return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
         return left(const AuthFailure.invalidEmail());
@@ -185,8 +189,9 @@ class AuthFacade implements IAuthFacade {
     }
   }
 
-  Future<Either<AuthFailure, SynchrowiseUser>> _sendRequestToApi(
-      UserCredential userCredential) async {
+  Future<Either<AuthFailure, Unit>> _createUser(
+    UserCredential userCredential,
+  ) async {
     final additionalUserInfo = userCredential.additionalUserInfo;
     final credential = userCredential.credential;
     final user = userCredential.user;
@@ -209,8 +214,6 @@ class AuthFacade implements IAuthFacade {
             user.metadata.lastSignInTime?.millisecondsSinceEpoch,
       };
 
-      log(requestBody.toString());
-
       final result = await _client.post(
         uri,
         body: jsonEncode(requestBody),
@@ -219,21 +222,27 @@ class AuthFacade implements IAuthFacade {
 
       if (result.statusCode == 200) {
         final body = jsonDecode(result.body) as Map<String, dynamic>;
-        body['firebaseId'] = user.uid;
-        body['firebaseIdToken'] = firebaseToken;
-        body['signInMethod'] = credential?.signInMethod;
-        body['email'] = user.email;
 
-        log(body.toString());
-        return right(SynchrowiseUser.fromMap(body['data']));
+        final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
+
+        final data = Map<String, dynamic>.from(bodyData);
+
+        data.addAll({
+          'email': user.email,
+          'firebaseId': user.uid,
+          'firebaseIdToken': firebaseToken,
+          'signInMethod': credential?.signInMethod,
+        });
+
+        await _localStorage.setItem(LocalStorageKeys.synchrowiseUser, data);
+
+        return right(unit);
       } else if (result.statusCode == 500) {
-        return left(const AuthFailure.unknown());
+        return left(const AuthFailure.serverInternal());
       } else {
         final body = jsonDecode(result.body) as Map<String, dynamic>;
         final error = body["error"] as Map<String, dynamic>;
         final errorList = (error['errors'] as List<dynamic>).cast();
-
-        log(errorList.toString());
 
         if (errorList.contains('This is user is exist')) {
           log(true.toString());
@@ -244,4 +253,44 @@ class AuthFacade implements IAuthFacade {
 
     return left(const AuthFailure.unknown());
   }
+
+  // Future<Either<AuthFailure, SynchrowiseUser>> _getUserFromApi(
+  //   UserCredential userCredential,
+  // ) async {
+  //   final credential = userCredential.credential;
+  //   final user = userCredential.user;
+
+  //   if (user != null) {
+  //     final firebaseToken = await user.getIdToken();
+
+  //     final uri = Uri.parse("$baseApiUrl/api/User/firebase/${user.uid}");
+
+  //     final result = await _client.get(
+  //       uri,
+  //       headers: {HeaderKeys.contentType: HeaderValues.contentType},
+  //     );
+
+  //     if (result.statusCode == 200) {
+  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
+
+  //       final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
+
+  //       final data = Map<String, dynamic>.from(bodyData);
+
+  //       data.addAll({
+  //         'email': user.email,
+  //         'firebaseId': user.uid,
+  //         'firebaseIdToken': firebaseToken,
+  //         'signInMethod': credential?.signInMethod,
+  //       });
+
+  //       return right(SynchrowiseUser.fromMap(data));
+  //     } else if (result.statusCode == 500) {
+  //       return left(const AuthFailure.unknown());
+  //     } else {
+  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
+  //     }
+  //   }
+  //   return left(const AuthFailure.unknown());
+  // }
 }

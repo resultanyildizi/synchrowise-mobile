@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
@@ -21,21 +21,22 @@ class SplashPage extends StatelessWidget {
           authorized: (user) => HomePage(username: user.username),
         );
 
-        log(nextPage.toString());
-
-        Future.delayed(const Duration(seconds: 1), () {
-          Navigator.pushReplacement(
-            context,
-            PageTransition(
-              duration: const Duration(seconds: 1),
-              reverseDuration: const Duration(seconds: 1),
-              child: nextPage,
-              type: PageTransitionType.fade,
-              alignment: Alignment.bottomCenter,
-              fullscreenDialog: true,
-            ),
-          );
-        });
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Navigator.pushReplacement(
+              context,
+              PageTransition(
+                duration: const Duration(seconds: 1),
+                reverseDuration: const Duration(seconds: 1),
+                child: nextPage,
+                type: PageTransitionType.fade,
+                alignment: Alignment.bottomCenter,
+                fullscreenDialog: true,
+              ),
+            );
+          },
+        );
       },
       builder: (context, state) {
         return Scaffold(
@@ -57,7 +58,7 @@ class SplashPage extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "from Mirror Technology",
+                    "from_mirror_technology".tr(),
                     style: Theme.of(context)
                         .textTheme
                         .subtitle1!

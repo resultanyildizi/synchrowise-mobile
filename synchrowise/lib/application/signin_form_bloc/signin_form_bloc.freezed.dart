@@ -707,8 +707,7 @@ class _$SigninFormStateTearOff {
   const _$SigninFormStateTearOff();
 
   _SigninFormState call(
-      {required Option<Either<AuthFailure, SynchrowiseUser>>
-          failureOrUserOption,
+      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
       required bool showErrors,
@@ -730,7 +729,7 @@ const $SigninFormState = _$SigninFormStateTearOff();
 
 /// @nodoc
 mixin _$SigninFormState {
-  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption =>
+  Option<Either<AuthFailure, Unit>> get failureOrUserOption =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrEmailOption =>
       throw _privateConstructorUsedError;
@@ -751,7 +750,7 @@ abstract class $SigninFormStateCopyWith<$Res> {
           SigninFormState value, $Res Function(SigninFormState) then) =
       _$SigninFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
+      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
       bool showErrors,
@@ -781,7 +780,7 @@ class _$SigninFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, SynchrowiseUser>>,
+              as Option<Either<AuthFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -814,7 +813,7 @@ abstract class _$SigninFormStateCopyWith<$Res>
       __$SigninFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption,
+      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
       bool showErrors,
@@ -846,7 +845,7 @@ class __$SigninFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, SynchrowiseUser>>,
+              as Option<Either<AuthFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -883,7 +882,7 @@ class _$_SigninFormState implements _SigninFormState {
       required this.isSigningEmail});
 
   @override
-  final Option<Either<AuthFailure, SynchrowiseUser>> failureOrUserOption;
+  final Option<Either<AuthFailure, Unit>> failureOrUserOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrEmailOption;
   @override
@@ -937,8 +936,7 @@ class _$_SigninFormState implements _SigninFormState {
 
 abstract class _SigninFormState implements SigninFormState {
   const factory _SigninFormState(
-      {required Option<Either<AuthFailure, SynchrowiseUser>>
-          failureOrUserOption,
+      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
       required bool showErrors,
@@ -946,7 +944,7 @@ abstract class _SigninFormState implements SigninFormState {
       required bool isSigningEmail}) = _$_SigninFormState;
 
   @override
-  Option<Either<AuthFailure, SynchrowiseUser>> get failureOrUserOption;
+  Option<Either<AuthFailure, Unit>> get failureOrUserOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrEmailOption;
   @override

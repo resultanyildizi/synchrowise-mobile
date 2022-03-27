@@ -5,18 +5,19 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
-import 'package:synchrowise/infrastructure/failures/auth_failure.dart';
-import 'package:synchrowise/infrastructure/failures/failure.dart';
+import 'package:synchrowise/infrastructure/auth/failure/auth_failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
-import 'package:synchrowise/infrastructure/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/i_auth_facade.dart';
 
 part 'signup_form_bloc.freezed.dart';
 part 'signup_form_event.dart';
 part 'signup_form_state.dart';
 
 class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
+  ///* Dependencies
   final IAuthFacade _iAuthFacade;
 
+  ///* Methods
   void signupWithEmailAndPassword() =>
       add(const SignupFormEvent.signupWithEmailAndPassword());
   void signupWithGoogle() => add(const SignupFormEvent.signupWithGoogle());
@@ -27,9 +28,8 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
   void updateConfirmPasswordText({required String password}) =>
       add(SignupFormEvent.updateConfirmPasswordText(password: password));
 
-  SignupFormBloc(
-    this._iAuthFacade,
-  ) : super(SignupFormState.initial()) {
+  ///* Logic
+  SignupFormBloc(this._iAuthFacade) : super(SignupFormState.initial()) {
     on<SignupFormEvent>(
       (event, emit) async {
         await event.map(
@@ -50,9 +50,14 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
               (foe) => foe.fold((_) => null, (e) => e),
             );
 
-            if (email != null && password != null) {
+            final confirmPassword = state.failureOrConfirmOption.fold(
+              () => null,
+              (foc) => foc.fold((_) => null, (c) => c),
+            );
+
+            if (email != null && password != null && confirmPassword != null) {
               final failureOrUser =
-                  await _iAuthFacade.createUserWithEmailAndPassword(
+                  await _iAuthFacade.signUpWithEmailAndPassword(
                 email: email,
                 password: password,
               );
@@ -90,38 +95,66 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
             final validatedPass =
                 validateSigninPassword(password: event.password);
 
-            final newstate = state.copyWith(
-              failureOrUserOption: none(),
-              failureOrPasswordOption: some(validatedPass),
+            final password = validatedPass.fold(
+              (failure) {
+                final password = failure.maybeMap(
+                  weakPassword: (weak) => weak.password,
+                  orElse: () => "",
+                );
+                return password;
+              },
+              (password) {
+                return password;
+              },
             );
 
-            emit(newstate);
+            log(password.toString());
+
+            final newState = state.failureOrConfirmOption.fold(
+              () {
+                return state.copyWith(
+                  failureOrPasswordOption: some(right(password)),
+                );
+              },
+              (failureOrConfirm) {
+                final confirmPass = failureOrConfirm.fold(
+                  (failure) => failure.maybeMap(
+                    passwordsNotSame: (value) => value.password,
+                    orElse: () => null,
+                  ),
+                  (confirm) => confirm,
+                );
+
+                log(confirmPass.toString());
+
+                if (confirmPass != null) {
+                  final validatedConfirm = validateConfirmPassword(
+                    password: password,
+                    confirmPassword: confirmPass,
+                  );
+
+                  return state.copyWith(
+                    failureOrPasswordOption: some(right(password)),
+                    failureOrConfirmOption: some(validatedConfirm),
+                  );
+                } else {
+                  return state.copyWith(
+                    failureOrPasswordOption: some(right(password)),
+                  );
+                }
+              },
+            );
+
+            emit(newState);
           },
           updateConfirmPasswordText: (event) async {
             final newState = state.failureOrPasswordOption.fold(
               () {
-                log("xxxx");
                 return state;
               },
-              (failureOrPassw) => failureOrPassw.fold(
+              (failureOrPass) => failureOrPass.fold(
                 (f) {
-                  final newState = f.maybeMap(
-                    passwordsNotSame: (vf) {
-                      final newConfPass = validateConfirmPassword(
-                        password: vf.password,
-                        confirmPassword: event.password,
-                      );
-
-                      return state.copyWith(
-                        failureOrPasswordOption: some(newConfPass),
-                      );
-                    },
-                    orElse: () {
-                      return state;
-                    },
-                  );
-
-                  return newState;
+                  return state;
                 },
                 (p) {
                   final newConfPass = validateConfirmPassword(
@@ -130,7 +163,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                   );
 
                   return state.copyWith(
-                    failureOrPasswordOption: some(newConfPass),
+                    failureOrConfirmOption: some(newConfPass),
                   );
                 },
               ),

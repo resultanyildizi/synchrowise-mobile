@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -21,12 +21,12 @@ class WelcomePage extends StatelessWidget {
               height: 210,
             ),
             const SizedBox(height: 60),
-            Text("Hello", style: Theme.of(context).textTheme.headline1),
+            Text("hello".tr(), style: Theme.of(context).textTheme.headline1),
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 70),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "welcome_phrase".tr(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle1,
               ),
@@ -36,7 +36,7 @@ class WelcomePage extends StatelessWidget {
               backgroundColor: primaryColor,
               borderColor: null,
               textColor: kcWhiteColor,
-              text: "Login",
+              text: "sign_in".tr(),
               padding: 35,
               onTap: () {
                 Navigator.pushNamed(context, '/signin');
@@ -47,7 +47,7 @@ class WelcomePage extends StatelessWidget {
               backgroundColor: kcWhiteColor,
               borderColor: primaryColor,
               textColor: primaryColor,
-              text: "Sign Up",
+              text: "sign_up".tr(),
               padding: 35,
               onTap: () {
                 Navigator.pushNamed(context, '/signup');

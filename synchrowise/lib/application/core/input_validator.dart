@@ -29,9 +29,9 @@ Either<ValueFailure, String> validateConfirmPassword({
   required String confirmPassword,
 }) {
   if (password == confirmPassword) {
-    return right(password);
+    return right(confirmPassword);
   } else {
-    return left(ValueFailure.passwordsNotSame(password));
+    return left(ValueFailure.passwordsNotSame(confirmPassword));
   }
 }
 
@@ -45,7 +45,7 @@ Either<ValueFailure, String> validateSigninPassword({
   if (password.length < 8 ||
       password.toLowerCase() == password ||
       password.toUpperCase() == password) {
-    return left(const ValueFailure.weakPassword());
+    return left(ValueFailure.weakPassword(password));
   }
 
   return right(password);

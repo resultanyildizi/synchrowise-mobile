@@ -1,10 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:synchrowise/infrastructure/failures/failure.dart';
 
 part 'value_failure.freezed.dart';
 
 @freezed
-abstract class ValueFailure with _$ValueFailure implements Failure {
+abstract class ValueFailure with _$ValueFailure {
   const factory ValueFailure.minLength(int length) = _MinLengthFailure;
   const factory ValueFailure.maxLength(int length) = _MaxLengthFailure;
   const factory ValueFailure.invalidUsername() = _InvalidUsernameFailure;
@@ -12,5 +11,6 @@ abstract class ValueFailure with _$ValueFailure implements Failure {
   const factory ValueFailure.passwordsNotSame(String password) =
       _PasswordsNotSameFailure;
   const factory ValueFailure.emptyPassword() = _EmptyPasswordsFailure;
-  const factory ValueFailure.weakPassword() = _WeakPasswordFailure;
+  const factory ValueFailure.weakPassword(String password) =
+      _WeakPasswordFailure;
 }

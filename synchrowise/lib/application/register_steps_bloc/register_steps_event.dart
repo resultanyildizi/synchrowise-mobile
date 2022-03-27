@@ -3,9 +3,12 @@ part of 'register_steps_bloc.dart';
 @freezed
 class RegisterStepsEvent with _$RegisterStepsEvent {
   const factory RegisterStepsEvent.updateUsernameText(
-      {required String username}) = _SigninUpdateUsernameTextFormEvent;
-  const factory RegisterStepsEvent.updateImageFile() =
-      _SigninUpdateImageFileFormEvent;
-  const factory RegisterStepsEvent.saveUsernameAndImage() =
-      _SigninSaveUsernameAndImageFormEvent;
+      {required String username}) = _RegisterStepsUpdateUsernameTextEvent;
+  const factory RegisterStepsEvent.updateAvatarImage() =
+      _RegisterStepsUpdateAvatarImageEvent;
+  const factory RegisterStepsEvent.registerFields() =
+      _RegisterStepsRegisterFieldsEvent;
+  const factory RegisterStepsEvent.goBack() = _RegisterStepsGoBackEvent;
+  const factory RegisterStepsEvent.removeAvatarImage() =
+      _RegisterStepsRemoveAvatarImageEvent;
 }

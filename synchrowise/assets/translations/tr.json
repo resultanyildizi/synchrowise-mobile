@@ -1,0 +1,19 @@
+{
+    "synchrowise": "Synchrowise",
+    "from_mirror_technology": "from Mirror Technology",
+    "welcome_phrase": "Synchrowise'a Hoşgeldin\nHadi Başlayalım",
+    "sign_in": "Giriş yap",
+    "sign_up": "Kayıt ol",
+    "email": "Email",
+    "hello": "Merhaba",
+    "email_is_required": "Email girmek zorunlu",
+    "email_is_invalid": "Email geçersiz",
+    "password_is_required": "Şifre girmek zorunlu",
+    "password_is_invalid": "Şifre geçersiz",
+    "password": "Şifre",
+    "welcome_exclamation": "Hoşgeldin!",
+    "forgot_password": "Şifreni mi unuttun?",
+    "or_continue_with": "veya devam etmek için",
+    "sign_in_to_continue": "Devam etmek için giriş yap",
+    "dont_have_an_account": "Hesabın mı yok?"
+}
