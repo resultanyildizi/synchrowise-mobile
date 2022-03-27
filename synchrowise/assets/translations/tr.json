@@ -15,5 +15,8 @@
     "forgot_password": "Şifreni mi unuttun?",
     "or_continue_with": "veya devam etmek için",
     "sign_in_to_continue": "Devam etmek için giriş yap",
-    "dont_have_an_account": "Hesabın mı yok?"
+    "dont_have_an_account": "Hesabın mı yok?",
+    "almost_done": "Neredeyse bitti",
+    "almost_done_desc": "Hadi devam edelim",
+    "continue": "Devam et"
 }

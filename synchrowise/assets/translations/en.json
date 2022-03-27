@@ -21,5 +21,9 @@
     "hi_exclamation": "Hi!",
     "create_a_new_account": "Create a new account",
     "confirm_password": "Confirm password",
-    "already_have_an_account": "Already have an account?"
+    "already_have_an_account": "Already have an account?",
+    "almost_done": "You are almost done",
+    "almost_done_desc": "Let's continue",
+    "continue": "Continue"
+
 }
