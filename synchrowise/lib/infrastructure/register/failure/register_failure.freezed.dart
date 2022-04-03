@@ -37,6 +37,10 @@ class _$RegisterFailureTearOff {
   _ImageTooLargeFailure imageTooLarge() {
     return const _ImageTooLargeFailure();
   }
+
+  _UsernameIsTakenFailure usernameIsTaken() {
+    return const _UsernameIsTakenFailure();
+  }
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ mixin _$RegisterFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,7 @@ mixin _$RegisterFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +75,7 @@ mixin _$RegisterFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +87,7 @@ mixin _$RegisterFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +97,7 @@ mixin _$RegisterFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +107,7 @@ mixin _$RegisterFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -166,6 +176,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) {
     return connection();
   }
@@ -178,6 +189,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) {
     return connection?.call();
   }
@@ -190,6 +202,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -207,6 +220,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) {
     return connection(this);
   }
@@ -219,6 +233,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) {
     return connection?.call(this);
   }
@@ -231,6 +246,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (connection != null) {
@@ -290,6 +306,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) {
     return unknown();
   }
@@ -302,6 +319,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) {
     return unknown?.call();
   }
@@ -314,6 +332,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -331,6 +350,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) {
     return unknown(this);
   }
@@ -343,6 +363,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) {
     return unknown?.call(this);
   }
@@ -355,6 +376,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -414,6 +436,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) {
     return imagePickFailed();
   }
@@ -426,6 +449,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) {
     return imagePickFailed?.call();
   }
@@ -438,6 +462,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imagePickFailed != null) {
@@ -455,6 +480,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) {
     return imagePickFailed(this);
   }
@@ -467,6 +493,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) {
     return imagePickFailed?.call(this);
   }
@@ -479,6 +506,7 @@ class _$_ImagePickFailedFailure implements _ImagePickFailedFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imagePickFailed != null) {
@@ -540,6 +568,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) {
     return imageCropperFailed();
   }
@@ -552,6 +581,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) {
     return imageCropperFailed?.call();
   }
@@ -564,6 +594,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imageCropperFailed != null) {
@@ -581,6 +612,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) {
     return imageCropperFailed(this);
   }
@@ -593,6 +625,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) {
     return imageCropperFailed?.call(this);
   }
@@ -605,6 +638,7 @@ class _$_ImageCropperFailedFailure implements _ImageCropperFailedFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imageCropperFailed != null) {
@@ -664,6 +698,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     required TResult Function() imagePickFailed,
     required TResult Function() imageCropperFailed,
     required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
   }) {
     return imageTooLarge();
   }
@@ -676,6 +711,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
   }) {
     return imageTooLarge?.call();
   }
@@ -688,6 +724,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     TResult Function()? imagePickFailed,
     TResult Function()? imageCropperFailed,
     TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imageTooLarge != null) {
@@ -705,6 +742,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     required TResult Function(_ImageCropperFailedFailure value)
         imageCropperFailed,
     required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
   }) {
     return imageTooLarge(this);
   }
@@ -717,6 +755,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
   }) {
     return imageTooLarge?.call(this);
   }
@@ -729,6 +768,7 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
     TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
     TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
     TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
     required TResult orElse(),
   }) {
     if (imageTooLarge != null) {
@@ -740,4 +780,134 @@ class _$_ImageTooLargeFailure implements _ImageTooLargeFailure {
 
 abstract class _ImageTooLargeFailure implements RegisterFailure {
   const factory _ImageTooLargeFailure() = _$_ImageTooLargeFailure;
+}
+
+/// @nodoc
+abstract class _$UsernameIsTakenFailureCopyWith<$Res> {
+  factory _$UsernameIsTakenFailureCopyWith(_UsernameIsTakenFailure value,
+          $Res Function(_UsernameIsTakenFailure) then) =
+      __$UsernameIsTakenFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UsernameIsTakenFailureCopyWithImpl<$Res>
+    extends _$RegisterFailureCopyWithImpl<$Res>
+    implements _$UsernameIsTakenFailureCopyWith<$Res> {
+  __$UsernameIsTakenFailureCopyWithImpl(_UsernameIsTakenFailure _value,
+      $Res Function(_UsernameIsTakenFailure) _then)
+      : super(_value, (v) => _then(v as _UsernameIsTakenFailure));
+
+  @override
+  _UsernameIsTakenFailure get _value => super._value as _UsernameIsTakenFailure;
+}
+
+/// @nodoc
+
+class _$_UsernameIsTakenFailure implements _UsernameIsTakenFailure {
+  const _$_UsernameIsTakenFailure();
+
+  @override
+  String toString() {
+    return 'RegisterFailure.usernameIsTaken()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _UsernameIsTakenFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connection,
+    required TResult Function() unknown,
+    required TResult Function() imagePickFailed,
+    required TResult Function() imageCropperFailed,
+    required TResult Function() imageTooLarge,
+    required TResult Function() usernameIsTaken,
+  }) {
+    return usernameIsTaken();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? connection,
+    TResult Function()? unknown,
+    TResult Function()? imagePickFailed,
+    TResult Function()? imageCropperFailed,
+    TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
+  }) {
+    return usernameIsTaken?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connection,
+    TResult Function()? unknown,
+    TResult Function()? imagePickFailed,
+    TResult Function()? imageCropperFailed,
+    TResult Function()? imageTooLarge,
+    TResult Function()? usernameIsTaken,
+    required TResult orElse(),
+  }) {
+    if (usernameIsTaken != null) {
+      return usernameIsTaken();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ConnectionFailure value) connection,
+    required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ImagePickFailedFailure value) imagePickFailed,
+    required TResult Function(_ImageCropperFailedFailure value)
+        imageCropperFailed,
+    required TResult Function(_ImageTooLargeFailure value) imageTooLarge,
+    required TResult Function(_UsernameIsTakenFailure value) usernameIsTaken,
+  }) {
+    return usernameIsTaken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ConnectionFailure value)? connection,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
+    TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
+    TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
+  }) {
+    return usernameIsTaken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ConnectionFailure value)? connection,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ImagePickFailedFailure value)? imagePickFailed,
+    TResult Function(_ImageCropperFailedFailure value)? imageCropperFailed,
+    TResult Function(_ImageTooLargeFailure value)? imageTooLarge,
+    TResult Function(_UsernameIsTakenFailure value)? usernameIsTaken,
+    required TResult orElse(),
+  }) {
+    if (usernameIsTaken != null) {
+      return usernameIsTaken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UsernameIsTakenFailure implements RegisterFailure {
+  const factory _UsernameIsTakenFailure() = _$_UsernameIsTakenFailure;
 }

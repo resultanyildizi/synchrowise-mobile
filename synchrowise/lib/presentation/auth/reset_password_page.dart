@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+class ResetPasswordPage extends StatelessWidget {
+  const ResetPasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +22,24 @@ class ForgotPasswordPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 64),
+              const DefaultBackButton(),
+              const SizedBox(height: 48),
               SizedBox(
-                width: 170,
                 child: Text(
-                  "Forgot Password",
+                  "reset_your_password".tr(),
                   style: Theme.of(context).textTheme.headline2,
+                  maxLines: 2,
                 ),
               ),
+              const SizedBox(height: 30),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "reset_your_password_description".tr(),
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(height: 30),
               DefaultTextField(
                 icon: null,
-                hintText: "Email",
+                hintText: "email".tr(),
                 onChanged: (email) {},
               ),
               const SizedBox(height: 35),
@@ -43,9 +47,12 @@ class ForgotPasswordPage extends StatelessWidget {
                 backgroundColor: primaryColor,
                 borderColor: null,
                 textColor: kcWhiteColor,
-                text: "Send",
+                text: "send".tr(),
                 padding: 0,
-                onTap: () {},
+                showProgress: false,
+                onTap: () {
+                  // TODO send reset password link
+                },
               ),
             ],
           ),

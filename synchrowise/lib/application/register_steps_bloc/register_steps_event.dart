@@ -6,6 +6,8 @@ class RegisterStepsEvent with _$RegisterStepsEvent {
       {required String username}) = _RegisterStepsUpdateUsernameTextEvent;
   const factory RegisterStepsEvent.updateAvatarImage() =
       _RegisterStepsUpdateAvatarImageEvent;
+  const factory RegisterStepsEvent.saveUsername() =
+      _RegisterStepsSaveUsernameEvent;
   const factory RegisterStepsEvent.registerFields() =
       _RegisterStepsRegisterFieldsEvent;
   const factory RegisterStepsEvent.goBack() = _RegisterStepsGoBackEvent;

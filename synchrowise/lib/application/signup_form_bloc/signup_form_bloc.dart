@@ -108,8 +108,6 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
               },
             );
 
-            log(password.toString());
-
             final newState = state.failureOrConfirmOption.fold(
               () {
                 return state.copyWith(
@@ -124,8 +122,6 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                   ),
                   (confirm) => confirm,
                 );
-
-                log(confirmPass.toString());
 
                 if (confirmPass != null) {
                   final validatedConfirm = validateConfirmPassword(
@@ -168,8 +164,6 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                 },
               ),
             );
-
-            log(newState.toString());
 
             emit(newState);
           },

@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
+import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -101,10 +103,15 @@ class SignupPage extends StatelessWidget {
         listener: (context, state) {
           state.failureOrUserOption.fold(
             () => null,
-            (failureOrUser) {
-              failureOrUser.fold(
-                (failure) => handleAuthFailures(failure),
-                (user) => null,
+            (failureOrUnit) {
+              failureOrUnit.fold(
+                (failure) {
+                  handleAuthFailures(failure);
+                },
+                (_) {
+                  Navigator.pushReplacementNamed(context, "/home");
+                  context.read<AuthBloc>().check();
+                },
               );
             },
           );
@@ -121,16 +128,7 @@ class SignupPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAnimatedButton(
-                      shrinkWrap: true,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.arrow_back_ios,
-                        color: grayDarkColor,
-                      ),
-                    ),
+                    const DefaultBackButton(),
                     const SizedBox(height: 40),
                     Text(
                       "hi_exclamation".tr(),

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -22,6 +23,8 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
   void updateUsernameText({required String username}) =>
       add(RegisterStepsEvent.updateUsernameText(username: username));
   void registerFields() => add(const RegisterStepsEvent.registerFields());
+  void saveUsername() => add(const RegisterStepsEvent.saveUsername());
+  void goBack() => add(const RegisterStepsEvent.goBack());
 
   ///* Logic
   RegisterStepsBloc(this._iRegisterFacade)
@@ -29,64 +32,100 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
     on<RegisterStepsEvent>(
       (event, emit) async {
         await event.map(
-            registerFields: (_) async {
+          registerFields: (_) async {
+            emit(
+              state.copyWith(
+                registerFailureOrUnitOption: none(),
+                showErrors: true,
+              ),
+            );
+
+            final username = state.failureOrUsernameOption.fold(
+                () => null,
+                (failureOrUsername) => failureOrUsername.fold(
+                    (failure) => null, (username) => username));
+
+            final image = state.failureOrImageOption.fold(
+                () => null,
+                (failureOrImage) =>
+                    failureOrImage.fold((failure) => null, (image) => image));
+
+            if (username != null) {
+              final failureOrUnit = await _iRegisterFacade.registerUser(
+                username: username,
+                avatar: image,
+              );
+
               emit(
                 state.copyWith(
-                  registerFailureOrUnitOption: none(),
+                  registerFailureOrUnitOption: some(failureOrUnit),
+                ),
+              );
+            }
+          },
+          updateUsernameText: (event) {
+            final validatedUsername =
+                validateUsername(username: event.username.trim());
+
+            emit(
+              state.copyWith(
+                failureOrUsernameOption: some(validatedUsername),
+                registerFailureOrUnitOption: none(),
+              ),
+            );
+          },
+          saveUsername: (_) {
+            final username = state.failureOrUsernameOption.fold(
+              () => null,
+              (failureOrUsername) => failureOrUsername.fold(
+                  (failure) => null, (username) => username),
+            );
+
+            log(username.toString());
+
+            if (username != null) {
+              log(1.toString());
+              emit(
+                state.copyWith(
+                  step: 1,
                   showErrors: true,
+                  registerFailureOrUnitOption: none(),
                 ),
               );
-
-              final username = state.failureOrUsernameOption.fold(
-                  () => null,
-                  (failureOrUsername) => failureOrUsername.fold(
-                      (failure) => null, (username) => username));
-
-              final image = state.failureOrImageOption.fold(
-                  () => null,
-                  (failureOrImage) =>
-                      failureOrImage.fold((failure) => null, (image) => image));
-
-              if (username != null) {
-                final failureOrUnit = await _iRegisterFacade.registerUser(
-                  username: username,
-                  avatar: image,
-                );
-
-                emit(
-                  state.copyWith(
-                    registerFailureOrUnitOption: some(failureOrUnit),
-                    showErrors: true,
-                  ),
-                );
-              }
-            },
-            updateUsernameText: (event) {
-              emit(state.copyWith(
-                  failureOrUsernameOption: none(), showErrors: true));
-
-              final validatedUsername =
-                  validateUsername(username: event.username.trim());
-
+            } else {
               emit(
                 state.copyWith(
-                  failureOrUsernameOption: some(validatedUsername),
-                  showErrors: validatedUsername.isRight() ? false : true,
+                  showErrors: true,
+                  registerFailureOrUnitOption: none(),
                 ),
               );
-            },
-            updateAvatarImage: (event) async {
-              emit(state.copyWith(failureOrImageOption: none()));
+            }
+          },
+          updateAvatarImage: (event) async {
+            emit(state.copyWith(
+              failureOrImageOption: none(),
+              registerFailureOrUnitOption: none(),
+            ));
 
-              final failureOrImage =
-                  await _iRegisterFacade.uploadImageFromDevice();
+            final failureOrImage =
+                await _iRegisterFacade.uploadImageFromDevice();
 
-              emit(
-                state.copyWith(failureOrImageOption: some(failureOrImage)),
-              );
-            },
-            removeAvatarImage: (_) {},
-            goBack: (_) {});
+            emit(state.copyWith(failureOrImageOption: some(failureOrImage)));
+          },
+          removeAvatarImage: (_) {
+            emit(state.copyWith(
+              showErrors: false,
+              failureOrImageOption: none(),
+              registerFailureOrUnitOption: none(),
+            ));
+          },
+          goBack: (_) {
+            emit(state.copyWith(
+              step: state.step > 0 ? state.step - 1 : 0,
+              registerFailureOrUnitOption: none(),
+            ));
+          },
+        );
       },
     );
   }

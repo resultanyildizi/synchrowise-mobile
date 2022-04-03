@@ -6,6 +6,7 @@ import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/auth/reset_password_page.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
@@ -28,9 +29,6 @@ class SynchrowiseApp extends StatelessWidget {
         ),
         BlocProvider<SignupFormBloc>(
           create: (context) => getIt<SignupFormBloc>(),
-        ),
-        BlocProvider<RegisterStepsBloc>(
-          create: (context) => getIt<RegisterStepsBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -96,6 +94,7 @@ class SynchrowiseApp extends StatelessWidget {
           '/signin': (context) => const SigninPage(),
           '/signup': (context) => const SignupPage(),
           '/home': (context) => const HomePage(),
+          '/reset_password': (context) => const ResetPasswordPage(),
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,7 @@ import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
+import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -77,9 +79,8 @@ class SigninPage extends StatelessWidget {
           log(state.toString());
           state.failureOrUserOption.fold(
             () => null,
-            (failureOrUser) {
-              log(failureOrUser.toString());
-              failureOrUser.fold(
+            (failureOrUnit) {
+              failureOrUnit.fold(
                 (failure) {
                   handleAuthFailures(failure);
                 },
@@ -103,16 +104,7 @@ class SigninPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAnimatedButton(
-                      shrinkWrap: true,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.arrow_back_ios,
-                        color: grayDarkColor,
-                      ),
-                    ),
+                    const DefaultBackButton(),
                     const SizedBox(height: 40),
                     Text(
                       "welcome_exclamation".tr(),
@@ -160,13 +152,19 @@ class SigninPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Center(
-                      child: Text(
-                        "forgot_password".tr(),
+                      child: RichText(
+                        text: TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushNamed(context, "/reset_password");
+                            },
+                          text: "forgot_password".tr(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(color: primaryColor),
+                        ),
                         textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: primaryColor),
                       ),
                     ),
                     const Spacer(),

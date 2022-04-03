@@ -7,7 +7,7 @@ class RegisterStepsState with _$RegisterStepsState {
     required Option<Either<RegisterFailure, File>> failureOrImageOption,
     required Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
     required bool showErrors,
-    required int currentPageIndex,
+    required int step,
   }) = _RegisterStepsState;
 
   factory RegisterStepsState.initial() {
@@ -15,8 +15,8 @@ class RegisterStepsState with _$RegisterStepsState {
       registerFailureOrUnitOption: none(),
       failureOrUsernameOption: none(),
       failureOrImageOption: none(),
-      currentPageIndex: 0,
       showErrors: false,
+      step: 0,
     );
   }
 }

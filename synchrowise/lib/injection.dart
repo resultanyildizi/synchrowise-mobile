@@ -23,12 +23,15 @@ Future<void> setupInjector() async {
 }
 
 Future<void> _setupServices() async {
+  final localStorage = LocalStorage('synchrowise');
+  await localStorage.ready;
+
   getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
   getIt.registerSingleton<GoogleSignIn>(GoogleSignIn());
   getIt.registerSingleton<Client>(Client());
   getIt.registerSingleton<ImagePicker>(ImagePicker());
   getIt.registerSingleton<ImageCropper>(ImageCropper());
-  getIt.registerSingleton<LocalStorage>(LocalStorage('synchrowise'));
+  getIt.registerSingleton<LocalStorage>(localStorage);
 }
 
 Future<void> _setupFacades() async {

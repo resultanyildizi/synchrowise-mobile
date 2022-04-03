@@ -4,8 +4,8 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/auth/register_steps/register_steps_1.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
-class RegisterStepsStart extends StatelessWidget {
-  const RegisterStepsStart({Key? key}) : super(key: key);
+class RegisterSteps0 extends StatelessWidget {
+  const RegisterSteps0({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

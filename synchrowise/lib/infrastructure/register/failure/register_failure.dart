@@ -10,4 +10,5 @@ abstract class RegisterFailure with _$RegisterFailure {
   const factory RegisterFailure.imageCropperFailed() =
       _ImageCropperFailedFailure;
   const factory RegisterFailure.imageTooLarge() = _ImageTooLargeFailure;
+  const factory RegisterFailure.usernameIsTaken() = _UsernameIsTakenFailure;
 }

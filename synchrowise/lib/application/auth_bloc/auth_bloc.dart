@@ -25,6 +25,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           check: (_) async {
             final result = await _iAuthFacade.getSignedInUser();
 
+            log(result.toString());
+
             final state = result.fold(
               (_) {
                 return const AuthState.unauthorized();

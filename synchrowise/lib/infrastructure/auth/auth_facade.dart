@@ -34,12 +34,17 @@ class AuthFacade implements IAuthFacade {
   Future<Either<AuthFailure, SynchrowiseUser>> getSignedInUser() async {
     try {
       final currentUser = _firebaseAuth.currentUser;
+
+      log(currentUser.toString());
+
       if (currentUser == null) {
         return left(const AuthFailure.signInRequired());
       } else {
         final synchrowiseUserMap = await _localStorage.getItem(
           LocalStorageKeys.synchrowiseUser,
         ) as Map<String, dynamic>?;
+
+        log(synchrowiseUserMap.toString());
 
         if (synchrowiseUserMap != null) {
           final synchrowiseUser = SynchrowiseUser.fromMap(synchrowiseUserMap);
@@ -234,6 +239,8 @@ class AuthFacade implements IAuthFacade {
           'signInMethod': credential?.signInMethod,
         });
 
+        log("writing user to storage: " + data.toString());
+
         await _localStorage.setItem(LocalStorageKeys.synchrowiseUser, data);
 
         return right(unit);
@@ -245,7 +252,6 @@ class AuthFacade implements IAuthFacade {
         final errorList = (error['errors'] as List<dynamic>).cast();
 
         if (errorList.contains('This is user is exist')) {
-          log(true.toString());
           return left(const AuthFailure.emailAlreadyInUse());
         }
       }
