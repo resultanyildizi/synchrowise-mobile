@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/auth/register_steps/register_steps_2.dart';
+import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
@@ -42,11 +43,15 @@ class RegisterSteps1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
       builder: (context, state) {
-        final registerStepsBloc = context.read<RegisterStepsBloc>();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 64),
+            const SizedBox(height: 32),
+            DefaultBackButton(onTap: () {
+              final registerStepsBloc = context.read<RegisterStepsBloc>();
+              registerStepsBloc.goBack();
+            }),
+            const SizedBox(height: 32),
             Text(
               "username".tr(),
               style: Theme.of(context).textTheme.headline2,
@@ -60,6 +65,7 @@ class RegisterSteps1 extends StatelessWidget {
               icon: null,
               hintText: "username".tr(),
               onChanged: (username) {
+                final registerStepsBloc = context.read<RegisterStepsBloc>();
                 registerStepsBloc.updateUsernameText(
                   username: username,
                 );
@@ -74,7 +80,7 @@ class RegisterSteps1 extends StatelessWidget {
               text: "continue".tr(),
               padding: 0,
               onTap: () {
-                log("saving");
+                final registerStepsBloc = context.read<RegisterStepsBloc>();
                 registerStepsBloc.saveUsername();
               },
             ),

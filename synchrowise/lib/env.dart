@@ -1,1 +1,1 @@
-const baseApiUrl = "https://synchrowise.azurewebsites.net/";
+const baseApiUrl = "https://www.synchrowise-app.com";

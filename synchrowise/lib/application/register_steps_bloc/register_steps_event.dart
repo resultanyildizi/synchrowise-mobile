@@ -11,6 +11,7 @@ class RegisterStepsEvent with _$RegisterStepsEvent {
   const factory RegisterStepsEvent.registerFields() =
       _RegisterStepsRegisterFieldsEvent;
   const factory RegisterStepsEvent.goBack() = _RegisterStepsGoBackEvent;
+  const factory RegisterStepsEvent.goNext() = _RegisterStepsGoNextEvent;
   const factory RegisterStepsEvent.removeAvatarImage() =
       _RegisterStepsRemoveAvatarImageEvent;
 }

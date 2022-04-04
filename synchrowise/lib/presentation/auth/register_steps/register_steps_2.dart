@@ -30,11 +30,11 @@ class RegisterSteps2 extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 32),
                 DefaultBackButton(onTap: () {
                   registerStepsBloc.goBack();
                 }),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 Text(
                   "avatar".tr(),
                   style: Theme.of(context).textTheme.headline2,

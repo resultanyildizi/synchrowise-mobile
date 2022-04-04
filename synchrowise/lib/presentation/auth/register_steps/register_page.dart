@@ -91,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   return Column(
                     children: [
                       ThinLineStepper(
-                        lineCount: 2,
+                        lineCount: 3,
                         activeLineIndex: {state.step},
                       ),
                       Expanded(

@@ -41,6 +41,10 @@ class _$RegisterStepsEventTearOff {
     return const _RegisterStepsGoBackEvent();
   }
 
+  _RegisterStepsGoNextEvent goNext() {
+    return const _RegisterStepsGoNextEvent();
+  }
+
   _RegisterStepsRemoveAvatarImageEvent removeAvatarImage() {
     return const _RegisterStepsRemoveAvatarImageEvent();
   }
@@ -58,6 +62,7 @@ mixin _$RegisterStepsEvent {
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +73,7 @@ mixin _$RegisterStepsEvent {
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +84,7 @@ mixin _$RegisterStepsEvent {
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) =>
@@ -93,6 +100,7 @@ mixin _$RegisterStepsEvent {
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) =>
@@ -106,6 +114,7 @@ mixin _$RegisterStepsEvent {
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) =>
@@ -119,6 +128,7 @@ mixin _$RegisterStepsEvent {
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -219,6 +229,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return updateUsernameText(username);
@@ -232,6 +243,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return updateUsernameText?.call(username);
@@ -245,6 +257,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -266,6 +279,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -282,6 +296,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -298,6 +313,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -372,6 +388,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return updateAvatarImage();
@@ -385,6 +402,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return updateAvatarImage?.call();
@@ -398,6 +416,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -419,6 +438,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -435,6 +455,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -451,6 +472,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -519,6 +541,7 @@ class _$_RegisterStepsSaveUsernameEvent
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return saveUsername();
@@ -532,6 +555,7 @@ class _$_RegisterStepsSaveUsernameEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return saveUsername?.call();
@@ -545,6 +569,7 @@ class _$_RegisterStepsSaveUsernameEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -566,6 +591,7 @@ class _$_RegisterStepsSaveUsernameEvent
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -582,6 +608,7 @@ class _$_RegisterStepsSaveUsernameEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -598,6 +625,7 @@ class _$_RegisterStepsSaveUsernameEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -665,6 +693,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return registerFields();
@@ -678,6 +707,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return registerFields?.call();
@@ -691,6 +721,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -712,6 +743,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -728,6 +760,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -744,6 +777,7 @@ class _$_RegisterStepsRegisterFieldsEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -808,6 +842,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return goBack();
@@ -821,6 +856,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return goBack?.call();
@@ -834,6 +870,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -855,6 +892,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -871,6 +909,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -887,6 +926,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
@@ -900,6 +940,154 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
 
 abstract class _RegisterStepsGoBackEvent implements RegisterStepsEvent {
   const factory _RegisterStepsGoBackEvent() = _$_RegisterStepsGoBackEvent;
+}
+
+/// @nodoc
+abstract class _$RegisterStepsGoNextEventCopyWith<$Res> {
+  factory _$RegisterStepsGoNextEventCopyWith(_RegisterStepsGoNextEvent value,
+          $Res Function(_RegisterStepsGoNextEvent) then) =
+      __$RegisterStepsGoNextEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RegisterStepsGoNextEventCopyWithImpl<$Res>
+    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    implements _$RegisterStepsGoNextEventCopyWith<$Res> {
+  __$RegisterStepsGoNextEventCopyWithImpl(_RegisterStepsGoNextEvent _value,
+      $Res Function(_RegisterStepsGoNextEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterStepsGoNextEvent));
+
+  @override
+  _RegisterStepsGoNextEvent get _value =>
+      super._value as _RegisterStepsGoNextEvent;
+}
+
+/// @nodoc
+
+class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
+  const _$_RegisterStepsGoNextEvent();
+
+  @override
+  String toString() {
+    return 'RegisterStepsEvent.goNext()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _RegisterStepsGoNextEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username) updateUsernameText,
+    required TResult Function() updateAvatarImage,
+    required TResult Function() saveUsername,
+    required TResult Function() registerFields,
+    required TResult Function() goBack,
+    required TResult Function() goNext,
+    required TResult Function() removeAvatarImage,
+  }) {
+    return goNext();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String username)? updateUsernameText,
+    TResult Function()? updateAvatarImage,
+    TResult Function()? saveUsername,
+    TResult Function()? registerFields,
+    TResult Function()? goBack,
+    TResult Function()? goNext,
+    TResult Function()? removeAvatarImage,
+  }) {
+    return goNext?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username)? updateUsernameText,
+    TResult Function()? updateAvatarImage,
+    TResult Function()? saveUsername,
+    TResult Function()? registerFields,
+    TResult Function()? goBack,
+    TResult Function()? goNext,
+    TResult Function()? removeAvatarImage,
+    required TResult orElse(),
+  }) {
+    if (goNext != null) {
+      return goNext();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+        updateUsernameText,
+    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+        updateAvatarImage,
+    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+        saveUsername,
+    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+        registerFields,
+    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
+    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+        removeAvatarImage,
+  }) {
+    return goNext(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+        updateUsernameText,
+    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+        updateAvatarImage,
+    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
+    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+        removeAvatarImage,
+  }) {
+    return goNext?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+        updateUsernameText,
+    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+        updateAvatarImage,
+    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
+    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+        removeAvatarImage,
+    required TResult orElse(),
+  }) {
+    if (goNext != null) {
+      return goNext(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterStepsGoNextEvent implements RegisterStepsEvent {
+  const factory _RegisterStepsGoNextEvent() = _$_RegisterStepsGoNextEvent;
 }
 
 /// @nodoc
@@ -953,6 +1141,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
+    required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
     return removeAvatarImage();
@@ -966,6 +1155,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
     return removeAvatarImage?.call();
@@ -979,6 +1169,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
+    TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -1000,6 +1191,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     required TResult Function(_RegisterStepsRegisterFieldsEvent value)
         registerFields,
     required TResult Function(_RegisterStepsGoBackEvent value) goBack,
+    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
     required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
@@ -1016,6 +1208,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
@@ -1032,6 +1225,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
     TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
     TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
     TResult Function(_RegisterStepsGoBackEvent value)? goBack,
+    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
     TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),

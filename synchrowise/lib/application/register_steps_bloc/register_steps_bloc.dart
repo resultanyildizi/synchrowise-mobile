@@ -25,107 +25,104 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
   void registerFields() => add(const RegisterStepsEvent.registerFields());
   void saveUsername() => add(const RegisterStepsEvent.saveUsername());
   void goBack() => add(const RegisterStepsEvent.goBack());
+  void goNext() => add(const RegisterStepsEvent.goNext());
 
   ///* Logic
   RegisterStepsBloc(this._iRegisterFacade)
       : super(RegisterStepsState.initial()) {
     on<RegisterStepsEvent>(
       (event, emit) async {
-        await event.map(
-          registerFields: (_) async {
-            emit(
-              state.copyWith(
-                registerFailureOrUnitOption: none(),
-                showErrors: true,
-              ),
-            );
+        await event.map(registerFields: (_) async {
+          emit(
+            state.copyWith(
+              registerFailureOrUnitOption: none(),
+              showErrors: true,
+            ),
+          );
 
-            final username = state.failureOrUsernameOption.fold(
-                () => null,
-                (failureOrUsername) => failureOrUsername.fold(
-                    (failure) => null, (username) => username));
-
-            final image = state.failureOrImageOption.fold(
-                () => null,
-                (failureOrImage) =>
-                    failureOrImage.fold((failure) => null, (image) => image));
-
-            if (username != null) {
-              final failureOrUnit = await _iRegisterFacade.registerUser(
-                username: username,
-                avatar: image,
-              );
-
-              emit(
-                state.copyWith(
-                  registerFailureOrUnitOption: some(failureOrUnit),
-                ),
-              );
-            }
-          },
-          updateUsernameText: (event) {
-            final validatedUsername =
-                validateUsername(username: event.username.trim());
-
-            emit(
-              state.copyWith(
-                failureOrUsernameOption: some(validatedUsername),
-                registerFailureOrUnitOption: none(),
-              ),
-            );
-          },
-          saveUsername: (_) {
-            final username = state.failureOrUsernameOption.fold(
+          final username = state.failureOrUsernameOption.fold(
               () => null,
               (failureOrUsername) => failureOrUsername.fold(
-                  (failure) => null, (username) => username),
+                  (failure) => null, (username) => username));
+
+          final image = state.failureOrImageOption.fold(
+              () => null,
+              (failureOrImage) =>
+                  failureOrImage.fold((failure) => null, (image) => image));
+
+          if (username != null) {
+            final failureOrUnit = await _iRegisterFacade.registerUser(
+              username: username,
+              avatar: image,
             );
 
-            log(username.toString());
+            emit(
+              state.copyWith(
+                registerFailureOrUnitOption: some(failureOrUnit),
+              ),
+            );
+          }
+        }, updateUsernameText: (event) {
+          final validatedUsername =
+              validateUsername(username: event.username.trim());
 
-            if (username != null) {
-              log(1.toString());
-              emit(
-                state.copyWith(
-                  step: 1,
-                  showErrors: true,
-                  registerFailureOrUnitOption: none(),
-                ),
-              );
-            } else {
-              emit(
-                state.copyWith(
-                  showErrors: true,
-                  registerFailureOrUnitOption: none(),
-                ),
-              );
-            }
-          },
-          updateAvatarImage: (event) async {
-            emit(state.copyWith(
-              failureOrImageOption: none(),
+          emit(
+            state.copyWith(
+              failureOrUsernameOption: some(validatedUsername),
               registerFailureOrUnitOption: none(),
-            ));
+            ),
+          );
+        }, saveUsername: (_) {
+          final username = state.failureOrUsernameOption.fold(
+            () => null,
+            (failureOrUsername) => failureOrUsername.fold(
+                (failure) => null, (username) => username),
+          );
 
-            final failureOrImage =
-                await _iRegisterFacade.uploadImageFromDevice();
+          log(username.toString());
 
-            emit(state.copyWith(failureOrImageOption: some(failureOrImage)));
-          },
-          removeAvatarImage: (_) {
-            emit(state.copyWith(
-              showErrors: false,
-              failureOrImageOption: none(),
-              registerFailureOrUnitOption: none(),
-            ));
-          },
-          goBack: (_) {
-            emit(state.copyWith(
-              step: state.step > 0 ? state.step - 1 : 0,
-              registerFailureOrUnitOption: none(),
-            ));
-          },
-        );
+          if (username != null) {
+            emit(
+              state.copyWith(
+                step: 2,
+                showErrors: true,
+                registerFailureOrUnitOption: none(),
+              ),
+            );
+          } else {
+            emit(
+              state.copyWith(
+                showErrors: true,
+                registerFailureOrUnitOption: none(),
+              ),
+            );
+          }
+        }, updateAvatarImage: (event) async {
+          emit(state.copyWith(
+            failureOrImageOption: none(),
+            registerFailureOrUnitOption: none(),
+          ));
+
+          final failureOrImage = await _iRegisterFacade.uploadImageFromDevice();
+
+          emit(state.copyWith(failureOrImageOption: some(failureOrImage)));
+        }, removeAvatarImage: (_) {
+          emit(state.copyWith(
+            showErrors: false,
+            failureOrImageOption: none(),
+            registerFailureOrUnitOption: none(),
+          ));
+        }, goBack: (_) {
+          emit(state.copyWith(
+            step: state.step > 0 ? state.step - 1 : 0,
+            registerFailureOrUnitOption: none(),
+          ));
+        }, goNext: (_) {
+          emit(state.copyWith(
+            step: 1,
+            registerFailureOrUnitOption: none(),
+          ));
+        });
       },
     );
   }

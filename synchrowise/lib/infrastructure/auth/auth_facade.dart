@@ -35,8 +35,6 @@ class AuthFacade implements IAuthFacade {
     try {
       final currentUser = _firebaseAuth.currentUser;
 
-      log(currentUser.toString());
-
       if (currentUser == null) {
         return left(const AuthFailure.signInRequired());
       } else {
@@ -68,6 +66,7 @@ class AuthFacade implements IAuthFacade {
       final googleAcc = await _googleSignIn.signIn();
 
       if (googleAcc != null) {
+        log("google account exists");
         final googleAuth = await googleAcc.authentication;
 
         final googleCred = GoogleAuthProvider.credential(
@@ -80,10 +79,12 @@ class AuthFacade implements IAuthFacade {
 
         final isNewUser = userCredential.additionalUserInfo?.isNewUser ?? false;
 
-        if (isNewUser) {
-          return _createUser(userCredential);
-        }
-        return right(unit);
+        //* log which method was used to sign in
+        log(isNewUser ? "creating a user" : "getting user from api");
+
+        return isNewUser
+            ? _createUser(userCredential)
+            : _getUserFromApi(userCredential);
       } else {
         return left(const AuthFailure.userCancelled());
       }
@@ -202,6 +203,8 @@ class AuthFacade implements IAuthFacade {
     final user = userCredential.user;
 
     if (user != null) {
+      log("user is not null");
+
       final firebaseToken = await user.getIdToken();
 
       final uri = Uri.parse("$baseApiUrl/api/User");
@@ -219,11 +222,17 @@ class AuthFacade implements IAuthFacade {
             user.metadata.lastSignInTime?.millisecondsSinceEpoch,
       };
 
+      log("sending post request to '$baseApiUrl/api/User'");
+
       final result = await _client.post(
         uri,
         body: jsonEncode(requestBody),
         headers: {HeaderKeys.contentType: HeaderValues.contentType},
       );
+
+      // log result status and result body
+      log("result status: ${result.statusCode}");
+      log("result body: ${result.body}");
 
       if (result.statusCode == 200) {
         final body = jsonDecode(result.body) as Map<String, dynamic>;
@@ -246,7 +255,10 @@ class AuthFacade implements IAuthFacade {
         return right(unit);
       } else if (result.statusCode == 500) {
         return left(const AuthFailure.serverInternal());
+      } else if (result.statusCode == 404) {
+        return left(const AuthFailure.unknown());
       } else {
+        log(result.body);
         final body = jsonDecode(result.body) as Map<String, dynamic>;
         final error = body["error"] as Map<String, dynamic>;
         final errorList = (error['errors'] as List<dynamic>).cast();
@@ -260,43 +272,57 @@ class AuthFacade implements IAuthFacade {
     return left(const AuthFailure.unknown());
   }
 
-  // Future<Either<AuthFailure, SynchrowiseUser>> _getUserFromApi(
-  //   UserCredential userCredential,
-  // ) async {
-  //   final credential = userCredential.credential;
-  //   final user = userCredential.user;
+  Future<Either<AuthFailure, Unit>> _getUserFromApi(
+    UserCredential userCredential,
+  ) async {
+    final credential = userCredential.credential;
+    final user = userCredential.user;
 
-  //   if (user != null) {
-  //     final firebaseToken = await user.getIdToken();
+    if (user != null) {
+      final firebaseToken = await user.getIdToken();
 
-  //     final uri = Uri.parse("$baseApiUrl/api/User/firebase/${user.uid}");
+      final uri = Uri.parse("$baseApiUrl/api/User/firebase/${user.uid}");
 
-  //     final result = await _client.get(
-  //       uri,
-  //       headers: {HeaderKeys.contentType: HeaderValues.contentType},
-  //     );
+      final result = await _client.get(
+        uri,
+        headers: {HeaderKeys.contentType: HeaderValues.contentType},
+      );
 
-  //     if (result.statusCode == 200) {
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
+      log(result.statusCode.toString());
 
-  //       final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
+      if (result.statusCode == 200) {
+        final body = jsonDecode(result.body) as Map<String, dynamic>;
 
-  //       final data = Map<String, dynamic>.from(bodyData);
+        final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
 
-  //       data.addAll({
-  //         'email': user.email,
-  //         'firebaseId': user.uid,
-  //         'firebaseIdToken': firebaseToken,
-  //         'signInMethod': credential?.signInMethod,
-  //       });
+        final data = Map<String, dynamic>.from(bodyData);
 
-  //       return right(SynchrowiseUser.fromMap(data));
-  //     } else if (result.statusCode == 500) {
-  //       return left(const AuthFailure.unknown());
-  //     } else {
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
-  //     }
-  //   }
-  //   return left(const AuthFailure.unknown());
-  // }
+        data.addAll({
+          'email': user.email,
+          'firebaseId': user.uid,
+          'firebaseIdToken': firebaseToken,
+          'signInMethod': credential?.signInMethod,
+        });
+
+        log("writing user to storage: " + data.toString());
+
+        await _localStorage.setItem(LocalStorageKeys.synchrowiseUser, data);
+
+        return right(unit);
+      } else if (result.statusCode == 500) {
+        return left(const AuthFailure.unknown());
+      } else if (result.statusCode == 404) {
+        return left(const AuthFailure.unknown());
+      } else {
+        final body = jsonDecode(result.body) as Map<String, dynamic>;
+        final error = body["error"] as Map<String, dynamic>;
+        final errorList = (error['errors'] as List<dynamic>).cast();
+
+        if (errorList.contains('This is user is exist')) {
+          return left(const AuthFailure.emailAlreadyInUse());
+        }
+      }
+    }
+    return left(const AuthFailure.unknown());
+  }
 }

@@ -17,6 +17,15 @@ class DefaultTextField extends StatelessWidget {
   final String hintText;
   final Function(String text) onChanged;
 
+  Border? get _getErorrBorder {
+    return errorText != null
+        ? Border.all(
+            color: primaryColor,
+            width: 1,
+          )
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,6 +35,7 @@ class DefaultTextField extends StatelessWidget {
           decoration: BoxDecoration(
             color: grayLightColor,
             borderRadius: BorderRadius.circular(15.0),
+            border: _getErorrBorder,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
