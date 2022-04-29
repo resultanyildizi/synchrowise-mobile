@@ -68,13 +68,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
 
         final data = Map<String, dynamic>.from(bodyData);
 
-        return right(userFromCred.copyWith(
-          synchrowiseId: data['guid'],
-          username: data['username'],
-          emailAddress: data['email'],
-          avatar: Avatar.fromMap(data['avatar']),
-          premium: Premium.fromValue(data['premiumType']),
-        ));
+        return right(userFromCred.copyWithMap(data));
       } else {
         return left(SynchrowiseUserRepositoryFailure.server(
           result.statusCode,

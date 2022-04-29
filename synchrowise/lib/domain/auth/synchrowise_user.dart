@@ -93,35 +93,21 @@ class SynchrowiseUser extends Equatable {
     );
   }
 
-  SynchrowiseUser copyWith({
-    String? firebaseId,
-    String? synchrowiseId,
-    Avatar? avatar,
-    String? signInMethod,
-    String? firebaseIdToken,
-    String? username,
-    String? emailAddress,
-    Premium? premium,
-    bool? sEmailVerified,
-    bool? sIsNewUser,
-    int? sFirebaseCreationTimeMs,
-    int? sFirebaseLastSigninTimeMs,
-  }) {
+  SynchrowiseUser copyWithMap(Map<String, dynamic> data) {
     return SynchrowiseUser(
-      firebaseId: firebaseId ?? this.firebaseId,
-      synchrowiseId: synchrowiseId ?? this.synchrowiseId,
-      avatar: avatar ?? this.avatar,
-      signInMethod: signInMethod ?? this.signInMethod,
-      firebaseIdToken: firebaseIdToken ?? this.firebaseIdToken,
-      username: username ?? this.username,
-      emailAddress: emailAddress ?? this.emailAddress,
-      premium: premium ?? this.premium,
-      sEmailVerified: sEmailVerified ?? this.sEmailVerified,
-      sIsNewUser: sIsNewUser ?? this.sIsNewUser,
-      sFirebaseCreationTimeMs:
-          sFirebaseCreationTimeMs ?? this.sFirebaseCreationTimeMs,
-      sFirebaseLastSigninTimeMs:
-          sFirebaseLastSigninTimeMs ?? this.sFirebaseLastSigninTimeMs,
+      synchrowiseId: data['guid'],
+      username: data['username'],
+      emailAddress: data['email'],
+      avatar: Avatar.fromMap(data['avatar']),
+      premium: Premium.fromValue(data['premiumType']),
+      // --
+      firebaseId: firebaseId,
+      firebaseIdToken: firebaseIdToken,
+      sFirebaseCreationTimeMs: sFirebaseCreationTimeMs,
+      sFirebaseLastSigninTimeMs: sFirebaseLastSigninTimeMs,
+      sEmailVerified: sEmailVerified,
+      sIsNewUser: sIsNewUser,
+      signInMethod: signInMethod,
     );
   }
 }
