@@ -1,13 +1,9 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_2.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
-import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 

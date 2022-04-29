@@ -13,7 +13,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: ((context, state) {
+        state.maybeMap(
+          unauthorized: (_) {
+            Navigator.pushReplacementNamed(context, "/welcome");
+          },
+          orElse: () {},
+        );
+      }),
       builder: (context, state) {
         return state.map(
           authorized: (authorizedState) {

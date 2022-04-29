@@ -22,9 +22,9 @@ module.exports = {
   ],
   plugins: ["@typescript-eslint", "import"],
   rules: {
-    "quote-props": [2, "as-needed"],
     quotes: ["error", "double"],
     indent: "off",
+    "quote-props": [2, "as-needed"],
     "import/no-unresolved": 0,
   },
 };

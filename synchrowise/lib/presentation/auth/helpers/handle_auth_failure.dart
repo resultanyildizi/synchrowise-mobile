@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:synchrowise/infrastructure/auth/failure/auth_failure.dart';
+import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 
-void handleAuthFailures(AuthFailure failure) {
+void handleAuthFailures(AuthFacadeFailure failure) {
   failure.maybeMap(
     invalidCredentials: (_) {
       showErrorToast("invalid_email_or_password".tr(), ToastGravity.BOTTOM);

@@ -5,55 +5,89 @@ import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
-import 'package:synchrowise/infrastructure/auth/auth_facade.dart';
-import 'package:synchrowise/infrastructure/auth/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/syncrowise_user_sembast_storage.dart';
 import 'package:synchrowise/infrastructure/register/i_register_facade.dart';
 import 'package:synchrowise/infrastructure/register/register_facade.dart';
+import 'package:synchrowise/services/core/synchrowise_database.dart';
 
 GetIt getIt = GetIt.instance;
 
 Future<void> setupInjector() async {
   await _setupServices();
-  await _setupFacades();
+  await _setupInfrastructure();
   await _setupBlocs();
 }
 
 Future<void> _setupServices() async {
-  final localStorage = LocalStorage('synchrowise');
-  await localStorage.ready;
+  final database = await SynchrowiseDatabase.database;
 
   getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
   getIt.registerSingleton<GoogleSignIn>(GoogleSignIn());
   getIt.registerSingleton<Client>(Client());
   getIt.registerSingleton<ImagePicker>(ImagePicker());
   getIt.registerSingleton<ImageCropper>(ImageCropper());
-  getIt.registerSingleton<LocalStorage>(localStorage);
+  getIt.registerSingleton<Database>(database);
 }
 
-Future<void> _setupFacades() async {
+Future<void> _setupInfrastructure() async {
   getIt.registerSingleton<IAuthFacade>(
     AuthFacade(
       getIt<FirebaseAuth>(),
       getIt<GoogleSignIn>(),
-      getIt<LocalStorage>(),
-      getIt<Client>(),
     ),
   );
+
   getIt.registerSingleton<IRegisterFacade>(RegisterFacade(
     getIt<Client>(),
     getIt<ImagePicker>(),
     getIt<ImageCropper>(),
   ));
+
+  getIt.registerSingleton<ISynchrowiseUserStorage>(SyncrowiseUserSembastStorage(
+    getIt<Database>(),
+    StoreRef<String, Map<String, dynamic>?>.main(),
+  ));
+
+  getIt.registerSingleton<ISynchrowiseUserRepository>(
+    SynchrowiseUserRepository(getIt<Client>()),
+  );
 }
 
 Future<void> _setupBlocs() async {
-  getIt.registerSingleton<AuthBloc>(AuthBloc(getIt<IAuthFacade>()));
-  getIt.registerSingleton<SignupFormBloc>(SignupFormBloc(getIt<IAuthFacade>()));
-  getIt.registerSingleton<SigninFormBloc>(SigninFormBloc(getIt<IAuthFacade>()));
+  getIt.registerSingleton<AuthBloc>(
+    AuthBloc(
+      getIt<IAuthFacade>(),
+      getIt<ISynchrowiseUserStorage>(),
+    ),
+  );
+  getIt.registerSingleton<SigninFormBloc>(
+    SigninFormBloc(
+      getIt<IAuthFacade>(),
+      getIt<ISynchrowiseUserRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+    ),
+  );
+  getIt.registerSingleton<SignupFormBloc>(
+    SignupFormBloc(
+      getIt<IAuthFacade>(),
+      getIt<ISynchrowiseUserRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+    ),
+  );
+
   getIt.registerSingleton<RegisterStepsBloc>(
-      RegisterStepsBloc(getIt<IRegisterFacade>()));
+    RegisterStepsBloc(
+      getIt<IRegisterFacade>(),
+    ),
+  );
 }

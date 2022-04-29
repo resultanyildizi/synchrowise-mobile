@@ -1,87 +1,127 @@
 import 'package:equatable/equatable.dart';
 
+import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/domain/auth/premium.dart';
 
+/// The parameters below are only used when the user is created by the server.
+/// They must not be used in the client.
+/// * `emailVerified`: The email verification status of the user.
+/// * `isNewUser`: The status of the user.
+/// * `firebaseCreationTimeMs`: The creation time of the user.
+/// * `firebaseLastSigninTimeMs`: The last sign in time of the user.
+///
 class SynchrowiseUser extends Equatable {
   final String firebaseId;
   final String synchrowiseId;
-  final String avatarUrl;
-  final String loginProvider;
+  final Avatar avatar;
+  final String signInMethod;
   final String firebaseIdToken;
   final String? username;
   final String? emailAddress;
   final Premium premium;
 
+  final bool sEmailVerified;
+  final bool sIsNewUser;
+  final int sFirebaseCreationTimeMs;
+  final int sFirebaseLastSigninTimeMs;
+
   const SynchrowiseUser({
     required this.username,
     required this.firebaseId,
     required this.synchrowiseId,
-    required this.avatarUrl,
-    required this.loginProvider,
+    required this.avatar,
+    required this.signInMethod,
     required this.firebaseIdToken,
     required this.emailAddress,
     required this.premium,
+    this.sEmailVerified = false,
+    this.sIsNewUser = false,
+    this.sFirebaseCreationTimeMs = -1,
+    this.sFirebaseLastSigninTimeMs = -1,
   });
 
   @override
   List<Object?> get props {
     return [
-      username,
       firebaseId,
       synchrowiseId,
-      avatarUrl,
-      loginProvider,
+      avatar,
+      signInMethod,
       firebaseIdToken,
+      username,
       emailAddress,
       premium,
+      sEmailVerified,
+      sIsNewUser,
+      sFirebaseCreationTimeMs,
+      sFirebaseLastSigninTimeMs,
     ];
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'username': username,
-      'firebaseId': firebaseId,
-      'guid': synchrowiseId,
-      'avatar': avatarUrl,
-      'signInMethod': loginProvider,
-      'firebaseIdToken': firebaseIdToken,
+      'firebase_uid': firebaseId,
+      'firebase_id_token': firebaseIdToken,
       'email': emailAddress,
-      'premiumType': premium.value,
+      'synchrowise_id': synchrowiseId,
+      'avatar_url': avatar.toMap(),
+      'sign_in_method': signInMethod,
+      'username': username,
+      'premium': premium.value,
+      // --
+      'email_verified': sEmailVerified,
+      'is_New_user': sIsNewUser,
+      'firebase_Creation_Time': sFirebaseCreationTimeMs,
+      'firebase_Last_Signin_Time': sFirebaseLastSigninTimeMs,
     };
   }
 
-  factory SynchrowiseUser.fromMap(Map<String, dynamic> map) {
+  static SynchrowiseUser fromMap(Map<String, dynamic> map) {
     return SynchrowiseUser(
-      avatarUrl: map['avatar']!,
-      username: map['username'],
-      emailAddress: map['email'],
-      synchrowiseId: map['guid']!,
-      firebaseId: map['firebaseId']!,
-      loginProvider: map['signInMethod']!,
-      firebaseIdToken: map['firebaseIdToken']!,
-      premium: Premium.fromValue(map['premiumType']),
+      username: map['username'] as String,
+      firebaseId: map['firebase_uid'] as String,
+      synchrowiseId: map['synchrowise_id'] as String,
+      avatar: Avatar.fromMap(map['avatar_url'] as Map<String, dynamic>),
+      signInMethod: map['sign_in_method'] as String,
+      firebaseIdToken: map['firebase_id_token'] as String,
+      emailAddress: map['email'] as String,
+      premium: Premium.fromValue(map['premium'] as int),
+      sEmailVerified: map['email_verified'] as bool,
+      sIsNewUser: map['is_New_user'] as bool,
+      sFirebaseCreationTimeMs: map['firebase_Creation_Time'] as int,
+      sFirebaseLastSigninTimeMs: map['firebase_Last_Signin_Time'] as int,
     );
   }
 
   SynchrowiseUser copyWith({
     String? firebaseId,
     String? synchrowiseId,
-    String? avatarUrl,
-    String? loginProvider,
+    Avatar? avatar,
+    String? signInMethod,
     String? firebaseIdToken,
     String? username,
     String? emailAddress,
     Premium? premium,
+    bool? sEmailVerified,
+    bool? sIsNewUser,
+    int? sFirebaseCreationTimeMs,
+    int? sFirebaseLastSigninTimeMs,
   }) {
     return SynchrowiseUser(
       firebaseId: firebaseId ?? this.firebaseId,
       synchrowiseId: synchrowiseId ?? this.synchrowiseId,
-      avatarUrl: avatarUrl ?? this.avatarUrl,
-      loginProvider: loginProvider ?? this.loginProvider,
+      avatar: avatar ?? this.avatar,
+      signInMethod: signInMethod ?? this.signInMethod,
       firebaseIdToken: firebaseIdToken ?? this.firebaseIdToken,
       username: username ?? this.username,
       emailAddress: emailAddress ?? this.emailAddress,
       premium: premium ?? this.premium,
+      sEmailVerified: sEmailVerified ?? this.sEmailVerified,
+      sIsNewUser: sIsNewUser ?? this.sIsNewUser,
+      sFirebaseCreationTimeMs:
+          sFirebaseCreationTimeMs ?? this.sFirebaseCreationTimeMs,
+      sFirebaseLastSigninTimeMs:
+          sFirebaseLastSigninTimeMs ?? this.sFirebaseLastSigninTimeMs,
     );
   }
 }

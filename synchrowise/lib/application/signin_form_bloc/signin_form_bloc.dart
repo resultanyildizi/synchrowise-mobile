@@ -1,11 +1,17 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
-import 'package:synchrowise/infrastructure/auth/failure/auth_failure.dart';
+import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
+
+import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
+import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
-import 'package:synchrowise/infrastructure/auth/i_auth_facade.dart';
 
 part 'signin_form_bloc.freezed.dart';
 part 'signin_form_event.dart';
@@ -14,6 +20,8 @@ part 'signin_form_state.dart';
 class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
   ///* Dependencies
   final IAuthFacade _iAuthFacade;
+  final ISynchrowiseUserRepository _iUserRepo;
+  final ISynchrowiseUserStorage _iStorage;
 
   ///* Methods
   void signupWithEmailAndPassword() =>
@@ -27,7 +35,8 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
       add(SigninFormEvent.updatePasswordText(password: password));
 
   ///* Logic
-  SigninFormBloc(this._iAuthFacade) : super(SigninFormState.initial()) {
+  SigninFormBloc(this._iAuthFacade, this._iUserRepo, this._iStorage)
+      : super(SigninFormState.initial()) {
     on<SigninFormEvent>(
       (event, emit) async {
         await event.map(
@@ -51,11 +60,14 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
             );
 
             if (email != null && password != null) {
-              final failureOrUser =
+              final failureOrCredUser =
                   await _iAuthFacade.signInWithEmailAndPassword(
                 email: email,
                 password: password,
               );
+
+              final failureOrUser =
+                  await _getAndUpdateStoredUser(failureOrCredUser);
 
               emit(state.copyWith(
                 failureOrUserOption: some(failureOrUser),
@@ -71,7 +83,10 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
               isSigningGoogle: true,
             ));
 
-            final failureOrUser = await _iAuthFacade.signInWithGoogleAuth();
+            final failureOrCredUser = await _iAuthFacade.signInWithGoogleAuth();
+
+            final failureOrUser =
+                await _getAndUpdateStoredUser(failureOrCredUser);
 
             emit(state.copyWith(
               failureOrUserOption: some(failureOrUser),
@@ -96,6 +111,25 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
             );
 
             emit(newstate);
+          },
+        );
+      },
+    );
+  }
+
+  FutureOr<Either<SynchrowiseFailure, Unit>> _getAndUpdateStoredUser(
+      Either<AuthFacadeFailure, SynchrowiseUser> failureOrCredUser) async {
+    return failureOrCredUser.fold(
+      (failure) => left(failure),
+      (credUser) async {
+        final failureOrRepoUser =
+            await _iUserRepo.getByCredUser(userFromCred: credUser);
+
+        return failureOrRepoUser.fold(
+          (failure) => left(failure),
+          (repoUser) async {
+            final failureOrUnit = await _iStorage.update(user: repoUser);
+            return failureOrUnit;
           },
         );
       },

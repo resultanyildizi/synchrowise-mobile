@@ -5,10 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_page.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_1.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
+import 'package:synchrowise/presentation/register_steps/register_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         final nextPage = state.when(
           initial: () => const WelcomePage(),
-          unauthorized: () => const WelcomePage(),
+          unauthorized: (_) => const WelcomePage(),
           authorized: (user) {
             if (user.username != null) {
               return const HomePage();

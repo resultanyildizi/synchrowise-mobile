@@ -7,11 +7,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_0.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_1.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_2.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
+import 'package:synchrowise/presentation/register_steps/register_steps_0.dart';
+import 'package:synchrowise/presentation/register_steps/register_steps_1.dart';
+import 'package:synchrowise/presentation/register_steps/register_steps_2.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -47,7 +47,45 @@ class _RegisterPageState extends State<RegisterPage> {
           (failureOrUnit) {
             failureOrUnit.fold(
               (failure) {
-                showErrorToast("username_is_taken", ToastGravity.BOTTOM);
+                failure.maybeMap(
+                  connection: (_) {
+                    showErrorToast(
+                        "connection_error".tr(), ToastGravity.BOTTOM);
+                  },
+                  unknown: (_) {
+                    showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+                  },
+                  usernameIsTaken: (_) {
+                    showErrorToast(
+                        "username_is_taken".tr(), ToastGravity.BOTTOM);
+                  },
+                  orElse: () {},
+                );
+              },
+              (_) => null,
+            );
+          },
+        );
+
+        state.failureOrImageOption.fold(
+          () => null,
+          (failureOrUnit) {
+            failureOrUnit.fold(
+              (failure) {
+                failure.maybeMap(
+                  imagePickFailed: (_) {
+                    showErrorToast(
+                        "image_pick_failed".tr(), ToastGravity.BOTTOM);
+                  },
+                  imageCropperFailed: (_) {
+                    showErrorToast(
+                        "image_cropper_failed".tr(), ToastGravity.BOTTOM);
+                  },
+                  imageTooLarge: (_) {
+                    showErrorToast("image_too_large".tr(), ToastGravity.BOTTOM);
+                  },
+                  orElse: () {},
+                );
               },
               (_) => null,
             );

@@ -1252,12 +1252,14 @@ class _$RegisterStepsStateTearOff {
       required Option<Either<RegisterFailure, File>> failureOrImageOption,
       required Option<Either<RegisterFailure, Unit>>
           registerFailureOrUnitOption,
+      required bool uploadingImage,
       required bool showErrors,
       required int step}) {
     return _RegisterStepsState(
       failureOrUsernameOption: failureOrUsernameOption,
       failureOrImageOption: failureOrImageOption,
       registerFailureOrUnitOption: registerFailureOrUnitOption,
+      uploadingImage: uploadingImage,
       showErrors: showErrors,
       step: step,
     );
@@ -1275,6 +1277,7 @@ mixin _$RegisterStepsState {
       throw _privateConstructorUsedError;
   Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption =>
       throw _privateConstructorUsedError;
+  bool get uploadingImage => throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   int get step => throw _privateConstructorUsedError;
 
@@ -1292,6 +1295,7 @@ abstract class $RegisterStepsStateCopyWith<$Res> {
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
       Option<Either<RegisterFailure, File>> failureOrImageOption,
       Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
+      bool uploadingImage,
       bool showErrors,
       int step});
 }
@@ -1310,6 +1314,7 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
     Object? failureOrUsernameOption = freezed,
     Object? failureOrImageOption = freezed,
     Object? registerFailureOrUnitOption = freezed,
+    Object? uploadingImage = freezed,
     Object? showErrors = freezed,
     Object? step = freezed,
   }) {
@@ -1326,6 +1331,10 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RegisterFailure, Unit>>,
+      uploadingImage: uploadingImage == freezed
+          ? _value.uploadingImage
+          : uploadingImage // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrors: showErrors == freezed
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
@@ -1349,6 +1358,7 @@ abstract class _$RegisterStepsStateCopyWith<$Res>
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
       Option<Either<RegisterFailure, File>> failureOrImageOption,
       Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
+      bool uploadingImage,
       bool showErrors,
       int step});
 }
@@ -1369,6 +1379,7 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
     Object? failureOrUsernameOption = freezed,
     Object? failureOrImageOption = freezed,
     Object? registerFailureOrUnitOption = freezed,
+    Object? uploadingImage = freezed,
     Object? showErrors = freezed,
     Object? step = freezed,
   }) {
@@ -1385,6 +1396,10 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<RegisterFailure, Unit>>,
+      uploadingImage: uploadingImage == freezed
+          ? _value.uploadingImage
+          : uploadingImage // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrors: showErrors == freezed
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
@@ -1404,6 +1419,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
       {required this.failureOrUsernameOption,
       required this.failureOrImageOption,
       required this.registerFailureOrUnitOption,
+      required this.uploadingImage,
       required this.showErrors,
       required this.step});
 
@@ -1414,13 +1430,15 @@ class _$_RegisterStepsState implements _RegisterStepsState {
   @override
   final Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption;
   @override
+  final bool uploadingImage;
+  @override
   final bool showErrors;
   @override
   final int step;
 
   @override
   String toString() {
-    return 'RegisterStepsState(failureOrUsernameOption: $failureOrUsernameOption, failureOrImageOption: $failureOrImageOption, registerFailureOrUnitOption: $registerFailureOrUnitOption, showErrors: $showErrors, step: $step)';
+    return 'RegisterStepsState(failureOrUsernameOption: $failureOrUsernameOption, failureOrImageOption: $failureOrImageOption, registerFailureOrUnitOption: $registerFailureOrUnitOption, uploadingImage: $uploadingImage, showErrors: $showErrors, step: $step)';
   }
 
   @override
@@ -1436,6 +1454,8 @@ class _$_RegisterStepsState implements _RegisterStepsState {
                 other.registerFailureOrUnitOption,
                 registerFailureOrUnitOption) &&
             const DeepCollectionEquality()
+                .equals(other.uploadingImage, uploadingImage) &&
+            const DeepCollectionEquality()
                 .equals(other.showErrors, showErrors) &&
             const DeepCollectionEquality().equals(other.step, step));
   }
@@ -1446,6 +1466,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
       const DeepCollectionEquality().hash(failureOrUsernameOption),
       const DeepCollectionEquality().hash(failureOrImageOption),
       const DeepCollectionEquality().hash(registerFailureOrUnitOption),
+      const DeepCollectionEquality().hash(uploadingImage),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(step));
 
@@ -1461,6 +1482,7 @@ abstract class _RegisterStepsState implements RegisterStepsState {
       required Option<Either<RegisterFailure, File>> failureOrImageOption,
       required Option<Either<RegisterFailure, Unit>>
           registerFailureOrUnitOption,
+      required bool uploadingImage,
       required bool showErrors,
       required int step}) = _$_RegisterStepsState;
 
@@ -1470,6 +1492,8 @@ abstract class _RegisterStepsState implements RegisterStepsState {
   Option<Either<RegisterFailure, File>> get failureOrImageOption;
   @override
   Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption;
+  @override
+  bool get uploadingImage;
   @override
   bool get showErrors;
   @override

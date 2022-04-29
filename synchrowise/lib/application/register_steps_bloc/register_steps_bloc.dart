@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -41,14 +40,20 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
           );
 
           final username = state.failureOrUsernameOption.fold(
-              () => null,
-              (failureOrUsername) => failureOrUsername.fold(
-                  (failure) => null, (username) => username));
+            () => null,
+            (failureOrUsername) => failureOrUsername.fold(
+              (failure) => null,
+              (username) => username,
+            ),
+          );
 
           final image = state.failureOrImageOption.fold(
-              () => null,
-              (failureOrImage) =>
-                  failureOrImage.fold((failure) => null, (image) => image));
+            () => null,
+            (failureOrImage) => failureOrImage.fold(
+              (failure) => null,
+              (image) => image,
+            ),
+          );
 
           if (username != null) {
             final failureOrUnit = await _iRegisterFacade.registerUser(
@@ -79,8 +84,6 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 (failure) => null, (username) => username),
           );
 
-          log(username.toString());
-
           if (username != null) {
             emit(
               state.copyWith(
@@ -101,11 +104,16 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
           emit(state.copyWith(
             failureOrImageOption: none(),
             registerFailureOrUnitOption: none(),
+            uploadingImage: true,
           ));
 
           final failureOrImage = await _iRegisterFacade.uploadImageFromDevice();
 
-          emit(state.copyWith(failureOrImageOption: some(failureOrImage)));
+          emit(
+            state.copyWith(
+                failureOrImageOption: some(failureOrImage),
+                uploadingImage: false),
+          );
         }, removeAvatarImage: (_) {
           emit(state.copyWith(
             showErrors: false,

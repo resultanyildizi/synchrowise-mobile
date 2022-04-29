@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'auth_failure.dart';
+part of 'auth_facade_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,8 +15,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AuthFailureTearOff {
-  const _$AuthFailureTearOff();
+class _$AuthFacadeFailureTearOff {
+  const _$AuthFacadeFailureTearOff();
 
   _InvalidCredentialsFailure invalidCredentials() {
     return const _InvalidCredentialsFailure();
@@ -28,10 +28,6 @@ class _$AuthFailureTearOff {
 
   _SignInRequiredFailure signInRequired() {
     return const _SignInRequiredFailure();
-  }
-
-  _ServerInternalFailure serverInternal() {
-    return const _ServerInternalFailure();
   }
 
   _UserCancelledFailure userCancelled() {
@@ -50,32 +46,31 @@ class _$AuthFailureTearOff {
     return const _WeakPasswordFailure();
   }
 
-  _ConnectionFailure connection() {
-    return const _ConnectionFailure();
-  }
-
   _UnknownFailure unknown() {
     return const _UnknownFailure();
+  }
+
+  _ConnectionFailure connection() {
+    return const _ConnectionFailure();
   }
 }
 
 /// @nodoc
-const $AuthFailure = _$AuthFailureTearOff();
+const $AuthFacadeFailure = _$AuthFacadeFailureTearOff();
 
 /// @nodoc
-mixin _$AuthFailure {
+mixin _$AuthFacadeFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,13 +78,12 @@ mixin _$AuthFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,13 +91,12 @@ mixin _$AuthFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,13 +107,12 @@ mixin _$AuthFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,13 +120,12 @@ mixin _$AuthFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -142,32 +133,32 @@ mixin _$AuthFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthFailureCopyWith<$Res> {
-  factory $AuthFailureCopyWith(
-          AuthFailure value, $Res Function(AuthFailure) then) =
-      _$AuthFailureCopyWithImpl<$Res>;
+abstract class $AuthFacadeFailureCopyWith<$Res> {
+  factory $AuthFacadeFailureCopyWith(
+          AuthFacadeFailure value, $Res Function(AuthFacadeFailure) then) =
+      _$AuthFacadeFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
-  _$AuthFailureCopyWithImpl(this._value, this._then);
+class _$AuthFacadeFailureCopyWithImpl<$Res>
+    implements $AuthFacadeFailureCopyWith<$Res> {
+  _$AuthFacadeFailureCopyWithImpl(this._value, this._then);
 
-  final AuthFailure _value;
+  final AuthFacadeFailure _value;
   // ignore: unused_field
-  final $Res Function(AuthFailure) _then;
+  final $Res Function(AuthFacadeFailure) _then;
 }
 
 /// @nodoc
@@ -179,7 +170,7 @@ abstract class _$InvalidCredentialsFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$InvalidCredentialsFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$InvalidCredentialsFailureCopyWith<$Res> {
   __$InvalidCredentialsFailureCopyWithImpl(_InvalidCredentialsFailure _value,
       $Res Function(_InvalidCredentialsFailure) _then)
@@ -197,7 +188,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.invalidCredentials()';
+    return 'AuthFacadeFailure.invalidCredentials()';
   }
 
   @override
@@ -216,13 +207,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return invalidCredentials();
   }
@@ -233,13 +223,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return invalidCredentials?.call();
   }
@@ -250,13 +239,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -273,13 +261,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return invalidCredentials(this);
   }
@@ -290,13 +277,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -307,13 +293,12 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -323,7 +308,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
   }
 }
 
-abstract class _InvalidCredentialsFailure implements AuthFailure {
+abstract class _InvalidCredentialsFailure implements AuthFacadeFailure {
   const factory _InvalidCredentialsFailure() = _$_InvalidCredentialsFailure;
 }
 
@@ -336,7 +321,7 @@ abstract class _$EmailAlreadyInUseFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$EmailAlreadyInUseFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$EmailAlreadyInUseFailureCopyWith<$Res> {
   __$EmailAlreadyInUseFailureCopyWithImpl(_EmailAlreadyInUseFailure _value,
       $Res Function(_EmailAlreadyInUseFailure) _then)
@@ -354,7 +339,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.emailAlreadyInUse()';
+    return 'AuthFacadeFailure.emailAlreadyInUse()';
   }
 
   @override
@@ -373,13 +358,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return emailAlreadyInUse();
   }
@@ -390,13 +374,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -407,13 +390,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -430,13 +412,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -447,13 +428,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -464,13 +444,12 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -480,7 +459,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
   }
 }
 
-abstract class _EmailAlreadyInUseFailure implements AuthFailure {
+abstract class _EmailAlreadyInUseFailure implements AuthFacadeFailure {
   const factory _EmailAlreadyInUseFailure() = _$_EmailAlreadyInUseFailure;
 }
 
@@ -493,7 +472,7 @@ abstract class _$SignInRequiredFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$SignInRequiredFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$SignInRequiredFailureCopyWith<$Res> {
   __$SignInRequiredFailureCopyWithImpl(_SignInRequiredFailure _value,
       $Res Function(_SignInRequiredFailure) _then)
@@ -510,7 +489,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.signInRequired()';
+    return 'AuthFacadeFailure.signInRequired()';
   }
 
   @override
@@ -528,13 +507,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return signInRequired();
   }
@@ -545,13 +523,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return signInRequired?.call();
   }
@@ -562,13 +539,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (signInRequired != null) {
@@ -585,13 +561,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return signInRequired(this);
   }
@@ -602,13 +577,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return signInRequired?.call(this);
   }
@@ -619,13 +593,12 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (signInRequired != null) {
@@ -635,163 +608,8 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
   }
 }
 
-abstract class _SignInRequiredFailure implements AuthFailure {
+abstract class _SignInRequiredFailure implements AuthFacadeFailure {
   const factory _SignInRequiredFailure() = _$_SignInRequiredFailure;
-}
-
-/// @nodoc
-abstract class _$ServerInternalFailureCopyWith<$Res> {
-  factory _$ServerInternalFailureCopyWith(_ServerInternalFailure value,
-          $Res Function(_ServerInternalFailure) then) =
-      __$ServerInternalFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$ServerInternalFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
-    implements _$ServerInternalFailureCopyWith<$Res> {
-  __$ServerInternalFailureCopyWithImpl(_ServerInternalFailure _value,
-      $Res Function(_ServerInternalFailure) _then)
-      : super(_value, (v) => _then(v as _ServerInternalFailure));
-
-  @override
-  _ServerInternalFailure get _value => super._value as _ServerInternalFailure;
-}
-
-/// @nodoc
-
-class _$_ServerInternalFailure implements _ServerInternalFailure {
-  const _$_ServerInternalFailure();
-
-  @override
-  String toString() {
-    return 'AuthFailure.serverInternal()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ServerInternalFailure);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() invalidCredentials,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
-    required TResult Function() userCancelled,
-    required TResult Function() userDisabled,
-    required TResult Function() invalidEmail,
-    required TResult Function() weakPassword,
-    required TResult Function() connection,
-    required TResult Function() unknown,
-  }) {
-    return serverInternal();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? invalidCredentials,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
-    TResult Function()? userCancelled,
-    TResult Function()? userDisabled,
-    TResult Function()? invalidEmail,
-    TResult Function()? weakPassword,
-    TResult Function()? connection,
-    TResult Function()? unknown,
-  }) {
-    return serverInternal?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? invalidCredentials,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
-    TResult Function()? userCancelled,
-    TResult Function()? userDisabled,
-    TResult Function()? invalidEmail,
-    TResult Function()? weakPassword,
-    TResult Function()? connection,
-    TResult Function()? unknown,
-    required TResult orElse(),
-  }) {
-    if (serverInternal != null) {
-      return serverInternal();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InvalidCredentialsFailure value)
-        invalidCredentials,
-    required TResult Function(_EmailAlreadyInUseFailure value)
-        emailAlreadyInUse,
-    required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
-    required TResult Function(_UserCancelledFailure value) userCancelled,
-    required TResult Function(_UserDisabledFailure value) userDisabled,
-    required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
-    required TResult Function(_UnknownFailure value) unknown,
-  }) {
-    return serverInternal(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
-    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
-    TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
-    TResult Function(_UserCancelledFailure value)? userCancelled,
-    TResult Function(_UserDisabledFailure value)? userDisabled,
-    TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
-    TResult Function(_UnknownFailure value)? unknown,
-  }) {
-    return serverInternal?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
-    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
-    TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
-    TResult Function(_UserCancelledFailure value)? userCancelled,
-    TResult Function(_UserDisabledFailure value)? userDisabled,
-    TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
-    TResult Function(_UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (serverInternal != null) {
-      return serverInternal(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ServerInternalFailure implements AuthFailure {
-  const factory _ServerInternalFailure() = _$_ServerInternalFailure;
 }
 
 /// @nodoc
@@ -803,7 +621,7 @@ abstract class _$UserCancelledFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$UserCancelledFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$UserCancelledFailureCopyWith<$Res> {
   __$UserCancelledFailureCopyWithImpl(
       _UserCancelledFailure _value, $Res Function(_UserCancelledFailure) _then)
@@ -820,7 +638,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.userCancelled()';
+    return 'AuthFacadeFailure.userCancelled()';
   }
 
   @override
@@ -838,13 +656,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return userCancelled();
   }
@@ -855,13 +672,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return userCancelled?.call();
   }
@@ -872,13 +688,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (userCancelled != null) {
@@ -895,13 +710,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return userCancelled(this);
   }
@@ -912,13 +726,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return userCancelled?.call(this);
   }
@@ -929,13 +742,12 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (userCancelled != null) {
@@ -945,7 +757,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
   }
 }
 
-abstract class _UserCancelledFailure implements AuthFailure {
+abstract class _UserCancelledFailure implements AuthFacadeFailure {
   const factory _UserCancelledFailure() = _$_UserCancelledFailure;
 }
 
@@ -958,7 +770,7 @@ abstract class _$UserDisabledFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$UserDisabledFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$UserDisabledFailureCopyWith<$Res> {
   __$UserDisabledFailureCopyWithImpl(
       _UserDisabledFailure _value, $Res Function(_UserDisabledFailure) _then)
@@ -975,7 +787,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.userDisabled()';
+    return 'AuthFacadeFailure.userDisabled()';
   }
 
   @override
@@ -993,13 +805,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return userDisabled();
   }
@@ -1010,13 +821,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return userDisabled?.call();
   }
@@ -1027,13 +837,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1050,13 +859,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return userDisabled(this);
   }
@@ -1067,13 +875,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return userDisabled?.call(this);
   }
@@ -1084,13 +891,12 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1100,7 +906,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
   }
 }
 
-abstract class _UserDisabledFailure implements AuthFailure {
+abstract class _UserDisabledFailure implements AuthFacadeFailure {
   const factory _UserDisabledFailure() = _$_UserDisabledFailure;
 }
 
@@ -1113,7 +919,7 @@ abstract class _$InvalidEmailFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$InvalidEmailFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$InvalidEmailFailureCopyWith<$Res> {
   __$InvalidEmailFailureCopyWithImpl(
       _InvalidEmailFailure _value, $Res Function(_InvalidEmailFailure) _then)
@@ -1130,7 +936,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.invalidEmail()';
+    return 'AuthFacadeFailure.invalidEmail()';
   }
 
   @override
@@ -1148,13 +954,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return invalidEmail();
   }
@@ -1165,13 +970,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return invalidEmail?.call();
   }
@@ -1182,13 +986,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1205,13 +1008,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return invalidEmail(this);
   }
@@ -1222,13 +1024,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return invalidEmail?.call(this);
   }
@@ -1239,13 +1040,12 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1255,7 +1055,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
   }
 }
 
-abstract class _InvalidEmailFailure implements AuthFailure {
+abstract class _InvalidEmailFailure implements AuthFacadeFailure {
   const factory _InvalidEmailFailure() = _$_InvalidEmailFailure;
 }
 
@@ -1268,7 +1068,7 @@ abstract class _$WeakPasswordFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$WeakPasswordFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$WeakPasswordFailureCopyWith<$Res> {
   __$WeakPasswordFailureCopyWithImpl(
       _WeakPasswordFailure _value, $Res Function(_WeakPasswordFailure) _then)
@@ -1285,7 +1085,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
 
   @override
   String toString() {
-    return 'AuthFailure.weakPassword()';
+    return 'AuthFacadeFailure.weakPassword()';
   }
 
   @override
@@ -1303,13 +1103,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return weakPassword();
   }
@@ -1320,13 +1119,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return weakPassword?.call();
   }
@@ -1337,13 +1135,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -1360,13 +1157,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return weakPassword(this);
   }
@@ -1377,13 +1173,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return weakPassword?.call(this);
   }
@@ -1394,13 +1189,12 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -1410,163 +1204,8 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
   }
 }
 
-abstract class _WeakPasswordFailure implements AuthFailure {
+abstract class _WeakPasswordFailure implements AuthFacadeFailure {
   const factory _WeakPasswordFailure() = _$_WeakPasswordFailure;
-}
-
-/// @nodoc
-abstract class _$ConnectionFailureCopyWith<$Res> {
-  factory _$ConnectionFailureCopyWith(
-          _ConnectionFailure value, $Res Function(_ConnectionFailure) then) =
-      __$ConnectionFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$ConnectionFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
-    implements _$ConnectionFailureCopyWith<$Res> {
-  __$ConnectionFailureCopyWithImpl(
-      _ConnectionFailure _value, $Res Function(_ConnectionFailure) _then)
-      : super(_value, (v) => _then(v as _ConnectionFailure));
-
-  @override
-  _ConnectionFailure get _value => super._value as _ConnectionFailure;
-}
-
-/// @nodoc
-
-class _$_ConnectionFailure implements _ConnectionFailure {
-  const _$_ConnectionFailure();
-
-  @override
-  String toString() {
-    return 'AuthFailure.connection()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ConnectionFailure);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() invalidCredentials,
-    required TResult Function() emailAlreadyInUse,
-    required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
-    required TResult Function() userCancelled,
-    required TResult Function() userDisabled,
-    required TResult Function() invalidEmail,
-    required TResult Function() weakPassword,
-    required TResult Function() connection,
-    required TResult Function() unknown,
-  }) {
-    return connection();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? invalidCredentials,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
-    TResult Function()? userCancelled,
-    TResult Function()? userDisabled,
-    TResult Function()? invalidEmail,
-    TResult Function()? weakPassword,
-    TResult Function()? connection,
-    TResult Function()? unknown,
-  }) {
-    return connection?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? invalidCredentials,
-    TResult Function()? emailAlreadyInUse,
-    TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
-    TResult Function()? userCancelled,
-    TResult Function()? userDisabled,
-    TResult Function()? invalidEmail,
-    TResult Function()? weakPassword,
-    TResult Function()? connection,
-    TResult Function()? unknown,
-    required TResult orElse(),
-  }) {
-    if (connection != null) {
-      return connection();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InvalidCredentialsFailure value)
-        invalidCredentials,
-    required TResult Function(_EmailAlreadyInUseFailure value)
-        emailAlreadyInUse,
-    required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
-    required TResult Function(_UserCancelledFailure value) userCancelled,
-    required TResult Function(_UserDisabledFailure value) userDisabled,
-    required TResult Function(_InvalidEmailFailure value) invalidEmail,
-    required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
-    required TResult Function(_UnknownFailure value) unknown,
-  }) {
-    return connection(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
-    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
-    TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
-    TResult Function(_UserCancelledFailure value)? userCancelled,
-    TResult Function(_UserDisabledFailure value)? userDisabled,
-    TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
-    TResult Function(_UnknownFailure value)? unknown,
-  }) {
-    return connection?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
-    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
-    TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
-    TResult Function(_UserCancelledFailure value)? userCancelled,
-    TResult Function(_UserDisabledFailure value)? userDisabled,
-    TResult Function(_InvalidEmailFailure value)? invalidEmail,
-    TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
-    TResult Function(_UnknownFailure value)? unknown,
-    required TResult orElse(),
-  }) {
-    if (connection != null) {
-      return connection(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ConnectionFailure implements AuthFailure {
-  const factory _ConnectionFailure() = _$_ConnectionFailure;
 }
 
 /// @nodoc
@@ -1578,7 +1217,7 @@ abstract class _$UnknownFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$UnknownFailureCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
     implements _$UnknownFailureCopyWith<$Res> {
   __$UnknownFailureCopyWithImpl(
       _UnknownFailure _value, $Res Function(_UnknownFailure) _then)
@@ -1590,12 +1229,13 @@ class __$UnknownFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
+@Implements<UnknownSynchrowiseFailure>()
 class _$_UnknownFailure implements _UnknownFailure {
   const _$_UnknownFailure();
 
   @override
   String toString() {
-    return 'AuthFailure.unknown()';
+    return 'AuthFacadeFailure.unknown()';
   }
 
   @override
@@ -1613,13 +1253,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
-    required TResult Function() serverInternal,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
     required TResult Function() weakPassword,
-    required TResult Function() connection,
     required TResult Function() unknown,
+    required TResult Function() connection,
   }) {
     return unknown();
   }
@@ -1630,13 +1269,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
   }) {
     return unknown?.call();
   }
@@ -1647,13 +1285,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
-    TResult Function()? serverInternal,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
     TResult Function()? weakPassword,
-    TResult Function()? connection,
     TResult Function()? unknown,
+    TResult Function()? connection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1670,13 +1307,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
-    required TResult Function(_ServerInternalFailure value) serverInternal,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
-    required TResult Function(_ConnectionFailure value) connection,
     required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
   }) {
     return unknown(this);
   }
@@ -1687,13 +1323,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
   }) {
     return unknown?.call(this);
   }
@@ -1704,13 +1339,12 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
-    TResult Function(_ServerInternalFailure value)? serverInternal,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
-    TResult Function(_ConnectionFailure value)? connection,
     TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1720,6 +1354,158 @@ class _$_UnknownFailure implements _UnknownFailure {
   }
 }
 
-abstract class _UnknownFailure implements AuthFailure {
+abstract class _UnknownFailure
+    implements AuthFacadeFailure, UnknownSynchrowiseFailure {
   const factory _UnknownFailure() = _$_UnknownFailure;
+}
+
+/// @nodoc
+abstract class _$ConnectionFailureCopyWith<$Res> {
+  factory _$ConnectionFailureCopyWith(
+          _ConnectionFailure value, $Res Function(_ConnectionFailure) then) =
+      __$ConnectionFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ConnectionFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
+    implements _$ConnectionFailureCopyWith<$Res> {
+  __$ConnectionFailureCopyWithImpl(
+      _ConnectionFailure _value, $Res Function(_ConnectionFailure) _then)
+      : super(_value, (v) => _then(v as _ConnectionFailure));
+
+  @override
+  _ConnectionFailure get _value => super._value as _ConnectionFailure;
+}
+
+/// @nodoc
+
+@Implements<ConnectionSynchrowiseFailure>()
+class _$_ConnectionFailure implements _ConnectionFailure {
+  const _$_ConnectionFailure();
+
+  @override
+  String toString() {
+    return 'AuthFacadeFailure.connection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ConnectionFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() invalidCredentials,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() signInRequired,
+    required TResult Function() userCancelled,
+    required TResult Function() userDisabled,
+    required TResult Function() invalidEmail,
+    required TResult Function() weakPassword,
+    required TResult Function() unknown,
+    required TResult Function() connection,
+  }) {
+    return connection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? signInRequired,
+    TResult Function()? userCancelled,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? weakPassword,
+    TResult Function()? unknown,
+    TResult Function()? connection,
+  }) {
+    return connection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? signInRequired,
+    TResult Function()? userCancelled,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? weakPassword,
+    TResult Function()? unknown,
+    TResult Function()? connection,
+    required TResult orElse(),
+  }) {
+    if (connection != null) {
+      return connection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentials,
+    required TResult Function(_EmailAlreadyInUseFailure value)
+        emailAlreadyInUse,
+    required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserCancelledFailure value) userCancelled,
+    required TResult Function(_UserDisabledFailure value) userDisabled,
+    required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_WeakPasswordFailure value) weakPassword,
+    required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
+  }) {
+    return connection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserCancelledFailure value)? userCancelled,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
+  }) {
+    return connection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserCancelledFailure value)? userCancelled,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
+    required TResult orElse(),
+  }) {
+    if (connection != null) {
+      return connection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConnectionFailure
+    implements AuthFacadeFailure, ConnectionSynchrowiseFailure {
+  const factory _ConnectionFailure() = _$_ConnectionFailure;
 }

@@ -304,8 +304,10 @@ class _$AuthStateTearOff {
     return const _AuthInitialState();
   }
 
-  _AuthUnauthorizedState unauthorized() {
-    return const _AuthUnauthorizedState();
+  _AuthUnauthorizedState unauthorized({required SynchrowiseFailure failure}) {
+    return _AuthUnauthorizedState(
+      failure: failure,
+    );
   }
 
   _AuthAuthorizedState authorized({required SynchrowiseUser user}) {
@@ -323,21 +325,21 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() unauthorized,
+    required TResult Function(SynchrowiseFailure failure) unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) =>
@@ -423,7 +425,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() unauthorized,
+    required TResult Function(SynchrowiseFailure failure) unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
     return initial();
@@ -433,7 +435,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
     return initial?.call();
@@ -443,7 +445,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {
@@ -497,6 +499,7 @@ abstract class _$AuthUnauthorizedStateCopyWith<$Res> {
   factory _$AuthUnauthorizedStateCopyWith(_AuthUnauthorizedState value,
           $Res Function(_AuthUnauthorizedState) then) =
       __$AuthUnauthorizedStateCopyWithImpl<$Res>;
+  $Res call({SynchrowiseFailure failure});
 }
 
 /// @nodoc
@@ -509,57 +512,81 @@ class __$AuthUnauthorizedStateCopyWithImpl<$Res>
 
   @override
   _AuthUnauthorizedState get _value => super._value as _AuthUnauthorizedState;
+
+  @override
+  $Res call({
+    Object? failure = freezed,
+  }) {
+    return _then(_AuthUnauthorizedState(
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as SynchrowiseFailure,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_AuthUnauthorizedState implements _AuthUnauthorizedState {
-  const _$_AuthUnauthorizedState();
+  const _$_AuthUnauthorizedState({required this.failure});
+
+  @override
+  final SynchrowiseFailure failure;
 
   @override
   String toString() {
-    return 'AuthState.unauthorized()';
+    return 'AuthState.unauthorized(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AuthUnauthorizedState);
+        (other.runtimeType == runtimeType &&
+            other is _AuthUnauthorizedState &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AuthUnauthorizedStateCopyWith<_AuthUnauthorizedState> get copyWith =>
+      __$AuthUnauthorizedStateCopyWithImpl<_AuthUnauthorizedState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() unauthorized,
+    required TResult Function(SynchrowiseFailure failure) unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
-    return unauthorized();
+    return unauthorized(failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
-    return unauthorized?.call();
+    return unauthorized?.call(failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
-      return unauthorized();
+      return unauthorized(failure);
     }
     return orElse();
   }
@@ -600,7 +627,13 @@ class _$_AuthUnauthorizedState implements _AuthUnauthorizedState {
 }
 
 abstract class _AuthUnauthorizedState implements AuthState {
-  const factory _AuthUnauthorizedState() = _$_AuthUnauthorizedState;
+  const factory _AuthUnauthorizedState({required SynchrowiseFailure failure}) =
+      _$_AuthUnauthorizedState;
+
+  SynchrowiseFailure get failure;
+  @JsonKey(ignore: true)
+  _$AuthUnauthorizedStateCopyWith<_AuthUnauthorizedState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -670,7 +703,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() unauthorized,
+    required TResult Function(SynchrowiseFailure failure) unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
     return authorized(user);
@@ -680,7 +713,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
     return authorized?.call(user);
@@ -690,7 +723,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? unauthorized,
+    TResult Function(SynchrowiseFailure failure)? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {

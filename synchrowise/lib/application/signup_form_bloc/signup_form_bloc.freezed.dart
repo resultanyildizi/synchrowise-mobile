@@ -932,7 +932,7 @@ class _$SignupFormStateTearOff {
   const _$SignupFormStateTearOff();
 
   _SignupFormState call(
-      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
+      {required Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
       required Option<Either<ValueFailure, String>> failureOrConfirmOption,
@@ -956,7 +956,7 @@ const $SignupFormState = _$SignupFormStateTearOff();
 
 /// @nodoc
 mixin _$SignupFormState {
-  Option<Either<AuthFailure, Unit>> get failureOrUserOption =>
+  Option<Either<SynchrowiseFailure, Unit>> get failureOrUserOption =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrEmailOption =>
       throw _privateConstructorUsedError;
@@ -979,7 +979,7 @@ abstract class $SignupFormStateCopyWith<$Res> {
           SignupFormState value, $Res Function(SignupFormState) then) =
       _$SignupFormStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
+      {Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
       Option<Either<ValueFailure, String>> failureOrConfirmOption,
@@ -1011,7 +1011,7 @@ class _$SignupFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<SynchrowiseFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -1048,7 +1048,7 @@ abstract class _$SignupFormStateCopyWith<$Res>
       __$SignupFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<AuthFailure, Unit>> failureOrUserOption,
+      {Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption,
       Option<Either<ValueFailure, String>> failureOrEmailOption,
       Option<Either<ValueFailure, String>> failureOrPasswordOption,
       Option<Either<ValueFailure, String>> failureOrConfirmOption,
@@ -1082,7 +1082,7 @@ class __$SignupFormStateCopyWithImpl<$Res>
       failureOrUserOption: failureOrUserOption == freezed
           ? _value.failureOrUserOption
           : failureOrUserOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<SynchrowiseFailure, Unit>>,
       failureOrEmailOption: failureOrEmailOption == freezed
           ? _value.failureOrEmailOption
           : failureOrEmailOption // ignore: cast_nullable_to_non_nullable
@@ -1124,7 +1124,7 @@ class _$_SignupFormState implements _SignupFormState {
       required this.isSigningEmail});
 
   @override
-  final Option<Either<AuthFailure, Unit>> failureOrUserOption;
+  final Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrEmailOption;
   @override
@@ -1183,7 +1183,7 @@ class _$_SignupFormState implements _SignupFormState {
 
 abstract class _SignupFormState implements SignupFormState {
   const factory _SignupFormState(
-      {required Option<Either<AuthFailure, Unit>> failureOrUserOption,
+      {required Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption,
       required Option<Either<ValueFailure, String>> failureOrEmailOption,
       required Option<Either<ValueFailure, String>> failureOrPasswordOption,
       required Option<Either<ValueFailure, String>> failureOrConfirmOption,
@@ -1192,7 +1192,7 @@ abstract class _SignupFormState implements SignupFormState {
       required bool isSigningEmail}) = _$_SignupFormState;
 
   @override
-  Option<Either<AuthFailure, Unit>> get failureOrUserOption;
+  Option<Either<SynchrowiseFailure, Unit>> get failureOrUserOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrEmailOption;
   @override

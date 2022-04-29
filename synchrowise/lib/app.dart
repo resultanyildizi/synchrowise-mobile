@@ -2,8 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
-import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
-import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/reset_password_page.dart';
@@ -11,6 +9,7 @@ import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
+import 'package:synchrowise/presentation/register_steps/register_page.dart';
 import 'package:synchrowise/presentation/splash/splash.dart';
 
 class SynchrowiseApp extends StatelessWidget {
@@ -26,9 +25,6 @@ class SynchrowiseApp extends StatelessWidget {
             authBloc.check();
             return authBloc;
           },
-        ),
-        BlocProvider<SignupFormBloc>(
-          create: (context) => getIt<SignupFormBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -95,6 +91,7 @@ class SynchrowiseApp extends StatelessWidget {
           '/signup': (context) => const SignupPage(),
           '/home': (context) => const HomePage(),
           '/reset_password': (context) => const ResetPasswordPage(),
+          '/register': (context) => const RegisterPage(),
         },
       ),
     );

@@ -3,7 +3,7 @@ part of 'signup_form_bloc.dart';
 @freezed
 class SignupFormState with _$SignupFormState {
   const factory SignupFormState({
-    required Option<Either<AuthFailure, Unit>> failureOrUserOption,
+    required Option<Either<SynchrowiseFailure, Unit>> failureOrUserOption,
     required Option<Either<ValueFailure, String>> failureOrEmailOption,
     required Option<Either<ValueFailure, String>> failureOrPasswordOption,
     required Option<Either<ValueFailure, String>> failureOrConfirmOption,

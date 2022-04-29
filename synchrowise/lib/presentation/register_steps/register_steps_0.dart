@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/presentation/auth/register_steps/register_steps_1.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class RegisterSteps0 extends StatelessWidget {

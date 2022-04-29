@@ -45,31 +45,22 @@ class RegisterSteps2 extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 state.failureOrImageOption.fold(
-                  () => CustomAnimatedButton(
-                    height: MediaQuery.of(context).size.width - 70,
-                    decoration: BoxDecoration(
-                      color: grayLightColor,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Icon(
-                      Icons.add_photo_alternate,
-                      color: grayColor,
-                      size: 48,
-                    ),
-                    onTap: () {
-                      registerStepsBloc.updateAvatarImage();
-                    },
+                  () => _ImageSection(
+                    showLoadingIndicator: state.uploadingImage,
                   ),
                   (failureOrImage) => failureOrImage.fold(
-                    (failure) => Text(failure.toString()),
+                    (failure) => _ImageSection(
+                      showLoadingIndicator: state.uploadingImage,
+                    ),
                     (image) {
                       return Container(
                         height: MediaQuery.of(context).size.width - 70,
+                        width: MediaQuery.of(context).size.width - 70,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: Image.asset(
-                          image.path,
+                        child: Image.file(
+                          image,
                           height: MediaQuery.of(context).size.width - 70,
                         ),
                       );
@@ -141,6 +132,45 @@ class RegisterSteps2 extends StatelessWidget {
             ]
           ],
         );
+      },
+    );
+  }
+}
+
+class _ImageSection extends StatelessWidget {
+  const _ImageSection({
+    Key? key,
+    required this.showLoadingIndicator,
+  }) : super(key: key);
+
+  final bool showLoadingIndicator;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomAnimatedButton(
+      height: MediaQuery.of(context).size.width - 70,
+      decoration: BoxDecoration(
+        color: grayLightColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: showLoadingIndicator
+          ? const SizedBox(
+              height: 30,
+              width: 30,
+              child: CircularProgressIndicator(color: primaryColor),
+            )
+          : const Icon(
+              Icons.add_photo_alternate,
+              color: grayColor,
+              size: 48,
+            ),
+      onTap: () {
+        if (showLoadingIndicator) {
+          return;
+        } else {
+          final registerStepsBloc = context.read<RegisterStepsBloc>();
+          registerStepsBloc.updateAvatarImage();
+        }
       },
     );
   }
