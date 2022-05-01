@@ -13,49 +13,10 @@ import 'package:synchrowise/infrastructure/register/i_register_facade.dart';
 
 class RegisterFacade implements IRegisterFacade {
   ///* Dependencies
-  final ImagePicker _imagePicker;
-  final ImageCropper _imageCropper;
   final Client _client;
 
   ///* Constructor
-  const RegisterFacade(this._client, this._imagePicker, this._imageCropper);
-
-  @override
-  Future<Either<RegisterFailure, File>> uploadImageFromDevice() async {
-    try {
-      final pickedImage = await _imagePicker
-          .pickImage(
-            source: ImageSource.gallery,
-            maxHeight: 10,
-            maxWidth: 10,
-          )
-          .timeout(const Duration(seconds: 2));
-
-      log(pickedImage.toString());
-
-      if (pickedImage != null) {
-        // final croppedImage =
-        //     await _imageCropper.cropImage(sourcePath: pickedImage.path);
-
-        // if (croppedImage != null) {
-        //   return _checkImageSize(croppedImage);
-        // } else {
-        //   return left(const RegisterFailure.imageCropperFailed());
-        // }
-
-        return right(File(pickedImage.path));
-      } else {
-        log("pickedImage is null");
-        return left(const RegisterFailure.imagePickFailed());
-      }
-    } on PlatformException catch (_) {
-      log("PlatformException: " + _.toString());
-      return left(const RegisterFailure.imagePickFailed());
-    } catch (_) {
-      log(_.toString());
-      return left(const RegisterFailure.imagePickFailed());
-    }
-  }
+  const RegisterFacade(this._client);
 
   @override
   Future<Either<RegisterFailure, Unit>> registerUser({

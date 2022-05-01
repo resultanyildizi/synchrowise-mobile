@@ -16,6 +16,8 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_sy
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/syncrowise_user_sembast_storage.dart';
+import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
+import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
 import 'package:synchrowise/infrastructure/register/i_register_facade.dart';
 import 'package:synchrowise/infrastructure/register/register_facade.dart';
 import 'package:synchrowise/services/core/synchrowise_database.dart';
@@ -49,9 +51,14 @@ Future<void> _setupInfrastructure() async {
 
   getIt.registerSingleton<IRegisterFacade>(RegisterFacade(
     getIt<Client>(),
-    getIt<ImagePicker>(),
-    getIt<ImageCropper>(),
   ));
+
+  getIt.registerSingleton<IImageFacade>(
+    ImageFacade(
+      getIt<ImagePicker>(),
+      getIt<ImageCropper>(),
+    ),
+  );
 
   getIt.registerSingleton<ISynchrowiseUserStorage>(SyncrowiseUserSembastStorage(
     getIt<Database>(),
@@ -86,8 +93,6 @@ Future<void> _setupBlocs() async {
   );
 
   getIt.registerSingleton<RegisterStepsBloc>(
-    RegisterStepsBloc(
-      getIt<IRegisterFacade>(),
-    ),
+    RegisterStepsBloc(getIt<IRegisterFacade>(), getIt<IImageFacade>()),
   );
 }

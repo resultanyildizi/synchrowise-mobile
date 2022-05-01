@@ -7,8 +7,23 @@ import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class RegisterSteps1 extends StatelessWidget {
+class RegisterSteps1 extends StatefulWidget {
   const RegisterSteps1({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterSteps1> createState() => _RegisterSteps1State();
+}
+
+class _RegisterSteps1State extends State<RegisterSteps1>
+    with AutomaticKeepAliveClientMixin {
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    _focusNode = FocusNode();
+
+    super.initState();
+  }
 
   String? _getUsernameErrorText(RegisterStepsState state) {
     return state.showErrors
@@ -37,7 +52,16 @@ class RegisterSteps1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
+    super.build(context);
+    return BlocConsumer<RegisterStepsBloc, RegisterStepsState>(
+      listenWhen: (previous, current) {
+        return previous.step == 1 && current.step == 2;
+      },
+      listener: (context, state) {
+        if (state.step == 2) {
+          _focusNode.unfocus();
+        }
+      },
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,13 +82,12 @@ class RegisterSteps1 extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             DefaultTextField(
+              focusNode: _focusNode,
               icon: null,
               hintText: "username".tr(),
               onChanged: (username) {
                 final registerStepsBloc = context.read<RegisterStepsBloc>();
-                registerStepsBloc.updateUsernameText(
-                  username: username,
-                );
+                registerStepsBloc.updateUsernameText(username: username);
               },
               errorText: _getUsernameErrorText(state),
             ),
@@ -85,4 +108,7 @@ class RegisterSteps1 extends StatelessWidget {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

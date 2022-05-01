@@ -25,8 +25,13 @@ class _$RegisterStepsEventTearOff {
     );
   }
 
-  _RegisterStepsUpdateAvatarImageEvent updateAvatarImage() {
-    return const _RegisterStepsUpdateAvatarImageEvent();
+  _RegisterStepsUpdateAvatarImageEvent updateAvatarImage(
+      {required AndroidUiSettings androidUiSettings,
+      required IOSUiSettings iosUiSettings}) {
+    return _RegisterStepsUpdateAvatarImageEvent(
+      androidUiSettings: androidUiSettings,
+      iosUiSettings: iosUiSettings,
+    );
   }
 
   _RegisterStepsSaveUsernameEvent saveUsername() {
@@ -58,7 +63,9 @@ mixin _$RegisterStepsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -69,7 +76,9 @@ mixin _$RegisterStepsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -80,7 +89,9 @@ mixin _$RegisterStepsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -225,7 +236,9 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -239,7 +252,9 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -253,7 +268,9 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -343,6 +360,7 @@ abstract class _$RegisterStepsUpdateAvatarImageEventCopyWith<$Res> {
           _RegisterStepsUpdateAvatarImageEvent value,
           $Res Function(_RegisterStepsUpdateAvatarImageEvent) then) =
       __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>;
+  $Res call({AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings});
 }
 
 /// @nodoc
@@ -357,62 +375,105 @@ class __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>
   @override
   _RegisterStepsUpdateAvatarImageEvent get _value =>
       super._value as _RegisterStepsUpdateAvatarImageEvent;
+
+  @override
+  $Res call({
+    Object? androidUiSettings = freezed,
+    Object? iosUiSettings = freezed,
+  }) {
+    return _then(_RegisterStepsUpdateAvatarImageEvent(
+      androidUiSettings: androidUiSettings == freezed
+          ? _value.androidUiSettings
+          : androidUiSettings // ignore: cast_nullable_to_non_nullable
+              as AndroidUiSettings,
+      iosUiSettings: iosUiSettings == freezed
+          ? _value.iosUiSettings
+          : iosUiSettings // ignore: cast_nullable_to_non_nullable
+              as IOSUiSettings,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_RegisterStepsUpdateAvatarImageEvent
     implements _RegisterStepsUpdateAvatarImageEvent {
-  const _$_RegisterStepsUpdateAvatarImageEvent();
+  const _$_RegisterStepsUpdateAvatarImageEvent(
+      {required this.androidUiSettings, required this.iosUiSettings});
+
+  @override
+  final AndroidUiSettings androidUiSettings;
+  @override
+  final IOSUiSettings iosUiSettings;
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.updateAvatarImage()';
+    return 'RegisterStepsEvent.updateAvatarImage(androidUiSettings: $androidUiSettings, iosUiSettings: $iosUiSettings)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsUpdateAvatarImageEvent);
+            other is _RegisterStepsUpdateAvatarImageEvent &&
+            const DeepCollectionEquality()
+                .equals(other.androidUiSettings, androidUiSettings) &&
+            const DeepCollectionEquality()
+                .equals(other.iosUiSettings, iosUiSettings));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(androidUiSettings),
+      const DeepCollectionEquality().hash(iosUiSettings));
+
+  @JsonKey(ignore: true)
+  @override
+  _$RegisterStepsUpdateAvatarImageEventCopyWith<
+          _RegisterStepsUpdateAvatarImageEvent>
+      get copyWith => __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<
+          _RegisterStepsUpdateAvatarImageEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
-    return updateAvatarImage();
+    return updateAvatarImage(androidUiSettings, iosUiSettings);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
-    return updateAvatarImage?.call();
+    return updateAvatarImage?.call(androidUiSettings, iosUiSettings);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -421,7 +482,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
     required TResult orElse(),
   }) {
     if (updateAvatarImage != null) {
-      return updateAvatarImage();
+      return updateAvatarImage(androidUiSettings, iosUiSettings);
     }
     return orElse();
   }
@@ -486,8 +547,17 @@ class _$_RegisterStepsUpdateAvatarImageEvent
 
 abstract class _RegisterStepsUpdateAvatarImageEvent
     implements RegisterStepsEvent {
-  const factory _RegisterStepsUpdateAvatarImageEvent() =
+  const factory _RegisterStepsUpdateAvatarImageEvent(
+          {required AndroidUiSettings androidUiSettings,
+          required IOSUiSettings iosUiSettings}) =
       _$_RegisterStepsUpdateAvatarImageEvent;
+
+  AndroidUiSettings get androidUiSettings;
+  IOSUiSettings get iosUiSettings;
+  @JsonKey(ignore: true)
+  _$RegisterStepsUpdateAvatarImageEventCopyWith<
+          _RegisterStepsUpdateAvatarImageEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -537,7 +607,9 @@ class _$_RegisterStepsSaveUsernameEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -551,7 +623,9 @@ class _$_RegisterStepsSaveUsernameEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -565,7 +639,9 @@ class _$_RegisterStepsSaveUsernameEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -689,7 +765,9 @@ class _$_RegisterStepsRegisterFieldsEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -703,7 +781,9 @@ class _$_RegisterStepsRegisterFieldsEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -717,7 +797,9 @@ class _$_RegisterStepsRegisterFieldsEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -838,7 +920,9 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -852,7 +936,9 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -866,7 +952,9 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -986,7 +1074,9 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -1000,7 +1090,9 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -1014,7 +1106,9 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -1137,7 +1231,9 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
-    required TResult Function() updateAvatarImage,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
     required TResult Function() saveUsername,
     required TResult Function() registerFields,
     required TResult Function() goBack,
@@ -1151,7 +1247,9 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -1165,7 +1263,9 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username)? updateUsernameText,
-    TResult Function()? updateAvatarImage,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
     TResult Function()? saveUsername,
     TResult Function()? registerFields,
     TResult Function()? goBack,
@@ -1249,7 +1349,7 @@ class _$RegisterStepsStateTearOff {
 
   _RegisterStepsState call(
       {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      required Option<Either<RegisterFailure, File>> failureOrImageOption,
+      required Option<Either<ImageFailure, File>> failureOrImageOption,
       required Option<Either<RegisterFailure, Unit>>
           registerFailureOrUnitOption,
       required bool uploadingImage,
@@ -1273,7 +1373,7 @@ const $RegisterStepsState = _$RegisterStepsStateTearOff();
 mixin _$RegisterStepsState {
   Option<Either<ValueFailure, String>> get failureOrUsernameOption =>
       throw _privateConstructorUsedError;
-  Option<Either<RegisterFailure, File>> get failureOrImageOption =>
+  Option<Either<ImageFailure, File>> get failureOrImageOption =>
       throw _privateConstructorUsedError;
   Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption =>
       throw _privateConstructorUsedError;
@@ -1293,7 +1393,7 @@ abstract class $RegisterStepsStateCopyWith<$Res> {
       _$RegisterStepsStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      Option<Either<RegisterFailure, File>> failureOrImageOption,
+      Option<Either<ImageFailure, File>> failureOrImageOption,
       Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
       bool uploadingImage,
       bool showErrors,
@@ -1326,7 +1426,7 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
       failureOrImageOption: failureOrImageOption == freezed
           ? _value.failureOrImageOption
           : failureOrImageOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<RegisterFailure, File>>,
+              as Option<Either<ImageFailure, File>>,
       registerFailureOrUnitOption: registerFailureOrUnitOption == freezed
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1356,7 +1456,7 @@ abstract class _$RegisterStepsStateCopyWith<$Res>
   @override
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      Option<Either<RegisterFailure, File>> failureOrImageOption,
+      Option<Either<ImageFailure, File>> failureOrImageOption,
       Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
       bool uploadingImage,
       bool showErrors,
@@ -1391,7 +1491,7 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
       failureOrImageOption: failureOrImageOption == freezed
           ? _value.failureOrImageOption
           : failureOrImageOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<RegisterFailure, File>>,
+              as Option<Either<ImageFailure, File>>,
       registerFailureOrUnitOption: registerFailureOrUnitOption == freezed
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1426,7 +1526,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
   @override
   final Option<Either<ValueFailure, String>> failureOrUsernameOption;
   @override
-  final Option<Either<RegisterFailure, File>> failureOrImageOption;
+  final Option<Either<ImageFailure, File>> failureOrImageOption;
   @override
   final Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption;
   @override
@@ -1479,7 +1579,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
 abstract class _RegisterStepsState implements RegisterStepsState {
   const factory _RegisterStepsState(
       {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      required Option<Either<RegisterFailure, File>> failureOrImageOption,
+      required Option<Either<ImageFailure, File>> failureOrImageOption,
       required Option<Either<RegisterFailure, Unit>>
           registerFailureOrUnitOption,
       required bool uploadingImage,
@@ -1489,7 +1589,7 @@ abstract class _RegisterStepsState implements RegisterStepsState {
   @override
   Option<Either<ValueFailure, String>> get failureOrUsernameOption;
   @override
-  Option<Either<RegisterFailure, File>> get failureOrImageOption;
+  Option<Either<ImageFailure, File>> get failureOrImageOption;
   @override
   Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption;
   @override

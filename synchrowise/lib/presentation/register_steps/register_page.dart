@@ -73,15 +73,15 @@ class _RegisterPageState extends State<RegisterPage> {
             failureOrUnit.fold(
               (failure) {
                 failure.maybeMap(
-                  imagePickFailed: (_) {
+                  imagePick: (_) {
                     showErrorToast(
                         "image_pick_failed".tr(), ToastGravity.BOTTOM);
                   },
-                  imageCropperFailed: (_) {
+                  imageCrop: (_) {
                     showErrorToast(
                         "image_cropper_failed".tr(), ToastGravity.BOTTOM);
                   },
-                  imageTooLarge: (_) {
+                  imageSize: (_) {
                     showErrorToast("image_too_large".tr(), ToastGravity.BOTTOM);
                   },
                   orElse: () {},
@@ -123,9 +123,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
               child: BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
                 builder: (context, state) {
-                  log(state.toString());
-                  log(state.step.toString());
-
                   return Column(
                     children: [
                       ThinLineStepper(

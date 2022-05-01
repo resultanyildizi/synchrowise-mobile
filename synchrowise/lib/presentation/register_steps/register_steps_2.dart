@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -49,19 +50,21 @@ class RegisterSteps2 extends StatelessWidget {
                     showLoadingIndicator: state.uploadingImage,
                   ),
                   (failureOrImage) => failureOrImage.fold(
-                    (failure) => _ImageSection(
-                      showLoadingIndicator: state.uploadingImage,
-                    ),
+                    (failure) {
+                      return _ImageSection(
+                        showLoadingIndicator: state.uploadingImage,
+                      );
+                    },
                     (image) {
                       return Container(
                         height: MediaQuery.of(context).size.width - 70,
                         width: MediaQuery.of(context).size.width - 70,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: Image.file(
                           image,
-                          height: MediaQuery.of(context).size.width - 70,
+                          fit: BoxFit.cover,
                         ),
                       );
                     },
@@ -169,7 +172,10 @@ class _ImageSection extends StatelessWidget {
           return;
         } else {
           final registerStepsBloc = context.read<RegisterStepsBloc>();
-          registerStepsBloc.updateAvatarImage();
+          registerStepsBloc.updateAvatarImage(
+            androidUiSettings: const AndroidUiSettings(),
+            iosUiSettings: const IOSUiSettings(),
+          );
         }
       },
     );

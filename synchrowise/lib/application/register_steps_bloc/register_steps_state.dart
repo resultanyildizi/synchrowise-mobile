@@ -4,7 +4,7 @@ part of 'register_steps_bloc.dart';
 class RegisterStepsState with _$RegisterStepsState {
   const factory RegisterStepsState({
     required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-    required Option<Either<RegisterFailure, File>> failureOrImageOption,
+    required Option<Either<ImageFailure, File>> failureOrImageOption,
     required Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
     required bool uploadingImage,
     required bool showErrors,
