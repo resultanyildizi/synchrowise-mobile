@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
@@ -37,14 +39,6 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
   }
 
   @override
-  Future<Either<SynchrowiseUserRepositoryFailure, SynchrowiseUser>> get({
-    required String synchrowiseId,
-  }) {
-    // TODO: implement get
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<SynchrowiseUserRepositoryFailure, SynchrowiseUser>>
       getByCredUser({
     required SynchrowiseUser userFromCred,
@@ -80,7 +74,58 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
   @override
   Future<Either<SynchrowiseUserRepositoryFailure, Unit>> update({
     required SynchrowiseUser synchrowiseUser,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final api = dotenv.get("API_URL");
+    final uri = Uri.parse("$api/User");
+
+    final result = await _client.put(
+      uri,
+      body: jsonEncode(synchrowiseUser.toMap()),
+      headers: {HeaderKeys.contentType: HeaderValues.contentType},
+    );
+
+    if (result.statusCode == 200) {
+      return right(unit);
+    } else {
+      return left(SynchrowiseUserRepositoryFailure.server(
+        result.statusCode,
+        result.body,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<SynchrowiseUserRepositoryFailure, Unit>> updateAvatar({
+    required SynchrowiseUser synchrowiseUser,
+    required File avatar,
+  }) async {
+    final api = dotenv.get("API_URL");
+    final uri = Uri.parse("$api/User");
+
+    final multipartFile = await MultipartFile.fromPath(
+      "File",
+      avatar.path,
+      filename: avatar.path.split('/').last,
+    );
+
+    final request = MultipartRequest("PUT", uri);
+
+    request.fields.addAll({
+      "OwnerGuid": synchrowiseUser.synchrowiseId,
+    });
+    request.files.add(multipartFile);
+
+    final streamed = await request.send();
+
+    final result = await Response.fromStream(streamed);
+
+    if (result.statusCode == 200) {
+      return right(unit);
+    } else {
+      return left(SynchrowiseUserRepositoryFailure.server(
+        result.statusCode,
+        result.body,
+      ));
+    }
   }
 }

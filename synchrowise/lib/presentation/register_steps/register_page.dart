@@ -48,17 +48,17 @@ class _RegisterPageState extends State<RegisterPage> {
             failureOrUnit.fold(
               (failure) {
                 failure.maybeMap(
-                  connection: (_) {
+                  server: (_) {
                     showErrorToast(
                         "connection_error".tr(), ToastGravity.BOTTOM);
                   },
                   unknown: (_) {
                     showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
                   },
-                  usernameIsTaken: (_) {
-                    showErrorToast(
-                        "username_is_taken".tr(), ToastGravity.BOTTOM);
-                  },
+                  // : (_) {
+                  //   showErrorToast(
+                  //       "username_is_taken".tr(), ToastGravity.BOTTOM);
+                  // },
                   orElse: () {},
                 );
               },

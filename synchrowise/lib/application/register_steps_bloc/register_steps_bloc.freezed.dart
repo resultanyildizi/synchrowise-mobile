@@ -38,8 +38,11 @@ class _$RegisterStepsEventTearOff {
     return const _RegisterStepsSaveUsernameEvent();
   }
 
-  _RegisterStepsRegisterFieldsEvent registerFields() {
-    return const _RegisterStepsRegisterFieldsEvent();
+  _RegisterStepsRegisterFieldsEvent registerFields(
+      {required SynchrowiseUser synchrowiseUser}) {
+    return _RegisterStepsRegisterFieldsEvent(
+      synchrowiseUser: synchrowiseUser,
+    );
   }
 
   _RegisterStepsGoBackEvent goBack() {
@@ -67,7 +70,7 @@ mixin _$RegisterStepsEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -80,7 +83,7 @@ mixin _$RegisterStepsEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -93,7 +96,7 @@ mixin _$RegisterStepsEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -240,7 +243,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -256,7 +259,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -272,7 +275,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -443,7 +446,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -459,7 +462,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -475,7 +478,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -611,7 +614,7 @@ class _$_RegisterStepsSaveUsernameEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -627,7 +630,7 @@ class _$_RegisterStepsSaveUsernameEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -643,7 +646,7 @@ class _$_RegisterStepsSaveUsernameEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -724,6 +727,7 @@ abstract class _$RegisterStepsRegisterFieldsEventCopyWith<$Res> {
           _RegisterStepsRegisterFieldsEvent value,
           $Res Function(_RegisterStepsRegisterFieldsEvent) then) =
       __$RegisterStepsRegisterFieldsEventCopyWithImpl<$Res>;
+  $Res call({SynchrowiseUser synchrowiseUser});
 }
 
 /// @nodoc
@@ -738,28 +742,52 @@ class __$RegisterStepsRegisterFieldsEventCopyWithImpl<$Res>
   @override
   _RegisterStepsRegisterFieldsEvent get _value =>
       super._value as _RegisterStepsRegisterFieldsEvent;
+
+  @override
+  $Res call({
+    Object? synchrowiseUser = freezed,
+  }) {
+    return _then(_RegisterStepsRegisterFieldsEvent(
+      synchrowiseUser: synchrowiseUser == freezed
+          ? _value.synchrowiseUser
+          : synchrowiseUser // ignore: cast_nullable_to_non_nullable
+              as SynchrowiseUser,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_RegisterStepsRegisterFieldsEvent
     implements _RegisterStepsRegisterFieldsEvent {
-  const _$_RegisterStepsRegisterFieldsEvent();
+  const _$_RegisterStepsRegisterFieldsEvent({required this.synchrowiseUser});
+
+  @override
+  final SynchrowiseUser synchrowiseUser;
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.registerFields()';
+    return 'RegisterStepsEvent.registerFields(synchrowiseUser: $synchrowiseUser)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsRegisterFieldsEvent);
+            other is _RegisterStepsRegisterFieldsEvent &&
+            const DeepCollectionEquality()
+                .equals(other.synchrowiseUser, synchrowiseUser));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(synchrowiseUser));
+
+  @JsonKey(ignore: true)
+  @override
+  _$RegisterStepsRegisterFieldsEventCopyWith<_RegisterStepsRegisterFieldsEvent>
+      get copyWith => __$RegisterStepsRegisterFieldsEventCopyWithImpl<
+          _RegisterStepsRegisterFieldsEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -769,12 +797,12 @@ class _$_RegisterStepsRegisterFieldsEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
   }) {
-    return registerFields();
+    return registerFields(synchrowiseUser);
   }
 
   @override
@@ -785,12 +813,12 @@ class _$_RegisterStepsRegisterFieldsEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
   }) {
-    return registerFields?.call();
+    return registerFields?.call(synchrowiseUser);
   }
 
   @override
@@ -801,14 +829,14 @@ class _$_RegisterStepsRegisterFieldsEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
     required TResult orElse(),
   }) {
     if (registerFields != null) {
-      return registerFields();
+      return registerFields(synchrowiseUser);
     }
     return orElse();
   }
@@ -872,8 +900,14 @@ class _$_RegisterStepsRegisterFieldsEvent
 }
 
 abstract class _RegisterStepsRegisterFieldsEvent implements RegisterStepsEvent {
-  const factory _RegisterStepsRegisterFieldsEvent() =
+  const factory _RegisterStepsRegisterFieldsEvent(
+          {required SynchrowiseUser synchrowiseUser}) =
       _$_RegisterStepsRegisterFieldsEvent;
+
+  SynchrowiseUser get synchrowiseUser;
+  @JsonKey(ignore: true)
+  _$RegisterStepsRegisterFieldsEventCopyWith<_RegisterStepsRegisterFieldsEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -924,7 +958,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -940,7 +974,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -956,7 +990,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -1078,7 +1112,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -1094,7 +1128,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -1110,7 +1144,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -1235,7 +1269,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
         updateAvatarImage,
     required TResult Function() saveUsername,
-    required TResult Function() registerFields,
+    required TResult Function(SynchrowiseUser synchrowiseUser) registerFields,
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
@@ -1251,7 +1285,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -1267,7 +1301,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
             AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
         updateAvatarImage,
     TResult Function()? saveUsername,
-    TResult Function()? registerFields,
+    TResult Function(SynchrowiseUser synchrowiseUser)? registerFields,
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
@@ -1350,7 +1384,7 @@ class _$RegisterStepsStateTearOff {
   _RegisterStepsState call(
       {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
       required Option<Either<ImageFailure, File>> failureOrImageOption,
-      required Option<Either<RegisterFailure, Unit>>
+      required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           registerFailureOrUnitOption,
       required bool uploadingImage,
       required bool showErrors,
@@ -1375,8 +1409,8 @@ mixin _$RegisterStepsState {
       throw _privateConstructorUsedError;
   Option<Either<ImageFailure, File>> get failureOrImageOption =>
       throw _privateConstructorUsedError;
-  Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+      get registerFailureOrUnitOption => throw _privateConstructorUsedError;
   bool get uploadingImage => throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   int get step => throw _privateConstructorUsedError;
@@ -1394,7 +1428,8 @@ abstract class $RegisterStepsStateCopyWith<$Res> {
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
       Option<Either<ImageFailure, File>> failureOrImageOption,
-      Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
+      Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+          registerFailureOrUnitOption,
       bool uploadingImage,
       bool showErrors,
       int step});
@@ -1430,7 +1465,7 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
       registerFailureOrUnitOption: registerFailureOrUnitOption == freezed
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<RegisterFailure, Unit>>,
+              as Option<Either<SynchrowiseUserRepositoryFailure, Unit>>,
       uploadingImage: uploadingImage == freezed
           ? _value.uploadingImage
           : uploadingImage // ignore: cast_nullable_to_non_nullable
@@ -1457,7 +1492,8 @@ abstract class _$RegisterStepsStateCopyWith<$Res>
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrUsernameOption,
       Option<Either<ImageFailure, File>> failureOrImageOption,
-      Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
+      Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+          registerFailureOrUnitOption,
       bool uploadingImage,
       bool showErrors,
       int step});
@@ -1495,7 +1531,7 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
       registerFailureOrUnitOption: registerFailureOrUnitOption == freezed
           ? _value.registerFailureOrUnitOption
           : registerFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<RegisterFailure, Unit>>,
+              as Option<Either<SynchrowiseUserRepositoryFailure, Unit>>,
       uploadingImage: uploadingImage == freezed
           ? _value.uploadingImage
           : uploadingImage // ignore: cast_nullable_to_non_nullable
@@ -1528,7 +1564,8 @@ class _$_RegisterStepsState implements _RegisterStepsState {
   @override
   final Option<Either<ImageFailure, File>> failureOrImageOption;
   @override
-  final Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption;
+  final Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+      registerFailureOrUnitOption;
   @override
   final bool uploadingImage;
   @override
@@ -1580,7 +1617,7 @@ abstract class _RegisterStepsState implements RegisterStepsState {
   const factory _RegisterStepsState(
       {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
       required Option<Either<ImageFailure, File>> failureOrImageOption,
-      required Option<Either<RegisterFailure, Unit>>
+      required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           registerFailureOrUnitOption,
       required bool uploadingImage,
       required bool showErrors,
@@ -1591,7 +1628,8 @@ abstract class _RegisterStepsState implements RegisterStepsState {
   @override
   Option<Either<ImageFailure, File>> get failureOrImageOption;
   @override
-  Option<Either<RegisterFailure, Unit>> get registerFailureOrUnitOption;
+  Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+      get registerFailureOrUnitOption;
   @override
   bool get uploadingImage;
   @override

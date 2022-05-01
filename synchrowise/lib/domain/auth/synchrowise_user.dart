@@ -63,7 +63,7 @@ class SynchrowiseUser extends Equatable {
       'firebase_uid': firebaseId,
       'firebase_id_token': firebaseIdToken,
       'email': emailAddress,
-      'synchrowise_id': synchrowiseId,
+      'guid': synchrowiseId,
       'avatar_url': avatar.toMap(),
       'sign_in_method': signInMethod,
       'username': username,
@@ -108,6 +108,32 @@ class SynchrowiseUser extends Equatable {
       sEmailVerified: sEmailVerified,
       sIsNewUser: sIsNewUser,
       signInMethod: signInMethod,
+    );
+  }
+
+  SynchrowiseUser copyWith({
+    String? firebaseId,
+    String? synchrowiseId,
+    Avatar? avatar,
+    String? signInMethod,
+    String? firebaseIdToken,
+    String? username,
+    String? emailAddress,
+    Premium? premium,
+  }) {
+    return SynchrowiseUser(
+      firebaseId: firebaseId ?? this.firebaseId,
+      synchrowiseId: synchrowiseId ?? this.synchrowiseId,
+      avatar: avatar ?? this.avatar,
+      signInMethod: signInMethod ?? this.signInMethod,
+      firebaseIdToken: firebaseIdToken ?? this.firebaseIdToken,
+      username: username ?? this.username,
+      emailAddress: emailAddress ?? this.emailAddress,
+      premium: premium ?? this.premium,
+      sEmailVerified: sEmailVerified,
+      sIsNewUser: sIsNewUser,
+      sFirebaseCreationTimeMs: sFirebaseCreationTimeMs,
+      sFirebaseLastSigninTimeMs: sFirebaseLastSigninTimeMs,
     );
   }
 }

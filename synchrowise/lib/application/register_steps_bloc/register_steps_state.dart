@@ -5,7 +5,8 @@ class RegisterStepsState with _$RegisterStepsState {
   const factory RegisterStepsState({
     required Option<Either<ValueFailure, String>> failureOrUsernameOption,
     required Option<Either<ImageFailure, File>> failureOrImageOption,
-    required Option<Either<RegisterFailure, Unit>> registerFailureOrUnitOption,
+    required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
+        registerFailureOrUnitOption,
     required bool uploadingImage,
     required bool showErrors,
     required int step,

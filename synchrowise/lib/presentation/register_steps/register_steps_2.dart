@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -78,7 +79,16 @@ class RegisterSteps2 extends StatelessWidget {
                   text: "complete".tr(),
                   padding: 0,
                   onTap: () {
-                    registerStepsBloc.registerFields();
+                    final authState = context.read<AuthBloc>().state;
+
+                    authState.maybeMap(
+                      authorized: (state) {
+                        registerStepsBloc.registerFields(
+                          synchrowiseUser: state.user,
+                        );
+                      },
+                      orElse: () => null,
+                    );
                   },
                 ),
               ],

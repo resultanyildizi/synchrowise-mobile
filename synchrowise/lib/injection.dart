@@ -93,6 +93,10 @@ Future<void> _setupBlocs() async {
   );
 
   getIt.registerSingleton<RegisterStepsBloc>(
-    RegisterStepsBloc(getIt<IRegisterFacade>(), getIt<IImageFacade>()),
+    RegisterStepsBloc(
+      getIt<IRegisterFacade>(),
+      getIt<IImageFacade>(),
+      getIt<ISynchrowiseUserRepository>(),
+    ),
   );
 }

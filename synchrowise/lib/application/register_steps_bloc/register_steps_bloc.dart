@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -6,6 +7,10 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
+import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
+import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
@@ -18,6 +23,7 @@ part 'register_steps_state.dart';
 
 class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
   ///* Dependencies
+  final ISynchrowiseUserRepository _iUserRepo;
   final IRegisterFacade _iRegisterFacade;
   final IImageFacade _iImageFacade;
 
@@ -35,18 +41,26 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
   void removeAvatarImage() => add(const RegisterStepsEvent.removeAvatarImage());
   void updateUsernameText({required String username}) =>
       add(RegisterStepsEvent.updateUsernameText(username: username));
-  void registerFields() => add(const RegisterStepsEvent.registerFields());
+  void registerFields({required SynchrowiseUser synchrowiseUser}) {
+    add(RegisterStepsEvent.registerFields(
+      synchrowiseUser: synchrowiseUser,
+    ));
+  }
+
   void saveUsername() => add(const RegisterStepsEvent.saveUsername());
   void goBack() => add(const RegisterStepsEvent.goBack());
   void goNext() => add(const RegisterStepsEvent.goNext());
 
   ///* Logic
-  RegisterStepsBloc(this._iRegisterFacade, this._iImageFacade)
-      : super(RegisterStepsState.initial()) {
+  RegisterStepsBloc(
+    this._iRegisterFacade,
+    this._iImageFacade,
+    this._iUserRepo,
+  ) : super(RegisterStepsState.initial()) {
     on<RegisterStepsEvent>(
       (event, emit) async {
         await event.map(
-          registerFields: (_) async {
+          registerFields: (event) async {
             emit(
               state.copyWith(
                 registerFailureOrUnitOption: none(),
@@ -71,16 +85,32 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
             );
 
             if (username != null) {
-              final failureOrUnit = await _iRegisterFacade.registerUser(
-                username: username,
-                avatar: image,
+              final futures =
+                  <Future<Either<SynchrowiseUserRepositoryFailure, Unit>>>[];
+
+              futures.add(
+                _iUserRepo.update(
+                    synchrowiseUser: event.synchrowiseUser.copyWith(
+                  username: username,
+                )),
               );
 
-              emit(
-                state.copyWith(
-                  registerFailureOrUnitOption: some(failureOrUnit),
-                ),
-              );
+              if (image != null) {
+                futures.add(
+                  _iUserRepo.updateAvatar(
+                    avatar: image,
+                    synchrowiseUser: event.synchrowiseUser,
+                  ),
+                );
+              }
+
+              final results = await Future.wait(futures);
+
+              log(results.toString());
+
+              final result = results[0].andThen(results[1]);
+
+              emit(state.copyWith(registerFailureOrUnitOption: some(result)));
             }
           },
           updateUsernameText: (event) {
