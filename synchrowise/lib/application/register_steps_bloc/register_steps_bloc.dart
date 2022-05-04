@@ -23,8 +23,8 @@ part 'register_steps_state.dart';
 
 class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
   ///* Dependencies
-  final ISynchrowiseUserRepository _iUserRepo;
-  final IRegisterFacade _iRegisterFacade;
+  final ISynchrowiseUserRepository _iUserReposit;
+  final ISynchrowiseUserStorage _iUserStorage;
   final IImageFacade _iImageFacade;
 
   ///* Methods
@@ -53,9 +53,9 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
 
   ///* Logic
   RegisterStepsBloc(
-    this._iRegisterFacade,
+    this._iUserReposit,
+    this._iUserStorage,
     this._iImageFacade,
-    this._iUserRepo,
   ) : super(RegisterStepsState.initial()) {
     on<RegisterStepsEvent>(
       (event, emit) async {
@@ -89,7 +89,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                   <Future<Either<SynchrowiseUserRepositoryFailure, Unit>>>[];
 
               futures.add(
-                _iUserRepo.update(
+                _iUserReposit.update(
                     synchrowiseUser: event.synchrowiseUser.copyWith(
                   username: username,
                 )),
@@ -97,7 +97,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
 
               if (image != null) {
                 futures.add(
-                  _iUserRepo.updateAvatar(
+                  _iUserReposit.updateAvatar(
                     avatar: image,
                     synchrowiseUser: event.synchrowiseUser,
                   ),
@@ -106,9 +106,9 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
 
               final results = await Future.wait(futures);
 
-              log(results.toString());
-
               final result = results[0].andThen(results[1]);
+
+              
 
               emit(state.copyWith(registerFailureOrUnitOption: some(result)));
             }

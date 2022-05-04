@@ -4,7 +4,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:localstorage/localstorage.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
@@ -94,9 +93,9 @@ Future<void> _setupBlocs() async {
 
   getIt.registerSingleton<RegisterStepsBloc>(
     RegisterStepsBloc(
-      getIt<IRegisterFacade>(),
-      getIt<IImageFacade>(),
       getIt<ISynchrowiseUserRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+      getIt<IImageFacade>(),
     ),
   );
 }
