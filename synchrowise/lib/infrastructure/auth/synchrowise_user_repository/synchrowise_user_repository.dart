@@ -24,7 +24,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
 
     final result = await _client.post(
       uri,
-      body: jsonEncode(synchrowiseUser.toMap()),
+      body: jsonEncode(synchrowiseUser.toCreateMap()),
       headers: {HeaderKeys.contentType: HeaderValues.contentType},
     );
 
@@ -80,7 +80,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
 
     final result = await _client.put(
       uri,
-      body: jsonEncode(synchrowiseUser.toMap()),
+      body: jsonEncode(synchrowiseUser.toUpdateMap()),
       headers: {HeaderKeys.contentType: HeaderValues.contentType},
     );
 

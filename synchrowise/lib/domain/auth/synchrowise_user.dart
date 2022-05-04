@@ -5,10 +5,10 @@ import 'package:synchrowise/domain/auth/premium.dart';
 
 /// The parameters below are only used when the user is created by the server.
 /// They must not be used in the client.
-/// * `emailVerified`: The email verification status of the user.
-/// * `isNewUser`: The status of the user.
-/// * `firebaseCreationTimeMs`: The creation time of the user.
-/// * `firebaseLastSigninTimeMs`: The last sign in time of the user.
+/// * `sEmailVerified`: The email verification status of the user.
+/// * `sIsNewUser`: The status of the user.
+/// * `sFirebaseCreationTimeMs`: The creation time of the user.
+/// * `sFirebaseLastSigninTimeMs`: The last sign in time of the user.
 ///
 class SynchrowiseUser extends Equatable {
   final String firebaseId;
@@ -71,6 +71,30 @@ class SynchrowiseUser extends Equatable {
       // --
       'email_verified': sEmailVerified,
       'is_New_user': sIsNewUser,
+      'firebase_Creation_Time': sFirebaseCreationTimeMs,
+      'firebase_Last_Signin_Time': sFirebaseLastSigninTimeMs,
+    };
+  }
+
+  Map<String, dynamic> toUpdateMap() {
+    return {
+      'guid': synchrowiseId,
+      'firebase_id_token': firebaseIdToken,
+      'username': username,
+      'email': emailAddress,
+      'email_verified': sEmailVerified,
+      'firebase_Last_Signin_Time': sFirebaseLastSigninTimeMs,
+    };
+  }
+
+  Map<String, dynamic> toCreateMap() {
+    return {
+      'firebase_uid': firebaseId,
+      'firebase_id_token': firebaseIdToken,
+      'email': emailAddress,
+      'email_verified': sEmailVerified,
+      'is_New_user': sIsNewUser,
+      'signin_Method': signInMethod,
       'firebase_Creation_Time': sFirebaseCreationTimeMs,
       'firebase_Last_Signin_Time': sFirebaseLastSigninTimeMs,
     };
