@@ -25,9 +25,9 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
   final ISynchrowiseUserStorage _iStorage;
 
   ///* Methods
-  void signupWithEmailAndPassword() =>
+  void signinWithEmailAndPassword() =>
       add(const SigninFormEvent.signinWithEmailAndPassword());
-  void signupWithGoogle() => add(const SigninFormEvent.signinWithGoogle());
+  void signinWithGoogle() => add(const SigninFormEvent.signinWithGoogle());
   void updateEmailText({required String email}) =>
       add(SigninFormEvent.updateEmailText(email: email));
   void updatePasswordText({required String password}) =>

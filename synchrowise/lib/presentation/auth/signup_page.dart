@@ -231,8 +231,8 @@ class SignupPage extends StatelessWidget {
                       GoogleButton(
                         showLoadingIndactor: state.isSigningGoogle,
                         onTap: () {
-                          final signinBloc = context.read<SignupFormBloc>();
-                          signinBloc.signupWithGoogle();
+                          final signupBloc = context.read<SignupFormBloc>();
+                          signupBloc.signupWithGoogle();
                         },
                       ),
                       const Spacer(),

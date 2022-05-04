@@ -176,7 +176,6 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
                 },
               ),
             );
-
             emit(newState);
           },
         );

@@ -70,29 +70,29 @@ Future<void> _setupInfrastructure() async {
 }
 
 Future<void> _setupBlocs() async {
-  getIt.registerSingleton<AuthBloc>(
-    AuthBloc(
+  getIt.registerFactory<AuthBloc>(
+    () => AuthBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserStorage>(),
     ),
   );
-  getIt.registerSingleton<SigninFormBloc>(
-    SigninFormBloc(
+  getIt.registerFactory<SigninFormBloc>(
+    () => SigninFormBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserRepository>(),
       getIt<ISynchrowiseUserStorage>(),
     ),
   );
-  getIt.registerSingleton<SignupFormBloc>(
-    SignupFormBloc(
+  getIt.registerFactory<SignupFormBloc>(
+    () => SignupFormBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserRepository>(),
       getIt<ISynchrowiseUserStorage>(),
     ),
   );
 
-  getIt.registerSingleton<RegisterStepsBloc>(
-    RegisterStepsBloc(
+  getIt.registerFactory<RegisterStepsBloc>(
+    () => RegisterStepsBloc(
       getIt<ISynchrowiseUserRepository>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<IImageFacade>(),

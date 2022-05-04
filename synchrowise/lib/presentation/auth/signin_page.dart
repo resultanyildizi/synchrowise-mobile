@@ -166,7 +166,7 @@ class SigninPage extends StatelessWidget {
                         onTap: () {
                           if (!state.isSigningEmail) {
                             final signinBloc = context.read<SigninFormBloc>();
-                            signinBloc.signupWithEmailAndPassword();
+                            signinBloc.signinWithEmailAndPassword();
                           }
                         },
                       ),
@@ -212,7 +212,7 @@ class SigninPage extends StatelessWidget {
                         showLoadingIndactor: state.isSigningGoogle,
                         onTap: () {
                           final signinBloc = context.read<SigninFormBloc>();
-                          signinBloc.signupWithGoogle();
+                          signinBloc.signinWithGoogle();
                         },
                       ),
                       const Spacer(),
