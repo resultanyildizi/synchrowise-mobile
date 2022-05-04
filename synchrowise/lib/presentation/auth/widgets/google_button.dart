@@ -10,9 +10,11 @@ class GoogleButton extends StatelessWidget {
   const GoogleButton({
     Key? key,
     required this.showLoadingIndactor,
+    required this.onTap,
   }) : super(key: key);
 
   final bool showLoadingIndactor;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,7 @@ class GoogleButton extends StatelessWidget {
       child: CustomAnimatedButton(
         width: 50,
         height: 50,
-        onTap: () async {
-          if (!showLoadingIndactor) {
-            final signinBloc = context.read<SigninFormBloc>();
-            signinBloc.signupWithGoogle();
-          }
-        },
+        onTap: onTap,
         child: showLoadingIndactor
             ? const SizedBox(
                 width: 20,

@@ -208,7 +208,13 @@ class SigninPage extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 12),
-                      GoogleButton(showLoadingIndactor: state.isSigningGoogle),
+                      GoogleButton(
+                        showLoadingIndactor: state.isSigningGoogle,
+                        onTap: () {
+                          final signinBloc = context.read<SigninFormBloc>();
+                          signinBloc.signupWithGoogle();
+                        },
+                      ),
                       const Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
