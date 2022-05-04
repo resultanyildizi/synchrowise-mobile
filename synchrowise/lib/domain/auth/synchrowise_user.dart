@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/domain/auth/premium.dart';
@@ -9,7 +10,8 @@ import 'package:synchrowise/domain/auth/premium.dart';
 /// * `sIsNewUser`: The status of the user.
 /// * `sFirebaseCreationTimeMs`: The creation time of the user.
 /// * `sFirebaseLastSigninTimeMs`: The last sign in time of the user.
-///
+
+@immutable
 class SynchrowiseUser extends Equatable {
   final String firebaseId;
   final String synchrowiseId;

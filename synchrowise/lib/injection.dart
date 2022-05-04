@@ -17,8 +17,6 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/syncrowise_user_sembast_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
-import 'package:synchrowise/infrastructure/register/i_register_facade.dart';
-import 'package:synchrowise/infrastructure/register/register_facade.dart';
 import 'package:synchrowise/services/core/synchrowise_database.dart';
 
 GetIt getIt = GetIt.instance;
@@ -47,10 +45,6 @@ Future<void> _setupInfrastructure() async {
       getIt<GoogleSignIn>(),
     ),
   );
-
-  getIt.registerSingleton<IRegisterFacade>(RegisterFacade(
-    getIt<Client>(),
-  ));
 
   getIt.registerSingleton<IImageFacade>(
     ImageFacade(

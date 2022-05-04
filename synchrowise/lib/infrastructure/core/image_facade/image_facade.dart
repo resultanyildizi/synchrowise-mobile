@@ -22,8 +22,8 @@ class ImageFacade implements IImageFacade {
     try {
       final pickedImage = await _imagePicker.pickImage(
         source: ImageSource.gallery,
-        maxHeight: 1024,
-        maxWidth: 1024,
+        maxHeight: 10,
+        maxWidth: 10,
       );
 
       if (pickedImage != null) {

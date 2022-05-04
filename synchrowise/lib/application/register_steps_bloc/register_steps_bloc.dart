@@ -14,8 +14,6 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
-import 'package:synchrowise/infrastructure/register/failure/register_failure.dart';
-import 'package:synchrowise/infrastructure/register/i_register_facade.dart';
 
 part 'register_steps_bloc.freezed.dart';
 part 'register_steps_event.dart';
@@ -108,8 +106,6 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
 
               final result = results[0].andThen(results[1]);
 
-              
-
               emit(state.copyWith(registerFailureOrUnitOption: some(result)));
             }
           },
@@ -161,6 +157,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 await failureOrImage.fold(
               (failure) {
                 return state.copyWith(
+                  uploadingImage: false,
                   failureOrImageOption: some(failureOrImage),
                 );
               },
@@ -170,6 +167,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 );
 
                 return state.copyWith(
+                  uploadingImage: false,
                   failureOrImageOption: some(failureOrCroppedImage),
                 );
               },
@@ -190,15 +188,25 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
               'Cannot go back from step 0. This event must not be called from step 0.',
             );
 
-            emit(state.copyWith(
-              step: state.step > 0 ? state.step - 1 : 0,
-              registerFailureOrUnitOption: none(),
-            ));
+            emit(
+              state.copyWith(
+                step: state.step > 0 ? state.step - 1 : 0,
+                registerFailureOrUnitOption: none(),
+                failureOrImageOption: state.failureOrImageOption.fold(
+                  () => none(),
+                  (a) => a.fold((_) => none(), (im) => some(right(im))),
+                ),
+              ),
+            );
           },
           goNext: (_) {
             emit(state.copyWith(
               step: 1,
               registerFailureOrUnitOption: none(),
+              failureOrImageOption: state.failureOrImageOption.fold(
+                () => none(),
+                (a) => a.fold((_) => none(), (im) => some(right(im))),
+              ),
             ));
           },
         );
