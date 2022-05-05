@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
-
-import '../../../application/signin_form_bloc/signin_form_bloc.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({

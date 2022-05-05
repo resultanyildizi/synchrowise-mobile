@@ -50,7 +50,7 @@ class WelcomePage extends StatelessWidget {
               text: "sign_up".tr(),
               padding: 35,
               onTap: () {
-                Navigator.pushNamed(context, '/register');
+                Navigator.pushNamed(context, '/signup');
               },
             ),
             const SizedBox(height: 80),

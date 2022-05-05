@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path show extension;
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'dart:io';
@@ -22,22 +21,17 @@ class ImageFacade implements IImageFacade {
     try {
       final pickedImage = await _imagePicker.pickImage(
         source: ImageSource.gallery,
-        maxHeight: 10,
-        maxWidth: 10,
       );
 
       if (pickedImage != null) {
         return right(File(pickedImage.path));
       } else {
-        log("pickedImage is null");
-        return left(const ImageFailure.imagePick());
+        return left(const ImageFailure.imagePick("PickedImage is null"));
       }
-    } on PlatformException catch (_) {
-      log("PlatformException: " + _.toString());
-      return left(const ImageFailure.imagePick());
-    } catch (_) {
-      log(_.toString());
-      return left(const ImageFailure.imagePick());
+    } on PlatformException catch (e) {
+      return left(ImageFailure.imagePick("PlatformException: ${e.toString()}"));
+    } catch (e) {
+      return left(ImageFailure.imagePick("Exception: ${e.toString()}"));
     }
   }
 
@@ -48,23 +42,44 @@ class ImageFacade implements IImageFacade {
     IOSUiSettings? iosUiSettings,
   }) async {
     try {
+      final fileext = path.extension(image.path);
+
+      final compressQuality = fileext == ".png" ? 80 : 90;
+
+      final compressFormat =
+          fileext == ".png" ? ImageCompressFormat.png : ImageCompressFormat.jpg;
+
       final croppedImage = await _imageCropper.cropImage(
+        compressFormat: compressFormat,
+        compressQuality: compressQuality,
         sourcePath: image.path,
         aspectRatioPresets: [CropAspectRatioPreset.square],
         iosUiSettings: iosUiSettings,
         androidUiSettings: androidUiSettings,
         cropStyle: CropStyle.rectangle,
+        maxHeight: 3024,
+        maxWidth: 3024,
       );
 
       if (croppedImage != null) {
+        final imageSizeMb = _getImageSizeMB(croppedImage);
+
+        if (imageSizeMb > 10) {
+          return left(ImageFailure.imageSize(imageSizeMb));
+        }
+
         return right(croppedImage);
       } else {
-        return left(const ImageFailure.imageCrop());
+        return left(const ImageFailure.imageCrop("CroppedImage is null"));
       }
-    } on PlatformException catch (_) {
-      return left(const ImageFailure.imageCrop());
-    } catch (_) {
-      return left(const ImageFailure.imageCrop());
+    } on PlatformException catch (e) {
+      return left(ImageFailure.imageCrop("PlatformException ${e.toString()}"));
+    } catch (e) {
+      return left(ImageFailure.imageCrop("Exception: ${e.toString()}"));
     }
+  }
+
+  double _getImageSizeMB(File image) {
+    return image.lengthSync() / 1024 / 1024;
   }
 }

@@ -18,16 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ImageFailureTearOff {
   const _$ImageFailureTearOff();
 
-  _ImagePick imagePick() {
-    return const _ImagePick();
+  _ImagePick imagePick(String? message) {
+    return _ImagePick(
+      message,
+    );
   }
 
-  _ImageCrop imageCrop() {
-    return const _ImageCrop();
+  _ImageCrop imageCrop(String? message) {
+    return _ImageCrop(
+      message,
+    );
   }
 
-  _ImageSize imageSize() {
-    return const _ImageSize();
+  _ImageSize imageSize(double imageSize) {
+    return _ImageSize(
+      imageSize,
+    );
   }
 }
 
@@ -38,23 +44,23 @@ const $ImageFailure = _$ImageFailureTearOff();
 mixin _$ImageFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() imagePick,
-    required TResult Function() imageCrop,
-    required TResult Function() imageSize,
+    required TResult Function(String? message) imagePick,
+    required TResult Function(String? message) imageCrop,
+    required TResult Function(double imageSize) imageSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,6 +109,7 @@ abstract class _$ImagePickCopyWith<$Res> {
   factory _$ImagePickCopyWith(
           _ImagePick value, $Res Function(_ImagePick) then) =
       __$ImagePickCopyWithImpl<$Res>;
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -113,57 +120,80 @@ class __$ImagePickCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
 
   @override
   _ImagePick get _value => super._value as _ImagePick;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_ImagePick(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_ImagePick implements _ImagePick {
-  const _$_ImagePick();
+  const _$_ImagePick(this.message);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'ImageFailure.imagePick()';
+    return 'ImageFailure.imagePick(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ImagePick);
+        (other.runtimeType == runtimeType &&
+            other is _ImagePick &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ImagePickCopyWith<_ImagePick> get copyWith =>
+      __$ImagePickCopyWithImpl<_ImagePick>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() imagePick,
-    required TResult Function() imageCrop,
-    required TResult Function() imageSize,
+    required TResult Function(String? message) imagePick,
+    required TResult Function(String? message) imageCrop,
+    required TResult Function(double imageSize) imageSize,
   }) {
-    return imagePick();
+    return imagePick(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
   }) {
-    return imagePick?.call();
+    return imagePick?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
     required TResult orElse(),
   }) {
     if (imagePick != null) {
-      return imagePick();
+      return imagePick(message);
     }
     return orElse();
   }
@@ -204,7 +234,12 @@ class _$_ImagePick implements _ImagePick {
 }
 
 abstract class _ImagePick implements ImageFailure {
-  const factory _ImagePick() = _$_ImagePick;
+  const factory _ImagePick(String? message) = _$_ImagePick;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$ImagePickCopyWith<_ImagePick> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -212,6 +247,7 @@ abstract class _$ImageCropCopyWith<$Res> {
   factory _$ImageCropCopyWith(
           _ImageCrop value, $Res Function(_ImageCrop) then) =
       __$ImageCropCopyWithImpl<$Res>;
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -222,57 +258,80 @@ class __$ImageCropCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
 
   @override
   _ImageCrop get _value => super._value as _ImageCrop;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_ImageCrop(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_ImageCrop implements _ImageCrop {
-  const _$_ImageCrop();
+  const _$_ImageCrop(this.message);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'ImageFailure.imageCrop()';
+    return 'ImageFailure.imageCrop(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ImageCrop);
+        (other.runtimeType == runtimeType &&
+            other is _ImageCrop &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ImageCropCopyWith<_ImageCrop> get copyWith =>
+      __$ImageCropCopyWithImpl<_ImageCrop>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() imagePick,
-    required TResult Function() imageCrop,
-    required TResult Function() imageSize,
+    required TResult Function(String? message) imagePick,
+    required TResult Function(String? message) imageCrop,
+    required TResult Function(double imageSize) imageSize,
   }) {
-    return imageCrop();
+    return imageCrop(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
   }) {
-    return imageCrop?.call();
+    return imageCrop?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
     required TResult orElse(),
   }) {
     if (imageCrop != null) {
-      return imageCrop();
+      return imageCrop(message);
     }
     return orElse();
   }
@@ -313,7 +372,12 @@ class _$_ImageCrop implements _ImageCrop {
 }
 
 abstract class _ImageCrop implements ImageFailure {
-  const factory _ImageCrop() = _$_ImageCrop;
+  const factory _ImageCrop(String? message) = _$_ImageCrop;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$ImageCropCopyWith<_ImageCrop> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -321,6 +385,7 @@ abstract class _$ImageSizeCopyWith<$Res> {
   factory _$ImageSizeCopyWith(
           _ImageSize value, $Res Function(_ImageSize) then) =
       __$ImageSizeCopyWithImpl<$Res>;
+  $Res call({double imageSize});
 }
 
 /// @nodoc
@@ -331,57 +396,80 @@ class __$ImageSizeCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
 
   @override
   _ImageSize get _value => super._value as _ImageSize;
+
+  @override
+  $Res call({
+    Object? imageSize = freezed,
+  }) {
+    return _then(_ImageSize(
+      imageSize == freezed
+          ? _value.imageSize
+          : imageSize // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_ImageSize implements _ImageSize {
-  const _$_ImageSize();
+  const _$_ImageSize(this.imageSize);
+
+  @override
+  final double imageSize;
 
   @override
   String toString() {
-    return 'ImageFailure.imageSize()';
+    return 'ImageFailure.imageSize(imageSize: $imageSize)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ImageSize);
+        (other.runtimeType == runtimeType &&
+            other is _ImageSize &&
+            const DeepCollectionEquality().equals(other.imageSize, imageSize));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageSize));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ImageSizeCopyWith<_ImageSize> get copyWith =>
+      __$ImageSizeCopyWithImpl<_ImageSize>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() imagePick,
-    required TResult Function() imageCrop,
-    required TResult Function() imageSize,
+    required TResult Function(String? message) imagePick,
+    required TResult Function(String? message) imageCrop,
+    required TResult Function(double imageSize) imageSize,
   }) {
-    return imageSize();
+    return imageSize(this.imageSize);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
   }) {
-    return imageSize?.call();
+    return imageSize?.call(this.imageSize);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? imagePick,
-    TResult Function()? imageCrop,
-    TResult Function()? imageSize,
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
     required TResult orElse(),
   }) {
     if (imageSize != null) {
-      return imageSize();
+      return imageSize(this.imageSize);
     }
     return orElse();
   }
@@ -422,5 +510,10 @@ class _$_ImageSize implements _ImageSize {
 }
 
 abstract class _ImageSize implements ImageFailure {
-  const factory _ImageSize() = _$_ImageSize;
+  const factory _ImageSize(double imageSize) = _$_ImageSize;
+
+  double get imageSize;
+  @JsonKey(ignore: true)
+  _$ImageSizeCopyWith<_ImageSize> get copyWith =>
+      throw _privateConstructorUsedError;
 }

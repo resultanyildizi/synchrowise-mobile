@@ -17,7 +17,10 @@ class GroupData extends Equatable {
     required this.members,
   });
 
-  factory GroupData.toCreateGroup(String groupName, String ownerId) {
+  factory GroupData.toCreateGroup({
+    required String groupName,
+    required String ownerId,
+  }) {
     return GroupData(
       groupName: groupName,
       ownerId: ownerId,

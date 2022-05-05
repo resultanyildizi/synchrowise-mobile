@@ -5,7 +5,7 @@ part 'image_failure.freezed.dart';
 
 @freezed
 abstract class ImageFailure extends SynchrowiseFailure with _$ImageFailure {
-  const factory ImageFailure.imagePick() = _ImagePick;
-  const factory ImageFailure.imageCrop() = _ImageCrop;
-  const factory ImageFailure.imageSize() = _ImageSize;
+  const factory ImageFailure.imagePick(String? message) = _ImagePick;
+  const factory ImageFailure.imageCrop(String? message) = _ImageCrop;
+  const factory ImageFailure.imageSize(double imageSize) = _ImageSize;
 }
