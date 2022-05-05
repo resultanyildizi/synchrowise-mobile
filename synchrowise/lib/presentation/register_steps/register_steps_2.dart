@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,27 +49,17 @@ class RegisterSteps2 extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 state.failureOrImageOption.fold(
-                  () => _ImageSection(
+                  () => _ImageSectionEmpty(
                     showLoadingIndicator: state.uploadingImage,
                   ),
                   (failureOrImage) => failureOrImage.fold(
                     (failure) {
-                      return _ImageSection(
+                      return _ImageSectionEmpty(
                         showLoadingIndicator: state.uploadingImage,
                       );
                     },
                     (image) {
-                      return Container(
-                        height: MediaQuery.of(context).size.width - 70,
-                        width: MediaQuery.of(context).size.width - 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Image.file(
-                          image,
-                          fit: BoxFit.cover,
-                        ),
-                      );
+                      return _ImageSection(image: image);
                     },
                   ),
                 ),
@@ -152,6 +144,59 @@ class RegisterSteps2 extends StatelessWidget {
 
 class _ImageSection extends StatelessWidget {
   const _ImageSection({
+    required this.image,
+    Key? key,
+  }) : super(key: key);
+
+  final File image;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomAnimatedButton(
+      onTap: () => _uploadImage(context),
+      height: MediaQuery.of(context).size.width - 70,
+      width: MediaQuery.of(context).size.width - 70,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.file(
+              image,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            right: 12,
+            top: 12,
+            child: CustomAnimatedButton(
+              onTap: () {
+                final registerStepsBloc = context.read<RegisterStepsBloc>();
+                registerStepsBloc.removeAvatarImage();
+              },
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              width: 25,
+              height: 25,
+              child: const Icon(
+                Icons.close,
+                color: Colors.white,
+                size: 16,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ImageSectionEmpty extends StatelessWidget {
+  const _ImageSectionEmpty({
     Key? key,
     required this.showLoadingIndicator,
   }) : super(key: key);
@@ -181,13 +226,20 @@ class _ImageSection extends StatelessWidget {
         if (showLoadingIndicator) {
           return;
         } else {
-          final registerStepsBloc = context.read<RegisterStepsBloc>();
-          registerStepsBloc.updateAvatarImage(
-            androidUiSettings: const AndroidUiSettings(),
-            iosUiSettings: const IOSUiSettings(),
-          );
+          return _uploadImage(context);
         }
       },
     );
   }
+}
+
+void _uploadImage(BuildContext context) {
+  final registerStepsBloc = context.read<RegisterStepsBloc>();
+  registerStepsBloc.updateAvatarImage(
+    androidUiSettings: AndroidUiSettings(
+      toolbarColor: primaryColor,
+      toolbarTitle: "clip".tr(),
+    ),
+    iosUiSettings: const IOSUiSettings(),
+  );
 }

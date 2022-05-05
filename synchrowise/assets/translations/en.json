@@ -53,5 +53,6 @@
     "connection_error": "Connection error",
     "unknown_error": "Unknown error",
     "invalid_email_or_password": "Invalid email or password",
-    "account_disabled": "This is user account is disabled"
+    "account_disabled": "This is user account is disabled",
+    "clip": "Clip"
 }
