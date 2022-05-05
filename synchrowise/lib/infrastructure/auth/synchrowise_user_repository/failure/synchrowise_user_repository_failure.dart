@@ -6,6 +6,8 @@ part 'synchrowise_user_repository_failure.freezed.dart';
 @freezed
 abstract class SynchrowiseUserRepositoryFailure extends SynchrowiseFailure
     with _$SynchrowiseUserRepositoryFailure {
+  @Implements<ConnectionSynchrowiseFailure>()
+  const factory SynchrowiseUserRepositoryFailure.connection() = _Connection;
   @Implements<ServerSynchrowiseFailure>()
   const factory SynchrowiseUserRepositoryFailure.server(
       int statusCode, String? message) = _ServerFailure;

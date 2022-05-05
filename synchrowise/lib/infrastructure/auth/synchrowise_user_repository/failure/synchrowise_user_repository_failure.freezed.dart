@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SynchrowiseUserRepositoryFailureTearOff {
   const _$SynchrowiseUserRepositoryFailureTearOff();
 
+  _Connection connection() {
+    return const _Connection();
+  }
+
   _ServerFailure server(int statusCode, String? message) {
     return _ServerFailure(
       statusCode,
@@ -38,22 +42,23 @@ const $SynchrowiseUserRepositoryFailure =
 
 /// @nodoc
 mixin _$SynchrowiseUserRepositoryFailure {
-  String? get message => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() connection,
     required TResult Function(int statusCode, String? message) server,
     required TResult Function(String? message) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
     required TResult orElse(),
@@ -61,27 +66,26 @@ mixin _$SynchrowiseUserRepositoryFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Connection value) connection,
     required TResult Function(_ServerFailure value) server,
     required TResult Function(_UnknownFailure value) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SynchrowiseUserRepositoryFailureCopyWith<SynchrowiseUserRepositoryFailure>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -90,7 +94,6 @@ abstract class $SynchrowiseUserRepositoryFailureCopyWith<$Res> {
           SynchrowiseUserRepositoryFailure value,
           $Res Function(SynchrowiseUserRepositoryFailure) then) =
       _$SynchrowiseUserRepositoryFailureCopyWithImpl<$Res>;
-  $Res call({String? message});
 }
 
 /// @nodoc
@@ -101,27 +104,126 @@ class _$SynchrowiseUserRepositoryFailureCopyWithImpl<$Res>
   final SynchrowiseUserRepositoryFailure _value;
   // ignore: unused_field
   final $Res Function(SynchrowiseUserRepositoryFailure) _then;
-
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_value.copyWith(
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$ServerFailureCopyWith<$Res>
-    implements $SynchrowiseUserRepositoryFailureCopyWith<$Res> {
+abstract class _$ConnectionCopyWith<$Res> {
+  factory _$ConnectionCopyWith(
+          _Connection value, $Res Function(_Connection) then) =
+      __$ConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ConnectionCopyWithImpl<$Res>
+    extends _$SynchrowiseUserRepositoryFailureCopyWithImpl<$Res>
+    implements _$ConnectionCopyWith<$Res> {
+  __$ConnectionCopyWithImpl(
+      _Connection _value, $Res Function(_Connection) _then)
+      : super(_value, (v) => _then(v as _Connection));
+
+  @override
+  _Connection get _value => super._value as _Connection;
+}
+
+/// @nodoc
+
+@Implements<ConnectionSynchrowiseFailure>()
+class _$_Connection implements _Connection {
+  const _$_Connection();
+
+  @override
+  String toString() {
+    return 'SynchrowiseUserRepositoryFailure.connection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Connection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connection,
+    required TResult Function(int statusCode, String? message) server,
+    required TResult Function(String? message) unknown,
+  }) {
+    return connection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? connection,
+    TResult Function(int statusCode, String? message)? server,
+    TResult Function(String? message)? unknown,
+  }) {
+    return connection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connection,
+    TResult Function(int statusCode, String? message)? server,
+    TResult Function(String? message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (connection != null) {
+      return connection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Connection value) connection,
+    required TResult Function(_ServerFailure value) server,
+    required TResult Function(_UnknownFailure value) unknown,
+  }) {
+    return connection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
+    TResult Function(_ServerFailure value)? server,
+    TResult Function(_UnknownFailure value)? unknown,
+  }) {
+    return connection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
+    TResult Function(_ServerFailure value)? server,
+    TResult Function(_UnknownFailure value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (connection != null) {
+      return connection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Connection
+    implements SynchrowiseUserRepositoryFailure, ConnectionSynchrowiseFailure {
+  const factory _Connection() = _$_Connection;
+}
+
+/// @nodoc
+abstract class _$ServerFailureCopyWith<$Res> {
   factory _$ServerFailureCopyWith(
           _ServerFailure value, $Res Function(_ServerFailure) then) =
       __$ServerFailureCopyWithImpl<$Res>;
-  @override
   $Res call({int statusCode, String? message});
 }
 
@@ -194,6 +296,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() connection,
     required TResult Function(int statusCode, String? message) server,
     required TResult Function(String? message) unknown,
   }) {
@@ -203,6 +306,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
   }) {
@@ -212,6 +316,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
     required TResult orElse(),
@@ -225,6 +330,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Connection value) connection,
     required TResult Function(_ServerFailure value) server,
     required TResult Function(_UnknownFailure value) unknown,
   }) {
@@ -234,6 +340,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
   }) {
@@ -243,6 +350,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
     required TResult orElse(),
@@ -260,21 +368,17 @@ abstract class _ServerFailure
       _$_ServerFailure;
 
   int get statusCode;
-  @override
   String? get message;
-  @override
   @JsonKey(ignore: true)
   _$ServerFailureCopyWith<_ServerFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$UnknownFailureCopyWith<$Res>
-    implements $SynchrowiseUserRepositoryFailureCopyWith<$Res> {
+abstract class _$UnknownFailureCopyWith<$Res> {
   factory _$UnknownFailureCopyWith(
           _UnknownFailure value, $Res Function(_UnknownFailure) then) =
       __$UnknownFailureCopyWithImpl<$Res>;
-  @override
   $Res call({String? message});
 }
 
@@ -336,6 +440,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() connection,
     required TResult Function(int statusCode, String? message) server,
     required TResult Function(String? message) unknown,
   }) {
@@ -345,6 +450,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
   }) {
@@ -354,6 +460,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connection,
     TResult Function(int statusCode, String? message)? server,
     TResult Function(String? message)? unknown,
     required TResult orElse(),
@@ -367,6 +474,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Connection value) connection,
     required TResult Function(_ServerFailure value) server,
     required TResult Function(_UnknownFailure value) unknown,
   }) {
@@ -376,6 +484,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
   }) {
@@ -385,6 +494,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Connection value)? connection,
     TResult Function(_ServerFailure value)? server,
     TResult Function(_UnknownFailure value)? unknown,
     required TResult orElse(),
@@ -400,9 +510,7 @@ abstract class _UnknownFailure
     implements SynchrowiseUserRepositoryFailure, UnknownSynchrowiseFailure {
   const factory _UnknownFailure(String? message) = _$_UnknownFailure;
 
-  @override
   String? get message;
-  @override
   @JsonKey(ignore: true)
   _$UnknownFailureCopyWith<_UnknownFailure> get copyWith =>
       throw _privateConstructorUsedError;

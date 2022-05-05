@@ -3,5 +3,7 @@ class HeaderKeys {
 }
 
 class HeaderValues {
-  static const String contentType = "application/json; charset=utf-8";
+  static const String jsonBody = "application/json; charset=utf-8";
+  static const String formBody = "application/x-www-form-urlencoded";
+  static const String multipartFormData = "multipart/form-data";
 }

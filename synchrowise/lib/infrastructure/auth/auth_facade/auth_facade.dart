@@ -148,10 +148,8 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFacadeFailure, Unit>> deleteAccount() async {
     try {
-      _firebaseAuth.currentUser?.delete();
-      _googleSignIn.signOut();
-
-      // Todo send request to backend api
+      await _firebaseAuth.currentUser?.delete();
+      await _googleSignIn.signOut();
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -166,7 +164,10 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFacadeFailure, Unit>> signOut() async {
     try {
-      await Future.wait([_firebaseAuth.signOut(), _googleSignIn.signOut()]);
+      await Future.wait([
+        _firebaseAuth.signOut(),
+        _googleSignIn.signOut(),
+      ]);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
@@ -180,136 +181,4 @@ class AuthFacade implements IAuthFacade {
       }
     }
   }
-
-  // Future<Either<AuthFacadeFailure, Unit>> _createUser(
-  //   UserCredential userCredential,
-  // ) async {
-  //   final additionalUserInfo = userCredential.additionalUserInfo;
-  //   final credential = userCredential.credential;
-  //   final user = userCredential.user;
-
-  //   if (user != null) {
-  //     log("user is not null");
-
-  //     final firebaseToken = await user.getIdToken();
-
-  //     final uri = Uri.parse("${dotenv.get("BACKEND_URL")}/api/User");
-
-  //     final requestBody = {
-  //       'firebase_uid': user.uid,
-  //       'firebase_id_token': firebaseToken,
-  //       'email': user.email,
-  //       'email_verified': user.emailVerified,
-  //       'is_New_user': additionalUserInfo?.isNewUser,
-  //       'signin_method': credential?.signInMethod ?? 'null',
-  //       'firebase_Creation_Time':
-  //           user.metadata.creationTime?.millisecondsSinceEpoch,
-  //       'firebase_Last_Signin_Time':
-  //           user.metadata.lastSignInTime?.millisecondsSinceEpoch,
-  //     };
-
-  //     log("sending post request to '${dotenv.get("BACKEND_URL")}/api/User'");
-
-  //     final result = await _client.post(
-  //       uri,
-  //       body: jsonEncode(requestBody),
-  //       headers: {HeaderKeys.contentType: HeaderValues.contentType},
-  //     );
-
-  //     // log result status and result body
-  //     log("result status: ${result.statusCode}");
-  //     log("result body: ${result.body}");
-
-  //     if (result.statusCode == 200) {
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
-
-  //       final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
-
-  //       final data = Map<String, dynamic>.from(bodyData);
-
-  //       data.addAll({
-  //         'email': user.email,
-  //         'firebaseId': user.uid,
-  //         'firebaseIdToken': firebaseToken,
-  //         'signInMethod': credential?.signInMethod,
-  //       });
-
-  //       log("writing user to storage: " + data.toString());
-
-  //       await _localStorage.setItem(LocalStorageKeys.synchrowiseUser, data);
-
-  //       return right(unit);
-  //     } else if (result.statusCode == 500) {
-  //       return left(const AuthFacadeFailure.serverInternal());
-  //     } else if (result.statusCode == 404) {
-  //       return left(const AuthFacadeFailure.unknown());
-  //     } else {
-  //       log(result.body);
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
-  //       final error = body["error"] as Map<String, dynamic>;
-  //       final errorList = (error['errors'] as List<dynamic>).cast();
-
-  //       if (errorList.contains('This is user is exist')) {
-  //         return left(const AuthFacadeFailure.emailAlreadyInUse());
-  //       }
-  //     }
-  //   }
-
-  //   return left(const AuthFacadeFailure.unknown());
-  // }
-
-  // Future<Either<AuthFacadeFailure, Unit>> _getUserFromApi(
-  //   UserCredential userCredential,
-  // ) async {
-  //   final credential = userCredential.credential;
-  //   final user = userCredential.user;
-
-  //   if (user != null) {
-  //     final firebaseToken = await user.getIdToken();
-
-  //     final uri = Uri.parse(
-  //         "${dotenv.get("BACKEND_URL")}/api/User/firebase/${user.uid}");
-
-  //     final result = await _client.get(
-  //       uri,
-  //       headers: {HeaderKeys.contentType: HeaderValues.contentType},
-  //     );
-
-  //     log(result.statusCode.toString());
-
-  //     if (result.statusCode == 200) {
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
-
-  //       final bodyData = (body['data'] ?? {}) as Map<String, dynamic>;
-
-  //       final data = Map<String, dynamic>.from(bodyData);
-
-  //       data.addAll({
-  //         'email': user.email,
-  //         'firebaseId': user.uid,
-  //         'firebaseIdToken': firebaseToken,
-  //         'signInMethod': credential?.signInMethod,
-  //       });
-
-  //       log("writing user to storage: " + data.toString());
-
-  //       await _localStorage.setItem(LocalStorageKeys.synchrowiseUser, data);
-
-  //       return right(unit);
-  //     } else if (result.statusCode == 500) {
-  //       return left(const AuthFacadeFailure.unknown());
-  //     } else if (result.statusCode == 404) {
-  //       return left(const AuthFacadeFailure.unknown());
-  //     } else {
-  //       final body = jsonDecode(result.body) as Map<String, dynamic>;
-  //       final error = body["error"] as Map<String, dynamic>;
-  //       final errorList = (error['errors'] as List<dynamic>).cast();
-
-  //       if (errorList.contains('This is user is exist')) {
-  //         return left(const AuthFacadeFailure.emailAlreadyInUse());
-  //       }
-  //     }
-  //   }
-  //   return left(const AuthFacadeFailure.unknown());
-  // }
 }

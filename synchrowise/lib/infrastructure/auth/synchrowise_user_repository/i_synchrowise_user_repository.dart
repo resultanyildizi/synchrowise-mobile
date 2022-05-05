@@ -13,6 +13,10 @@ abstract class ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   });
 
+  Future<Either<SynchrowiseUserRepositoryFailure, Unit>> delete({
+    required SynchrowiseUser synchrowiseUser,
+  });
+
   Future<Either<SynchrowiseUserRepositoryFailure, Unit>> updateAvatar({
     required SynchrowiseUser synchrowiseUser,
     required File avatar,

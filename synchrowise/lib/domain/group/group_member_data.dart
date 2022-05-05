@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class GroupMember extends Equatable {
+class GroupMemberData extends Equatable {
   final String memberId;
 
-  const GroupMember({
+  const GroupMemberData({
     required this.memberId,
   });
 

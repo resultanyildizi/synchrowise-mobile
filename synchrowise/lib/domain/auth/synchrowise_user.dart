@@ -106,7 +106,7 @@ class SynchrowiseUser extends Equatable {
     return SynchrowiseUser(
       username: map['username'] as String,
       firebaseId: map['firebase_uid'] as String,
-      synchrowiseId: map['synchrowise_id'] as String,
+      synchrowiseId: map['guid'] as String,
       avatar: Avatar.fromMap(map['avatar_url'] as Map<String, dynamic>),
       signInMethod: map['sign_in_method'] as String,
       firebaseIdToken: map['firebase_id_token'] as String,
