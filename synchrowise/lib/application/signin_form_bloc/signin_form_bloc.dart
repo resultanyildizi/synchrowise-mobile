@@ -119,14 +119,15 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
   }
 
   FutureOr<Either<SynchrowiseFailure, Unit>> _getAndUpdateStoredUser(
-      Either<AuthFacadeFailure, SynchrowiseUser> failureOrCredUser) async {
-    return failureOrCredUser.fold(
+    Either<AuthFacadeFailure, SynchrowiseUser> failureOrCredUser,
+  ) async {
+    return await failureOrCredUser.fold(
       (failure) => left(failure),
       (credUser) async {
         final failureOrRepoUser =
             await _iUserRepo.getByCredUser(userFromCred: credUser);
 
-        return failureOrRepoUser.fold(
+        return await failureOrRepoUser.fold(
           (failure) => left(failure),
           (repoUser) async {
             final failureOrUnit = await _iStorage.update(user: repoUser);
