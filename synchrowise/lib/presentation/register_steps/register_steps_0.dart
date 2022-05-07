@@ -10,8 +10,9 @@ class RegisterSteps0 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return SafeArea(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 35.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,7 +41,6 @@ class RegisterSteps0 extends StatelessWidget {
                 registerStepsBloc.goNext();
               },
             ),
-            const SizedBox(height: 80),
           ],
         ),
       ),

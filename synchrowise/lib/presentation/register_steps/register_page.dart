@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
-import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
@@ -112,10 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 35.0,
-              vertical: 25.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 25.0),
             child: MultiBlocListener(
               listeners: [
                 _getRegisterFailureBlocListener,
@@ -125,9 +119,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 builder: (context, state) {
                   return Column(
                     children: [
-                      ThinLineStepper(
-                        lineCount: 3,
-                        activeLineIndex: {state.step},
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: ThinLineStepper(
+                          lineCount: 3,
+                          activeLineIndex: {state.step},
+                        ),
                       ),
                       Expanded(
                         child: PageView(

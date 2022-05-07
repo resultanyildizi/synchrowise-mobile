@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
                     .copyWith(color: grayColor, fontSize: 16),
               ),
               const SizedBox(height: 16),
-              if (true)
+              if (false)
                 GroupActionCards(
                   cardBackgroundImage: whiteCardImagePath,
                   title: "r123cKl14",

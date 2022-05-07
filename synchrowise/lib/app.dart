@@ -93,6 +93,40 @@ class SynchrowiseApp extends StatelessWidget {
           '/reset_password': (context) => const ResetPasswordPage(),
           '/register': (context) => const RegisterPage(),
         },
+        initialRoute: '/',
+        onGenerateRoute: (RouteSettings settings) {
+          switch (settings.name) {
+            case "/":
+              return MaterialPageRoute(
+                builder: (context) => const SplashPage(),
+              );
+            case "/welcome":
+              return MaterialPageRoute(
+                builder: (context) => const WelcomePage(),
+              );
+            case "/signin":
+              return MaterialPageRoute(
+                builder: (context) => const SigninPage(),
+              );
+            case "/signup":
+              return MaterialPageRoute(
+                builder: (context) => const SignupPage(),
+              );
+            case "/home":
+              return MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              );
+            case "/reset_password":
+              return MaterialPageRoute(
+                builder: (context) => const ResetPasswordPage(),
+              );
+            case "/register":
+              return MaterialPageRoute(
+                builder: (context) => const RegisterPage(),
+                fullscreenDialog: true,
+              );
+          }
+        },
       ),
     );
   }
