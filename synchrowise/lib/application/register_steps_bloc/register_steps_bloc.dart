@@ -16,6 +16,7 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
+import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 
 part 'register_steps_bloc.freezed.dart';

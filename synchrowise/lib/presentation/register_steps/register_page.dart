@@ -46,56 +46,108 @@ class _RegisterPageState extends State<RegisterPage> {
             current.storageFailureOrUnitOption.isSome();
       },
       listener: (context, state) {
-        final imageFailureOrNull = state.failureOrImageOption
-            .fold(() => null, (foi) => foi.fold((f) => f, (_) => null));
+        if (state.storageFailureOrUnitOption.isSome()) {
+          final failureOrUnit = state.storageFailureOrUnitOption
+              .getOrElse(() => throw AssertionError());
 
-        final usernameFailureOrNull = state.usernameFailureOrUnitOption
-            .fold(() => null, (fou) => fou.fold((f) => f, (_) => null));
-
-        final storageFailureOrNull = state.storageFailureOrUnitOption
-            .fold(() => null, (fos) => fos.fold((f) => f, (_) => null));
-
-        final avatarFailureOrNull = state.failureOrAvatarOption
-            .fold(() => null, (foa) => foa.fold((f) => f, (_) => null));
-
-        if (storageFailureOrNull != null) {
-          storageFailureOrNull.maybeMap(
-            get: (f) {
-              // Todo log the user out
+          failureOrUnit.fold(
+            (f) {
+              f.maybeMap(
+                get: (_) {
+                  // Todo : logout user
+                },
+                orElse: () {
+                  showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+                },
+              );
             },
-            orElse: () {
-              showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+            (_) {},
+          );
+        } else if (state.usernameFailureOrUnitOption.isSome()) {
+          final failureOrUnit = state.usernameFailureOrUnitOption
+              .getOrElse(() => throw AssertionError());
+
+          failureOrUnit.fold(
+            (f) {
+              f.map(
+                connection: (_) {
+                  showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
+                },
+                server: (_) {
+                  showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+                },
+                unknown: (_) {
+                  showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+                },
+              );
             },
+            (_) {},
           );
-        } else if (usernameFailureOrNull != null) {
-          usernameFailureOrNull.map(
-            connection: (_) =>
-                showErrorToast("connection_error".tr(), ToastGravity.BOTTOM),
-            server: (_) =>
-                showErrorToast("server_error".tr(), ToastGravity.BOTTOM),
-            unknown: (_) =>
-                showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM),
+        } else if (state.failureOrAvatarOption.isSome()) {
+          final failureOrUnit = state.failureOrAvatarOption
+              .getOrElse(() => throw AssertionError());
+
+          failureOrUnit.fold(
+            (f) {
+              f.map(
+                server: (_) {
+                  showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+                },
+              );
+            },
+            (_) {},
           );
-        } else if (avatarFailureOrNull != null) {
-          avatarFailureOrNull.map(
-            format: (_) => showErrorToast(
-                "avatar_format_invalid".tr(), ToastGravity.BOTTOM),
-            size: (_) =>
-                showErrorToast("image_size_invalid".tr(), ToastGravity.BOTTOM),
-            server: (_) =>
-                showErrorToast("server_error".tr(), ToastGravity.BOTTOM),
+        } else if (state.failureOrImageOption.isSome()) {
+          final failureOrUnit = state.failureOrImageOption
+              .getOrElse(() => throw AssertionError());
+
+          failureOrUnit.fold(
+            (f) {
+              f.map(
+                imageCrop: (_) {
+                  showErrorToast("image_crop_error".tr(), ToastGravity.BOTTOM);
+                },
+                imagePick: (_) {
+                  showErrorToast("image_pick_error".tr(), ToastGravity.BOTTOM);
+                },
+                imageSize: (_) {
+                  showErrorToast("image_size_error".tr(), ToastGravity.BOTTOM);
+                },
+              );
+            },
+            (_) {},
           );
-        } else if (imageFailureOrNull != null) {
-          imageFailureOrNull.map(
-            imagePick: (_) =>
-                showErrorToast("image_pick_failed".tr(), ToastGravity.BOTTOM),
-            imageCrop: (_) =>
-                showErrorToast("image_crop_failed".tr(), ToastGravity.BOTTOM),
-            imageSize: (f) =>
-                showErrorToast("image_size_invalid".tr(), ToastGravity.BOTTOM),
-          );
-        } else {
-          return registeredSuccessfulBottomSheet(context);
+        }
+      },
+    );
+  }
+
+  BlocListener get _getRegisterSuccessBlocListener {
+    return BlocListener<RegisterStepsBloc, RegisterStepsState>(
+      listenWhen: (previous, current) {
+        return current.failureOrAvatarOption.isSome() &&
+            current.failureOrImageOption.isSome() &&
+            current.usernameFailureOrUnitOption.isSome() &&
+            current.storageFailureOrUnitOption.isSome();
+      },
+      listener: (context, state) {
+        final imageSuccess = state.failureOrImageOption
+            .fold(() => throw AssertionError(), (foi) => foi.isRight());
+
+        final usernameSuccess = state.failureOrImageOption
+            .fold(() => throw AssertionError(), (fou) => fou.isRight());
+
+        final storageSuccess = state.storageFailureOrUnitOption
+            .fold(() => throw AssertionError(), (fos) => fos.isRight());
+
+        final avatarSuccess = state.failureOrAvatarOption
+            .fold(() => throw AssertionError(), (foa) => foa.isRight());
+
+        final success =
+            imageSuccess && usernameSuccess && storageSuccess && avatarSuccess;
+
+        if (success) {
+          // Todo: show success toast
         }
       },
     );
@@ -122,6 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: MultiBlocListener(
               listeners: [
                 _getRegisterFailureBlocListener,
+                _getRegisterSuccessBlocListener,
                 _getRegisterPageAnimatorListener,
               ],
               child: BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
