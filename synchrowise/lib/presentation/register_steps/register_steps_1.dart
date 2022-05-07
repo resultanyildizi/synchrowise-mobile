@@ -71,7 +71,6 @@ class _RegisterSteps1State extends State<RegisterSteps1>
                 final registerStepsBloc = context.read<RegisterStepsBloc>();
                 registerStepsBloc.goBack();
               }),
-              const SizedBox(height: 32),
               SingleTextFieldForm(
                 changedButton: (username) {
                   final registerStepsBloc = context.read<RegisterStepsBloc>();

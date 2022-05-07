@@ -11,6 +11,7 @@ import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/avatar_repository/avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
@@ -61,6 +62,10 @@ Future<void> _setupInfrastructure() async {
 
   getIt.registerSingleton<ISynchrowiseUserRepository>(
     SynchrowiseUserRepository(getIt<Client>()),
+  );
+
+  getIt.registerSingleton<IAvatarRepository>(
+    AvatarRepository(),
   );
 }
 

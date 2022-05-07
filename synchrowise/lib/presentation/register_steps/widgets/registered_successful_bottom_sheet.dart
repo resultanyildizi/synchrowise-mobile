@@ -7,7 +7,11 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 void registeredSuccessfulBottomSheet(BuildContext context) {
   showFlexibleBottomSheet(
+    isDismissible: false,
+    bottomSheetColor: Colors.transparent,
     context: context,
+    minHeight: 0,
+    maxHeight: 0.9,
     builder: (
       BuildContext context,
       ScrollController scrollController,
@@ -23,38 +27,37 @@ void registeredSuccessfulBottomSheet(BuildContext context) {
             topRight: Radius.circular(32),
           ),
         ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                "assets/svg/Successful.svg",
-                width: MediaQuery.of(context).size.width / 3,
-                height: MediaQuery.of(context).size.width / 3,
-              ),
-              const SizedBox(height: 35),
-              Text(
-                "registered_successfully".tr(),
-                style: Theme.of(context).textTheme.headline3,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                "now_you_can_use_synchrowise".tr(),
-                style: Theme.of(context).textTheme.subtitle1,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(),
-              DefaultButton(
-                backgroundColor: primaryColor,
-                borderColor: null,
-                textColor: kcWhiteColor,
-                text: "lets_get_started".tr(),
-                padding: 35,
-                onTap: () {},
-              ),
-              const SizedBox(height: 24),
-            ],
-          ),
+        child: Column(
+          children: [
+            const SizedBox(height: 45),
+            SvgPicture.asset(
+              "assets/svg/Successful.svg",
+              width: MediaQuery.of(context).size.width / 3,
+              height: MediaQuery.of(context).size.width / 3,
+            ),
+            const SizedBox(height: 35),
+            Text(
+              "registered_successfully".tr(),
+              style: Theme.of(context).textTheme.headline3,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              "now_you_can_use_synchrowise".tr(),
+              style: Theme.of(context).textTheme.subtitle1,
+              textAlign: TextAlign.center,
+            ),
+            const Spacer(),
+            DefaultButton(
+              backgroundColor: primaryColor,
+              borderColor: null,
+              textColor: kcWhiteColor,
+              text: "lets_get_started".tr(),
+              padding: 35,
+              onTap: () {},
+            ),
+            const SizedBox(height: 24),
+          ],
         ),
       );
     },

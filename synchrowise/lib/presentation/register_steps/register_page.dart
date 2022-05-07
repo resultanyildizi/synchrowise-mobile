@@ -9,6 +9,7 @@ import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/register_steps/register_steps_0.dart';
 import 'package:synchrowise/presentation/register_steps/register_steps_1.dart';
 import 'package:synchrowise/presentation/register_steps/register_steps_2.dart';
+import 'package:synchrowise/presentation/register_steps/widgets/registered_successful_bottom_sheet.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -94,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 showErrorToast("image_size_invalid".tr(), ToastGravity.BOTTOM),
           );
         } else {
-          // Todo : show success dialog
+          return registeredSuccessfulBottomSheet(context);
         }
       },
     );
