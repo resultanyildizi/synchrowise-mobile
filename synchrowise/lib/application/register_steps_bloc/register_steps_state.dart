@@ -5,8 +5,12 @@ class RegisterStepsState with _$RegisterStepsState {
   const factory RegisterStepsState({
     required Option<Either<ValueFailure, String>> failureOrUsernameOption,
     required Option<Either<ImageFailure, File>> failureOrImageOption,
+    required Option<Either<AvatarRepositoryFailure, Unit>>
+        failureOrAvatarOption,
     required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
-        registerFailureOrUnitOption,
+        usernameFailureOrUnitOption,
+    required Option<Either<SynchrowiseUserStorageFailure, Unit>>
+        storageFailureOrUnitOption,
     required bool uploadingImage,
     required bool showErrors,
     required int step,
@@ -14,8 +18,10 @@ class RegisterStepsState with _$RegisterStepsState {
 
   factory RegisterStepsState.initial() {
     return RegisterStepsState(
-      registerFailureOrUnitOption: none(),
+      storageFailureOrUnitOption: none(),
+      usernameFailureOrUnitOption: none(),
       failureOrUsernameOption: none(),
+      failureOrAvatarOption: none(),
       failureOrImageOption: none(),
       uploadingImage: false,
       showErrors: false,

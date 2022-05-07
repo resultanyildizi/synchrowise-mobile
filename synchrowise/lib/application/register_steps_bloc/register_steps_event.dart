@@ -10,9 +10,8 @@ class RegisterStepsEvent with _$RegisterStepsEvent {
   }) = _RegisterStepsUpdateAvatarImageEvent;
   const factory RegisterStepsEvent.saveUsername() =
       _RegisterStepsSaveUsernameEvent;
-  const factory RegisterStepsEvent.registerFields({
-    required SynchrowiseUser synchrowiseUser,
-  }) = _RegisterStepsRegisterFieldsEvent;
+  const factory RegisterStepsEvent.registerFields() =
+      _RegisterStepsRegisterFieldsEvent;
   const factory RegisterStepsEvent.goBack() = _RegisterStepsGoBackEvent;
   const factory RegisterStepsEvent.goNext() = _RegisterStepsGoNextEvent;
   const factory RegisterStepsEvent.removeAvatarImage() =

@@ -21,13 +21,15 @@ class RegisterSteps2 extends StatelessWidget {
       builder: (context, state) {
         final registerStepsBloc = context.read<RegisterStepsBloc>();
 
-        final showSuccessDialog = state.registerFailureOrUnitOption.fold(
-          () => false,
-          (failureOrUnit) => failureOrUnit.fold(
-            (failure) => false,
-            (unit) => true,
-          ),
-        );
+        final showSuccessDialog = true;
+
+        // state.registerFailureOrUnitOption.fold(
+        //   () => false,
+        //   (failureOrUnit) => failureOrUnit.fold(
+        //     (failure) => false,
+        //     (unit) => true,
+        //   ),
+        // );
 
         return Stack(
           children: [
@@ -163,10 +165,7 @@ class _ImageSection extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.file(
-              image,
-              fit: BoxFit.cover,
-            ),
+            child: Image.file(image, fit: BoxFit.cover),
           ),
           Positioned(
             right: 12,
@@ -177,16 +176,12 @@ class _ImageSection extends StatelessWidget {
                 registerStepsBloc.removeAvatarImage();
               },
               decoration: BoxDecoration(
-                color: Colors.black12,
+                color: Colors.black38,
                 borderRadius: BorderRadius.circular(20),
               ),
               width: 25,
               height: 25,
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 16,
-              ),
+              child: const Icon(Icons.close, color: Colors.white, size: 16),
             ),
           ),
         ],
@@ -217,11 +212,7 @@ class _ImageSectionEmpty extends StatelessWidget {
               width: 30,
               child: CircularProgressIndicator(color: primaryColor),
             )
-          : const Icon(
-              Icons.add_photo_alternate,
-              color: grayColor,
-              size: 48,
-            ),
+          : const Icon(Icons.add_photo_alternate, color: grayColor, size: 48),
       onTap: () {
         if (showLoadingIndicator) {
           return;
