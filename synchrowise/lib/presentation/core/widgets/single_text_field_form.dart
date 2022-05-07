@@ -10,7 +10,7 @@ class SingleTextFieldForm extends StatefulWidget {
   final String title;
   final String desc;
   final String btnText;
-  final String fieldText;
+  final String hintText;
   final String? errorText;
   final FocusNode focusNode;
 
@@ -21,7 +21,7 @@ class SingleTextFieldForm extends StatefulWidget {
     required this.title,
     required this.desc,
     required this.btnText,
-    required this.fieldText,
+    required this.hintText,
     required this.errorText,
     required this.focusNode,
   }) : super(key: key);
@@ -49,7 +49,7 @@ class _SingleTextFieldFormState extends State<SingleTextFieldForm> {
         DefaultTextField(
           focusNode: widget.focusNode,
           icon: null,
-          hintText: "username".tr(),
+          hintText: widget.hintText.tr(),
           onChanged: (username) => widget.changedButton(username),
           errorText: widget.errorText,
         ),
@@ -58,7 +58,7 @@ class _SingleTextFieldFormState extends State<SingleTextFieldForm> {
           backgroundColor: primaryColor,
           borderColor: null,
           textColor: kcWhiteColor,
-          text: "continue".tr(),
+          text: widget.btnText.tr(),
           padding: 0,
           onTap: () => widget.saveButton(),
         ),

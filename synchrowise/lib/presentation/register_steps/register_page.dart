@@ -147,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
             imageSuccess && usernameSuccess && storageSuccess && avatarSuccess;
 
         if (success) {
-          // Todo: show success toast
+          return registeredSuccessfulBottomSheet(context);
         }
       },
     );

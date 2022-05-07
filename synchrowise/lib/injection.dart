@@ -6,6 +6,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
@@ -19,6 +20,8 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/syncrowise_user_sembast_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
+import 'package:synchrowise/infrastructure/group/group_repository/group_repository.dart';
+import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
 import 'package:synchrowise/services/core/synchrowise_database.dart';
 
 GetIt getIt = GetIt.instance;
@@ -64,6 +67,10 @@ Future<void> _setupInfrastructure() async {
     SynchrowiseUserRepository(getIt<Client>()),
   );
 
+  getIt.registerSingleton<IGroupRepository>(
+    GroupRepository(getIt<Client>()),
+  );
+
   getIt.registerSingleton<IAvatarRepository>(
     AvatarRepository(),
   );
@@ -97,6 +104,13 @@ Future<void> _setupBlocs() async {
       getIt<IAvatarRepository>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<IImageFacade>(),
+    ),
+  );
+
+  getIt.registerFactory<CreateGroupBloc>(
+    () => CreateGroupBloc(
+      getIt<ISynchrowiseUserStorage>(),
+      getIt<IGroupRepository>(),
     ),
   );
 }

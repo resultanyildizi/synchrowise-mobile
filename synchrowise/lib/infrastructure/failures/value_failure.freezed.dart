@@ -38,6 +38,10 @@ class _$ValueFailureTearOff {
     return const _InvalidEmailFailure();
   }
 
+  _InvalidGroupNameFailure invalidGroupName() {
+    return const _InvalidGroupNameFailure();
+  }
+
   _PasswordsNotSameFailure passwordsNotSame(String password) {
     return _PasswordsNotSameFailure(
       password,
@@ -66,6 +70,7 @@ mixin _$ValueFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -77,6 +82,7 @@ mixin _$ValueFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -88,6 +94,7 @@ mixin _$ValueFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -100,6 +107,7 @@ mixin _$ValueFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -111,6 +119,7 @@ mixin _$ValueFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -122,6 +131,7 @@ mixin _$ValueFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -215,6 +225,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -229,6 +240,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -243,6 +255,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -261,6 +274,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -275,6 +289,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -289,6 +304,7 @@ class _$_MinLengthFailure implements _MinLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -379,6 +395,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -393,6 +410,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -407,6 +425,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -425,6 +444,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -439,6 +459,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -453,6 +474,7 @@ class _$_MaxLengthFailure implements _MaxLengthFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -519,6 +541,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -533,6 +556,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -547,6 +571,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -565,6 +590,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -579,6 +605,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -593,6 +620,7 @@ class _$_InvalidUsernameFailure implements _InvalidUsernameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -654,6 +682,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -668,6 +697,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -682,6 +712,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -700,6 +731,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -714,6 +746,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -728,6 +761,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -742,6 +776,148 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
 
 abstract class _InvalidEmailFailure implements ValueFailure {
   const factory _InvalidEmailFailure() = _$_InvalidEmailFailure;
+}
+
+/// @nodoc
+abstract class _$InvalidGroupNameFailureCopyWith<$Res> {
+  factory _$InvalidGroupNameFailureCopyWith(_InvalidGroupNameFailure value,
+          $Res Function(_InvalidGroupNameFailure) then) =
+      __$InvalidGroupNameFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InvalidGroupNameFailureCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements _$InvalidGroupNameFailureCopyWith<$Res> {
+  __$InvalidGroupNameFailureCopyWithImpl(_InvalidGroupNameFailure _value,
+      $Res Function(_InvalidGroupNameFailure) _then)
+      : super(_value, (v) => _then(v as _InvalidGroupNameFailure));
+
+  @override
+  _InvalidGroupNameFailure get _value =>
+      super._value as _InvalidGroupNameFailure;
+}
+
+/// @nodoc
+
+class _$_InvalidGroupNameFailure implements _InvalidGroupNameFailure {
+  const _$_InvalidGroupNameFailure();
+
+  @override
+  String toString() {
+    return 'ValueFailure.invalidGroupName()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _InvalidGroupNameFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int length) minLength,
+    required TResult Function(int length) maxLength,
+    required TResult Function() invalidUsername,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
+    required TResult Function(String password) passwordsNotSame,
+    required TResult Function() emptyPassword,
+    required TResult Function(String password) weakPassword,
+  }) {
+    return invalidGroupName();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int length)? minLength,
+    TResult Function(int length)? maxLength,
+    TResult Function()? invalidUsername,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
+    TResult Function(String password)? passwordsNotSame,
+    TResult Function()? emptyPassword,
+    TResult Function(String password)? weakPassword,
+  }) {
+    return invalidGroupName?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int length)? minLength,
+    TResult Function(int length)? maxLength,
+    TResult Function()? invalidUsername,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
+    TResult Function(String password)? passwordsNotSame,
+    TResult Function()? emptyPassword,
+    TResult Function(String password)? weakPassword,
+    required TResult orElse(),
+  }) {
+    if (invalidGroupName != null) {
+      return invalidGroupName();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MinLengthFailure value) minLength,
+    required TResult Function(_MaxLengthFailure value) maxLength,
+    required TResult Function(_InvalidUsernameFailure value) invalidUsername,
+    required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
+    required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
+    required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
+    required TResult Function(_WeakPasswordFailure value) weakPassword,
+  }) {
+    return invalidGroupName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_MinLengthFailure value)? minLength,
+    TResult Function(_MaxLengthFailure value)? maxLength,
+    TResult Function(_InvalidUsernameFailure value)? invalidUsername,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+  }) {
+    return invalidGroupName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MinLengthFailure value)? minLength,
+    TResult Function(_MaxLengthFailure value)? maxLength,
+    TResult Function(_InvalidUsernameFailure value)? invalidUsername,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
+    TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
+    TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+    required TResult orElse(),
+  }) {
+    if (invalidGroupName != null) {
+      return invalidGroupName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidGroupNameFailure implements ValueFailure {
+  const factory _InvalidGroupNameFailure() = _$_InvalidGroupNameFailure;
 }
 
 /// @nodoc
@@ -815,6 +991,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -829,6 +1006,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -843,6 +1021,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -861,6 +1040,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -875,6 +1055,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -889,6 +1070,7 @@ class _$_PasswordsNotSameFailure implements _PasswordsNotSameFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -956,6 +1138,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -970,6 +1153,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -984,6 +1168,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -1002,6 +1187,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -1016,6 +1202,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -1030,6 +1217,7 @@ class _$_EmptyPasswordsFailure implements _EmptyPasswordsFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -1116,6 +1304,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function(int length) maxLength,
     required TResult Function() invalidUsername,
     required TResult Function() invalidEmail,
+    required TResult Function() invalidGroupName,
     required TResult Function(String password) passwordsNotSame,
     required TResult Function() emptyPassword,
     required TResult Function(String password) weakPassword,
@@ -1130,6 +1319,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -1144,6 +1334,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(int length)? maxLength,
     TResult Function()? invalidUsername,
     TResult Function()? invalidEmail,
+    TResult Function()? invalidGroupName,
     TResult Function(String password)? passwordsNotSame,
     TResult Function()? emptyPassword,
     TResult Function(String password)? weakPassword,
@@ -1162,6 +1353,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function(_MaxLengthFailure value) maxLength,
     required TResult Function(_InvalidUsernameFailure value) invalidUsername,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_InvalidGroupNameFailure value) invalidGroupName,
     required TResult Function(_PasswordsNotSameFailure value) passwordsNotSame,
     required TResult Function(_EmptyPasswordsFailure value) emptyPassword,
     required TResult Function(_WeakPasswordFailure value) weakPassword,
@@ -1176,6 +1368,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,
@@ -1190,6 +1383,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_MaxLengthFailure value)? maxLength,
     TResult Function(_InvalidUsernameFailure value)? invalidUsername,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_InvalidGroupNameFailure value)? invalidGroupName,
     TResult Function(_PasswordsNotSameFailure value)? passwordsNotSame,
     TResult Function(_EmptyPasswordsFailure value)? emptyPassword,
     TResult Function(_WeakPasswordFailure value)? weakPassword,

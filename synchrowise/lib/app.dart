@@ -8,6 +8,7 @@ import 'package:synchrowise/presentation/auth/reset_password_page.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
+import 'package:synchrowise/presentation/group/create_group.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
 import 'package:synchrowise/presentation/register_steps/register_page.dart';
 import 'package:synchrowise/presentation/splash/splash.dart';
@@ -124,6 +125,10 @@ class SynchrowiseApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (context) => const RegisterPage(),
                 fullscreenDialog: true,
+              );
+            case "/create_group":
+              return MaterialPageRoute(
+                builder: (context) => const CreateGroup(),
               );
           }
         },

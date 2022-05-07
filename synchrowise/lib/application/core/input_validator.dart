@@ -24,6 +24,28 @@ Either<ValueFailure, String> validateUsername({required String username}) {
   return right(username);
 }
 
+Either<ValueFailure, String> validateGroupName({required String groupName}) {
+  final groupNameRegex = RegExp(r"""^([A-Za-z0-9])$""");
+
+  if (groupName.length < 3) {
+    return left(const ValueFailure.minLength(3));
+  } else if (groupName.length > 15) {
+    return left(const ValueFailure.maxLength(15));
+  } else if (!groupNameRegex.hasMatch(groupName)) {
+    return left(const ValueFailure.invalidGroupName());
+  }
+  return right(groupName);
+}
+
+Either<ValueFailure, String> validateGroupDesc({required String groupDesc}) {
+  if (groupDesc.length < 3) {
+    return left(const ValueFailure.minLength(3));
+  } else if (groupDesc.length > 150) {
+    return left(const ValueFailure.maxLength(150));
+  }
+  return right(groupDesc);
+}
+
 Either<ValueFailure, String> validateConfirmPassword({
   required String password,
   required String confirmPassword,
