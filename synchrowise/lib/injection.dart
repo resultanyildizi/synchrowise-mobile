@@ -11,6 +11,7 @@ import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
+import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
@@ -88,6 +89,7 @@ Future<void> _setupBlocs() async {
   getIt.registerFactory<RegisterStepsBloc>(
     () => RegisterStepsBloc(
       getIt<ISynchrowiseUserRepository>(),
+      getIt<IAvatarRepository>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<IImageFacade>(),
     ),

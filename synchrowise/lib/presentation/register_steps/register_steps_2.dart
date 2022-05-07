@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
@@ -10,7 +9,6 @@ import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/image_section.dart';
 import 'package:synchrowise/presentation/core/widgets/image_section_empty.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
-import 'package:synchrowise/presentation/register_steps/widgets/registered_successful_bottom_sheet.dart';
 
 class RegisterSteps2 extends StatelessWidget {
   const RegisterSteps2({Key? key}) : super(key: key);
@@ -20,14 +18,6 @@ class RegisterSteps2 extends StatelessWidget {
     return BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
       builder: (context, state) {
         final registerStepsBloc = context.read<RegisterStepsBloc>();
-
-        final showSuccessDialog = state.registerFailureOrUnitOption.fold(
-          () => false,
-          (failureOrUnit) => failureOrUnit.fold(
-            (failure) => false,
-            (unit) => true,
-          ),
-        );
 
         return Stack(
           children: [

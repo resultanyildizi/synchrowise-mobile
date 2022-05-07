@@ -13,13 +13,12 @@ class SyncrowiseUserSembastStorage implements ISynchrowiseUserStorage {
   const SyncrowiseUserSembastStorage(this._database, this._storeRef);
 
   @override
-  Future<Either<SynchrowiseUserStorageFailure, SynchrowiseUser?>> get() async {
+  Future<Either<SynchrowiseUserStorageFailure, SynchrowiseUser>> get() async {
     try {
       final record = _storeRef.record('syncrowise_user');
       final data = await record.get(_database);
 
-      if (data == null) return right(null);
-      // log(SynchrowiseUser.fromMap(data).toString());
+      if (data == null) return left(const SynchrowiseUserStorageFailure.get());
 
       return right(SynchrowiseUser.fromMap(data));
     } catch (_) {
