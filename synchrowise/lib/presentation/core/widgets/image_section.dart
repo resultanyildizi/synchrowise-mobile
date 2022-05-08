@@ -19,7 +19,7 @@ class ImageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAnimatedButton(
       onTap: () => uploadImageButton(),
-      height: MediaQuery.of(context).size.width - 70,
+      height: MediaQuery.of(context).size.height / 2.5,
       width: MediaQuery.of(context).size.width - 70,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

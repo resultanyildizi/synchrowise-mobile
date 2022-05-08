@@ -15,7 +15,8 @@ class ImageSectionEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAnimatedButton(
-      height: MediaQuery.of(context).size.width - 70,
+      height: MediaQuery.of(context).size.height / 2.5,
+      width: MediaQuery.of(context).size.width - 70,
       decoration: BoxDecoration(
         color: grayLightColor,
         borderRadius: BorderRadius.circular(16),
