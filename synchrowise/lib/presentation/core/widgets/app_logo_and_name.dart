@@ -8,18 +8,21 @@ class AppLogoAndName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        appLogoSmall,
-        const SizedBox(width: 12),
-        Text(
-          appName,
-          style: Theme.of(context)
-              .textTheme
-              .headline4!
-              .copyWith(color: primaryColor, fontSize: 20),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(defaultPadding),
+      child: Row(
+        children: [
+          appLogoSmall,
+          const SizedBox(width: 12),
+          Text(
+            appName,
+            style: Theme.of(context)
+                .textTheme
+                .headline4!
+                .copyWith(color: primaryColor, fontSize: 20),
+          ),
+        ],
+      ),
     );
   }
 }

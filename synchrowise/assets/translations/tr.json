@@ -58,5 +58,6 @@
     "group_name_must_be_at_least_min_characters": "Group ismi en az {min} karakter olmalı",
     "group_name_is_required": "Group ismi gerekli",
     "group_name": "Grup ismi",
-    "group_name_desc": "Kullanmak istediğin bir kullanıcı adı seç. Diğer kullanıcılar bu eşsiz isim ile grubuna katılacaklar."
+    "group_name_desc": "Kullanmak istediğin bir kullanıcı adı seç. Diğer kullanıcılar bu eşsiz isim ile grubuna katılacaklar.",
+    "settings_desc": "Uygulama ayarlarını güncelle"
 }

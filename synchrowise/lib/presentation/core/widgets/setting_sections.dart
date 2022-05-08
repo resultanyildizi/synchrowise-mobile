@@ -26,11 +26,13 @@ class SettingSections extends StatelessWidget {
                 onTap: () => settingSectionList[i].onTap(),
                 child: Row(
                   children: [
-                    Icon(
-                      settingSectionList[i].icon,
-                      size: 25,
-                      color: grayDarkColor2,
-                    ),
+                    settingSectionList[i].icon != null
+                        ? Icon(
+                            settingSectionList[i].icon,
+                            size: 25,
+                            color: grayDarkColor2,
+                          )
+                        : const SizedBox(),
                     const SizedBox(width: 12),
                     Text(
                       settingSectionList[i].btnText,
@@ -66,7 +68,7 @@ class SettingSections extends StatelessWidget {
 }
 
 class SettingsSectionModel {
-  final IconData icon;
+  final IconData? icon;
   final String btnText;
   final Function() onTap;
 

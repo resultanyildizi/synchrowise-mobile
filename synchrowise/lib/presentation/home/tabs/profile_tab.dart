@@ -83,32 +83,34 @@ class ProfileTab extends StatelessWidget {
       listeners: [
         _getProfileBlocListener,
       ],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 32),
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(100)),
-                child: CachedNetworkImage(
-                  imageUrl: synchrowiseUser.avatar.getHttpsPath,
-                  height: 50,
-                  width: 50,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(100)),
+                  child: CachedNetworkImage(
+                    imageUrl: synchrowiseUser.avatar.getHttpsPath,
+                    height: 50,
+                    width: 50,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              Text(
-                "${synchrowiseUser.username}",
-                style: Theme.of(context).textTheme.headline3!,
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          SettingSections(settingSectionList: settingsSection1),
-          const SizedBox(height: 32),
-          SettingSections(settingSectionList: settingsSection2)
-        ],
+                const SizedBox(width: 12),
+                Text(
+                  "${synchrowiseUser.username}",
+                  style: Theme.of(context).textTheme.headline3!,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            SettingSections(settingSectionList: settingsSection1),
+            const SizedBox(height: 32),
+            SettingSections(settingSectionList: settingsSection2)
+          ],
+        ),
       ),
     );
   }

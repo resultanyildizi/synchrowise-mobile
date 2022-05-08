@@ -124,24 +124,21 @@ class _HomePageTabViewState extends State<HomePageTabView>
           },
           child: Scaffold(
             body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(defaultPadding),
-                child: Column(
-                  children: [
-                    const AppLogoAndName(),
-                    Expanded(
-                      child: PageView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        controller: _pageController,
-                        children: [
-                          ProfileTab(synchrowiseUser: widget.synchrowiseUser),
-                          const HomeTab(),
-                          const SettingsTab(),
-                        ],
-                      ),
+              child: Column(
+                children: [
+                  const AppLogoAndName(),
+                  Expanded(
+                    child: PageView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      controller: _pageController,
+                      children: [
+                        ProfileTab(synchrowiseUser: widget.synchrowiseUser),
+                        const HomeTab(),
+                        const SettingsTab(),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             bottomNavigationBar: const BottomNavBar(),
