@@ -15,6 +15,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ISynchrowiseUserStorage _iUserStore;
   final ISynchrowiseUserRepository _iUserRepo;
 
+  void signOut() => add(const ProfileEvent.signOut());
+  void deleteAccount() => add(const ProfileEvent.delete());
+
   ProfileBloc(this._iAuthFacade, this._iUserStore, this._iUserRepo)
       : super(ProfileState.initial()) {
     on<ProfileEvent>((event, emit) {

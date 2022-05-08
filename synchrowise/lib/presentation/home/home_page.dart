@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
+import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
@@ -126,8 +128,15 @@ class _HomePageTabViewState extends State<HomePageTabView>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<BottomNavbarBloc>(
-      create: (context) => _bottomNavBarBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BottomNavbarBloc>(
+          create: (context) => _bottomNavBarBloc,
+        ),
+        BlocProvider(
+          create: (context) => getIt<ProfileBloc>(),
+        ),
+      ],
       child: Provider<SynchrowiseUser>(
         create: (_) => widget.synchrowiseUser,
         child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
