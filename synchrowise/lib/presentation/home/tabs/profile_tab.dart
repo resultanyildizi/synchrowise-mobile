@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
@@ -12,6 +13,20 @@ class ProfileTab extends StatelessWidget {
     Key? key,
     required this.synchrowiseUser,
   }) : super(key: key);
+
+  BlocListener<ProfileBloc, ProfileState> get _getProfileBlocListener {
+    return BlocListener<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        return state.failureOrUnitOption.fold(
+          () => null,
+          (_) {
+            final authBloc = context.read<AuthBloc>();
+            authBloc.check();
+          },
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,34 +66,37 @@ class ProfileTab extends StatelessWidget {
       )
     ];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 32),
-        Row(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(100)),
-              child: CachedNetworkImage(
-                imageUrl: synchrowiseUser.avatar.path
-                    .replaceAll('\\', "/")
-                    .toString(),
-                height: 50,
-                width: 50,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Text(
-              "${synchrowiseUser.username}",
-              style: Theme.of(context).textTheme.headline3!,
-            ),
-          ],
-        ),
-        const SizedBox(height: 24),
-        SettingSections(settingSectionList: settingsSection1),
-        const SizedBox(height: 32),
-        SettingSections(settingSectionList: settingsSection2)
+    return MultiBlocListener(
+      listeners: [
+        _getProfileBlocListener,
       ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 32),
+          Row(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(100)),
+                child: CachedNetworkImage(
+                  imageUrl: synchrowiseUser.avatar.path,
+                  height: 50,
+                  width: 50,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                "${synchrowiseUser.username}",
+                style: Theme.of(context).textTheme.headline3!,
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          SettingSections(settingSectionList: settingsSection1),
+          const SizedBox(height: 32),
+          SettingSections(settingSectionList: settingsSection2)
+        ],
+      ),
     );
   }
 }
