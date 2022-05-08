@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
+import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
+import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
+import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class ProfileTab extends StatelessWidget {
   final SynchrowiseUser synchrowiseUser;
@@ -60,8 +63,18 @@ class ProfileTab extends StatelessWidget {
         icon: Icons.delete,
         btnText: "delete_account".tr(),
         onTap: () {
-          final profileBloc = context.read<ProfileBloc>();
-          profileBloc.deleteAccount();
+          return synchrowisePopup(
+            context,
+            "delete_account",
+            "are_you_want_to_delete_account",
+            "no",
+            () => Navigator.pop(context),
+            "yes",
+            () {
+              final profileBloc = context.read<ProfileBloc>();
+              profileBloc.deleteAccount();
+            },
+          );
         },
       )
     ];

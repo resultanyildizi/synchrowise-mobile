@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:synchrowise/constants.dart';
-
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -12,8 +11,9 @@ class DefaultButton extends StatelessWidget {
     required this.textColor,
     required this.text,
     required this.padding,
-    required this.onTap,
+    this.height = 55,
     this.showProgress = false,
+    required this.onTap,
   }) : super(key: key);
 
   final Color backgroundColor;
@@ -21,6 +21,7 @@ class DefaultButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final double padding;
+  final double? height;
   final bool showProgress;
   final Function() onTap;
 
@@ -30,7 +31,7 @@ class DefaultButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: padding),
       child: CustomAnimatedButton(
         onTap: onTap,
-        height: 55,
+        height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
           border: Border.all(
