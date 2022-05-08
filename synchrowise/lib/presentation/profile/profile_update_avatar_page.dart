@@ -10,6 +10,7 @@ import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/image_section.dart';
 import 'package:synchrowise/presentation/core/widgets/image_section_empty.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class ProfileUpdateAvatarPage extends StatelessWidget {
   const ProfileUpdateAvatarPage({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
                           children: [
                             const SizedBox(height: 32),
                             DefaultBackButton(onTap: () {
-                              registerationBloc.goBack();
+                              SynchrowiseNavigator.pop(context);
                             }),
                             const SizedBox(height: 32),
                             Text(
