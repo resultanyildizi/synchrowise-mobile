@@ -19,6 +19,11 @@ class HomePage extends StatelessWidget {
           unauthorized: (_) {
             Navigator.pushReplacementNamed(context, "/welcome");
           },
+          authorized: (authorized) {
+            if (authorized.user.username == null) {
+              Navigator.pushReplacementNamed(context, "/register");
+            }
+          },
           orElse: () {},
         );
       }),

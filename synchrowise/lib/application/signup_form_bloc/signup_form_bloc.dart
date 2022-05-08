@@ -85,7 +85,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
               isSigningGoogle: true,
             ));
 
-            final failureOrCredUser = await _iAuthFacade.signInWithGoogleAuth();
+            final failureOrCredUser = await _iAuthFacade.signUpWithGoogleAuth();
 
             final failureOrUser =
                 await _getAndUpdateStoredUser(failureOrCredUser);

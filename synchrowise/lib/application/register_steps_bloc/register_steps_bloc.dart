@@ -16,7 +16,6 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
-import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 
 part 'register_steps_bloc.freezed.dart';
@@ -68,6 +67,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 failureOrAvatarOption: none(),
                 storageFailureOrUnitOption: none(),
                 showErrors: true,
+                progressing: true,
               ),
             );
 
@@ -127,6 +127,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
             } else {
               emit(
                 state.copyWith(
+                  progressing: false,
                   failureOrAvatarOption: some(right(unit)),
                   storageFailureOrUnitOption: some(right(unit)),
                 ),
@@ -141,6 +142,12 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 failureOrUsernameOption: some(validatedUsername)));
           },
           saveUsername: (_) async {
+            emit(state.copyWith(
+              progressing: true,
+              usernameFailureOrUnitOption: none(),
+              storageFailureOrUnitOption: none(),
+            ));
+
             final username = state.failureOrUsernameOption.fold(
               () => null,
               (failureOrUsername) => failureOrUsername.fold(
@@ -158,6 +165,13 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 (user) async {
                   final usernameFailureOrUnit = await _iUserRepo.update(
                       synchrowiseUser: user.copyWith(username: username));
+
+                  if (user.username == username) {
+                    return state.copyWith(
+                      usernameFailureOrUnitOption: some(right(unit)),
+                      step: 2,
+                    );
+                  }
 
                   return await usernameFailureOrUnit.fold(
                     (f) async => state.copyWith(
@@ -187,15 +201,15 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 },
               );
 
-              emit(newState.copyWith(showErrors: true));
+              emit(newState.copyWith(showErrors: true, progressing: false));
             } else {
-              emit(state.copyWith(showErrors: true));
+              emit(state.copyWith(showErrors: true, progressing: false));
             }
           },
           updateAvatarImage: (event) async {
             emit(state.copyWith(
               failureOrImageOption: none(),
-              uploadingImage: true,
+              progressing: true,
             ));
 
             final failureOrImage = await _iImageFacade.uploadImageFromDevice();
@@ -204,7 +218,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 await failureOrImage.fold(
               (failure) {
                 return state.copyWith(
-                  uploadingImage: false,
+                  progressing: false,
                   failureOrImageOption: some(failureOrImage),
                 );
               },
@@ -216,7 +230,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 );
 
                 return state.copyWith(
-                  uploadingImage: false,
+                  progressing: false,
                   failureOrImageOption: some(failureOrCroppedImage),
                 );
               },
@@ -244,29 +258,5 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
         );
       },
     );
-  }
-
-  Future<Either<SynchrowiseUserStorageFailure, Unit>?> _updateUserInStorage(
-    SynchrowiseUser synchrowiseUser,
-    Either<SynchrowiseUserRepositoryFailure, Unit> updateFailureOrUnit,
-    Either<AvatarRepositoryFailure, Avatar>? failureOrAvatar,
-  ) async {
-    final newSyncrowiseUser = updateFailureOrUnit.fold(
-      (_) {
-        return null;
-      },
-      (_) {
-        return failureOrAvatar?.fold(
-              (l) => null,
-              (avatar) => synchrowiseUser.copyWith(avatar: avatar),
-            ) ??
-            synchrowiseUser;
-      },
-    );
-
-    if (newSyncrowiseUser != null) {
-      return await _iUserStorage.update(user: newSyncrowiseUser);
-    }
-    return null;
   }
 }

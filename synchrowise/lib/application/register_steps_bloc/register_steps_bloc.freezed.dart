@@ -1356,7 +1356,7 @@ class _$RegisterStepsStateTearOff {
           usernameFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
-      required bool uploadingImage,
+      required bool progressing,
       required bool showErrors,
       required int step}) {
     return _RegisterStepsState(
@@ -1365,7 +1365,7 @@ class _$RegisterStepsStateTearOff {
       failureOrAvatarOption: failureOrAvatarOption,
       usernameFailureOrUnitOption: usernameFailureOrUnitOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
-      uploadingImage: uploadingImage,
+      progressing: progressing,
       showErrors: showErrors,
       step: step,
     );
@@ -1387,7 +1387,7 @@ mixin _$RegisterStepsState {
       get usernameFailureOrUnitOption => throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption => throw _privateConstructorUsedError;
-  bool get uploadingImage => throw _privateConstructorUsedError;
+  bool get progressing => throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   int get step => throw _privateConstructorUsedError;
 
@@ -1409,7 +1409,7 @@ abstract class $RegisterStepsStateCopyWith<$Res> {
           usernameFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
-      bool uploadingImage,
+      bool progressing,
       bool showErrors,
       int step});
 }
@@ -1430,7 +1430,7 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
     Object? failureOrAvatarOption = freezed,
     Object? usernameFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
-    Object? uploadingImage = freezed,
+    Object? progressing = freezed,
     Object? showErrors = freezed,
     Object? step = freezed,
   }) {
@@ -1455,9 +1455,9 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<SynchrowiseUserStorageFailure, Unit>>,
-      uploadingImage: uploadingImage == freezed
-          ? _value.uploadingImage
-          : uploadingImage // ignore: cast_nullable_to_non_nullable
+      progressing: progressing == freezed
+          ? _value.progressing
+          : progressing // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrors: showErrors == freezed
           ? _value.showErrors
@@ -1486,7 +1486,7 @@ abstract class _$RegisterStepsStateCopyWith<$Res>
           usernameFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
-      bool uploadingImage,
+      bool progressing,
       bool showErrors,
       int step});
 }
@@ -1509,7 +1509,7 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
     Object? failureOrAvatarOption = freezed,
     Object? usernameFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
-    Object? uploadingImage = freezed,
+    Object? progressing = freezed,
     Object? showErrors = freezed,
     Object? step = freezed,
   }) {
@@ -1534,9 +1534,9 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<SynchrowiseUserStorageFailure, Unit>>,
-      uploadingImage: uploadingImage == freezed
-          ? _value.uploadingImage
-          : uploadingImage // ignore: cast_nullable_to_non_nullable
+      progressing: progressing == freezed
+          ? _value.progressing
+          : progressing // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrors: showErrors == freezed
           ? _value.showErrors
@@ -1552,16 +1552,17 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterStepsState implements _RegisterStepsState {
+class _$_RegisterStepsState extends _RegisterStepsState {
   const _$_RegisterStepsState(
       {required this.failureOrUsernameOption,
       required this.failureOrImageOption,
       required this.failureOrAvatarOption,
       required this.usernameFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
-      required this.uploadingImage,
+      required this.progressing,
       required this.showErrors,
-      required this.step});
+      required this.step})
+      : super._();
 
   @override
   final Option<Either<ValueFailure, String>> failureOrUsernameOption;
@@ -1576,7 +1577,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
   final Option<Either<SynchrowiseUserStorageFailure, Unit>>
       storageFailureOrUnitOption;
   @override
-  final bool uploadingImage;
+  final bool progressing;
   @override
   final bool showErrors;
   @override
@@ -1584,7 +1585,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
 
   @override
   String toString() {
-    return 'RegisterStepsState(failureOrUsernameOption: $failureOrUsernameOption, failureOrImageOption: $failureOrImageOption, failureOrAvatarOption: $failureOrAvatarOption, usernameFailureOrUnitOption: $usernameFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, uploadingImage: $uploadingImage, showErrors: $showErrors, step: $step)';
+    return 'RegisterStepsState(failureOrUsernameOption: $failureOrUsernameOption, failureOrImageOption: $failureOrImageOption, failureOrAvatarOption: $failureOrAvatarOption, usernameFailureOrUnitOption: $usernameFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, progressing: $progressing, showErrors: $showErrors, step: $step)';
   }
 
   @override
@@ -1604,7 +1605,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
             const DeepCollectionEquality().equals(
                 other.storageFailureOrUnitOption, storageFailureOrUnitOption) &&
             const DeepCollectionEquality()
-                .equals(other.uploadingImage, uploadingImage) &&
+                .equals(other.progressing, progressing) &&
             const DeepCollectionEquality()
                 .equals(other.showErrors, showErrors) &&
             const DeepCollectionEquality().equals(other.step, step));
@@ -1618,7 +1619,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
       const DeepCollectionEquality().hash(failureOrAvatarOption),
       const DeepCollectionEquality().hash(usernameFailureOrUnitOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
-      const DeepCollectionEquality().hash(uploadingImage),
+      const DeepCollectionEquality().hash(progressing),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(step));
 
@@ -1628,7 +1629,7 @@ class _$_RegisterStepsState implements _RegisterStepsState {
       __$RegisterStepsStateCopyWithImpl<_RegisterStepsState>(this, _$identity);
 }
 
-abstract class _RegisterStepsState implements RegisterStepsState {
+abstract class _RegisterStepsState extends RegisterStepsState {
   const factory _RegisterStepsState(
       {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
       required Option<Either<ImageFailure, File>> failureOrImageOption,
@@ -1638,9 +1639,10 @@ abstract class _RegisterStepsState implements RegisterStepsState {
           usernameFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
-      required bool uploadingImage,
+      required bool progressing,
       required bool showErrors,
       required int step}) = _$_RegisterStepsState;
+  const _RegisterStepsState._() : super._();
 
   @override
   Option<Either<ValueFailure, String>> get failureOrUsernameOption;
@@ -1655,7 +1657,7 @@ abstract class _RegisterStepsState implements RegisterStepsState {
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption;
   @override
-  bool get uploadingImage;
+  bool get progressing;
   @override
   bool get showErrors;
   @override

@@ -30,6 +30,10 @@ class _$AuthFacadeFailureTearOff {
     return const _SignInRequiredFailure();
   }
 
+  _UserNotFoundFailure userNotFound() {
+    return const _UserNotFoundFailure();
+  }
+
   _UserCancelledFailure userCancelled() {
     return const _UserCancelledFailure();
   }
@@ -65,6 +69,7 @@ mixin _$AuthFacadeFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -78,6 +83,7 @@ mixin _$AuthFacadeFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -91,6 +97,7 @@ mixin _$AuthFacadeFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -107,6 +114,7 @@ mixin _$AuthFacadeFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -120,6 +128,7 @@ mixin _$AuthFacadeFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -133,6 +142,7 @@ mixin _$AuthFacadeFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -207,6 +217,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -223,6 +234,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -239,6 +251,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -261,6 +274,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -277,6 +291,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -293,6 +308,7 @@ class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -358,6 +374,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -374,6 +391,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -390,6 +408,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -412,6 +431,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -428,6 +448,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -444,6 +465,7 @@ class _$_EmailAlreadyInUseFailure implements _EmailAlreadyInUseFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -507,6 +529,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -523,6 +546,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -539,6 +563,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -561,6 +586,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -577,6 +603,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -593,6 +620,7 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -610,6 +638,161 @@ class _$_SignInRequiredFailure implements _SignInRequiredFailure {
 
 abstract class _SignInRequiredFailure implements AuthFacadeFailure {
   const factory _SignInRequiredFailure() = _$_SignInRequiredFailure;
+}
+
+/// @nodoc
+abstract class _$UserNotFoundFailureCopyWith<$Res> {
+  factory _$UserNotFoundFailureCopyWith(_UserNotFoundFailure value,
+          $Res Function(_UserNotFoundFailure) then) =
+      __$UserNotFoundFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UserNotFoundFailureCopyWithImpl<$Res>
+    extends _$AuthFacadeFailureCopyWithImpl<$Res>
+    implements _$UserNotFoundFailureCopyWith<$Res> {
+  __$UserNotFoundFailureCopyWithImpl(
+      _UserNotFoundFailure _value, $Res Function(_UserNotFoundFailure) _then)
+      : super(_value, (v) => _then(v as _UserNotFoundFailure));
+
+  @override
+  _UserNotFoundFailure get _value => super._value as _UserNotFoundFailure;
+}
+
+/// @nodoc
+
+class _$_UserNotFoundFailure implements _UserNotFoundFailure {
+  const _$_UserNotFoundFailure();
+
+  @override
+  String toString() {
+    return 'AuthFacadeFailure.userNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _UserNotFoundFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() invalidCredentials,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
+    required TResult Function() userCancelled,
+    required TResult Function() userDisabled,
+    required TResult Function() invalidEmail,
+    required TResult Function() weakPassword,
+    required TResult Function() unknown,
+    required TResult Function() connection,
+  }) {
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
+    TResult Function()? userCancelled,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? weakPassword,
+    TResult Function()? unknown,
+    TResult Function()? connection,
+  }) {
+    return userNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? invalidCredentials,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
+    TResult Function()? userCancelled,
+    TResult Function()? userDisabled,
+    TResult Function()? invalidEmail,
+    TResult Function()? weakPassword,
+    TResult Function()? unknown,
+    TResult Function()? connection,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentials,
+    required TResult Function(_EmailAlreadyInUseFailure value)
+        emailAlreadyInUse,
+    required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
+    required TResult Function(_UserCancelledFailure value) userCancelled,
+    required TResult Function(_UserDisabledFailure value) userDisabled,
+    required TResult Function(_InvalidEmailFailure value) invalidEmail,
+    required TResult Function(_WeakPasswordFailure value) weakPassword,
+    required TResult Function(_UnknownFailure value) unknown,
+    required TResult Function(_ConnectionFailure value) connection,
+  }) {
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
+    TResult Function(_UserCancelledFailure value)? userCancelled,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
+  }) {
+    return userNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
+    TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
+    TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
+    TResult Function(_UserCancelledFailure value)? userCancelled,
+    TResult Function(_UserDisabledFailure value)? userDisabled,
+    TResult Function(_InvalidEmailFailure value)? invalidEmail,
+    TResult Function(_WeakPasswordFailure value)? weakPassword,
+    TResult Function(_UnknownFailure value)? unknown,
+    TResult Function(_ConnectionFailure value)? connection,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFoundFailure implements AuthFacadeFailure {
+  const factory _UserNotFoundFailure() = _$_UserNotFoundFailure;
 }
 
 /// @nodoc
@@ -656,6 +839,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -672,6 +856,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -688,6 +873,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -710,6 +896,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -726,6 +913,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -742,6 +930,7 @@ class _$_UserCancelledFailure implements _UserCancelledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -805,6 +994,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -821,6 +1011,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -837,6 +1028,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -859,6 +1051,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -875,6 +1068,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -891,6 +1085,7 @@ class _$_UserDisabledFailure implements _UserDisabledFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -954,6 +1149,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -970,6 +1166,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -986,6 +1183,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1008,6 +1206,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -1024,6 +1223,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1040,6 +1240,7 @@ class _$_InvalidEmailFailure implements _InvalidEmailFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1103,6 +1304,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -1119,6 +1321,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1135,6 +1338,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1157,6 +1361,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -1173,6 +1378,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1189,6 +1395,7 @@ class _$_WeakPasswordFailure implements _WeakPasswordFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1253,6 +1460,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -1269,6 +1477,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1285,6 +1494,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1307,6 +1517,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -1323,6 +1534,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1339,6 +1551,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1404,6 +1617,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     required TResult Function() invalidCredentials,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() signInRequired,
+    required TResult Function() userNotFound,
     required TResult Function() userCancelled,
     required TResult Function() userDisabled,
     required TResult Function() invalidEmail,
@@ -1420,6 +1634,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1436,6 +1651,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function()? invalidCredentials,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? signInRequired,
+    TResult Function()? userNotFound,
     TResult Function()? userCancelled,
     TResult Function()? userDisabled,
     TResult Function()? invalidEmail,
@@ -1458,6 +1674,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     required TResult Function(_EmailAlreadyInUseFailure value)
         emailAlreadyInUse,
     required TResult Function(_SignInRequiredFailure value) signInRequired,
+    required TResult Function(_UserNotFoundFailure value) userNotFound,
     required TResult Function(_UserCancelledFailure value) userCancelled,
     required TResult Function(_UserDisabledFailure value) userDisabled,
     required TResult Function(_InvalidEmailFailure value) invalidEmail,
@@ -1474,6 +1691,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,
@@ -1490,6 +1708,7 @@ class _$_ConnectionFailure implements _ConnectionFailure {
     TResult Function(_InvalidCredentialsFailure value)? invalidCredentials,
     TResult Function(_EmailAlreadyInUseFailure value)? emailAlreadyInUse,
     TResult Function(_SignInRequiredFailure value)? signInRequired,
+    TResult Function(_UserNotFoundFailure value)? userNotFound,
     TResult Function(_UserCancelledFailure value)? userCancelled,
     TResult Function(_UserDisabledFailure value)? userDisabled,
     TResult Function(_InvalidEmailFailure value)? invalidEmail,

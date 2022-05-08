@@ -52,10 +52,62 @@ class AuthFacade implements IAuthFacade {
         final userCredential =
             await _firebaseAuth.signInWithCredential(googleCred);
 
+        if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+          await userCredential.user?.delete();
+          return left(const AuthFacadeFailure.userNotFound());
+        }
+
         final user = await userCredential.toSynchrowiseUser();
 
         if (user == null) {
-          return left(const AuthFacadeFailure.signInRequired());
+          return left(const AuthFacadeFailure.unknown());
+        }
+
+        return right(user);
+      } else {
+        return left(const AuthFacadeFailure.userCancelled());
+      }
+    } on PlatformException catch (_) {
+      await _googleSignIn.signOut();
+
+      return left(const AuthFacadeFailure.unknown());
+    } on FirebaseAuthException catch (e) {
+      await _googleSignIn.signOut();
+      if (e.code == "account-exists-with-different-credential") {
+        return left(const AuthFacadeFailure.emailAlreadyInUse());
+      } else if (e.code == "user-disabled") {
+        return left(const AuthFacadeFailure.userDisabled());
+      } else if (e.code == "user-not-found" || e.code == "wrong-password") {
+        return left(const AuthFacadeFailure.invalidCredentials());
+      } else {
+        return left(const AuthFacadeFailure.unknown());
+      }
+    }
+  }
+
+  @override
+  Future<Either<AuthFacadeFailure, SynchrowiseUser>>
+      signUpWithGoogleAuth() async {
+    try {
+      if (_googleSignIn.currentUser != null) await _googleSignIn.signOut();
+
+      final googleAcc = await _googleSignIn.signIn();
+
+      if (googleAcc != null) {
+        final googleAuth = await googleAcc.authentication;
+
+        final googleCred = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+          accessToken: googleAuth.accessToken,
+        );
+
+        final userCredential =
+            await _firebaseAuth.signInWithCredential(googleCred);
+
+        final user = await userCredential.toSynchrowiseUser();
+
+        if (user == null) {
+          return left(const AuthFacadeFailure.unknown());
         }
 
         return right(user);

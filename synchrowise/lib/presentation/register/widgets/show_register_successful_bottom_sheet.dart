@@ -1,25 +1,23 @@
-import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
-void registeredSuccessfulBottomSheet(BuildContext context) {
-  showFlexibleBottomSheet(
-    isDismissible: false,
-    bottomSheetColor: Colors.transparent,
+void showRegisterSuccessfulBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    isDismissible: true,
     context: context,
-    minHeight: 0,
-    maxHeight: 0.9,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(32.0),
+    ),
     builder: (
       BuildContext context,
-      ScrollController scrollController,
-      double bottomSheetOffset,
     ) {
       return Container(
-        height: MediaQuery.of(context).size.height / 2,
-        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           color: kcWhiteColor,
           borderRadius: BorderRadius.only(
@@ -54,7 +52,9 @@ void registeredSuccessfulBottomSheet(BuildContext context) {
               textColor: kcWhiteColor,
               text: "lets_get_started".tr(),
               padding: 35,
-              onTap: () {},
+              onTap: () {
+                context.read<AuthBloc>().check();
+              },
             ),
             const SizedBox(height: 24),
           ],

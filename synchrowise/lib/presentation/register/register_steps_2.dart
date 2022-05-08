@@ -42,13 +42,13 @@ class RegisterSteps2 extends StatelessWidget {
                   const SizedBox(height: 30),
                   state.failureOrImageOption.fold(
                     () => ImageSectionEmpty(
-                      showLoadingIndicator: state.uploadingImage,
+                      showLoadingIndicator: state.progressing,
                       uploadImageButton: () => _uploadImage(context),
                     ),
                     (failureOrImage) => failureOrImage.fold(
                       (failure) {
                         return ImageSectionEmpty(
-                          showLoadingIndicator: state.uploadingImage,
+                          showLoadingIndicator: state.progressing,
                           uploadImageButton: () => _uploadImage(context),
                         );
                       },
@@ -72,7 +72,10 @@ class RegisterSteps2 extends StatelessWidget {
                     textColor: kcWhiteColor,
                     text: "complete".tr(),
                     padding: 0,
+                    showProgress: state.progressing,
                     onTap: () {
+                      if (state.progressing) return;
+
                       final authState = context.read<AuthBloc>().state;
 
                       authState.maybeMap(

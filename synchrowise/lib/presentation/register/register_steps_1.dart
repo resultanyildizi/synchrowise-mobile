@@ -72,11 +72,12 @@ class _RegisterSteps1State extends State<RegisterSteps1>
                 registerStepsBloc.goBack();
               }),
               SingleTextFieldForm(
-                changedButton: (username) {
+                onTextChanged: (username) {
                   final registerStepsBloc = context.read<RegisterStepsBloc>();
                   registerStepsBloc.updateUsernameText(username: username);
                 },
                 saveButton: () {
+                  if (state.progressing) return;
                   final registerStepsBloc = context.read<RegisterStepsBloc>();
                   registerStepsBloc.saveUsername();
                 },
@@ -86,6 +87,7 @@ class _RegisterSteps1State extends State<RegisterSteps1>
                 fieldText: "username".tr(),
                 errorText: _getUsernameErrorText(state),
                 focusNode: _focusNode,
+                showProgress: state.progressing,
               ),
             ],
           ),
