@@ -57,7 +57,7 @@ class ProfileTab extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Text(
-              "Selim",
+              "${synchrowiseUser.username}",
               style: Theme.of(context).textTheme.headline3!,
             ),
           ],
