@@ -20,8 +20,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   ProfileBloc(this._iAuthFacade, this._iUserStore, this._iUserRepo)
       : super(ProfileState.initial()) {
-    on<ProfileEvent>((event, emit) {
-      event.map(
+    on<ProfileEvent>((event, emit) async {
+      await event.map(
         signOut: (_) async {
           final signOutFailureOrUnit = await _iAuthFacade.signOut();
 
