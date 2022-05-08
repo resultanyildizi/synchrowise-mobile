@@ -200,16 +200,12 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFacadeFailure, Unit>> deleteAccount() async {
     try {
-      await _firebaseAuth.currentUser?.delete();
       await _googleSignIn.signOut();
+      await _firebaseAuth.currentUser?.delete();
 
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "requires-recent-login") {
-        return left(const AuthFacadeFailure.invalidEmail());
-      } else {
-        return left(const AuthFacadeFailure.unknown());
-      }
+    } on FirebaseAuthException catch (_) {
+      return left(const AuthFacadeFailure.unknown());
     }
   }
 

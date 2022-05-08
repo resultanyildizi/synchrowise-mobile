@@ -8,7 +8,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 void showRegisterSuccessfulBottomSheet(BuildContext context) {
   showModalBottomSheet(
-    isDismissible: true,
+    isDismissible: false,
     context: context,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(32.0),

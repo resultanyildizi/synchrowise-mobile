@@ -21,10 +21,6 @@ class _$AuthEventTearOff {
   _AuthCheckEvent check() {
     return const _AuthCheckEvent();
   }
-
-  _AuthSignoutEvent signout() {
-    return const _AuthSignoutEvent();
-  }
 }
 
 /// @nodoc
@@ -35,38 +31,32 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() check,
-    required TResult Function() signout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? check,
-    TResult Function()? signout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? check,
-    TResult Function()? signout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthCheckEvent value) check,
-    required TResult Function(_AuthSignoutEvent value) signout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,7 +118,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() check,
-    required TResult Function() signout,
   }) {
     return check();
   }
@@ -137,7 +126,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? check,
-    TResult Function()? signout,
   }) {
     return check?.call();
   }
@@ -146,7 +134,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? check,
-    TResult Function()? signout,
     required TResult orElse(),
   }) {
     if (check != null) {
@@ -159,7 +146,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthCheckEvent value) check,
-    required TResult Function(_AuthSignoutEvent value) signout,
   }) {
     return check(this);
   }
@@ -168,7 +154,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
   }) {
     return check?.call(this);
   }
@@ -177,7 +162,6 @@ class _$_AuthCheckEvent implements _AuthCheckEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
     required TResult orElse(),
   }) {
     if (check != null) {
@@ -192,111 +176,6 @@ abstract class _AuthCheckEvent implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$AuthSignoutEventCopyWith<$Res> {
-  factory _$AuthSignoutEventCopyWith(
-          _AuthSignoutEvent value, $Res Function(_AuthSignoutEvent) then) =
-      __$AuthSignoutEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$AuthSignoutEventCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AuthSignoutEventCopyWith<$Res> {
-  __$AuthSignoutEventCopyWithImpl(
-      _AuthSignoutEvent _value, $Res Function(_AuthSignoutEvent) _then)
-      : super(_value, (v) => _then(v as _AuthSignoutEvent));
-
-  @override
-  _AuthSignoutEvent get _value => super._value as _AuthSignoutEvent;
-}
-
-/// @nodoc
-
-class _$_AuthSignoutEvent implements _AuthSignoutEvent {
-  const _$_AuthSignoutEvent();
-
-  @override
-  String toString() {
-    return 'AuthEvent.signout()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AuthSignoutEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() check,
-    required TResult Function() signout,
-  }) {
-    return signout();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? check,
-    TResult Function()? signout,
-  }) {
-    return signout?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? check,
-    TResult Function()? signout,
-    required TResult orElse(),
-  }) {
-    if (signout != null) {
-      return signout();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthCheckEvent value) check,
-    required TResult Function(_AuthSignoutEvent value) signout,
-  }) {
-    return signout(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
-  }) {
-    return signout?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthCheckEvent value)? check,
-    TResult Function(_AuthSignoutEvent value)? signout,
-    required TResult orElse(),
-  }) {
-    if (signout != null) {
-      return signout(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthSignoutEvent implements AuthEvent {
-  const factory _AuthSignoutEvent() = _$_AuthSignoutEvent;
-}
-
-/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
@@ -304,10 +183,8 @@ class _$AuthStateTearOff {
     return const _AuthInitialState();
   }
 
-  _AuthUnauthorizedState unauthorized({required SynchrowiseFailure failure}) {
-    return _AuthUnauthorizedState(
-      failure: failure,
-    );
+  _AuthUnauthorizedState unauthorized() {
+    return const _AuthUnauthorizedState();
   }
 
   _AuthAuthorizedState authorized({required SynchrowiseUser user}) {
@@ -325,21 +202,21 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SynchrowiseFailure failure) unauthorized,
+    required TResult Function() unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) =>
@@ -425,7 +302,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SynchrowiseFailure failure) unauthorized,
+    required TResult Function() unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
     return initial();
@@ -435,7 +312,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
     return initial?.call();
@@ -445,7 +322,7 @@ class _$_AuthInitialState implements _AuthInitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {
@@ -499,7 +376,6 @@ abstract class _$AuthUnauthorizedStateCopyWith<$Res> {
   factory _$AuthUnauthorizedStateCopyWith(_AuthUnauthorizedState value,
           $Res Function(_AuthUnauthorizedState) then) =
       __$AuthUnauthorizedStateCopyWithImpl<$Res>;
-  $Res call({SynchrowiseFailure failure});
 }
 
 /// @nodoc
@@ -512,81 +388,57 @@ class __$AuthUnauthorizedStateCopyWithImpl<$Res>
 
   @override
   _AuthUnauthorizedState get _value => super._value as _AuthUnauthorizedState;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(_AuthUnauthorizedState(
-      failure: failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as SynchrowiseFailure,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_AuthUnauthorizedState implements _AuthUnauthorizedState {
-  const _$_AuthUnauthorizedState({required this.failure});
-
-  @override
-  final SynchrowiseFailure failure;
+  const _$_AuthUnauthorizedState();
 
   @override
   String toString() {
-    return 'AuthState.unauthorized(failure: $failure)';
+    return 'AuthState.unauthorized()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _AuthUnauthorizedState &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+        (other.runtimeType == runtimeType && other is _AuthUnauthorizedState);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
-
-  @JsonKey(ignore: true)
-  @override
-  _$AuthUnauthorizedStateCopyWith<_AuthUnauthorizedState> get copyWith =>
-      __$AuthUnauthorizedStateCopyWithImpl<_AuthUnauthorizedState>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SynchrowiseFailure failure) unauthorized,
+    required TResult Function() unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
-    return unauthorized(failure);
+    return unauthorized();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
-    return unauthorized?.call(failure);
+    return unauthorized?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
-      return unauthorized(failure);
+      return unauthorized();
     }
     return orElse();
   }
@@ -627,13 +479,7 @@ class _$_AuthUnauthorizedState implements _AuthUnauthorizedState {
 }
 
 abstract class _AuthUnauthorizedState implements AuthState {
-  const factory _AuthUnauthorizedState({required SynchrowiseFailure failure}) =
-      _$_AuthUnauthorizedState;
-
-  SynchrowiseFailure get failure;
-  @JsonKey(ignore: true)
-  _$AuthUnauthorizedStateCopyWith<_AuthUnauthorizedState> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _AuthUnauthorizedState() = _$_AuthUnauthorizedState;
 }
 
 /// @nodoc
@@ -703,7 +549,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SynchrowiseFailure failure) unauthorized,
+    required TResult Function() unauthorized,
     required TResult Function(SynchrowiseUser user) authorized,
   }) {
     return authorized(user);
@@ -713,7 +559,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
   }) {
     return authorized?.call(user);
@@ -723,7 +569,7 @@ class _$_AuthAuthorizedState implements _AuthAuthorizedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SynchrowiseFailure failure)? unauthorized,
+    TResult Function()? unauthorized,
     TResult Function(SynchrowiseUser user)? authorized,
     required TResult orElse(),
   }) {

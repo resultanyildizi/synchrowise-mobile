@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,16 +38,18 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  void _authBlocListener(BuildContext context, AuthState state) {
-    state.maybeMap(
-      unauthorized: (_) {
-        Navigator.pushNamed(context, "/welcome");
-      },
-      authorized: (_) {
-        Navigator.pushReplacementNamed(context, "/home");
-      },
-      orElse: () {},
-    );
+  BlocListener<AuthBloc, AuthState> get _getAuthBlocListener {
+    return BlocListener<AuthBloc, AuthState>(listener: (context, state) {
+      state.maybeMap(
+        unauthorized: (_) {
+          Navigator.pushNamed(context, "/welcome");
+        },
+        authorized: (_) {
+          Navigator.pushReplacementNamed(context, "/home");
+        },
+        orElse: () {},
+      );
+    });
   }
 
   BlocListener get _getRegisterFailureBlocListener {
@@ -157,45 +157,43 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return BlocProvider<RegisterStepsBloc>(
       create: (context) => getIt<RegisterStepsBloc>(),
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: _authBlocListener,
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25.0),
-              child: MultiBlocListener(
-                listeners: [
-                  _getRegisterFailureBlocListener,
-                  _getRegisterSuccessBlocListener,
-                  _getRegisterPageAnimatorListener,
-                ],
-                child: BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                          child: ThinLineStepper(
-                            lineCount: 3,
-                            activeLineIndex: {state.step},
-                          ),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 25.0),
+            child: MultiBlocListener(
+              listeners: [
+                _getAuthBlocListener,
+                _getRegisterFailureBlocListener,
+                _getRegisterSuccessBlocListener,
+                _getRegisterPageAnimatorListener,
+              ],
+              child: BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: ThinLineStepper(
+                          lineCount: 3,
+                          activeLineIndex: {state.step},
                         ),
-                        Expanded(
-                          child: PageView(
-                            physics: const NeverScrollableScrollPhysics(),
-                            controller: _pageController,
-                            children: const [
-                              RegisterSteps0(),
-                              RegisterSteps1(),
-                              RegisterSteps2(),
-                            ],
-                          ),
+                      ),
+                      Expanded(
+                        child: PageView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: _pageController,
+                          children: const [
+                            RegisterSteps0(),
+                            RegisterSteps1(),
+                            RegisterSteps2(),
+                          ],
                         ),
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
