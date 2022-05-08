@@ -79,7 +79,7 @@ class ProfileTab extends StatelessWidget {
               ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(100)),
                 child: CachedNetworkImage(
-                  imageUrl: synchrowiseUser.avatar.path,
+                  imageUrl: synchrowiseUser.avatar.getHttpsPath,
                   height: 50,
                   width: 50,
                 ),

@@ -5,29 +5,24 @@ import 'package:flutter/foundation.dart';
 class Avatar extends Equatable {
   final String path;
 
-  const Avatar({
-    required this.path,
-  });
+  const Avatar({required this.path});
 
   Map<String, dynamic> toMap() {
-    return {
-      'path': path,
-    };
+    return {'path': path};
   }
 
   factory Avatar.fromMap(Map<String, dynamic> map) {
-    final rawPath = (map['path'] as String);
-
-    final path = rawPath.replaceAll("\\", "/");
-    final pathHttps = "https://$path";
-
-    return Avatar(path: pathHttps);
+    return Avatar(path: map['path'] as String);
   }
 
   factory Avatar.defaultAvatar() {
     return const Avatar(
         path:
             'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png');
+  }
+
+  String get getHttpsPath {
+    return "https://${path.replaceAll("\\", "/")}";
   }
 
   @override
