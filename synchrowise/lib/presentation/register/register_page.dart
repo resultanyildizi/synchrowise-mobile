@@ -64,7 +64,11 @@ class _RegisterPageState extends State<RegisterPage> {
             (f) {
               f.maybeMap(
                 get: (_) {
-                  // Todo : logout user
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    "/welcome",
+                    (route) => false,
+                  );
                 },
                 orElse: () {
                   showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);

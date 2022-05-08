@@ -11,12 +11,14 @@ class DefaultTextField extends StatefulWidget {
     this.errorText,
     this.controller,
     this.focusNode,
+    this.initialValue,
   }) : super(key: key);
 
   final IconData? icon;
   final String? errorText;
   final bool obscrueText;
   final String hintText;
+  final String? initialValue;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final Function(String text) onChanged;
@@ -35,6 +37,12 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
     _controller = widget.controller ?? TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
     _textFieldKey = GlobalKey();
+
+    if (widget.initialValue != null) {
+      _controller.text = widget.initialValue!;
+      widget.onChanged(_controller.text);
+    }
+
     super.initState();
   }
 

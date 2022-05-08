@@ -44,6 +44,35 @@ class GroupRepository implements IGroupRepository {
   }
 
   @override
+  Future<Either<GroupRepositoryFailure, Unit>> update({
+    required GroupData groupData,
+  }) async {
+    try {
+      final api = dotenv.get("API_URL");
+      final uri = Uri.parse("$api/Group/Create");
+
+      final result = await _client.post(
+        uri,
+        body: jsonEncode(groupData.toCreateMap()),
+        headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
+      );
+
+      if (result.statusCode == 200) {
+        return right(unit);
+      } else {
+        return left(GroupRepositoryFailure.server(
+          result.statusCode,
+          result.body,
+        ));
+      }
+    } on SocketException catch (_) {
+      return left(const GroupRepositoryFailure.connection());
+    } catch (e) {
+      return left(GroupRepositoryFailure.unknown(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<GroupRepositoryFailure, Unit>> delete({
     required GroupData groupData,
   }) async {

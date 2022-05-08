@@ -1,16 +1,14 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
-import 'package:synchrowise/application/bloc/bottom_navbar_bloc.dart';
+import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
 import 'package:synchrowise/presentation/home/tabs/home_tab.dart';
 import 'package:synchrowise/presentation/home/tabs/settings_tab.dart';
-import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
 import 'package:synchrowise/presentation/home/tabs/profile_tab.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,8 +59,6 @@ class HomePage extends StatelessWidget {
   }
 
   Scaffold _buildSomethingWentWrongPage(BuildContext context) {
-    // Todo bize bildir butonu, Bir şeyler ters gitti ikonu
-    // Todo aynı zamanda uygulamayı baştan başlatacak
     return const Scaffold(
       body: SafeArea(
         child: Padding(

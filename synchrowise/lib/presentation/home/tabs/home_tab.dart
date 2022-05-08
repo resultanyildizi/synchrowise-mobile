@@ -56,7 +56,9 @@ class HomeTab extends StatelessWidget {
             cardBackgroundImage: redCardImagePath,
             title: "create_a_group".tr(),
             desc: "create_a_group_description".tr(),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, "/create_group");
+            },
           ),
         GroupActionCards(
           cardBackgroundImage: blueCardImagePath,

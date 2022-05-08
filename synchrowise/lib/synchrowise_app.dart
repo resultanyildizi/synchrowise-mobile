@@ -86,15 +86,6 @@ class SynchrowiseApp extends StatelessWidget {
                 TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
           ),
         ),
-        routes: {
-          '/': (context) => const SplashPage(),
-          '/welcome': (context) => const WelcomePage(),
-          '/signin': (context) => const SigninPage(),
-          '/signup': (context) => const SignupPage(),
-          '/home': (context) => const HomePage(),
-          '/reset_password': (context) => const ResetPasswordPage(),
-          '/register': (context) => const RegisterPage(),
-        },
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {

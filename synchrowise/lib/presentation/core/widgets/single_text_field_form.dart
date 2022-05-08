@@ -14,6 +14,7 @@ class SingleTextFieldForm extends StatelessWidget {
   final String? errorText;
   final FocusNode focusNode;
   final bool showProgress;
+  final String? initialValue;
 
   const SingleTextFieldForm({
     Key? key,
@@ -26,6 +27,7 @@ class SingleTextFieldForm extends StatelessWidget {
     required this.errorText,
     required this.focusNode,
     this.showProgress = false,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -46,8 +48,9 @@ class SingleTextFieldForm extends StatelessWidget {
         DefaultTextField(
           focusNode: focusNode,
           icon: null,
+          initialValue: initialValue,
           hintText: hintText.tr(),
-          onChanged: (username) => onTextChanged(username),
+          onChanged: (value) => onTextChanged(value),
           errorText: errorText,
         ),
         const SizedBox(height: 32),
