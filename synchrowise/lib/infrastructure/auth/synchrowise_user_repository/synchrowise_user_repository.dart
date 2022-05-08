@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
-import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:dartz/dartz.dart';

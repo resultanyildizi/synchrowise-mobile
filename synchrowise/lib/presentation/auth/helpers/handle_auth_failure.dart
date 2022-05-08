@@ -4,7 +4,7 @@ import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 
 void handleAuthFailures(AuthFacadeFailure failure) {
-  failure.maybeMap(
+  failure.map(
     invalidCredentials: (_) {
       showErrorToast("invalid_email_or_password".tr(), ToastGravity.BOTTOM);
     },
@@ -26,6 +26,14 @@ void handleAuthFailures(AuthFacadeFailure failure) {
     unknown: (_) {
       showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
     },
-    orElse: () {},
+    userCancelled: (_) {
+      showErrorToast("login_cancelled".tr(), ToastGravity.BOTTOM);
+    },
+    signInRequired: (_) {
+      showErrorToast("login_required".tr(), ToastGravity.BOTTOM);
+    },
+    userNotFound: (_) {
+      showErrorToast("user_not_found".tr(), ToastGravity.BOTTOM);
+    },
   );
 }

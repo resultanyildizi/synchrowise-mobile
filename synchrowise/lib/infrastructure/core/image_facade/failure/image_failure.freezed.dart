@@ -35,6 +35,10 @@ class _$ImageFailureTearOff {
       imageSize,
     );
   }
+
+  _ImageCancel imageCancel() {
+    return const _ImageCancel();
+  }
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ mixin _$ImageFailure {
     required TResult Function(String? message) imagePick,
     required TResult Function(String? message) imageCrop,
     required TResult Function(double imageSize) imageSize,
+    required TResult Function() imageCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$ImageFailure {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +67,7 @@ mixin _$ImageFailure {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,6 +76,7 @@ mixin _$ImageFailure {
     required TResult Function(_ImagePick value) imagePick,
     required TResult Function(_ImageCrop value) imageCrop,
     required TResult Function(_ImageSize value) imageSize,
+    required TResult Function(_ImageCancel value) imageCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +84,7 @@ mixin _$ImageFailure {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +92,7 @@ mixin _$ImageFailure {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +180,7 @@ class _$_ImagePick implements _ImagePick {
     required TResult Function(String? message) imagePick,
     required TResult Function(String? message) imageCrop,
     required TResult Function(double imageSize) imageSize,
+    required TResult Function() imageCancel,
   }) {
     return imagePick(message);
   }
@@ -180,6 +191,7 @@ class _$_ImagePick implements _ImagePick {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
   }) {
     return imagePick?.call(message);
   }
@@ -190,6 +202,7 @@ class _$_ImagePick implements _ImagePick {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
     required TResult orElse(),
   }) {
     if (imagePick != null) {
@@ -204,6 +217,7 @@ class _$_ImagePick implements _ImagePick {
     required TResult Function(_ImagePick value) imagePick,
     required TResult Function(_ImageCrop value) imageCrop,
     required TResult Function(_ImageSize value) imageSize,
+    required TResult Function(_ImageCancel value) imageCancel,
   }) {
     return imagePick(this);
   }
@@ -214,6 +228,7 @@ class _$_ImagePick implements _ImagePick {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
   }) {
     return imagePick?.call(this);
   }
@@ -224,6 +239,7 @@ class _$_ImagePick implements _ImagePick {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
     required TResult orElse(),
   }) {
     if (imagePick != null) {
@@ -308,6 +324,7 @@ class _$_ImageCrop implements _ImageCrop {
     required TResult Function(String? message) imagePick,
     required TResult Function(String? message) imageCrop,
     required TResult Function(double imageSize) imageSize,
+    required TResult Function() imageCancel,
   }) {
     return imageCrop(message);
   }
@@ -318,6 +335,7 @@ class _$_ImageCrop implements _ImageCrop {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
   }) {
     return imageCrop?.call(message);
   }
@@ -328,6 +346,7 @@ class _$_ImageCrop implements _ImageCrop {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
     required TResult orElse(),
   }) {
     if (imageCrop != null) {
@@ -342,6 +361,7 @@ class _$_ImageCrop implements _ImageCrop {
     required TResult Function(_ImagePick value) imagePick,
     required TResult Function(_ImageCrop value) imageCrop,
     required TResult Function(_ImageSize value) imageSize,
+    required TResult Function(_ImageCancel value) imageCancel,
   }) {
     return imageCrop(this);
   }
@@ -352,6 +372,7 @@ class _$_ImageCrop implements _ImageCrop {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
   }) {
     return imageCrop?.call(this);
   }
@@ -362,6 +383,7 @@ class _$_ImageCrop implements _ImageCrop {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
     required TResult orElse(),
   }) {
     if (imageCrop != null) {
@@ -446,6 +468,7 @@ class _$_ImageSize implements _ImageSize {
     required TResult Function(String? message) imagePick,
     required TResult Function(String? message) imageCrop,
     required TResult Function(double imageSize) imageSize,
+    required TResult Function() imageCancel,
   }) {
     return imageSize(this.imageSize);
   }
@@ -456,6 +479,7 @@ class _$_ImageSize implements _ImageSize {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
   }) {
     return imageSize?.call(this.imageSize);
   }
@@ -466,6 +490,7 @@ class _$_ImageSize implements _ImageSize {
     TResult Function(String? message)? imagePick,
     TResult Function(String? message)? imageCrop,
     TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
     required TResult orElse(),
   }) {
     if (imageSize != null) {
@@ -480,6 +505,7 @@ class _$_ImageSize implements _ImageSize {
     required TResult Function(_ImagePick value) imagePick,
     required TResult Function(_ImageCrop value) imageCrop,
     required TResult Function(_ImageSize value) imageSize,
+    required TResult Function(_ImageCancel value) imageCancel,
   }) {
     return imageSize(this);
   }
@@ -490,6 +516,7 @@ class _$_ImageSize implements _ImageSize {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
   }) {
     return imageSize?.call(this);
   }
@@ -500,6 +527,7 @@ class _$_ImageSize implements _ImageSize {
     TResult Function(_ImagePick value)? imagePick,
     TResult Function(_ImageCrop value)? imageCrop,
     TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
     required TResult orElse(),
   }) {
     if (imageSize != null) {
@@ -516,4 +544,120 @@ abstract class _ImageSize implements ImageFailure {
   @JsonKey(ignore: true)
   _$ImageSizeCopyWith<_ImageSize> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ImageCancelCopyWith<$Res> {
+  factory _$ImageCancelCopyWith(
+          _ImageCancel value, $Res Function(_ImageCancel) then) =
+      __$ImageCancelCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ImageCancelCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
+    implements _$ImageCancelCopyWith<$Res> {
+  __$ImageCancelCopyWithImpl(
+      _ImageCancel _value, $Res Function(_ImageCancel) _then)
+      : super(_value, (v) => _then(v as _ImageCancel));
+
+  @override
+  _ImageCancel get _value => super._value as _ImageCancel;
+}
+
+/// @nodoc
+
+class _$_ImageCancel implements _ImageCancel {
+  const _$_ImageCancel();
+
+  @override
+  String toString() {
+    return 'ImageFailure.imageCancel()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ImageCancel);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) imagePick,
+    required TResult Function(String? message) imageCrop,
+    required TResult Function(double imageSize) imageSize,
+    required TResult Function() imageCancel,
+  }) {
+    return imageCancel();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
+  }) {
+    return imageCancel?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? imagePick,
+    TResult Function(String? message)? imageCrop,
+    TResult Function(double imageSize)? imageSize,
+    TResult Function()? imageCancel,
+    required TResult orElse(),
+  }) {
+    if (imageCancel != null) {
+      return imageCancel();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ImagePick value) imagePick,
+    required TResult Function(_ImageCrop value) imageCrop,
+    required TResult Function(_ImageSize value) imageSize,
+    required TResult Function(_ImageCancel value) imageCancel,
+  }) {
+    return imageCancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ImagePick value)? imagePick,
+    TResult Function(_ImageCrop value)? imageCrop,
+    TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
+  }) {
+    return imageCancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ImagePick value)? imagePick,
+    TResult Function(_ImageCrop value)? imageCrop,
+    TResult Function(_ImageSize value)? imageSize,
+    TResult Function(_ImageCancel value)? imageCancel,
+    required TResult orElse(),
+  }) {
+    if (imageCancel != null) {
+      return imageCancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImageCancel implements ImageFailure {
+  const factory _ImageCancel() = _$_ImageCancel;
 }

@@ -1,12 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
+import 'package:synchrowise/presentation/home/tabs/home_tab.dart';
+import 'package:synchrowise/presentation/home/tabs/settings_tab.dart';
 import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
+import 'package:synchrowise/presentation/home/tabs/profile_tab.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,6 +23,11 @@ class HomePage extends StatelessWidget {
         state.maybeMap(
           unauthorized: (_) {
             Navigator.pushReplacementNamed(context, "/welcome");
+          },
+          authorized: (authorized) {
+            if (authorized.user.username == null) {
+              Navigator.pushReplacementNamed(context, "/register");
+            }
           },
           orElse: () {},
         );
@@ -66,73 +76,83 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Scaffold _buildLoggedInPage(
+  Widget _buildLoggedInPage(
       BuildContext context, SynchrowiseUser synchrowiseUser) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(defaultPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  appLogoSmall,
-                  const SizedBox(width: 12),
-                  Text(
-                    appName,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(color: primaryColor, fontSize: 20),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              Text(
-                "hi_wave_icon"
-                    .tr(namedArgs: {"username": synchrowiseUser.username!}),
-                style: Theme.of(context)
-                    .textTheme
-                    .headline2!
-                    .copyWith(fontSize: 28),
-              ),
-              Text(
-                "what_would_you_like_to_do".tr(),
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(color: grayColor, fontSize: 16),
-              ),
-              const SizedBox(height: 16),
-              if (false)
-                GroupActionCards(
-                  cardBackgroundImage: whiteCardImagePath,
-                  title: "r123cKl14",
-                  desc: "open_your_group".tr(),
-                  color: primaryColor,
-                  onTap: () {},
-                )
-              else
-                GroupActionCards(
-                  cardBackgroundImage: redCardImagePath,
-                  title: "create_a_group".tr(),
-                  desc: "create_a_group_description".tr(),
-                  onTap: () {
-                    Navigator.pushNamed(context, "/create_group");
-                  },
-                ),
-              GroupActionCards(
-                cardBackgroundImage: blueCardImagePath,
-                title: "join_a_group".tr(),
-                desc: "join_a_group_description".tr(),
-                onTap: () {},
-              ),
-            ],
+    return HomePageTabView(synchrowiseUser: synchrowiseUser);
+  }
+}
+
+class HomePageTabView extends StatefulWidget {
+  const HomePageTabView({
+    Key? key,
+    required this.synchrowiseUser,
+  }) : super(key: key);
+
+  final SynchrowiseUser synchrowiseUser;
+
+  @override
+  State<HomePageTabView> createState() => _HomePageTabViewState();
+}
+
+class _HomePageTabViewState extends State<HomePageTabView>
+    with TickerProviderStateMixin {
+  late PageController _pageController;
+  late BottomNavbarBloc _bottomNavBarBloc;
+
+  void _pageViewListener() {
+    final page = _pageController.page?.toInt();
+    if (page != null) {
+      _bottomNavBarBloc.add(BottomNavbarEvent.openTab(index: page));
+    }
+  }
+
+  @override
+  void initState() {
+    _bottomNavBarBloc = BottomNavbarBloc();
+
+    _pageController = PageController(initialPage: 1, keepPage: true);
+
+    _pageController.addListener(_pageViewListener);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_pageViewListener);
+    _pageController.dispose();
+    _bottomNavBarBloc.close();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<BottomNavbarBloc>(
+      create: (context) => _bottomNavBarBloc,
+      child: Provider<SynchrowiseUser>(
+        create: (_) => widget.synchrowiseUser,
+        child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
+          listener: (context, state) {
+            _pageController.jumpToPage(state.index);
+          },
+          child: Scaffold(
+            body: SafeArea(
+              child: Padding(
+                  padding: const EdgeInsets.all(defaultPadding),
+                  child: PageView(
+                    controller: _pageController,
+                    children: const [
+                      ProfileTab(),
+                      HomeTab(),
+                      SettingsTab(),
+                    ],
+                  )),
+            ),
+            bottomNavigationBar: const BottomNavBar(),
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

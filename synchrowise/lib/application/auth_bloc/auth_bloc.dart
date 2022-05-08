@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
-import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
-import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -19,7 +17,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   ///* Methods
   void check() => add(const AuthEvent.check());
-  void signout() => add(const AuthEvent.signout());
 
   ///* Logic
   AuthBloc(this._iAuthFacade, this._iUserStorage)
@@ -27,8 +24,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEvent>(
       (event, emit) async {
         await event.map(
-          check: (event) async => emit(await _checkEventToState(event)),
-          signout: (event) {},
+          check: (event) async {
+            final state = await _checkEventToState(event);
+            emit(state);
+          },
         );
       },
     );
@@ -41,20 +40,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return failureOrUnit.fold(
       (f) async {
         await _iUserStorage.delete();
-        return AuthState.unauthorized(failure: f);
+        return const AuthState.unauthorized();
       },
       (_) {
         return failureOrUser.fold(
-          (f) => AuthState.unauthorized(failure: f),
-          (user) {
-            if (user == null) {
-              return const AuthState.unauthorized(
-                failure: AuthFacadeFailure.signInRequired(),
-              );
-            }
-
-            return AuthState.authorized(user: user);
-          },
+          (f) => const AuthState.unauthorized(),
+          (u) => AuthState.authorized(user: u),
         );
       },
     );

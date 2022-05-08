@@ -12,6 +12,7 @@ abstract class AuthFacadeFailure extends SynchrowiseFailure
       _EmailAlreadyInUseFailure;
 
   const factory AuthFacadeFailure.signInRequired() = _SignInRequiredFailure;
+  const factory AuthFacadeFailure.userNotFound() = _UserNotFoundFailure;
   const factory AuthFacadeFailure.userCancelled() = _UserCancelledFailure;
   const factory AuthFacadeFailure.userDisabled() = _UserDisabledFailure;
   const factory AuthFacadeFailure.invalidEmail() = _InvalidEmailFailure;

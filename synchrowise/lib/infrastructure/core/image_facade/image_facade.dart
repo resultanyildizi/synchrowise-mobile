@@ -26,7 +26,7 @@ class ImageFacade implements IImageFacade {
       if (pickedImage != null) {
         return right(File(pickedImage.path));
       } else {
-        return left(const ImageFailure.imagePick("PickedImage is null"));
+        return left(const ImageFailure.imageCancel());
       }
     } on PlatformException catch (e) {
       return left(ImageFailure.imagePick("PlatformException: ${e.toString()}"));

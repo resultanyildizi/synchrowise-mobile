@@ -22,6 +22,12 @@ abstract class IAuthFacade {
   ///* Returns `AuthFailure` if an exception occurs
   Future<Either<AuthFacadeFailure, SynchrowiseUser>> signInWithGoogleAuth();
 
+  ///* Signs up with Google Auth service
+  ///*
+  ///* Returns `SynchrowiseUser` if it is successful
+  ///* Returns `AuthFailure` if an exception occurs
+  Future<Either<AuthFacadeFailure, SynchrowiseUser>> signUpWithGoogleAuth();
+
   ///* Creates a user with `email` and `password`
   ///*
   ///* Returns `SynchrowiseUser` if it is successful

@@ -4,8 +4,8 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class SingleTextFieldForm extends StatefulWidget {
-  final Function(String text) changedButton;
+class SingleTextFieldForm extends StatelessWidget {
+  final Function(String text) onTextChanged;
   final Function() saveButton;
   final String title;
   final String desc;
@@ -13,10 +13,11 @@ class SingleTextFieldForm extends StatefulWidget {
   final String hintText;
   final String? errorText;
   final FocusNode focusNode;
+  final bool showProgress;
 
   const SingleTextFieldForm({
     Key? key,
-    required this.changedButton,
+    required this.onTextChanged,
     required this.saveButton,
     required this.title,
     required this.desc,
@@ -24,13 +25,9 @@ class SingleTextFieldForm extends StatefulWidget {
     required this.hintText,
     required this.errorText,
     required this.focusNode,
+    this.showProgress = false,
   }) : super(key: key);
 
-  @override
-  State<SingleTextFieldForm> createState() => _SingleTextFieldFormState();
-}
-
-class _SingleTextFieldFormState extends State<SingleTextFieldForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,29 +35,30 @@ class _SingleTextFieldFormState extends State<SingleTextFieldForm> {
       children: [
         const SizedBox(height: 32),
         Text(
-          widget.title.tr(),
+          title.tr(),
           style: Theme.of(context).textTheme.headline2,
         ),
         Text(
-          widget.desc.tr(),
+          desc.tr(),
           style: Theme.of(context).textTheme.subtitle1,
         ),
         const SizedBox(height: 32),
         DefaultTextField(
-          focusNode: widget.focusNode,
+          focusNode: focusNode,
           icon: null,
-          hintText: widget.hintText.tr(),
-          onChanged: (username) => widget.changedButton(username),
-          errorText: widget.errorText,
+          hintText: hintText.tr(),
+          onChanged: (username) => onTextChanged(username),
+          errorText: errorText,
         ),
         const SizedBox(height: 32),
         DefaultButton(
           backgroundColor: primaryColor,
           borderColor: null,
           textColor: kcWhiteColor,
-          text: widget.btnText.tr(),
+          text: btnText.tr(),
           padding: 0,
-          onTap: () => widget.saveButton(),
+          showProgress: showProgress,
+          onTap: () => saveButton(),
         ),
       ],
     );
