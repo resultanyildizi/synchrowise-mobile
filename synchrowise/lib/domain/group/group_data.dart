@@ -42,7 +42,7 @@ class GroupData extends Equatable {
   Map<String, dynamic> toCreateMap() {
     return {
       'groupName': groupName,
-      'ownerId': groupOwner.synchrowiseId,
+      'ownerID': groupOwner.synchrowiseId,
     };
   }
 

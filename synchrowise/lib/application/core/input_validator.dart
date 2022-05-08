@@ -25,7 +25,7 @@ Either<ValueFailure, String> validateUsername({required String username}) {
 }
 
 Either<ValueFailure, String> validateGroupName({required String groupName}) {
-  final groupNameRegex = RegExp(r"""^([A-Za-z0-9])$""");
+  final groupNameRegex = RegExp(r'^[a-zA-Z0-9]+$');
 
   if (groupName.length < 3) {
     return left(const ValueFailure.minLength(3));

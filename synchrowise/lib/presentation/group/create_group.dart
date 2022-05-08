@@ -38,8 +38,8 @@ class _CreateGroupState extends State<CreateGroup> {
   BlocListener get _getCreateGroupFailureBlocListener {
     return BlocListener<CreateGroupBloc, CreateGroupState>(
       listenWhen: (previous, current) {
-        return current.failureOrGroupDescOption.isSome() ||
-            current.failureOrGroupNameOption.isSome() ||
+        return current.groupNameFailureOrUnitOption.isSome() ||
+            current.groupDescFailureOrUnitOption.isSome() ||
             current.storageFailureOrUnitOption.isSome();
       },
       listener: (context, state) {
@@ -60,7 +60,7 @@ class _CreateGroupState extends State<CreateGroup> {
             },
             (_) {},
           );
-        } else if (state.failureOrGroupNameOption.isSome()) {
+        } else if (state.groupNameFailureOrUnitOption.isSome()) {
           final failureOrUnit = state.groupNameFailureOrUnitOption
               .getOrElse(() => throw AssertionError());
 
@@ -83,7 +83,7 @@ class _CreateGroupState extends State<CreateGroup> {
             },
             (_) {},
           );
-        } else if (state.failureOrGroupDescOption.isSome()) {
+        } else if (state.groupDescFailureOrUnitOption.isSome()) {
           final failureOrUnit = state.groupDescFailureOrUnitOption
               .getOrElse(() => throw AssertionError());
 
