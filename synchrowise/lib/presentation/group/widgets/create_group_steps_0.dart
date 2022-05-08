@@ -72,7 +72,7 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
                 },
               ),
               SingleTextFieldForm(
-                changedButton: (groupName) {
+                onTextChanged: (groupName) {
                   final createGroupBloc = context.read<CreateGroupBloc>();
                   createGroupBloc.updateGroupNameText(groupName: groupName);
                 },
