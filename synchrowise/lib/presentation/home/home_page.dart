@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
 import 'package:synchrowise/presentation/home/tabs/home_tab.dart';
 import 'package:synchrowise/presentation/home/tabs/settings_tab.dart';
-import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
 import 'package:synchrowise/presentation/home/tabs/profile_tab.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,8 +51,9 @@ class HomePage extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: Padding(
-            padding: EdgeInsets.all(defaultPadding),
-            child: WaveProgressIndicator()),
+          padding: EdgeInsets.all(defaultPadding),
+          child: WaveProgressIndicator(),
+        ),
       ),
       bottomNavigationBar: BottomNavBar(),
     );
@@ -139,15 +138,16 @@ class _HomePageTabViewState extends State<HomePageTabView>
           child: Scaffold(
             body: SafeArea(
               child: Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
-                  child: PageView(
-                    controller: _pageController,
-                    children: const [
-                      ProfileTab(),
-                      HomeTab(),
-                      SettingsTab(),
-                    ],
-                  )),
+                padding: const EdgeInsets.all(defaultPadding),
+                child: PageView(
+                  controller: _pageController,
+                  children: [
+                    ProfileTab(synchrowiseUser: widget.synchrowiseUser),
+                    const HomeTab(),
+                    const SettingsTab(),
+                  ],
+                ),
+              ),
             ),
             bottomNavigationBar: const BottomNavBar(),
           ),
