@@ -51,8 +51,9 @@ class HomePage extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: Padding(
-            padding: EdgeInsets.all(defaultPadding),
-            child: WaveProgressIndicator()),
+          padding: EdgeInsets.all(defaultPadding),
+          child: WaveProgressIndicator(),
+        ),
       ),
       bottomNavigationBar: BottomNavBar(),
     );
@@ -135,15 +136,16 @@ class _HomePageTabViewState extends State<HomePageTabView>
           child: Scaffold(
             body: SafeArea(
               child: Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
-                  child: PageView(
-                    controller: _pageController,
-                    children: const [
-                      ProfileTab(),
-                      HomeTab(),
-                      SettingsTab(),
-                    ],
-                  )),
+                padding: const EdgeInsets.all(defaultPadding),
+                child: PageView(
+                  controller: _pageController,
+                  children: [
+                    ProfileTab(synchrowiseUser: widget.synchrowiseUser),
+                    const HomeTab(),
+                    const SettingsTab(),
+                  ],
+                ),
+              ),
             ),
             bottomNavigationBar: const BottomNavBar(),
           ),
