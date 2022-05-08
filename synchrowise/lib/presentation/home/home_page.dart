@@ -7,6 +7,7 @@ import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
 import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
@@ -38,12 +39,12 @@ class HomePage extends StatelessWidget {
           authorized: (authorizedState) {
             final username = authorizedState.user.username;
             if (username == null) {
-              return _buildSomethingWentWrongPage(context);
+              return const SomethingWentWrongPage();
             }
 
             return _buildLoggedInPage(context, authorizedState.user);
           },
-          unauthorized: (_) => _buildSomethingWentWrongPage(context),
+          unauthorized: (_) => const SomethingWentWrongPage(),
           initial: (_) => _buildInitialPage(context),
         );
       },
@@ -56,20 +57,6 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(defaultPadding),
           child: WaveProgressIndicator(),
-        ),
-      ),
-      bottomNavigationBar: BottomNavBar(),
-    );
-  }
-
-  Scaffold _buildSomethingWentWrongPage(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(defaultPadding),
-          child: Center(
-            child: Text("Bir şeyler ters giti"),
-          ),
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
@@ -99,27 +86,17 @@ class _HomePageTabViewState extends State<HomePageTabView>
   late PageController _pageController;
   late BottomNavbarBloc _bottomNavBarBloc;
 
-  void _pageViewListener() {
-    final page = _pageController.page?.toInt();
-    if (page != null) {
-      _bottomNavBarBloc.add(BottomNavbarEvent.openTab(index: page));
-    }
-  }
-
   @override
   void initState() {
     _bottomNavBarBloc = BottomNavbarBloc();
 
     _pageController = PageController(initialPage: 1, keepPage: true);
 
-    _pageController.addListener(_pageViewListener);
-
     super.initState();
   }
 
   @override
   void dispose() {
-    _pageController.removeListener(_pageViewListener);
     _pageController.dispose();
     _bottomNavBarBloc.close();
 
@@ -141,7 +118,9 @@ class _HomePageTabViewState extends State<HomePageTabView>
         create: (_) => widget.synchrowiseUser,
         child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
           listener: (context, state) {
-            _pageController.jumpToPage(state.index);
+            _pageController.animateToPage(state.index,
+                curve: Curves.easeIn,
+                duration: const Duration(milliseconds: 300));
           },
           child: Scaffold(
             body: SafeArea(
@@ -152,6 +131,7 @@ class _HomePageTabViewState extends State<HomePageTabView>
                     const AppLogoAndName(),
                     Expanded(
                       child: PageView(
+                        physics: const NeverScrollableScrollPhysics(),
                         controller: _pageController,
                         children: [
                           ProfileTab(synchrowiseUser: widget.synchrowiseUser),

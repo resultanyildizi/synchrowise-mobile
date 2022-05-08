@@ -11,6 +11,7 @@ import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/group/create_group.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
+import 'package:synchrowise/presentation/profile/update_username_page.dart';
 import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/presentation/splash/splash.dart';
 
@@ -126,6 +127,12 @@ class SynchrowiseApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (context) => const CreateGroup(),
               );
+
+            case "/profile_username":
+              return MaterialPageRoute(
+                builder: (context) => const ProfileUpdateUsernamePage(),
+              );
+            case "/profile_avatar":
           }
         },
       ),

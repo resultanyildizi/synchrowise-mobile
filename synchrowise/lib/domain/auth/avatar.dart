@@ -16,9 +16,12 @@ class Avatar extends Equatable {
   }
 
   factory Avatar.fromMap(Map<String, dynamic> map) {
-    return Avatar(
-      path: map['path'],
-    );
+    final rawPath = (map['path'] as String);
+
+    final path = rawPath.replaceAll("\\", "/");
+    final pathHttps = "https://$path";
+
+    return Avatar(path: pathHttps);
   }
 
   factory Avatar.defaultAvatar() {

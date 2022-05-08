@@ -86,7 +86,7 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
                   createGroupBloc.saveGroupName();
                 },
                 title: "group_name".tr(),
-                desc: "group_description".tr(),
+                desc: "group_name_desc".tr(),
                 btnText: "continue".tr(),
                 hintText: "group_name".tr(),
                 errorText: _getGroupNameErrorText(state),

@@ -54,5 +54,7 @@
     "unknown_error": "Unknown error",
     "invalid_email_or_password": "Invalid email or password",
     "account_disabled": "This is user account is disabled",
-    "clip": "Clip"
+    "clip": "Clip",
+    "group_name": "Group name",
+    "group_name_desc": "Choose a group name that you would like to use. Other users will join your group with this unique name."
 }

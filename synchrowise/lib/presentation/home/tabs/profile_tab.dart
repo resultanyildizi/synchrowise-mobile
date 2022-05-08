@@ -19,12 +19,16 @@ class ProfileTab extends StatelessWidget {
       SettingsSectionModel(
         icon: Icons.add_photo_alternate,
         btnText: "avatar".tr(),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, "/profile_avatar");
+        },
       ),
       SettingsSectionModel(
         icon: Icons.person,
         btnText: "username".tr(),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, "/profile_username");
+        },
       )
     ];
 
@@ -56,7 +60,9 @@ class ProfileTab extends StatelessWidget {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(100)),
               child: CachedNetworkImage(
-                imageUrl: synchrowiseUser.avatar.path,
+                imageUrl: synchrowiseUser.avatar.path
+                    .replaceAll('\\', "/")
+                    .toString(),
                 height: 50,
                 width: 50,
               ),

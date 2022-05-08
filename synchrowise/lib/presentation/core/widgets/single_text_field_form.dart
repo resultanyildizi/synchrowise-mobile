@@ -12,7 +12,7 @@ class SingleTextFieldForm extends StatelessWidget {
   final String btnText;
   final String hintText;
   final String? errorText;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
   final bool showProgress;
   final String? initialValue;
 
@@ -25,7 +25,7 @@ class SingleTextFieldForm extends StatelessWidget {
     required this.btnText,
     required this.hintText,
     required this.errorText,
-    required this.focusNode,
+    this.focusNode,
     this.showProgress = false,
     this.initialValue,
   }) : super(key: key);
