@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
@@ -76,6 +79,8 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
                   final createGroupBloc = context.read<CreateGroupBloc>();
                   createGroupBloc.updateGroupNameText(groupName: groupName);
                 },
+                initialValue:
+                    "${WordPair.random().asString}${Random().nextInt(100)}",
                 saveButton: () {
                   final createGroupBloc = context.read<CreateGroupBloc>();
                   createGroupBloc.saveGroupName();

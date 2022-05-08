@@ -66,13 +66,12 @@ class _CreateGroupSteps1State extends State<CreateGroupSteps1>
                 },
               ),
               SingleTextAreaFieldForm(
-                changedButton: (groupDesc) {
+                onTextChanged: (groupDesc) {
                   final createGroupBloc = context.read<CreateGroupBloc>();
                   createGroupBloc.updateGroupDescText(groupDesc: groupDesc);
                 },
                 saveButton: () {
-                  final createGroupBloc = context.read<CreateGroupBloc>();
-                  createGroupBloc.submit();
+                  // final createGroupBloc = context.read<CreateGroupBloc>();
                 },
                 title: "group_desc_title".tr(),
                 desc: "group_desc_subtitle".tr(),

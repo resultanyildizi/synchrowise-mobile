@@ -26,7 +26,7 @@
     "already_have_an_account": "Zaten bir hesabın var mı?",
     "almost_done": "Neredeyse tamamlandı",
     "almost_done_desc": "Kayıt adımlarını tamamlamak için kullanıcı adını ve avatarını seç.",
-    "hi_wave_icon": "Merhaba! {username} 👋",
+    "hi_wave_icon": "Merhaba {username} 👋",
     "send": "Gönder",
     "what_would_you_like_to_do": "Ne yapmak istersin?",
     "open_your_group": "Gruba gir",
@@ -56,7 +56,7 @@
     "account_disabled": "Bu hesap devre dışı",
     "clip": "Kırp",
     "group_name_must_be_at_least_min_characters": "Group ismi en az {min} karakter olmalı",
-    "group_name_is_required":  "Group ismi gerekli",
+    "group_name_is_required": "Group ismi gerekli",
     "group_name": "Group İsmi",
     "group_description": "Group Açıklaması"
 }

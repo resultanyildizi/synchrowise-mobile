@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:synchrowise/application/bloc/bottom_navbar_bloc.dart';
+import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/constants.dart';
 
 class BottomNavBar extends StatelessWidget {

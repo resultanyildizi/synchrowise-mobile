@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:english_words/english_words.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
-import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
@@ -26,7 +25,8 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
   void saveGroupName() => add(const CreateGroupEvent.saveGroupName());
   void saveGroupDesc() => add(const CreateGroupEvent.saveDesc());
   void goBack() => add(const CreateGroupEvent.goBack());
-  void submit() => add(const CreateGroupEvent.submit());
+
+  GroupData? groupData;
 
   CreateGroupBloc(
     this._iUserStorage,
@@ -34,79 +34,6 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
   ) : super(CreateGroupState.initial()) {
     on<CreateGroupEvent>((event, emit) async {
       await event.map(
-        submit: (event) async {
-          emit(
-            state.copyWith(
-              failureOrGroupDescOption: none(),
-              failureOrGroupNameOption: none(),
-              storageFailureOrUnitOption: none(),
-              showErrors: true,
-            ),
-          );
-
-          final groupName = state.failureOrGroupNameOption.fold(
-            () => null,
-            (failureOrGroupName) => failureOrGroupName.fold(
-              (failure) => null,
-              (name) => name,
-            ),
-          );
-
-          if (groupName != null) {
-            final failureOrUser = await _iUserStorage.get();
-
-            final newState = await failureOrUser.fold(
-              (f) async {
-                return state.copyWith(
-                  storageFailureOrUnitOption: some(left(f)),
-                );
-              },
-              (user) async {
-                final groupData = GroupData.toCreateGroup(
-                  groupName: groupName,
-                  groupOwner: user,
-                );
-
-                emit(
-                  state.copyWith(
-                    groupNameFailureOrUnitOption: some(right(unit)),
-                    groupDescFailureOrUnitOption: some(right(unit)),
-                    storageFailureOrUnitOption: some(right(unit)),
-                  ),
-                );
-
-                //TODO : update metodu ile description güncellenecek
-                //* yorum satırları kaldırılacak update metodu yazıldığında
-
-                // final failureOrUnit = await _iGroupRepository.update(
-                //   groupData: groupData,
-                // );
-
-                // return failureOrUnit.fold(
-                //   (f) {
-                //     return state.copyWith(
-                //       groupNameFailureOrUnitOption: some(left(f)),
-                //     );
-                //   },
-                //   (_) {
-                //     return state.copyWith(
-                //       groupNameFailureOrUnitOption: some(right(unit)),
-                //       storageFailureOrUnitOption: some(right(unit)),
-                //     );
-                //   },
-                // );
-              },
-            );
-            // emit(newState);
-          } else {
-            emit(
-              state.copyWith(
-                groupNameFailureOrUnitOption: some(right(unit)),
-                storageFailureOrUnitOption: some(right(unit)),
-              ),
-            );
-          }
-        },
         updateGroupNameText: (event) {
           final validatedGroupName =
               validateGroupName(groupName: event.groupName.trim());
@@ -117,6 +44,12 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
         },
         updateGroupDescText: (event) {},
         saveGroupName: (event) async {
+          emit(state.copyWith(
+            progressing: true,
+            groupNameFailureOrUnitOption: none(),
+            storageFailureOrUnitOption: none(),
+          ));
+
           final groupName = state.failureOrGroupNameOption.fold(
             () => null,
             (failureOrGroupName) => failureOrGroupName.fold(
@@ -133,14 +66,27 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 );
               },
               (user) async {
-                final groupData = GroupData.toCreateGroup(
+                groupData = GroupData.toCreateGroup(
                   groupName: groupName,
                   groupOwner: user,
                 );
 
-                final failureOrUnit = await _iGroupRepository.create(
-                  groupData: groupData,
-                );
+                late Either<GroupRepositoryFailure, Unit> failureOrUnit;
+
+                if (groupData == null) {
+                  failureOrUnit = await _iGroupRepository.create(
+                    groupData: groupData!,
+                  );
+                } else {
+                  if (groupData!.groupName != groupName) {
+                    // Todo: update group name
+                    // failureOrUnit = await _iGroupRepository.update(
+                    //   groupData: groupData!,
+                    // );
+                  } else {
+                    failureOrUnit = right(unit);
+                  }
+                }
 
                 return failureOrUnit.fold(
                   (f) {

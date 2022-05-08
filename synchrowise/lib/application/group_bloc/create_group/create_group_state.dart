@@ -12,16 +12,18 @@ class CreateGroupState with _$CreateGroupState {
     required Option<Either<SynchrowiseUserStorageFailure, Unit>>
         storageFailureOrUnitOption,
     required bool showErrors,
+    required bool progressing,
     required int step,
   }) = _CreateGroupState;
 
   factory CreateGroupState.initial() {
     return CreateGroupState(
       storageFailureOrUnitOption: none(),
-      failureOrGroupNameOption: none(),
       groupNameFailureOrUnitOption: none(),
-      failureOrGroupDescOption: none(),
       groupDescFailureOrUnitOption: none(),
+      failureOrGroupNameOption: none(),
+      failureOrGroupDescOption: none(),
+      progressing: false,
       showErrors: false,
       step: 0,
     );

@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_area_field.dart';
-import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
-class SingleTextAreaFieldForm extends StatefulWidget {
-  final Function(String text) changedButton;
+class SingleTextAreaFieldForm extends StatelessWidget {
+  final Function(String text) onTextChanged;
   final Function() saveButton;
   final String title;
   final String desc;
@@ -17,7 +16,7 @@ class SingleTextAreaFieldForm extends StatefulWidget {
 
   const SingleTextAreaFieldForm({
     Key? key,
-    required this.changedButton,
+    required this.onTextChanged,
     required this.saveButton,
     required this.title,
     required this.desc,
@@ -28,41 +27,35 @@ class SingleTextAreaFieldForm extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<SingleTextAreaFieldForm> createState() =>
-      _SingleTextAreaFieldFormState();
-}
-
-class _SingleTextAreaFieldFormState extends State<SingleTextAreaFieldForm> {
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 32),
         Text(
-          widget.title.tr(),
+          title.tr(),
           style: Theme.of(context).textTheme.headline2,
         ),
         Text(
-          widget.desc.tr(),
+          desc.tr(),
           style: Theme.of(context).textTheme.subtitle1,
         ),
         const SizedBox(height: 32),
         DefaultTextAreaField(
-          focusNode: widget.focusNode,
+          focusNode: focusNode,
           icon: null,
-          hintText: widget.hintText.tr(),
-          onChanged: (username) => widget.changedButton(username),
-          errorText: widget.errorText,
+          hintText: hintText.tr(),
+          onChanged: (username) => onTextChanged(username),
+          errorText: errorText,
         ),
         const SizedBox(height: 32),
         DefaultButton(
           backgroundColor: primaryColor,
           borderColor: null,
           textColor: kcWhiteColor,
-          text: widget.btnText.tr(),
+          text: btnText.tr(),
           padding: 0,
-          onTap: () => widget.saveButton(),
+          onTap: () => saveButton(),
         ),
       ],
     );
