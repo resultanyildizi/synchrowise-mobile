@@ -14,7 +14,7 @@
     "welcome_exclamation": "Hoşgeldin!",
     "forgot_password": "Şifremi unuttum",
     "reset_your_password": "Şifreni sıfırla",
-    "reset_your_password_description": "Şifreni sıfırlamak için e-posta adresinize gönderilen bağlantıya tıkla.",
+    "reset_your_password_desc": "Şifreni sıfırlamak için e-posta adresinize gönderilen bağlantıya tıkla.",
     "or_continue_with": "ya da",
     "sign_in_to_continue": "Devam etmek için giriş yap",
     "dont_have_an_account": "Hesabın yok mu?",
@@ -44,7 +44,7 @@
     "username_must_be_at_least_min_characters": "Kullanıcı adın en az {min} karakter olmalı",
     "continue": "Devam et",
     "avatar": "Avatar",
-    "avatar_description": "Kullanmak için bir avatar seç. Diğer kullanıcılar seni bu kullanıcı adı ile görecekler.",
+    "avatar_desc": "Kullanmak için bir avatar seç. Diğer kullanıcılar seni bu kullanıcı adı ile görecekler.",
     "complete": "Tamamla",
     "registered_successfully": "Başarıyla kayıt oldun",
     "now_you_can_use_synchrowise": "Artık Synchrowise'ı kullanabilirsin",
@@ -54,10 +54,11 @@
     "unknown_error": "Bilinmeyen hata",
     "invalid_email_or_password": "Geçersiz e-posta veya şifre",
     "account_disabled": "Bu hesap devre dışı",
-    "clip": "Kırp",
+    "crop": "Kırp",
     "group_name_must_be_at_least_min_characters": "Group ismi en az {min} karakter olmalı",
     "group_name_is_required": "Group ismi gerekli",
     "group_name": "Grup ismi",
     "group_name_desc": "Kullanmak istediğin bir kullanıcı adı seç. Diğer kullanıcılar bu eşsiz isim ile grubuna katılacaklar.",
-    "settings_desc": "Uygulama ayarlarını güncelle"
+    "settings_desc": "Uygulama ayarlarını güncelle",
+    "save": "Save"
 }

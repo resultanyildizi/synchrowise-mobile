@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
 
 class HomeTab extends StatelessWidget {
@@ -49,7 +50,7 @@ class HomeTab extends StatelessWidget {
                 title: "create_a_group".tr(),
                 desc: "create_a_group_description".tr(),
                 onTap: () {
-                  Navigator.pushNamed(context, "/create_group");
+                  SynchrowiseNavigator.pushNamed(context, "/create_group");
                 },
               ),
             GroupActionCards(

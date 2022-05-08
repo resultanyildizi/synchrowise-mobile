@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'register_steps_bloc.dart';
+part of 'registeration_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,8 +15,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$RegisterStepsEventTearOff {
-  const _$RegisterStepsEventTearOff();
+class _$RegisterationEventTearOff {
+  const _$RegisterationEventTearOff();
 
   _RegisterStepsUpdateUsernameTextEvent updateUsernameText(
       {required String username}) {
@@ -56,10 +56,10 @@ class _$RegisterStepsEventTearOff {
 }
 
 /// @nodoc
-const $RegisterStepsEvent = _$RegisterStepsEventTearOff();
+const $RegisterationEvent = _$RegisterationEventTearOff();
 
 /// @nodoc
-mixin _$RegisterStepsEvent {
+mixin _$RegisterationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String username) updateUsernameText,
@@ -148,20 +148,20 @@ mixin _$RegisterStepsEvent {
 }
 
 /// @nodoc
-abstract class $RegisterStepsEventCopyWith<$Res> {
-  factory $RegisterStepsEventCopyWith(
-          RegisterStepsEvent value, $Res Function(RegisterStepsEvent) then) =
-      _$RegisterStepsEventCopyWithImpl<$Res>;
+abstract class $RegisterationEventCopyWith<$Res> {
+  factory $RegisterationEventCopyWith(
+          RegisterationEvent value, $Res Function(RegisterationEvent) then) =
+      _$RegisterationEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RegisterStepsEventCopyWithImpl<$Res>
-    implements $RegisterStepsEventCopyWith<$Res> {
-  _$RegisterStepsEventCopyWithImpl(this._value, this._then);
+class _$RegisterationEventCopyWithImpl<$Res>
+    implements $RegisterationEventCopyWith<$Res> {
+  _$RegisterationEventCopyWithImpl(this._value, this._then);
 
-  final RegisterStepsEvent _value;
+  final RegisterationEvent _value;
   // ignore: unused_field
-  final $Res Function(RegisterStepsEvent) _then;
+  final $Res Function(RegisterationEvent) _then;
 }
 
 /// @nodoc
@@ -175,7 +175,7 @@ abstract class _$RegisterStepsUpdateUsernameTextEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsUpdateUsernameTextEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsUpdateUsernameTextEventCopyWith<$Res> {
   __$RegisterStepsUpdateUsernameTextEventCopyWithImpl(
       _RegisterStepsUpdateUsernameTextEvent _value,
@@ -210,7 +210,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.updateUsernameText(username: $username)';
+    return 'RegisterationEvent.updateUsernameText(username: $username)';
   }
 
   @override
@@ -343,7 +343,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
 }
 
 abstract class _RegisterStepsUpdateUsernameTextEvent
-    implements RegisterStepsEvent {
+    implements RegisterationEvent {
   const factory _RegisterStepsUpdateUsernameTextEvent(
       {required String username}) = _$_RegisterStepsUpdateUsernameTextEvent;
 
@@ -365,7 +365,7 @@ abstract class _$RegisterStepsUpdateAvatarImageEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsUpdateAvatarImageEventCopyWith<$Res> {
   __$RegisterStepsUpdateAvatarImageEventCopyWithImpl(
       _RegisterStepsUpdateAvatarImageEvent _value,
@@ -408,7 +408,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.updateAvatarImage(androidUiSettings: $androidUiSettings, iosUiSettings: $iosUiSettings)';
+    return 'RegisterationEvent.updateAvatarImage(androidUiSettings: $androidUiSettings, iosUiSettings: $iosUiSettings)';
   }
 
   @override
@@ -546,7 +546,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
 }
 
 abstract class _RegisterStepsUpdateAvatarImageEvent
-    implements RegisterStepsEvent {
+    implements RegisterationEvent {
   const factory _RegisterStepsUpdateAvatarImageEvent(
           {required AndroidUiSettings androidUiSettings,
           required IOSUiSettings iosUiSettings}) =
@@ -570,7 +570,7 @@ abstract class _$RegisterStepsSaveUsernameEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsSaveUsernameEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsSaveUsernameEventCopyWith<$Res> {
   __$RegisterStepsSaveUsernameEventCopyWithImpl(
       _RegisterStepsSaveUsernameEvent _value,
@@ -590,7 +590,7 @@ class _$_RegisterStepsSaveUsernameEvent
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.saveUsername()';
+    return 'RegisterationEvent.saveUsername()';
   }
 
   @override
@@ -713,7 +713,7 @@ class _$_RegisterStepsSaveUsernameEvent
   }
 }
 
-abstract class _RegisterStepsSaveUsernameEvent implements RegisterStepsEvent {
+abstract class _RegisterStepsSaveUsernameEvent implements RegisterationEvent {
   const factory _RegisterStepsSaveUsernameEvent() =
       _$_RegisterStepsSaveUsernameEvent;
 }
@@ -728,7 +728,7 @@ abstract class _$RegisterStepsRegisterFieldsEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsRegisterFieldsEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsRegisterFieldsEventCopyWith<$Res> {
   __$RegisterStepsRegisterFieldsEventCopyWithImpl(
       _RegisterStepsRegisterFieldsEvent _value,
@@ -748,7 +748,7 @@ class _$_RegisterStepsRegisterFieldsEvent
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.registerFields()';
+    return 'RegisterationEvent.registerFields()';
   }
 
   @override
@@ -871,7 +871,7 @@ class _$_RegisterStepsRegisterFieldsEvent
   }
 }
 
-abstract class _RegisterStepsRegisterFieldsEvent implements RegisterStepsEvent {
+abstract class _RegisterStepsRegisterFieldsEvent implements RegisterationEvent {
   const factory _RegisterStepsRegisterFieldsEvent() =
       _$_RegisterStepsRegisterFieldsEvent;
 }
@@ -885,7 +885,7 @@ abstract class _$RegisterStepsGoBackEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsGoBackEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsGoBackEventCopyWith<$Res> {
   __$RegisterStepsGoBackEventCopyWithImpl(_RegisterStepsGoBackEvent _value,
       $Res Function(_RegisterStepsGoBackEvent) _then)
@@ -903,7 +903,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.goBack()';
+    return 'RegisterationEvent.goBack()';
   }
 
   @override
@@ -1026,7 +1026,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   }
 }
 
-abstract class _RegisterStepsGoBackEvent implements RegisterStepsEvent {
+abstract class _RegisterStepsGoBackEvent implements RegisterationEvent {
   const factory _RegisterStepsGoBackEvent() = _$_RegisterStepsGoBackEvent;
 }
 
@@ -1039,7 +1039,7 @@ abstract class _$RegisterStepsGoNextEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsGoNextEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsGoNextEventCopyWith<$Res> {
   __$RegisterStepsGoNextEventCopyWithImpl(_RegisterStepsGoNextEvent _value,
       $Res Function(_RegisterStepsGoNextEvent) _then)
@@ -1057,7 +1057,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.goNext()';
+    return 'RegisterationEvent.goNext()';
   }
 
   @override
@@ -1180,7 +1180,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   }
 }
 
-abstract class _RegisterStepsGoNextEvent implements RegisterStepsEvent {
+abstract class _RegisterStepsGoNextEvent implements RegisterationEvent {
   const factory _RegisterStepsGoNextEvent() = _$_RegisterStepsGoNextEvent;
 }
 
@@ -1194,7 +1194,7 @@ abstract class _$RegisterStepsRemoveAvatarImageEventCopyWith<$Res> {
 
 /// @nodoc
 class __$RegisterStepsRemoveAvatarImageEventCopyWithImpl<$Res>
-    extends _$RegisterStepsEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
     implements _$RegisterStepsRemoveAvatarImageEventCopyWith<$Res> {
   __$RegisterStepsRemoveAvatarImageEventCopyWithImpl(
       _RegisterStepsRemoveAvatarImageEvent _value,
@@ -1214,7 +1214,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
 
   @override
   String toString() {
-    return 'RegisterStepsEvent.removeAvatarImage()';
+    return 'RegisterationEvent.removeAvatarImage()';
   }
 
   @override
@@ -1338,20 +1338,21 @@ class _$_RegisterStepsRemoveAvatarImageEvent
 }
 
 abstract class _RegisterStepsRemoveAvatarImageEvent
-    implements RegisterStepsEvent {
+    implements RegisterationEvent {
   const factory _RegisterStepsRemoveAvatarImageEvent() =
       _$_RegisterStepsRemoveAvatarImageEvent;
 }
 
 /// @nodoc
-class _$RegisterStepsStateTearOff {
-  const _$RegisterStepsStateTearOff();
+class _$RegisterationStateTearOff {
+  const _$RegisterationStateTearOff();
 
-  _RegisterStepsState call(
-      {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      required Option<Either<ImageFailure, File>> failureOrImageOption,
+  _RegisterationState call(
+      {required Option<Either<ValueFailure, String>>
+          valueFailureOrUsernameOption,
+      required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
       required Option<Either<AvatarRepositoryFailure, Unit>>
-          failureOrAvatarOption,
+          avatarFailureOrAvatarOption,
       required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -1359,10 +1360,10 @@ class _$RegisterStepsStateTearOff {
       required bool progressing,
       required bool showErrors,
       required int step}) {
-    return _RegisterStepsState(
-      failureOrUsernameOption: failureOrUsernameOption,
-      failureOrImageOption: failureOrImageOption,
-      failureOrAvatarOption: failureOrAvatarOption,
+    return _RegisterationState(
+      valueFailureOrUsernameOption: valueFailureOrUsernameOption,
+      imageFailureOrImageOption: imageFailureOrImageOption,
+      avatarFailureOrAvatarOption: avatarFailureOrAvatarOption,
       usernameFailureOrUnitOption: usernameFailureOrUnitOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
       progressing: progressing,
@@ -1373,16 +1374,16 @@ class _$RegisterStepsStateTearOff {
 }
 
 /// @nodoc
-const $RegisterStepsState = _$RegisterStepsStateTearOff();
+const $RegisterationState = _$RegisterationStateTearOff();
 
 /// @nodoc
-mixin _$RegisterStepsState {
-  Option<Either<ValueFailure, String>> get failureOrUsernameOption =>
+mixin _$RegisterationState {
+  Option<Either<ValueFailure, String>> get valueFailureOrUsernameOption =>
       throw _privateConstructorUsedError;
-  Option<Either<ImageFailure, File>> get failureOrImageOption =>
+  Option<Either<ImageFailure, File>> get imageFailureOrImageOption =>
       throw _privateConstructorUsedError;
-  Option<Either<AvatarRepositoryFailure, Unit>> get failureOrAvatarOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AvatarRepositoryFailure, Unit>>
+      get avatarFailureOrAvatarOption => throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
       get usernameFailureOrUnitOption => throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -1392,19 +1393,19 @@ mixin _$RegisterStepsState {
   int get step => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterStepsStateCopyWith<RegisterStepsState> get copyWith =>
+  $RegisterationStateCopyWith<RegisterationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterStepsStateCopyWith<$Res> {
-  factory $RegisterStepsStateCopyWith(
-          RegisterStepsState value, $Res Function(RegisterStepsState) then) =
-      _$RegisterStepsStateCopyWithImpl<$Res>;
+abstract class $RegisterationStateCopyWith<$Res> {
+  factory $RegisterationStateCopyWith(
+          RegisterationState value, $Res Function(RegisterationState) then) =
+      _$RegisterationStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      Option<Either<ImageFailure, File>> failureOrImageOption,
-      Option<Either<AvatarRepositoryFailure, Unit>> failureOrAvatarOption,
+      {Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
+      Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      Option<Either<AvatarRepositoryFailure, Unit>> avatarFailureOrAvatarOption,
       Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -1415,19 +1416,19 @@ abstract class $RegisterStepsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterStepsStateCopyWithImpl<$Res>
-    implements $RegisterStepsStateCopyWith<$Res> {
-  _$RegisterStepsStateCopyWithImpl(this._value, this._then);
+class _$RegisterationStateCopyWithImpl<$Res>
+    implements $RegisterationStateCopyWith<$Res> {
+  _$RegisterationStateCopyWithImpl(this._value, this._then);
 
-  final RegisterStepsState _value;
+  final RegisterationState _value;
   // ignore: unused_field
-  final $Res Function(RegisterStepsState) _then;
+  final $Res Function(RegisterationState) _then;
 
   @override
   $Res call({
-    Object? failureOrUsernameOption = freezed,
-    Object? failureOrImageOption = freezed,
-    Object? failureOrAvatarOption = freezed,
+    Object? valueFailureOrUsernameOption = freezed,
+    Object? imageFailureOrImageOption = freezed,
+    Object? avatarFailureOrAvatarOption = freezed,
     Object? usernameFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? progressing = freezed,
@@ -1435,17 +1436,17 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
     Object? step = freezed,
   }) {
     return _then(_value.copyWith(
-      failureOrUsernameOption: failureOrUsernameOption == freezed
-          ? _value.failureOrUsernameOption
-          : failureOrUsernameOption // ignore: cast_nullable_to_non_nullable
+      valueFailureOrUsernameOption: valueFailureOrUsernameOption == freezed
+          ? _value.valueFailureOrUsernameOption
+          : valueFailureOrUsernameOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      failureOrImageOption: failureOrImageOption == freezed
-          ? _value.failureOrImageOption
-          : failureOrImageOption // ignore: cast_nullable_to_non_nullable
+      imageFailureOrImageOption: imageFailureOrImageOption == freezed
+          ? _value.imageFailureOrImageOption
+          : imageFailureOrImageOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ImageFailure, File>>,
-      failureOrAvatarOption: failureOrAvatarOption == freezed
-          ? _value.failureOrAvatarOption
-          : failureOrAvatarOption // ignore: cast_nullable_to_non_nullable
+      avatarFailureOrAvatarOption: avatarFailureOrAvatarOption == freezed
+          ? _value.avatarFailureOrAvatarOption
+          : avatarFailureOrAvatarOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AvatarRepositoryFailure, Unit>>,
       usernameFailureOrUnitOption: usernameFailureOrUnitOption == freezed
           ? _value.usernameFailureOrUnitOption
@@ -1472,16 +1473,16 @@ class _$RegisterStepsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RegisterStepsStateCopyWith<$Res>
-    implements $RegisterStepsStateCopyWith<$Res> {
-  factory _$RegisterStepsStateCopyWith(
-          _RegisterStepsState value, $Res Function(_RegisterStepsState) then) =
-      __$RegisterStepsStateCopyWithImpl<$Res>;
+abstract class _$RegisterationStateCopyWith<$Res>
+    implements $RegisterationStateCopyWith<$Res> {
+  factory _$RegisterationStateCopyWith(
+          _RegisterationState value, $Res Function(_RegisterationState) then) =
+      __$RegisterationStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      Option<Either<ImageFailure, File>> failureOrImageOption,
-      Option<Either<AvatarRepositoryFailure, Unit>> failureOrAvatarOption,
+      {Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
+      Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      Option<Either<AvatarRepositoryFailure, Unit>> avatarFailureOrAvatarOption,
       Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -1492,39 +1493,39 @@ abstract class _$RegisterStepsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RegisterStepsStateCopyWithImpl<$Res>
-    extends _$RegisterStepsStateCopyWithImpl<$Res>
-    implements _$RegisterStepsStateCopyWith<$Res> {
-  __$RegisterStepsStateCopyWithImpl(
-      _RegisterStepsState _value, $Res Function(_RegisterStepsState) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsState));
+class __$RegisterationStateCopyWithImpl<$Res>
+    extends _$RegisterationStateCopyWithImpl<$Res>
+    implements _$RegisterationStateCopyWith<$Res> {
+  __$RegisterationStateCopyWithImpl(
+      _RegisterationState _value, $Res Function(_RegisterationState) _then)
+      : super(_value, (v) => _then(v as _RegisterationState));
 
   @override
-  _RegisterStepsState get _value => super._value as _RegisterStepsState;
+  _RegisterationState get _value => super._value as _RegisterationState;
 
   @override
   $Res call({
-    Object? failureOrUsernameOption = freezed,
-    Object? failureOrImageOption = freezed,
-    Object? failureOrAvatarOption = freezed,
+    Object? valueFailureOrUsernameOption = freezed,
+    Object? imageFailureOrImageOption = freezed,
+    Object? avatarFailureOrAvatarOption = freezed,
     Object? usernameFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? progressing = freezed,
     Object? showErrors = freezed,
     Object? step = freezed,
   }) {
-    return _then(_RegisterStepsState(
-      failureOrUsernameOption: failureOrUsernameOption == freezed
-          ? _value.failureOrUsernameOption
-          : failureOrUsernameOption // ignore: cast_nullable_to_non_nullable
+    return _then(_RegisterationState(
+      valueFailureOrUsernameOption: valueFailureOrUsernameOption == freezed
+          ? _value.valueFailureOrUsernameOption
+          : valueFailureOrUsernameOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      failureOrImageOption: failureOrImageOption == freezed
-          ? _value.failureOrImageOption
-          : failureOrImageOption // ignore: cast_nullable_to_non_nullable
+      imageFailureOrImageOption: imageFailureOrImageOption == freezed
+          ? _value.imageFailureOrImageOption
+          : imageFailureOrImageOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ImageFailure, File>>,
-      failureOrAvatarOption: failureOrAvatarOption == freezed
-          ? _value.failureOrAvatarOption
-          : failureOrAvatarOption // ignore: cast_nullable_to_non_nullable
+      avatarFailureOrAvatarOption: avatarFailureOrAvatarOption == freezed
+          ? _value.avatarFailureOrAvatarOption
+          : avatarFailureOrAvatarOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AvatarRepositoryFailure, Unit>>,
       usernameFailureOrUnitOption: usernameFailureOrUnitOption == freezed
           ? _value.usernameFailureOrUnitOption
@@ -1552,11 +1553,11 @@ class __$RegisterStepsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterStepsState extends _RegisterStepsState {
-  const _$_RegisterStepsState(
-      {required this.failureOrUsernameOption,
-      required this.failureOrImageOption,
-      required this.failureOrAvatarOption,
+class _$_RegisterationState extends _RegisterationState {
+  const _$_RegisterationState(
+      {required this.valueFailureOrUsernameOption,
+      required this.imageFailureOrImageOption,
+      required this.avatarFailureOrAvatarOption,
       required this.usernameFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
       required this.progressing,
@@ -1565,11 +1566,12 @@ class _$_RegisterStepsState extends _RegisterStepsState {
       : super._();
 
   @override
-  final Option<Either<ValueFailure, String>> failureOrUsernameOption;
+  final Option<Either<ValueFailure, String>> valueFailureOrUsernameOption;
   @override
-  final Option<Either<ImageFailure, File>> failureOrImageOption;
+  final Option<Either<ImageFailure, File>> imageFailureOrImageOption;
   @override
-  final Option<Either<AvatarRepositoryFailure, Unit>> failureOrAvatarOption;
+  final Option<Either<AvatarRepositoryFailure, Unit>>
+      avatarFailureOrAvatarOption;
   @override
   final Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
       usernameFailureOrUnitOption;
@@ -1585,20 +1587,22 @@ class _$_RegisterStepsState extends _RegisterStepsState {
 
   @override
   String toString() {
-    return 'RegisterStepsState(failureOrUsernameOption: $failureOrUsernameOption, failureOrImageOption: $failureOrImageOption, failureOrAvatarOption: $failureOrAvatarOption, usernameFailureOrUnitOption: $usernameFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, progressing: $progressing, showErrors: $showErrors, step: $step)';
+    return 'RegisterationState(valueFailureOrUsernameOption: $valueFailureOrUsernameOption, imageFailureOrImageOption: $imageFailureOrImageOption, avatarFailureOrAvatarOption: $avatarFailureOrAvatarOption, usernameFailureOrUnitOption: $usernameFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, progressing: $progressing, showErrors: $showErrors, step: $step)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsState &&
+            other is _RegisterationState &&
             const DeepCollectionEquality().equals(
-                other.failureOrUsernameOption, failureOrUsernameOption) &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrImageOption, failureOrImageOption) &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrAvatarOption, failureOrAvatarOption) &&
+                other.valueFailureOrUsernameOption,
+                valueFailureOrUsernameOption) &&
+            const DeepCollectionEquality().equals(
+                other.imageFailureOrImageOption, imageFailureOrImageOption) &&
+            const DeepCollectionEquality().equals(
+                other.avatarFailureOrAvatarOption,
+                avatarFailureOrAvatarOption) &&
             const DeepCollectionEquality().equals(
                 other.usernameFailureOrUnitOption,
                 usernameFailureOrUnitOption) &&
@@ -1614,9 +1618,9 @@ class _$_RegisterStepsState extends _RegisterStepsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(failureOrUsernameOption),
-      const DeepCollectionEquality().hash(failureOrImageOption),
-      const DeepCollectionEquality().hash(failureOrAvatarOption),
+      const DeepCollectionEquality().hash(valueFailureOrUsernameOption),
+      const DeepCollectionEquality().hash(imageFailureOrImageOption),
+      const DeepCollectionEquality().hash(avatarFailureOrAvatarOption),
       const DeepCollectionEquality().hash(usernameFailureOrUnitOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
       const DeepCollectionEquality().hash(progressing),
@@ -1625,31 +1629,32 @@ class _$_RegisterStepsState extends _RegisterStepsState {
 
   @JsonKey(ignore: true)
   @override
-  _$RegisterStepsStateCopyWith<_RegisterStepsState> get copyWith =>
-      __$RegisterStepsStateCopyWithImpl<_RegisterStepsState>(this, _$identity);
+  _$RegisterationStateCopyWith<_RegisterationState> get copyWith =>
+      __$RegisterationStateCopyWithImpl<_RegisterationState>(this, _$identity);
 }
 
-abstract class _RegisterStepsState extends RegisterStepsState {
-  const factory _RegisterStepsState(
-      {required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-      required Option<Either<ImageFailure, File>> failureOrImageOption,
+abstract class _RegisterationState extends RegisterationState {
+  const factory _RegisterationState(
+      {required Option<Either<ValueFailure, String>>
+          valueFailureOrUsernameOption,
+      required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
       required Option<Either<AvatarRepositoryFailure, Unit>>
-          failureOrAvatarOption,
+          avatarFailureOrAvatarOption,
       required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       required bool progressing,
       required bool showErrors,
-      required int step}) = _$_RegisterStepsState;
-  const _RegisterStepsState._() : super._();
+      required int step}) = _$_RegisterationState;
+  const _RegisterationState._() : super._();
 
   @override
-  Option<Either<ValueFailure, String>> get failureOrUsernameOption;
+  Option<Either<ValueFailure, String>> get valueFailureOrUsernameOption;
   @override
-  Option<Either<ImageFailure, File>> get failureOrImageOption;
+  Option<Either<ImageFailure, File>> get imageFailureOrImageOption;
   @override
-  Option<Either<AvatarRepositoryFailure, Unit>> get failureOrAvatarOption;
+  Option<Either<AvatarRepositoryFailure, Unit>> get avatarFailureOrAvatarOption;
   @override
   Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
       get usernameFailureOrUnitOption;
@@ -1664,6 +1669,6 @@ abstract class _RegisterStepsState extends RegisterStepsState {
   int get step;
   @override
   @JsonKey(ignore: true)
-  _$RegisterStepsStateCopyWith<_RegisterStepsState> get copyWith =>
+  _$RegisterationStateCopyWith<_RegisterationState> get copyWith =>
       throw _privateConstructorUsedError;
 }

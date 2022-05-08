@@ -6,7 +6,6 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
-import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/failure/avatar_failure.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
@@ -18,11 +17,11 @@ import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failu
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 
-part 'register_steps_bloc.freezed.dart';
-part 'register_steps_event.dart';
-part 'register_steps_state.dart';
+part 'registeration_bloc.freezed.dart';
+part 'registeration_event.dart';
+part 'registeration_state.dart';
 
-class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
+class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
   ///* Dependencies
   final ISynchrowiseUserRepository _iUserRepo;
   final ISynchrowiseUserStorage _iUserStorage;
@@ -34,44 +33,49 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
     required AndroidUiSettings androidUiSettings,
     required IOSUiSettings iosUiSettings,
   }) {
-    add(RegisterStepsEvent.updateAvatarImage(
+    add(RegisterationEvent.updateAvatarImage(
       androidUiSettings: androidUiSettings,
       iosUiSettings: iosUiSettings,
     ));
   }
 
-  void removeAvatarImage() => add(const RegisterStepsEvent.removeAvatarImage());
+  void removeAvatarImage() => add(const RegisterationEvent.removeAvatarImage());
   void updateUsernameText({required String username}) =>
-      add(RegisterStepsEvent.updateUsernameText(username: username));
+      add(RegisterationEvent.updateUsernameText(username: username));
   void registerFields({required SynchrowiseUser synchrowiseUser}) {
-    add(const RegisterStepsEvent.registerFields());
+    add(const RegisterationEvent.registerFields());
   }
 
-  void saveUsername() => add(const RegisterStepsEvent.saveUsername());
-  void goBack() => add(const RegisterStepsEvent.goBack());
-  void goNext() => add(const RegisterStepsEvent.goNext());
+  void saveUsername() => add(const RegisterationEvent.saveUsername());
+  void goBack() => add(const RegisterationEvent.goBack());
+  void goNext() => add(const RegisterationEvent.goNext());
 
   ///* Logic
-  RegisterStepsBloc(
+  RegisterationBloc(
     this._iUserRepo,
     this._iAvatarRepo,
     this._iUserStorage,
     this._iImageFacade,
-  ) : super(RegisterStepsState.initial()) {
-    on<RegisterStepsEvent>(
+  ) : super(RegisterationState.initial()) {
+    on<RegisterationEvent>(
       (event, emit) async {
         await event.map(
           registerFields: (event) async {
             emit(
               state.copyWith(
-                failureOrAvatarOption: none(),
+                avatarFailureOrAvatarOption: none(),
                 storageFailureOrUnitOption: none(),
+                usernameFailureOrUnitOption: none(),
+                imageFailureOrImageOption: state.imageFailureOrImageOption.fold(
+                  () => none(),
+                  (foi) => foi.fold((l) => none(), (i) => some(right(i))),
+                ),
                 showErrors: true,
                 progressing: true,
               ),
             );
 
-            final image = state.failureOrImageOption.fold(
+            final image = state.imageFailureOrImageOption.fold(
               () => null,
               (failureOrImage) => failureOrImage.fold(
                 (failure) => null,
@@ -97,7 +101,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                   return failureOrAvatar.fold(
                     (f) async {
                       return state.copyWith(
-                          failureOrAvatarOption: some(left(f)));
+                          avatarFailureOrAvatarOption: some(left(f)));
                     },
                     (avatar) async {
                       final updateFailureOrUnit = await _iUserStorage.update(
@@ -108,13 +112,15 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                         (f) {
                           return state.copyWith(
                             storageFailureOrUnitOption: some(left(f)),
-                            failureOrAvatarOption: some(right(unit)),
+                            avatarFailureOrAvatarOption: some(right(unit)),
+                            usernameFailureOrUnitOption: some(right(unit)),
                           );
                         },
                         (r) {
                           return state.copyWith(
-                            failureOrAvatarOption: some(right(unit)),
+                            avatarFailureOrAvatarOption: some(right(unit)),
                             storageFailureOrUnitOption: some(right(unit)),
+                            usernameFailureOrUnitOption: some(right(unit)),
                           );
                         },
                       );
@@ -128,8 +134,9 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
               emit(
                 state.copyWith(
                   progressing: false,
-                  failureOrAvatarOption: some(right(unit)),
+                  avatarFailureOrAvatarOption: some(right(unit)),
                   storageFailureOrUnitOption: some(right(unit)),
+                  usernameFailureOrUnitOption: some(right(unit)),
                 ),
               );
             }
@@ -139,22 +146,35 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
                 validateUsername(username: event.username.trim());
 
             emit(state.copyWith(
-                failureOrUsernameOption: some(validatedUsername)));
-          },
-          saveUsername: (_) async {
-            emit(state.copyWith(
-              progressing: true,
+              valueFailureOrUsernameOption: some(validatedUsername),
               usernameFailureOrUnitOption: none(),
               storageFailureOrUnitOption: none(),
+              avatarFailureOrAvatarOption: none(),
+              imageFailureOrImageOption: state.imageFailureOrImageOption.fold(
+                () => none(),
+                (foi) => foi.fold((l) => none(), (i) => some(right(i))),
+              ),
             ));
-
-            final username = state.failureOrUsernameOption.fold(
+          },
+          saveUsername: (_) async {
+            final username = state.valueFailureOrUsernameOption.fold(
               () => null,
               (failureOrUsername) => failureOrUsername.fold(
                   (failure) => null, (username) => username),
             );
 
             if (username != null) {
+              emit(state.copyWith(
+                progressing: true,
+                usernameFailureOrUnitOption: none(),
+                storageFailureOrUnitOption: none(),
+                avatarFailureOrAvatarOption: none(),
+                imageFailureOrImageOption: state.imageFailureOrImageOption.fold(
+                  () => none(),
+                  (foi) => foi.fold((l) => none(), (i) => some(right(i))),
+                ),
+              ));
+
               final failureOrUser = await _iUserStorage.get();
 
               final newState = await failureOrUser.fold(
@@ -202,24 +222,25 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
               );
 
               emit(newState.copyWith(showErrors: true, progressing: false));
-            } else {
-              emit(state.copyWith(showErrors: true, progressing: false));
             }
           },
           updateAvatarImage: (event) async {
             emit(state.copyWith(
-              failureOrImageOption: none(),
+              imageFailureOrImageOption: none(),
+              storageFailureOrUnitOption: none(),
+              avatarFailureOrAvatarOption: none(),
+              usernameFailureOrUnitOption: none(),
               progressing: true,
             ));
 
             final failureOrImage = await _iImageFacade.uploadImageFromDevice();
 
-            final FutureOr<RegisterStepsState> newstate =
+            final FutureOr<RegisterationState> newstate =
                 await failureOrImage.fold(
               (failure) {
                 return state.copyWith(
                   progressing: false,
-                  failureOrImageOption: some(failureOrImage),
+                  imageFailureOrImageOption: some(failureOrImage),
                 );
               },
               (rawImage) async {
@@ -231,7 +252,7 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
 
                 return state.copyWith(
                   progressing: false,
-                  failureOrImageOption: some(failureOrCroppedImage),
+                  imageFailureOrImageOption: some(failureOrCroppedImage),
                 );
               },
             );
@@ -241,7 +262,10 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
           removeAvatarImage: (_) {
             emit(state.copyWith(
               showErrors: false,
-              failureOrImageOption: none(),
+              imageFailureOrImageOption: none(),
+              storageFailureOrUnitOption: none(),
+              avatarFailureOrAvatarOption: none(),
+              usernameFailureOrUnitOption: none(),
             ));
           },
           goBack: (_) {
@@ -250,10 +274,30 @@ class RegisterStepsBloc extends Bloc<RegisterStepsEvent, RegisterStepsState> {
               'Cannot go back from step 0. This event must not be called from step 0.',
             );
 
-            emit(state.copyWith(step: state.step > 0 ? state.step - 1 : 0));
+            emit(
+              state.copyWith(
+                step: state.step > 0 ? state.step - 1 : 0,
+                storageFailureOrUnitOption: none(),
+                avatarFailureOrAvatarOption: none(),
+                usernameFailureOrUnitOption: none(),
+                imageFailureOrImageOption: state.imageFailureOrImageOption.fold(
+                  () => none(),
+                  (foi) => foi.fold((l) => none(), (i) => some(right(i))),
+                ),
+              ),
+            );
           },
           goNext: (_) {
-            emit(state.copyWith(step: 1));
+            emit(state.copyWith(
+              step: 1,
+              storageFailureOrUnitOption: none(),
+              avatarFailureOrAvatarOption: none(),
+              usernameFailureOrUnitOption: none(),
+              imageFailureOrImageOption: state.imageFailureOrImageOption.fold(
+                () => none(),
+                (foi) => foi.fold((l) => none(), (i) => some(right(i))),
+              ),
+            ));
           },
         );
       },

@@ -8,7 +8,7 @@ import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
-import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
@@ -99,8 +99,8 @@ Future<void> _setupBlocs() async {
     ),
   );
 
-  getIt.registerFactory<RegisterStepsBloc>(
-    () => RegisterStepsBloc(
+  getIt.registerFactory<RegisterationBloc>(
+    () => RegisterationBloc(
       getIt<ISynchrowiseUserRepository>(),
       getIt<IAvatarRepository>(),
       getIt<ISynchrowiseUserStorage>(),

@@ -1,14 +1,14 @@
-part of 'register_steps_bloc.dart';
+part of 'registeration_bloc.dart';
 
 @freezed
-class RegisterStepsState with _$RegisterStepsState {
-  const RegisterStepsState._();
+class RegisterationState with _$RegisterationState {
+  const RegisterationState._();
 
-  const factory RegisterStepsState({
-    required Option<Either<ValueFailure, String>> failureOrUsernameOption,
-    required Option<Either<ImageFailure, File>> failureOrImageOption,
+  const factory RegisterationState({
+    required Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
+    required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
     required Option<Either<AvatarRepositoryFailure, Unit>>
-        failureOrAvatarOption,
+        avatarFailureOrAvatarOption,
     required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
         usernameFailureOrUnitOption,
     required Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -16,15 +16,15 @@ class RegisterStepsState with _$RegisterStepsState {
     required bool progressing,
     required bool showErrors,
     required int step,
-  }) = _RegisterStepsState;
+  }) = _RegisterationState;
 
-  factory RegisterStepsState.initial() {
-    return RegisterStepsState(
+  factory RegisterationState.initial() {
+    return RegisterationState(
       storageFailureOrUnitOption: none(),
       usernameFailureOrUnitOption: none(),
-      failureOrUsernameOption: none(),
-      failureOrAvatarOption: none(),
-      failureOrImageOption: none(),
+      valueFailureOrUsernameOption: none(),
+      avatarFailureOrAvatarOption: none(),
+      imageFailureOrImageOption: none(),
       progressing: false,
       showErrors: false,
       step: 0,
@@ -38,9 +38,9 @@ class RegisterStepsState with _$RegisterStepsState {
       usernameFailureOrUnitOption.fold(() => false, (fou) => fou.isLeft());
 
   bool get hasAvatarFailed =>
-      failureOrAvatarOption.fold(() => false, (foa) => foa.isLeft());
+      avatarFailureOrAvatarOption.fold(() => false, (foa) => foa.isLeft());
 
-  bool get hasImageFailed => failureOrImageOption.fold(
+  bool get hasImageFailed => imageFailureOrImageOption.fold(
         () => false,
         (foi) => foi.fold(
           (f) => f.maybeMap(imageCancel: (_) => false, orElse: () => true),
@@ -61,9 +61,9 @@ class RegisterStepsState with _$RegisterStepsState {
       usernameFailureOrUnitOption.fold(() => false, (fou) => fou.isRight());
 
   bool get hasAvatarSucceeded =>
-      failureOrAvatarOption.fold(() => false, (foa) => foa.isRight());
+      avatarFailureOrAvatarOption.fold(() => false, (foa) => foa.isRight());
 
-  bool get hasImageSucceeded => failureOrImageOption.fold(
+  bool get hasImageSucceeded => imageFailureOrImageOption.fold(
         () => true,
         (foi) => foi.fold(
           (f) => f.maybeMap(imageCancel: (_) => true, orElse: () => false),

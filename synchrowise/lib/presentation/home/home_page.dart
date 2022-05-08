@@ -8,12 +8,13 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
-import 'package:synchrowise/presentation/home/tabs/home_tab.dart';
+import 'package:synchrowise/presentation/home/home_tab.dart';
 import 'package:synchrowise/presentation/home/tabs/settings_tab.dart';
-import 'package:synchrowise/presentation/home/tabs/profile_tab.dart';
+import 'package:synchrowise/presentation/profile/profile_tab.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,11 +25,11 @@ class HomePage extends StatelessWidget {
       listener: ((context, state) {
         state.maybeMap(
           unauthorized: (_) {
-            Navigator.pushReplacementNamed(context, "/welcome");
+            SynchrowiseNavigator.pushReplacementNamed(context, "/welcome");
           },
           authorized: (authorized) {
             if (authorized.user.username == null) {
-              Navigator.pushReplacementNamed(context, "/register");
+              SynchrowiseNavigator.pushReplacementNamed(context, "/register");
             }
           },
           orElse: () {},

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/single_text_field_form.dart';
 
@@ -23,9 +23,9 @@ class _RegisterSteps1State extends State<RegisterSteps1>
     super.initState();
   }
 
-  String? _getUsernameErrorText(RegisterStepsState state) {
+  String? _getUsernameErrorText(RegisterationState state) {
     return state.showErrors
-        ? state.failureOrUsernameOption.fold(
+        ? state.valueFailureOrUsernameOption.fold(
             () => "username_is_required".tr(),
             (fou) => fou.fold(
               (l) {
@@ -51,7 +51,7 @@ class _RegisterSteps1State extends State<RegisterSteps1>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocConsumer<RegisterStepsBloc, RegisterStepsState>(
+    return BlocConsumer<RegisterationBloc, RegisterationState>(
       listenWhen: (previous, current) {
         return previous.step == 1 && current.step == 2;
       },
@@ -68,17 +68,17 @@ class _RegisterSteps1State extends State<RegisterSteps1>
             children: [
               const SizedBox(height: 32),
               DefaultBackButton(onTap: () {
-                final registerStepsBloc = context.read<RegisterStepsBloc>();
+                final registerStepsBloc = context.read<RegisterationBloc>();
                 registerStepsBloc.goBack();
               }),
               SingleTextFieldForm(
                 onTextChanged: (username) {
-                  final registerStepsBloc = context.read<RegisterStepsBloc>();
+                  final registerStepsBloc = context.read<RegisterationBloc>();
                   registerStepsBloc.updateUsernameText(username: username);
                 },
                 saveButton: () {
                   if (state.progressing) return;
-                  final registerStepsBloc = context.read<RegisterStepsBloc>();
+                  final registerStepsBloc = context.read<RegisterationBloc>();
                   registerStepsBloc.saveUsername();
                 },
                 title: "username".tr(),

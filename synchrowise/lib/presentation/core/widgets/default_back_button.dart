@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class DefaultBackButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class DefaultBackButton extends StatelessWidget {
         if (onTap != null) {
           onTap!();
         } else {
-          Navigator.of(context).pop();
+          SynchrowiseNavigator.pop(context);
         }
       },
       child: const Padding(

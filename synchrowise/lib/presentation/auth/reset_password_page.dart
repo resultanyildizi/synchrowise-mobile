@@ -12,7 +12,7 @@ class ResetPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: kcWhiteColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -33,7 +33,7 @@ class ResetPasswordPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Text(
-                "reset_your_password_description".tr(),
+                "reset_your_password_desc".tr(),
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(height: 30),
@@ -46,7 +46,7 @@ class ResetPasswordPage extends StatelessWidget {
               DefaultButton(
                 backgroundColor: primaryColor,
                 borderColor: null,
-                textColor: kcWhiteColor,
+                textColor: Colors.white,
                 text: "send".tr(),
                 padding: 0,
                 showProgress: false,

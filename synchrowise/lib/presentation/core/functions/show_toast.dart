@@ -12,3 +12,14 @@ Future<void> showErrorToast(String message, ToastGravity gravity) async {
     fontSize: 16.0,
   );
 }
+
+Future<void> showSuccessToast(String message, ToastGravity gravity) async {
+  await Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: gravity,
+    backgroundColor: secondaryColor,
+    textColor: Colors.white,
+    fontSize: 16.0,
+  );
+}

@@ -57,7 +57,7 @@ class SingleTextFieldForm extends StatelessWidget {
         DefaultButton(
           backgroundColor: primaryColor,
           borderColor: null,
-          textColor: kcWhiteColor,
+          textColor: Colors.white,
           text: btnText.tr(),
           padding: 0,
           showProgress: showProgress,

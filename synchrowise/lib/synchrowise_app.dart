@@ -9,9 +9,11 @@ import 'package:synchrowise/presentation/auth/reset_password_page.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
-import 'package:synchrowise/presentation/group/create_group.dart';
+import 'package:synchrowise/route/synchrowise_route_arguments.dart';
+import 'package:synchrowise/presentation/group/create_group_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
-import 'package:synchrowise/presentation/profile/update_username_page.dart';
+import 'package:synchrowise/presentation/profile/profile_update_avatar_page.dart';
+import 'package:synchrowise/presentation/profile/profile_update_username_page.dart';
 import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/presentation/splash/splash.dart';
 
@@ -81,59 +83,69 @@ class SynchrowiseApp extends StatelessWidget {
               fontWeight: FontWeight.w300,
               color: grayDarkColor,
             ),
-            bodyText1:
-                TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
-            bodyText2:
-                TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), //TODO
+            bodyText1: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
+            bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
           ),
         ),
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
+          final arguments = settings.arguments as SynchrowiseRouteArguments?;
+          final routeName = arguments?.routeName;
+
+          late final Widget nextPage;
+          late final Route<dynamic> route;
+
           switch (settings.name) {
             case "/":
-              return MaterialPageRoute(
-                builder: (context) => const SplashPage(),
-              );
+              nextPage = const SplashPage();
+              break;
             case "/welcome":
-              return MaterialPageRoute(
-                builder: (context) => const WelcomePage(),
-              );
+              nextPage = const WelcomePage();
+              break;
             case "/signin":
-              return MaterialPageRoute(
-                builder: (context) => const SigninPage(),
-              );
+              nextPage = const SigninPage();
+              break;
             case "/signup":
-              return MaterialPageRoute(
-                builder: (context) => const SignupPage(),
-              );
+              nextPage = const SignupPage();
+              break;
             case "/home":
-              return MaterialPageRoute(
-                builder: (context) => const HomePage(),
-              );
-            case "/reset_password":
-              return MaterialPageRoute(
-                builder: (context) => const ResetPasswordPage(),
-              );
+              nextPage = const HomePage();
+              break;
+            case "/reset-password":
+              nextPage = const ResetPasswordPage();
+              break;
             case "/register":
-              return PageTransition(
-                duration: const Duration(seconds: 1),
-                reverseDuration: const Duration(seconds: 1),
-                type: PageTransitionType.fade,
-                alignment: Alignment.bottomCenter,
-                fullscreenDialog: true,
-                child: const RegisterPage(),
-              );
+              nextPage = const RegisterPage();
+              break;
             case "/create_group":
-              return MaterialPageRoute(
-                builder: (context) => const CreateGroup(),
-              );
-
-            case "/profile_username":
-              return MaterialPageRoute(
-                builder: (context) => const ProfileUpdateUsernamePage(),
-              );
-            case "/profile_avatar":
+              nextPage = const CreateGroupPage();
+              break;
+            case "/profile-update-username":
+              nextPage = const ProfileUpdateUsernamePage();
+              break;
+            case "/profile-update-avatar":
+              nextPage = const ProfileUpdateAvatarPage();
+              break;
           }
+
+          if (routeName == "/") {
+            route = PageTransition(
+              reverseDuration: const Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
+              alignment: Alignment.bottomCenter,
+              type: PageTransitionType.fade,
+              child: nextPage,
+              fullscreenDialog: true,
+              settings: settings,
+            );
+          } else {
+            route = MaterialPageRoute(
+              builder: (context) => nextPage,
+              settings: settings,
+            );
+          }
+
+          return route;
         },
       ),
     );
