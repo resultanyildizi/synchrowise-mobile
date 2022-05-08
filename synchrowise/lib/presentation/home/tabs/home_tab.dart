@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
-import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
 
 class HomeTab extends StatelessWidget {
@@ -16,7 +15,6 @@ class HomeTab extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AppLogoAndName(),
         const SizedBox(height: 32),
         Text(
           "hi_wave_icon".tr(namedArgs: {

@@ -5,6 +5,7 @@ import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
 import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
 import 'package:synchrowise/presentation/home/tabs/home_tab.dart';
@@ -137,12 +138,19 @@ class _HomePageTabViewState extends State<HomePageTabView>
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(defaultPadding),
-                child: PageView(
-                  controller: _pageController,
+                child: Column(
                   children: [
-                    ProfileTab(synchrowiseUser: widget.synchrowiseUser),
-                    const HomeTab(),
-                    const SettingsTab(),
+                    const AppLogoAndName(),
+                    Expanded(
+                      child: PageView(
+                        controller: _pageController,
+                        children: [
+                          ProfileTab(synchrowiseUser: widget.synchrowiseUser),
+                          const HomeTab(),
+                          const SettingsTab(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
