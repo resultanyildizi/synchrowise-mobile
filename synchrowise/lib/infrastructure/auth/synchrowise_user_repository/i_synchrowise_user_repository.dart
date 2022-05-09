@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
-import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
 

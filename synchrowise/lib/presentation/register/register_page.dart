@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
@@ -116,23 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
           final failureOrUnit = state.imageFailureOrImageOption
               .getOrElse(() => throw AssertionError());
 
-          failureOrUnit.fold(
-            (f) {
-              f.map(
-                imageCrop: (_) {
-                  showErrorToast("image_crop_error".tr(), ToastGravity.BOTTOM);
-                },
-                imagePick: (_) {
-                  showErrorToast("image_pick_error".tr(), ToastGravity.BOTTOM);
-                },
-                imageSize: (_) {
-                  showErrorToast("image_size_error".tr(), ToastGravity.BOTTOM);
-                },
-                imageCancel: (_) {},
-              );
-            },
-            (_) {},
-          );
+          failureOrUnit.fold((f) => handleImageFailure(f), (_) {});
         }
       },
     );
@@ -164,41 +149,43 @@ class _RegisterPageState extends State<RegisterPage> {
       create: (context) => getIt<RegisterationBloc>(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25.0),
-            child: MultiBlocListener(
-              listeners: [
-                _getAuthBlocListener,
-                _getRegisterFailureBlocListener,
-                _getRegisterSuccessBlocListener,
-                _getRegisterPageAnimatorListener,
-              ],
-              child: BlocBuilder<RegisterationBloc, RegisterationState>(
-                builder: (context, state) {
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                        child: ThinLineStepper(
-                          lineCount: 3,
-                          activeLineIndex: {state.step},
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25.0),
+              child: MultiBlocListener(
+                listeners: [
+                  _getAuthBlocListener,
+                  _getRegisterFailureBlocListener,
+                  _getRegisterSuccessBlocListener,
+                  _getRegisterPageAnimatorListener,
+                ],
+                child: BlocBuilder<RegisterationBloc, RegisterationState>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                          child: ThinLineStepper(
+                            lineCount: 3,
+                            activeLineIndex: {state.step},
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: PageView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          controller: _pageController,
-                          children: const [
-                            RegisterSteps0(),
-                            RegisterSteps1(),
-                            RegisterSteps2(),
-                          ],
+                        Expanded(
+                          child: PageView(
+                            physics: const NeverScrollableScrollPhysics(),
+                            controller: _pageController,
+                            children: const [
+                              RegisterSteps0(),
+                              RegisterSteps1(),
+                              RegisterSteps2(),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                },
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ),

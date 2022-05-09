@@ -71,7 +71,7 @@ class ProfileUpdateUsernamePage extends StatelessWidget {
                       (fou) {
                         fou.fold(
                           (f) {
-                            handleSynchrowiseFailure(f);
+                            handleSynchrowiseFailure(context, f);
                           },
                           (_) {},
                         );
@@ -82,18 +82,7 @@ class ProfileUpdateUsernamePage extends StatelessWidget {
                       () {},
                       (fou) {
                         fou.fold(
-                          (f) {
-                            f.maybeMap(
-                              get: (_) {
-                                SynchrowiseNavigator.pushNamedAndRemoveUntil(
-                                    context, "/welcome", (route) => false);
-                              },
-                              orElse: () {
-                                showErrorToast(
-                                    "unknown_error".tr(), ToastGravity.BOTTOM);
-                              },
-                            );
-                          },
+                          (f) => handleSynchrowiseFailure(context, f),
                           (_) {},
                         );
                       },
@@ -108,40 +97,43 @@ class ProfileUpdateUsernamePage extends StatelessWidget {
                 },
                 builder: (context, state) {
                   return Scaffold(
-                    body: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 25.0),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 35.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 32),
-                              DefaultBackButton(onTap: () {
-                                SynchrowiseNavigator.pop(context);
-                              }),
-                              SingleTextFieldForm(
-                                onTextChanged: (username) {
-                                  final registerStepsBloc =
-                                      context.read<RegisterationBloc>();
-                                  registerStepsBloc.updateUsernameText(
-                                      username: username);
-                                },
-                                saveButton: () {
-                                  if (state.progressing) return;
-                                  final registerStepsBloc =
-                                      context.read<RegisterationBloc>();
-                                  registerStepsBloc.saveUsername();
-                                },
-                                initialValue: authorized.user.username,
-                                title: "username".tr(),
-                                desc: "username_description".tr(),
-                                btnText: "save".tr(),
-                                hintText: "username".tr(),
-                                errorText: _getUsernameErrorText(state),
-                                showProgress: state.progressing,
-                              ),
-                            ],
+                    body: SingleChildScrollView(
+                      child: SafeArea(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 25.0),
+                          child: Container(
+                            margin:
+                                const EdgeInsets.symmetric(horizontal: 35.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 32),
+                                DefaultBackButton(onTap: () {
+                                  SynchrowiseNavigator.pop(context);
+                                }),
+                                SingleTextFieldForm(
+                                  onTextChanged: (username) {
+                                    final registerStepsBloc =
+                                        context.read<RegisterationBloc>();
+                                    registerStepsBloc.updateUsernameText(
+                                        username: username);
+                                  },
+                                  saveButton: () {
+                                    if (state.progressing) return;
+                                    final registerStepsBloc =
+                                        context.read<RegisterationBloc>();
+                                    registerStepsBloc.saveUsername();
+                                  },
+                                  initialValue: authorized.user.username,
+                                  title: "username".tr(),
+                                  desc: "username_description".tr(),
+                                  btnText: "save".tr(),
+                                  hintText: "username".tr(),
+                                  errorText: _getUsernameErrorText(state),
+                                  showProgress: state.progressing,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
