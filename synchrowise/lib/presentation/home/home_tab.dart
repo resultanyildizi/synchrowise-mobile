@@ -16,8 +16,7 @@ class HomeTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(
-            parent: BouncingScrollPhysics()),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
