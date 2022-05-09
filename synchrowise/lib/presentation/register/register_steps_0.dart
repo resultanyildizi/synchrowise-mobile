@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
@@ -33,11 +33,11 @@ class RegisterSteps0 extends StatelessWidget {
             DefaultButton(
               backgroundColor: primaryColor,
               borderColor: null,
-              textColor: kcWhiteColor,
+              textColor: Colors.white,
               text: "continue".tr(),
               padding: 0,
               onTap: () {
-                final registerStepsBloc = context.read<RegisterStepsBloc>();
+                final registerStepsBloc = context.read<RegisterationBloc>();
                 registerStepsBloc.goNext();
               },
             ),

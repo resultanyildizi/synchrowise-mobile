@@ -19,9 +19,9 @@ class ImageFacade implements IImageFacade {
   @override
   Future<Either<ImageFailure, File>> uploadImageFromDevice() async {
     try {
-      final pickedImage = await _imagePicker.pickImage(
-        source: ImageSource.gallery,
-      );
+      final pickedImage = await _imagePicker
+          .pickImage(source: ImageSource.gallery)
+          .timeout(const Duration(seconds: 5));
 
       if (pickedImage != null) {
         return right(File(pickedImage.path));

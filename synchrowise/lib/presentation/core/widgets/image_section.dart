@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:synchrowise/presentation/core/widgets/close_icon.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class ImageSection extends StatelessWidget {
@@ -36,20 +37,7 @@ class ImageSection extends StatelessWidget {
           Positioned(
             right: 12,
             top: 12,
-            child: CustomAnimatedButton(
-              onTap: () => removeImageButton(),
-              decoration: BoxDecoration(
-                color: Colors.black12,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: 25,
-              height: 25,
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 16,
-              ),
-            ),
+            child: CloseIcon(onTap: removeImageButton),
           ),
         ],
       ),

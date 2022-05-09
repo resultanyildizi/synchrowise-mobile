@@ -13,6 +13,8 @@ import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
+import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
@@ -84,9 +86,9 @@ class SigninPage extends StatelessWidget {
             unauthorized: (_) {},
             authorized: (state) {
               if (state.user.username == null) {
-                Navigator.pushReplacementNamed(context, "/register");
+                SynchrowiseNavigator.pushReplacementNamed(context, "/register");
               } else {
-                Navigator.pushReplacementNamed(context, "/home");
+                SynchrowiseNavigator.pushReplacementNamed(context, "/home");
               }
             },
           );
@@ -159,7 +161,7 @@ class SigninPage extends StatelessWidget {
                       DefaultButton(
                         backgroundColor: primaryColor,
                         borderColor: null,
-                        textColor: kcWhiteColor,
+                        textColor: Colors.white,
                         text: "sign_in".tr(),
                         padding: 50,
                         showProgress: state.isSigningEmail,
@@ -176,7 +178,10 @@ class SigninPage extends StatelessWidget {
                           text: TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushNamed(context, "/reset_password");
+                                SynchrowiseNavigator.pushNamed(
+                                  context,
+                                  "/reset-password",
+                                );
                               },
                             text: "forgot_password".tr(),
                             style: Theme.of(context)
@@ -226,8 +231,11 @@ class SigninPage extends StatelessWidget {
                           const SizedBox(width: 2),
                           CustomAnimatedButton(
                             onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/signup');
+                              SynchrowiseNavigator.pushReplacementNamed(
+                                context,
+                                '/signup',
+                                arguments: SynchrowiseRouteArguments(context),
+                              );
                             },
                             child: Text(
                               "sign_up".tr(),

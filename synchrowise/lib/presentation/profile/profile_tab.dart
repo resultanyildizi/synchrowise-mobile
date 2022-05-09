@@ -6,6 +6,7 @@ import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
@@ -21,7 +22,7 @@ class ProfileTab extends StatelessWidget {
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
         return state.failureOrUnitOption.fold(
-          () => null,
+          () {},
           (_) {
             final authBloc = context.read<AuthBloc>();
             authBloc.check();
@@ -38,14 +39,14 @@ class ProfileTab extends StatelessWidget {
         icon: Icons.add_photo_alternate,
         btnText: "avatar".tr(),
         onTap: () {
-          Navigator.pushNamed(context, "/profile_avatar");
+          SynchrowiseNavigator.pushNamed(context, "/profile-update-avatar");
         },
       ),
       SettingsSectionModel(
         icon: Icons.person,
         btnText: "username".tr(),
         onTap: () {
-          Navigator.pushNamed(context, "/profile_username");
+          SynchrowiseNavigator.pushNamed(context, "/profile-update-username");
         },
       )
     ];
@@ -53,7 +54,7 @@ class ProfileTab extends StatelessWidget {
     List<SettingsSectionModel> settingsSection2 = [
       SettingsSectionModel(
         icon: Icons.logout,
-        btnText: "logout".tr(),
+        btnText: "sign_out".tr(),
         onTap: () {
           final profileBloc = context.read<ProfileBloc>();
           profileBloc.signOut();
@@ -65,11 +66,11 @@ class ProfileTab extends StatelessWidget {
         onTap: () {
           return synchrowisePopup(
             context,
-            "delete_account",
-            "are_you_want_to_delete_account",
-            "no",
-            () => Navigator.pop(context),
-            "yes",
+            "delete_your_account".tr(),
+            "delete_your_account_desc".tr(),
+            "no".tr(),
+            () => SynchrowiseNavigator.pop(context),
+            "yes".tr(),
             () {
               final profileBloc = context.read<ProfileBloc>();
               profileBloc.deleteAccount();

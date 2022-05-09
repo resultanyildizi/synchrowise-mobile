@@ -5,6 +5,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/single_text_field_form.dart';
 
@@ -71,7 +72,7 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
               const SizedBox(height: 32),
               DefaultBackButton(
                 onTap: () {
-                  Navigator.pop(context);
+                  SynchrowiseNavigator.pop(context);
                 },
               ),
               SingleTextFieldForm(

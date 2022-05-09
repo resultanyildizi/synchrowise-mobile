@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
@@ -13,18 +14,18 @@ class BottomNavBar extends StatelessWidget {
     return BlocBuilder<BottomNavbarBloc, BottomNavbarState>(
       builder: (context, state) {
         return BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: const Icon(Icons.person),
+              label: "profile".tr(),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+              icon: const Icon(Icons.home),
+              label: "home".tr(),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settigns',
+              icon: const Icon(Icons.settings),
+              label: "settings".tr(),
             ),
           ],
           onTap: (index) {

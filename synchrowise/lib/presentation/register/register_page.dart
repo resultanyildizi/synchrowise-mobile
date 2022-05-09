@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
-import 'package:synchrowise/application/register_steps_bloc/register_steps_bloc.dart';
+import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/register/register_steps_0.dart';
 import 'package:synchrowise/presentation/register/register_steps_1.dart';
@@ -42,10 +43,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocListener<AuthBloc, AuthState>(listener: (context, state) {
       state.maybeMap(
         unauthorized: (_) {
-          Navigator.pushNamed(context, "/welcome");
+          SynchrowiseNavigator.pushNamed(context, "/welcome");
         },
         authorized: (_) {
-          Navigator.pushReplacementNamed(context, "/home");
+          SynchrowiseNavigator.pushReplacementNamed(context, "/home");
         },
         orElse: () {},
       );
@@ -53,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   BlocListener get _getRegisterFailureBlocListener {
-    return BlocListener<RegisterStepsBloc, RegisterStepsState>(
+    return BlocListener<RegisterationBloc, RegisterationState>(
       listenWhen: (_, current) => current.hasAnyFailed,
       listener: (context, state) {
         if (state.hasStorageFailed) {
@@ -64,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
             (f) {
               f.maybeMap(
                 get: (_) {
-                  Navigator.pushNamedAndRemoveUntil(
+                  SynchrowiseNavigator.pushNamedAndRemoveUntil(
                     context,
                     "/welcome",
                     (route) => false,
@@ -98,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
             (_) {},
           );
         } else if (state.hasAvatarFailed) {
-          final failureOrUnit = state.failureOrAvatarOption
+          final failureOrUnit = state.avatarFailureOrAvatarOption
               .getOrElse(() => throw AssertionError());
 
           failureOrUnit.fold(
@@ -112,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
             (_) {},
           );
         } else if (state.hasImageFailed) {
-          final failureOrUnit = state.failureOrImageOption
+          final failureOrUnit = state.imageFailureOrImageOption
               .getOrElse(() => throw AssertionError());
 
           failureOrUnit.fold(
@@ -138,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   BlocListener get _getRegisterSuccessBlocListener {
-    return BlocListener<RegisterStepsBloc, RegisterStepsState>(
+    return BlocListener<RegisterationBloc, RegisterationState>(
       listenWhen: (_, current) {
         return current.hasAllSucceeded;
       },
@@ -149,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   BlocListener get _getRegisterPageAnimatorListener {
-    return BlocListener<RegisterStepsBloc, RegisterStepsState>(
+    return BlocListener<RegisterationBloc, RegisterationState>(
       listenWhen: (previous, current) => previous.step != current.step,
       listener: (context, state) {
         _animateToPage(state.step);
@@ -159,8 +160,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RegisterStepsBloc>(
-      create: (context) => getIt<RegisterStepsBloc>(),
+    return BlocProvider<RegisterationBloc>(
+      create: (context) => getIt<RegisterationBloc>(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(
@@ -173,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 _getRegisterSuccessBlocListener,
                 _getRegisterPageAnimatorListener,
               ],
-              child: BlocBuilder<RegisterStepsBloc, RegisterStepsState>(
+              child: BlocBuilder<RegisterationBloc, RegisterationState>(
                 builder: (context, state) {
                   return Column(
                     children: [

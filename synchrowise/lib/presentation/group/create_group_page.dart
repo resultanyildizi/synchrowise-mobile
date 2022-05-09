@@ -5,18 +5,20 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
+import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/group/widgets/create_group_steps_0.dart';
 import 'package:synchrowise/presentation/group/widgets/create_group_steps_1.dart';
 
-class CreateGroup extends StatefulWidget {
-  const CreateGroup({Key? key}) : super(key: key);
+class CreateGroupPage extends StatefulWidget {
+  const CreateGroupPage({Key? key}) : super(key: key);
 
   @override
-  State<CreateGroup> createState() => _CreateGroupState();
+  State<CreateGroupPage> createState() => _CreateGroupPageState();
 }
 
-class _CreateGroupState extends State<CreateGroup> {
+class _CreateGroupPageState extends State<CreateGroupPage> {
   late PageController _pageController;
 
   @override
@@ -51,8 +53,12 @@ class _CreateGroupState extends State<CreateGroup> {
             (f) {
               f.maybeMap(
                 get: (_) {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, "/welcome", (route) => false);
+                  SynchrowiseNavigator.pushNamedAndRemoveUntil(
+                    context,
+                    "/welcome",
+                    (route) => false,
+                    arguments: SynchrowiseRouteArguments(context),
+                  );
                 },
                 orElse: () {
                   showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);

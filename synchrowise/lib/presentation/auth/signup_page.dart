@@ -12,6 +12,8 @@ import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
+import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
@@ -111,9 +113,17 @@ class SignupPage extends StatelessWidget {
             unauthorized: (_) {},
             authorized: (state) {
               if (state.user.username == null) {
-                Navigator.pushReplacementNamed(context, "/register");
+                SynchrowiseNavigator.pushReplacementNamed(
+                  context,
+                  "/register",
+                  arguments: SynchrowiseRouteArguments(context),
+                );
               } else {
-                Navigator.pushReplacementNamed(context, "/home");
+                SynchrowiseNavigator.pushReplacementNamed(
+                  context,
+                  "/home",
+                  arguments: SynchrowiseRouteArguments(context),
+                );
               }
             },
           );
@@ -198,7 +208,7 @@ class SignupPage extends StatelessWidget {
                       DefaultButton(
                         backgroundColor: primaryColor,
                         borderColor: null,
-                        textColor: kcWhiteColor,
+                        textColor: Colors.white,
                         text: "sign_up".tr(),
                         padding: 50,
                         showProgress: state.isSigningEmail,
@@ -246,8 +256,10 @@ class SignupPage extends StatelessWidget {
                           const SizedBox(width: 2),
                           CustomAnimatedButton(
                             onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/signin');
+                              SynchrowiseNavigator.pushReplacementNamed(
+                                context,
+                                '/signin',
+                              );
                             },
                             child: Text(
                               "sign_in".tr(),

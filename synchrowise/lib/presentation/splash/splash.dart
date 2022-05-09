@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -13,16 +14,16 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {
-            Navigator.pushReplacementNamed(context, "/welcome");
+            SynchrowiseNavigator.pushReplacementNamed(context, "/welcome");
           },
           unauthorized: (_) {
-            Navigator.pushReplacementNamed(context, "/welcome");
+            SynchrowiseNavigator.pushReplacementNamed(context, "/welcome");
           },
           authorized: (user) {
             if (user.user.username != null) {
-              Navigator.pushReplacementNamed(context, "/home");
+              SynchrowiseNavigator.pushReplacementNamed(context, "/home");
             } else {
-              Navigator.pushReplacementNamed(context, "/register");
+              SynchrowiseNavigator.pushReplacementNamed(context, "/register");
             }
           },
         );
@@ -30,7 +31,7 @@ class SplashPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: kcWhiteColor,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: Center(
               child: Column(

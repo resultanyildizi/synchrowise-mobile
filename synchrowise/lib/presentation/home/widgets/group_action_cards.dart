@@ -10,7 +10,7 @@ class GroupActionCards extends StatelessWidget {
     required this.cardBackgroundImage,
     required this.title,
     required this.desc,
-    this.color = kcWhiteColor,
+    this.color = Colors.white,
     required this.onTap,
   }) : super(key: key);
 

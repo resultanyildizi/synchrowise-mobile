@@ -19,7 +19,7 @@ void showRegisterSuccessfulBottomSheet(BuildContext context) {
       return Container(
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: kcWhiteColor,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(32),
             topRight: Radius.circular(32),
@@ -49,7 +49,7 @@ void showRegisterSuccessfulBottomSheet(BuildContext context) {
             DefaultButton(
               backgroundColor: primaryColor,
               borderColor: null,
-              textColor: kcWhiteColor,
+              textColor: Colors.white,
               text: "lets_get_started".tr(),
               padding: 35,
               onTap: () {

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 Future synchrowisePopup(
@@ -26,7 +27,7 @@ Future synchrowisePopup(
               margin: const EdgeInsets.symmetric(horizontal: 24),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                color: kcWhiteColor,
+                color: Colors.white,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -53,7 +54,7 @@ Future synchrowisePopup(
                       children: [
                         Expanded(
                           child: DefaultButton(
-                            backgroundColor: kcWhiteColor,
+                            backgroundColor: Colors.white,
                             borderColor: primaryColor,
                             textColor: primaryColor,
                             text: btnText1.tr(),
@@ -63,7 +64,7 @@ Future synchrowisePopup(
                               if (onTap1 != null) {
                                 onTap1();
                               } else {
-                                return Navigator.pop(context);
+                                return SynchrowiseNavigator.pop(context);
                               }
                             },
                           ),
@@ -73,7 +74,7 @@ Future synchrowisePopup(
                           child: DefaultButton(
                             backgroundColor: primaryColor,
                             borderColor: null,
-                            textColor: kcWhiteColor,
+                            textColor: Colors.white,
                             text: btnText2.tr(),
                             height: 35,
                             padding: 0,

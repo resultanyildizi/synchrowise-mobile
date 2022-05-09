@@ -42,7 +42,7 @@ class DefaultButton extends StatelessWidget {
         ),
         child: showProgress
             ? const SpinKitWave(
-                color: kcWhiteColor,
+                color: Colors.white,
                 itemCount: 3,
                 size: 14,
                 duration: Duration(milliseconds: 1500),
