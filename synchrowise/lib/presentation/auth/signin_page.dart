@@ -107,9 +107,9 @@ class SigninPage extends StatelessWidget {
                 failureOrUnit.fold(
                   (failure) {
                     if (failure is AuthFacadeFailure) {
-                      handleAuthFailures(failure);
+                      handleAuthFailures(context, failure);
                     } else {
-                      handleSynchrowiseFailure(failure);
+                      handleSynchrowiseFailure(context, failure);
                     }
                   },
                   (user) {

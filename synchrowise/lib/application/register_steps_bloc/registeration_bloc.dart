@@ -129,7 +129,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
                 },
               );
 
-              emit(newState);
+              emit(newState.copyWith(progressing: false));
             } else {
               emit(
                 state.copyWith(

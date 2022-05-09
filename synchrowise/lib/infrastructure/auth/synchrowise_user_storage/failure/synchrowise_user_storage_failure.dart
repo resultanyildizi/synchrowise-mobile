@@ -6,7 +6,7 @@ part 'synchrowise_user_storage_failure.freezed.dart';
 @freezed
 abstract class SynchrowiseUserStorageFailure extends SynchrowiseFailure
     with _$SynchrowiseUserStorageFailure {
-  @Implements<UnknownSynchrowiseFailure>()
+  @Implements<UnauthorizedSynchrowiseFailure>()
   const factory SynchrowiseUserStorageFailure.get() = _GetFailure;
   @Implements<UnknownSynchrowiseFailure>()
   const factory SynchrowiseUserStorageFailure.delete() = _DeleteFailure;

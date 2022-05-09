@@ -36,8 +36,7 @@ class SynchrowiseApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        title: 'Synchrowise',
+        debugShowCheckedModeBanner: true,
         theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: primaryColor,

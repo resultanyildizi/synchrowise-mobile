@@ -121,7 +121,7 @@ class __$GetFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<UnknownSynchrowiseFailure>()
+@Implements<UnauthorizedSynchrowiseFailure>()
 class _$_GetFailure implements _GetFailure {
   const _$_GetFailure();
 
@@ -209,7 +209,7 @@ class _$_GetFailure implements _GetFailure {
 }
 
 abstract class _GetFailure
-    implements SynchrowiseUserStorageFailure, UnknownSynchrowiseFailure {
+    implements SynchrowiseUserStorageFailure, UnauthorizedSynchrowiseFailure {
   const factory _GetFailure() = _$_GetFailure;
 }
 
