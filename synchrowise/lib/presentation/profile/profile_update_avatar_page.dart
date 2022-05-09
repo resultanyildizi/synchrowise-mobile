@@ -35,7 +35,6 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(height: 32),
                             DefaultBackButton(onTap: () {
                               SynchrowiseNavigator.pop(context);
                             }),

@@ -88,7 +88,12 @@ class SigninPage extends StatelessWidget {
               if (state.user.username == null) {
                 SynchrowiseNavigator.pushReplacementNamed(context, "/register");
               } else {
-                SynchrowiseNavigator.pushReplacementNamed(context, "/home");
+                SynchrowiseNavigator.pushNamedAndRemoveUntil(
+                  context,
+                  "/home",
+                  (route) => false,
+                  arguments: SynchrowiseRouteArguments(context),
+                );
               }
             },
           );
