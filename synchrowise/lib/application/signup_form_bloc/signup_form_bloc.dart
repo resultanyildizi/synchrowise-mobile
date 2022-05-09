@@ -20,7 +20,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
   ///* Dependencies
   final IAuthFacade _iAuthFacade;
   final ISynchrowiseUserRepository _iUserRepo;
-  final ISynchrowiseUserStorage _iStorage;
+  final ISynchrowiseUserStorage _iUserStorage;
 
   ///* Methods
   void signupWithEmailAndPassword() =>
@@ -34,7 +34,7 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
       add(SignupFormEvent.updateConfirmPasswordText(password: password));
 
   ///* Logic
-  SignupFormBloc(this._iAuthFacade, this._iUserRepo, this._iStorage)
+  SignupFormBloc(this._iAuthFacade, this._iUserRepo, this._iUserStorage)
       : super(SignupFormState.initial()) {
     on<SignupFormEvent>(
       (event, emit) async {
@@ -200,7 +200,8 @@ class SignupFormBloc extends Bloc<SignupFormEvent, SignupFormState> {
             return failureOrRepoUser.fold(
               (failure) => left(failure),
               (repoUser) async {
-                final failureOrUnit = await _iStorage.update(user: repoUser);
+                final failureOrUnit =
+                    await _iUserStorage.update(user: repoUser);
                 return failureOrUnit;
               },
             );

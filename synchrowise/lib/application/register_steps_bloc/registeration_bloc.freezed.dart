@@ -18,40 +18,40 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RegisterationEventTearOff {
   const _$RegisterationEventTearOff();
 
-  _RegisterStepsUpdateUsernameTextEvent updateUsernameText(
+  _RegisterationUpdateUsernameTextEvent updateUsernameText(
       {required String username}) {
-    return _RegisterStepsUpdateUsernameTextEvent(
+    return _RegisterationUpdateUsernameTextEvent(
       username: username,
     );
   }
 
-  _RegisterStepsUpdateAvatarImageEvent updateAvatarImage(
+  _RegisterationUpdateAvatarImageEvent updateAvatarImage(
       {required AndroidUiSettings androidUiSettings,
       required IOSUiSettings iosUiSettings}) {
-    return _RegisterStepsUpdateAvatarImageEvent(
+    return _RegisterationUpdateAvatarImageEvent(
       androidUiSettings: androidUiSettings,
       iosUiSettings: iosUiSettings,
     );
   }
 
-  _RegisterStepsSaveUsernameEvent saveUsername() {
-    return const _RegisterStepsSaveUsernameEvent();
+  _RegisterationSaveUsernameEvent saveUsername() {
+    return const _RegisterationSaveUsernameEvent();
   }
 
-  _RegisterStepsRegisterFieldsEvent registerFields() {
-    return const _RegisterStepsRegisterFieldsEvent();
+  _RegisterationRegisterFieldsEvent registerFields() {
+    return const _RegisterationRegisterFieldsEvent();
   }
 
-  _RegisterStepsGoBackEvent goBack() {
-    return const _RegisterStepsGoBackEvent();
+  _RegisterationGoBackEvent goBack() {
+    return const _RegisterationGoBackEvent();
   }
 
-  _RegisterStepsGoNextEvent goNext() {
-    return const _RegisterStepsGoNextEvent();
+  _RegisterationGoNextEvent goNext() {
+    return const _RegisterationGoNextEvent();
   }
 
-  _RegisterStepsRemoveAvatarImageEvent removeAvatarImage() {
-    return const _RegisterStepsRemoveAvatarImageEvent();
+  _RegisterationRemoveAvatarImageEvent removeAvatarImage() {
+    return const _RegisterationRemoveAvatarImageEvent();
   }
 }
 
@@ -102,45 +102,45 @@ mixin _$RegisterationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) =>
@@ -165,32 +165,32 @@ class _$RegisterationEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RegisterStepsUpdateUsernameTextEventCopyWith<$Res> {
-  factory _$RegisterStepsUpdateUsernameTextEventCopyWith(
-          _RegisterStepsUpdateUsernameTextEvent value,
-          $Res Function(_RegisterStepsUpdateUsernameTextEvent) then) =
-      __$RegisterStepsUpdateUsernameTextEventCopyWithImpl<$Res>;
+abstract class _$RegisterationUpdateUsernameTextEventCopyWith<$Res> {
+  factory _$RegisterationUpdateUsernameTextEventCopyWith(
+          _RegisterationUpdateUsernameTextEvent value,
+          $Res Function(_RegisterationUpdateUsernameTextEvent) then) =
+      __$RegisterationUpdateUsernameTextEventCopyWithImpl<$Res>;
   $Res call({String username});
 }
 
 /// @nodoc
-class __$RegisterStepsUpdateUsernameTextEventCopyWithImpl<$Res>
+class __$RegisterationUpdateUsernameTextEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsUpdateUsernameTextEventCopyWith<$Res> {
-  __$RegisterStepsUpdateUsernameTextEventCopyWithImpl(
-      _RegisterStepsUpdateUsernameTextEvent _value,
-      $Res Function(_RegisterStepsUpdateUsernameTextEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsUpdateUsernameTextEvent));
+    implements _$RegisterationUpdateUsernameTextEventCopyWith<$Res> {
+  __$RegisterationUpdateUsernameTextEventCopyWithImpl(
+      _RegisterationUpdateUsernameTextEvent _value,
+      $Res Function(_RegisterationUpdateUsernameTextEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationUpdateUsernameTextEvent));
 
   @override
-  _RegisterStepsUpdateUsernameTextEvent get _value =>
-      super._value as _RegisterStepsUpdateUsernameTextEvent;
+  _RegisterationUpdateUsernameTextEvent get _value =>
+      super._value as _RegisterationUpdateUsernameTextEvent;
 
   @override
   $Res call({
     Object? username = freezed,
   }) {
-    return _then(_RegisterStepsUpdateUsernameTextEvent(
+    return _then(_RegisterationUpdateUsernameTextEvent(
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -201,9 +201,9 @@ class __$RegisterStepsUpdateUsernameTextEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterStepsUpdateUsernameTextEvent
-    implements _RegisterStepsUpdateUsernameTextEvent {
-  const _$_RegisterStepsUpdateUsernameTextEvent({required this.username});
+class _$_RegisterationUpdateUsernameTextEvent
+    implements _RegisterationUpdateUsernameTextEvent {
+  const _$_RegisterationUpdateUsernameTextEvent({required this.username});
 
   @override
   final String username;
@@ -217,7 +217,7 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsUpdateUsernameTextEvent &&
+            other is _RegisterationUpdateUsernameTextEvent &&
             const DeepCollectionEquality().equals(other.username, username));
   }
 
@@ -227,10 +227,10 @@ class _$_RegisterStepsUpdateUsernameTextEvent
 
   @JsonKey(ignore: true)
   @override
-  _$RegisterStepsUpdateUsernameTextEventCopyWith<
-          _RegisterStepsUpdateUsernameTextEvent>
-      get copyWith => __$RegisterStepsUpdateUsernameTextEventCopyWithImpl<
-          _RegisterStepsUpdateUsernameTextEvent>(this, _$identity);
+  _$RegisterationUpdateUsernameTextEventCopyWith<
+          _RegisterationUpdateUsernameTextEvent>
+      get copyWith => __$RegisterationUpdateUsernameTextEventCopyWithImpl<
+          _RegisterationUpdateUsernameTextEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -287,17 +287,17 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return updateUsernameText(this);
@@ -306,15 +306,15 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return updateUsernameText?.call(this);
@@ -323,15 +323,15 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -342,46 +342,46 @@ class _$_RegisterStepsUpdateUsernameTextEvent
   }
 }
 
-abstract class _RegisterStepsUpdateUsernameTextEvent
+abstract class _RegisterationUpdateUsernameTextEvent
     implements RegisterationEvent {
-  const factory _RegisterStepsUpdateUsernameTextEvent(
-      {required String username}) = _$_RegisterStepsUpdateUsernameTextEvent;
+  const factory _RegisterationUpdateUsernameTextEvent(
+      {required String username}) = _$_RegisterationUpdateUsernameTextEvent;
 
   String get username;
   @JsonKey(ignore: true)
-  _$RegisterStepsUpdateUsernameTextEventCopyWith<
-          _RegisterStepsUpdateUsernameTextEvent>
+  _$RegisterationUpdateUsernameTextEventCopyWith<
+          _RegisterationUpdateUsernameTextEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsUpdateAvatarImageEventCopyWith<$Res> {
-  factory _$RegisterStepsUpdateAvatarImageEventCopyWith(
-          _RegisterStepsUpdateAvatarImageEvent value,
-          $Res Function(_RegisterStepsUpdateAvatarImageEvent) then) =
-      __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>;
+abstract class _$RegisterationUpdateAvatarImageEventCopyWith<$Res> {
+  factory _$RegisterationUpdateAvatarImageEventCopyWith(
+          _RegisterationUpdateAvatarImageEvent value,
+          $Res Function(_RegisterationUpdateAvatarImageEvent) then) =
+      __$RegisterationUpdateAvatarImageEventCopyWithImpl<$Res>;
   $Res call({AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings});
 }
 
 /// @nodoc
-class __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>
+class __$RegisterationUpdateAvatarImageEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsUpdateAvatarImageEventCopyWith<$Res> {
-  __$RegisterStepsUpdateAvatarImageEventCopyWithImpl(
-      _RegisterStepsUpdateAvatarImageEvent _value,
-      $Res Function(_RegisterStepsUpdateAvatarImageEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsUpdateAvatarImageEvent));
+    implements _$RegisterationUpdateAvatarImageEventCopyWith<$Res> {
+  __$RegisterationUpdateAvatarImageEventCopyWithImpl(
+      _RegisterationUpdateAvatarImageEvent _value,
+      $Res Function(_RegisterationUpdateAvatarImageEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationUpdateAvatarImageEvent));
 
   @override
-  _RegisterStepsUpdateAvatarImageEvent get _value =>
-      super._value as _RegisterStepsUpdateAvatarImageEvent;
+  _RegisterationUpdateAvatarImageEvent get _value =>
+      super._value as _RegisterationUpdateAvatarImageEvent;
 
   @override
   $Res call({
     Object? androidUiSettings = freezed,
     Object? iosUiSettings = freezed,
   }) {
-    return _then(_RegisterStepsUpdateAvatarImageEvent(
+    return _then(_RegisterationUpdateAvatarImageEvent(
       androidUiSettings: androidUiSettings == freezed
           ? _value.androidUiSettings
           : androidUiSettings // ignore: cast_nullable_to_non_nullable
@@ -396,9 +396,9 @@ class __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterStepsUpdateAvatarImageEvent
-    implements _RegisterStepsUpdateAvatarImageEvent {
-  const _$_RegisterStepsUpdateAvatarImageEvent(
+class _$_RegisterationUpdateAvatarImageEvent
+    implements _RegisterationUpdateAvatarImageEvent {
+  const _$_RegisterationUpdateAvatarImageEvent(
       {required this.androidUiSettings, required this.iosUiSettings});
 
   @override
@@ -415,7 +415,7 @@ class _$_RegisterStepsUpdateAvatarImageEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsUpdateAvatarImageEvent &&
+            other is _RegisterationUpdateAvatarImageEvent &&
             const DeepCollectionEquality()
                 .equals(other.androidUiSettings, androidUiSettings) &&
             const DeepCollectionEquality()
@@ -430,10 +430,10 @@ class _$_RegisterStepsUpdateAvatarImageEvent
 
   @JsonKey(ignore: true)
   @override
-  _$RegisterStepsUpdateAvatarImageEventCopyWith<
-          _RegisterStepsUpdateAvatarImageEvent>
-      get copyWith => __$RegisterStepsUpdateAvatarImageEventCopyWithImpl<
-          _RegisterStepsUpdateAvatarImageEvent>(this, _$identity);
+  _$RegisterationUpdateAvatarImageEventCopyWith<
+          _RegisterationUpdateAvatarImageEvent>
+      get copyWith => __$RegisterationUpdateAvatarImageEventCopyWithImpl<
+          _RegisterationUpdateAvatarImageEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -490,17 +490,17 @@ class _$_RegisterStepsUpdateAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return updateAvatarImage(this);
@@ -509,15 +509,15 @@ class _$_RegisterStepsUpdateAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return updateAvatarImage?.call(this);
@@ -526,15 +526,15 @@ class _$_RegisterStepsUpdateAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -545,48 +545,48 @@ class _$_RegisterStepsUpdateAvatarImageEvent
   }
 }
 
-abstract class _RegisterStepsUpdateAvatarImageEvent
+abstract class _RegisterationUpdateAvatarImageEvent
     implements RegisterationEvent {
-  const factory _RegisterStepsUpdateAvatarImageEvent(
+  const factory _RegisterationUpdateAvatarImageEvent(
           {required AndroidUiSettings androidUiSettings,
           required IOSUiSettings iosUiSettings}) =
-      _$_RegisterStepsUpdateAvatarImageEvent;
+      _$_RegisterationUpdateAvatarImageEvent;
 
   AndroidUiSettings get androidUiSettings;
   IOSUiSettings get iosUiSettings;
   @JsonKey(ignore: true)
-  _$RegisterStepsUpdateAvatarImageEventCopyWith<
-          _RegisterStepsUpdateAvatarImageEvent>
+  _$RegisterationUpdateAvatarImageEventCopyWith<
+          _RegisterationUpdateAvatarImageEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsSaveUsernameEventCopyWith<$Res> {
-  factory _$RegisterStepsSaveUsernameEventCopyWith(
-          _RegisterStepsSaveUsernameEvent value,
-          $Res Function(_RegisterStepsSaveUsernameEvent) then) =
-      __$RegisterStepsSaveUsernameEventCopyWithImpl<$Res>;
+abstract class _$RegisterationSaveUsernameEventCopyWith<$Res> {
+  factory _$RegisterationSaveUsernameEventCopyWith(
+          _RegisterationSaveUsernameEvent value,
+          $Res Function(_RegisterationSaveUsernameEvent) then) =
+      __$RegisterationSaveUsernameEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RegisterStepsSaveUsernameEventCopyWithImpl<$Res>
+class __$RegisterationSaveUsernameEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsSaveUsernameEventCopyWith<$Res> {
-  __$RegisterStepsSaveUsernameEventCopyWithImpl(
-      _RegisterStepsSaveUsernameEvent _value,
-      $Res Function(_RegisterStepsSaveUsernameEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsSaveUsernameEvent));
+    implements _$RegisterationSaveUsernameEventCopyWith<$Res> {
+  __$RegisterationSaveUsernameEventCopyWithImpl(
+      _RegisterationSaveUsernameEvent _value,
+      $Res Function(_RegisterationSaveUsernameEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationSaveUsernameEvent));
 
   @override
-  _RegisterStepsSaveUsernameEvent get _value =>
-      super._value as _RegisterStepsSaveUsernameEvent;
+  _RegisterationSaveUsernameEvent get _value =>
+      super._value as _RegisterationSaveUsernameEvent;
 }
 
 /// @nodoc
 
-class _$_RegisterStepsSaveUsernameEvent
-    implements _RegisterStepsSaveUsernameEvent {
-  const _$_RegisterStepsSaveUsernameEvent();
+class _$_RegisterationSaveUsernameEvent
+    implements _RegisterationSaveUsernameEvent {
+  const _$_RegisterationSaveUsernameEvent();
 
   @override
   String toString() {
@@ -597,7 +597,7 @@ class _$_RegisterStepsSaveUsernameEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsSaveUsernameEvent);
+            other is _RegisterationSaveUsernameEvent);
   }
 
   @override
@@ -658,17 +658,17 @@ class _$_RegisterStepsSaveUsernameEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return saveUsername(this);
@@ -677,15 +677,15 @@ class _$_RegisterStepsSaveUsernameEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return saveUsername?.call(this);
@@ -694,15 +694,15 @@ class _$_RegisterStepsSaveUsernameEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -713,38 +713,38 @@ class _$_RegisterStepsSaveUsernameEvent
   }
 }
 
-abstract class _RegisterStepsSaveUsernameEvent implements RegisterationEvent {
-  const factory _RegisterStepsSaveUsernameEvent() =
-      _$_RegisterStepsSaveUsernameEvent;
+abstract class _RegisterationSaveUsernameEvent implements RegisterationEvent {
+  const factory _RegisterationSaveUsernameEvent() =
+      _$_RegisterationSaveUsernameEvent;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsRegisterFieldsEventCopyWith<$Res> {
-  factory _$RegisterStepsRegisterFieldsEventCopyWith(
-          _RegisterStepsRegisterFieldsEvent value,
-          $Res Function(_RegisterStepsRegisterFieldsEvent) then) =
-      __$RegisterStepsRegisterFieldsEventCopyWithImpl<$Res>;
+abstract class _$RegisterationRegisterFieldsEventCopyWith<$Res> {
+  factory _$RegisterationRegisterFieldsEventCopyWith(
+          _RegisterationRegisterFieldsEvent value,
+          $Res Function(_RegisterationRegisterFieldsEvent) then) =
+      __$RegisterationRegisterFieldsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RegisterStepsRegisterFieldsEventCopyWithImpl<$Res>
+class __$RegisterationRegisterFieldsEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsRegisterFieldsEventCopyWith<$Res> {
-  __$RegisterStepsRegisterFieldsEventCopyWithImpl(
-      _RegisterStepsRegisterFieldsEvent _value,
-      $Res Function(_RegisterStepsRegisterFieldsEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsRegisterFieldsEvent));
+    implements _$RegisterationRegisterFieldsEventCopyWith<$Res> {
+  __$RegisterationRegisterFieldsEventCopyWithImpl(
+      _RegisterationRegisterFieldsEvent _value,
+      $Res Function(_RegisterationRegisterFieldsEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationRegisterFieldsEvent));
 
   @override
-  _RegisterStepsRegisterFieldsEvent get _value =>
-      super._value as _RegisterStepsRegisterFieldsEvent;
+  _RegisterationRegisterFieldsEvent get _value =>
+      super._value as _RegisterationRegisterFieldsEvent;
 }
 
 /// @nodoc
 
-class _$_RegisterStepsRegisterFieldsEvent
-    implements _RegisterStepsRegisterFieldsEvent {
-  const _$_RegisterStepsRegisterFieldsEvent();
+class _$_RegisterationRegisterFieldsEvent
+    implements _RegisterationRegisterFieldsEvent {
+  const _$_RegisterationRegisterFieldsEvent();
 
   @override
   String toString() {
@@ -755,7 +755,7 @@ class _$_RegisterStepsRegisterFieldsEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsRegisterFieldsEvent);
+            other is _RegisterationRegisterFieldsEvent);
   }
 
   @override
@@ -816,17 +816,17 @@ class _$_RegisterStepsRegisterFieldsEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return registerFields(this);
@@ -835,15 +835,15 @@ class _$_RegisterStepsRegisterFieldsEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return registerFields?.call(this);
@@ -852,15 +852,15 @@ class _$_RegisterStepsRegisterFieldsEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -871,35 +871,35 @@ class _$_RegisterStepsRegisterFieldsEvent
   }
 }
 
-abstract class _RegisterStepsRegisterFieldsEvent implements RegisterationEvent {
-  const factory _RegisterStepsRegisterFieldsEvent() =
-      _$_RegisterStepsRegisterFieldsEvent;
+abstract class _RegisterationRegisterFieldsEvent implements RegisterationEvent {
+  const factory _RegisterationRegisterFieldsEvent() =
+      _$_RegisterationRegisterFieldsEvent;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsGoBackEventCopyWith<$Res> {
-  factory _$RegisterStepsGoBackEventCopyWith(_RegisterStepsGoBackEvent value,
-          $Res Function(_RegisterStepsGoBackEvent) then) =
-      __$RegisterStepsGoBackEventCopyWithImpl<$Res>;
+abstract class _$RegisterationGoBackEventCopyWith<$Res> {
+  factory _$RegisterationGoBackEventCopyWith(_RegisterationGoBackEvent value,
+          $Res Function(_RegisterationGoBackEvent) then) =
+      __$RegisterationGoBackEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RegisterStepsGoBackEventCopyWithImpl<$Res>
+class __$RegisterationGoBackEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsGoBackEventCopyWith<$Res> {
-  __$RegisterStepsGoBackEventCopyWithImpl(_RegisterStepsGoBackEvent _value,
-      $Res Function(_RegisterStepsGoBackEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsGoBackEvent));
+    implements _$RegisterationGoBackEventCopyWith<$Res> {
+  __$RegisterationGoBackEventCopyWithImpl(_RegisterationGoBackEvent _value,
+      $Res Function(_RegisterationGoBackEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationGoBackEvent));
 
   @override
-  _RegisterStepsGoBackEvent get _value =>
-      super._value as _RegisterStepsGoBackEvent;
+  _RegisterationGoBackEvent get _value =>
+      super._value as _RegisterationGoBackEvent;
 }
 
 /// @nodoc
 
-class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
-  const _$_RegisterStepsGoBackEvent();
+class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
+  const _$_RegisterationGoBackEvent();
 
   @override
   String toString() {
@@ -910,7 +910,7 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsGoBackEvent);
+            other is _RegisterationGoBackEvent);
   }
 
   @override
@@ -971,17 +971,17 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return goBack(this);
@@ -990,15 +990,15 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return goBack?.call(this);
@@ -1007,15 +1007,15 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -1026,34 +1026,34 @@ class _$_RegisterStepsGoBackEvent implements _RegisterStepsGoBackEvent {
   }
 }
 
-abstract class _RegisterStepsGoBackEvent implements RegisterationEvent {
-  const factory _RegisterStepsGoBackEvent() = _$_RegisterStepsGoBackEvent;
+abstract class _RegisterationGoBackEvent implements RegisterationEvent {
+  const factory _RegisterationGoBackEvent() = _$_RegisterationGoBackEvent;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsGoNextEventCopyWith<$Res> {
-  factory _$RegisterStepsGoNextEventCopyWith(_RegisterStepsGoNextEvent value,
-          $Res Function(_RegisterStepsGoNextEvent) then) =
-      __$RegisterStepsGoNextEventCopyWithImpl<$Res>;
+abstract class _$RegisterationGoNextEventCopyWith<$Res> {
+  factory _$RegisterationGoNextEventCopyWith(_RegisterationGoNextEvent value,
+          $Res Function(_RegisterationGoNextEvent) then) =
+      __$RegisterationGoNextEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RegisterStepsGoNextEventCopyWithImpl<$Res>
+class __$RegisterationGoNextEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsGoNextEventCopyWith<$Res> {
-  __$RegisterStepsGoNextEventCopyWithImpl(_RegisterStepsGoNextEvent _value,
-      $Res Function(_RegisterStepsGoNextEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsGoNextEvent));
+    implements _$RegisterationGoNextEventCopyWith<$Res> {
+  __$RegisterationGoNextEventCopyWithImpl(_RegisterationGoNextEvent _value,
+      $Res Function(_RegisterationGoNextEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationGoNextEvent));
 
   @override
-  _RegisterStepsGoNextEvent get _value =>
-      super._value as _RegisterStepsGoNextEvent;
+  _RegisterationGoNextEvent get _value =>
+      super._value as _RegisterationGoNextEvent;
 }
 
 /// @nodoc
 
-class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
-  const _$_RegisterStepsGoNextEvent();
+class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
+  const _$_RegisterationGoNextEvent();
 
   @override
   String toString() {
@@ -1064,7 +1064,7 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsGoNextEvent);
+            other is _RegisterationGoNextEvent);
   }
 
   @override
@@ -1125,17 +1125,17 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return goNext(this);
@@ -1144,15 +1144,15 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return goNext?.call(this);
@@ -1161,15 +1161,15 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -1180,37 +1180,37 @@ class _$_RegisterStepsGoNextEvent implements _RegisterStepsGoNextEvent {
   }
 }
 
-abstract class _RegisterStepsGoNextEvent implements RegisterationEvent {
-  const factory _RegisterStepsGoNextEvent() = _$_RegisterStepsGoNextEvent;
+abstract class _RegisterationGoNextEvent implements RegisterationEvent {
+  const factory _RegisterationGoNextEvent() = _$_RegisterationGoNextEvent;
 }
 
 /// @nodoc
-abstract class _$RegisterStepsRemoveAvatarImageEventCopyWith<$Res> {
-  factory _$RegisterStepsRemoveAvatarImageEventCopyWith(
-          _RegisterStepsRemoveAvatarImageEvent value,
-          $Res Function(_RegisterStepsRemoveAvatarImageEvent) then) =
-      __$RegisterStepsRemoveAvatarImageEventCopyWithImpl<$Res>;
+abstract class _$RegisterationRemoveAvatarImageEventCopyWith<$Res> {
+  factory _$RegisterationRemoveAvatarImageEventCopyWith(
+          _RegisterationRemoveAvatarImageEvent value,
+          $Res Function(_RegisterationRemoveAvatarImageEvent) then) =
+      __$RegisterationRemoveAvatarImageEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RegisterStepsRemoveAvatarImageEventCopyWithImpl<$Res>
+class __$RegisterationRemoveAvatarImageEventCopyWithImpl<$Res>
     extends _$RegisterationEventCopyWithImpl<$Res>
-    implements _$RegisterStepsRemoveAvatarImageEventCopyWith<$Res> {
-  __$RegisterStepsRemoveAvatarImageEventCopyWithImpl(
-      _RegisterStepsRemoveAvatarImageEvent _value,
-      $Res Function(_RegisterStepsRemoveAvatarImageEvent) _then)
-      : super(_value, (v) => _then(v as _RegisterStepsRemoveAvatarImageEvent));
+    implements _$RegisterationRemoveAvatarImageEventCopyWith<$Res> {
+  __$RegisterationRemoveAvatarImageEventCopyWithImpl(
+      _RegisterationRemoveAvatarImageEvent _value,
+      $Res Function(_RegisterationRemoveAvatarImageEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationRemoveAvatarImageEvent));
 
   @override
-  _RegisterStepsRemoveAvatarImageEvent get _value =>
-      super._value as _RegisterStepsRemoveAvatarImageEvent;
+  _RegisterationRemoveAvatarImageEvent get _value =>
+      super._value as _RegisterationRemoveAvatarImageEvent;
 }
 
 /// @nodoc
 
-class _$_RegisterStepsRemoveAvatarImageEvent
-    implements _RegisterStepsRemoveAvatarImageEvent {
-  const _$_RegisterStepsRemoveAvatarImageEvent();
+class _$_RegisterationRemoveAvatarImageEvent
+    implements _RegisterationRemoveAvatarImageEvent {
+  const _$_RegisterationRemoveAvatarImageEvent();
 
   @override
   String toString() {
@@ -1221,7 +1221,7 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterStepsRemoveAvatarImageEvent);
+            other is _RegisterationRemoveAvatarImageEvent);
   }
 
   @override
@@ -1282,17 +1282,17 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterStepsUpdateUsernameTextEvent value)
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
         updateUsernameText,
-    required TResult Function(_RegisterStepsUpdateAvatarImageEvent value)
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
         updateAvatarImage,
-    required TResult Function(_RegisterStepsSaveUsernameEvent value)
+    required TResult Function(_RegisterationSaveUsernameEvent value)
         saveUsername,
-    required TResult Function(_RegisterStepsRegisterFieldsEvent value)
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
         registerFields,
-    required TResult Function(_RegisterStepsGoBackEvent value) goBack,
-    required TResult Function(_RegisterStepsGoNextEvent value) goNext,
-    required TResult Function(_RegisterStepsRemoveAvatarImageEvent value)
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
   }) {
     return removeAvatarImage(this);
@@ -1301,15 +1301,15 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
   }) {
     return removeAvatarImage?.call(this);
@@ -1318,15 +1318,15 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterStepsUpdateUsernameTextEvent value)?
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
         updateUsernameText,
-    TResult Function(_RegisterStepsUpdateAvatarImageEvent value)?
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
         updateAvatarImage,
-    TResult Function(_RegisterStepsSaveUsernameEvent value)? saveUsername,
-    TResult Function(_RegisterStepsRegisterFieldsEvent value)? registerFields,
-    TResult Function(_RegisterStepsGoBackEvent value)? goBack,
-    TResult Function(_RegisterStepsGoNextEvent value)? goNext,
-    TResult Function(_RegisterStepsRemoveAvatarImageEvent value)?
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
     required TResult orElse(),
   }) {
@@ -1337,10 +1337,10 @@ class _$_RegisterStepsRemoveAvatarImageEvent
   }
 }
 
-abstract class _RegisterStepsRemoveAvatarImageEvent
+abstract class _RegisterationRemoveAvatarImageEvent
     implements RegisterationEvent {
-  const factory _RegisterStepsRemoveAvatarImageEvent() =
-      _$_RegisterStepsRemoveAvatarImageEvent;
+  const factory _RegisterationRemoveAvatarImageEvent() =
+      _$_RegisterationRemoveAvatarImageEvent;
 }
 
 /// @nodoc
