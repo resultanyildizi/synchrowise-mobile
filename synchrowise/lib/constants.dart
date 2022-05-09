@@ -37,8 +37,12 @@ final AndroidUiSettings cropAndroidUiSettings = AndroidUiSettings(
   toolbarColor: primaryColor,
   toolbarWidgetColor: Colors.white,
   statusBarColor: primaryColor,
+  backgroundColor: Colors.white,
   toolbarTitle: "crop".tr(),
+  cropGridColor: Colors.white,
+  dimmedLayerColor: Colors.white,
+  activeControlsWidgetColor: primaryColor,
 );
 final IOSUiSettings cropIOSUiSettings = IOSUiSettings(
-  title: "clip".tr(),
+  title: "crop".tr(),
 );
