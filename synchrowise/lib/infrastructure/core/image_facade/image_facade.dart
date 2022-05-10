@@ -16,8 +16,9 @@ class ImageFacade implements IImageFacade {
   ///* Constructor
   const ImageFacade(this._imagePicker, this._imageCropper);
 
+  ///* Method implementations
   @override
-  Future<Either<ImageFailure, File>> uploadImageFromDevice() async {
+  Future<Either<ImageFacadeFailure, File>> uploadImageFromDevice() async {
     try {
       final pickedImage = await _imagePicker
           .pickImage(source: ImageSource.gallery)
@@ -26,17 +27,18 @@ class ImageFacade implements IImageFacade {
       if (pickedImage != null) {
         return right(File(pickedImage.path));
       } else {
-        return left(const ImageFailure.imageCancel());
+        return left(const ImageFacadeFailure.imageCancel());
       }
     } on PlatformException catch (e) {
-      return left(ImageFailure.imagePick("PlatformException: ${e.toString()}"));
+      return left(
+          ImageFacadeFailure.imagePick("PlatformException: ${e.toString()}"));
     } catch (e) {
-      return left(ImageFailure.imagePick("Exception: ${e.toString()}"));
+      return left(ImageFacadeFailure.imagePick("Exception: ${e.toString()}"));
     }
   }
 
   @override
-  Future<Either<ImageFailure, File>> cropImage({
+  Future<Either<ImageFacadeFailure, File>> cropImage({
     required File image,
     AndroidUiSettings? androidUiSettings,
     IOSUiSettings? iosUiSettings,
@@ -65,17 +67,18 @@ class ImageFacade implements IImageFacade {
         final imageSizeMb = _getImageSizeMB(croppedImage);
 
         if (imageSizeMb > 10) {
-          return left(ImageFailure.imageSize(imageSizeMb));
+          return left(ImageFacadeFailure.imageSize(imageSizeMb));
         }
 
         return right(croppedImage);
       } else {
-        return left(const ImageFailure.imageCrop("CroppedImage is null"));
+        return left(const ImageFacadeFailure.imageCrop("CroppedImage is null"));
       }
     } on PlatformException catch (e) {
-      return left(ImageFailure.imageCrop("PlatformException ${e.toString()}"));
+      return left(
+          ImageFacadeFailure.imageCrop("PlatformException ${e.toString()}"));
     } catch (e) {
-      return left(ImageFailure.imageCrop("Exception: ${e.toString()}"));
+      return left(ImageFacadeFailure.imageCrop("Exception: ${e.toString()}"));
     }
   }
 

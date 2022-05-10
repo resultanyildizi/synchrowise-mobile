@@ -23,7 +23,7 @@ void handleSynchrowiseFailure(
   }
 }
 
-void handleImageFailure(ImageFailure failure) {
+void handleImageFailure(ImageFacadeFailure failure) {
   failure.map(
     imageCrop: (_) {
       showErrorToast("image_crop_error".tr(), ToastGravity.BOTTOM);

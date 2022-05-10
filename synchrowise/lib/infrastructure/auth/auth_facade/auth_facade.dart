@@ -13,11 +13,9 @@ class AuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
 
   ///* Constructor
-  const AuthFacade(
-    this._firebaseAuth,
-    this._googleSignIn,
-  );
+  const AuthFacade(this._firebaseAuth, this._googleSignIn);
 
+  ///* Method implementations
   @override
   Future<Either<AuthFacadeFailure, Unit>> checkUserExists() async {
     try {

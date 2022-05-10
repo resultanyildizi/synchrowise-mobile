@@ -6,7 +6,7 @@ class RegisterationState with _$RegisterationState {
 
   const factory RegisterationState({
     required Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
-    required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+    required Option<Either<ImageFacadeFailure, File>> imageFailureOrImageOption,
     required Option<Either<AvatarRepositoryFailure, Unit>>
         avatarFailureOrAvatarOption,
     required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>

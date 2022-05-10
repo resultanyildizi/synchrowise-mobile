@@ -21,7 +21,6 @@ class SynchrowiseUser extends Equatable {
   final String? username;
   final String? emailAddress;
   final Premium premium;
-
   final bool sEmailVerified;
   final bool sIsNewUser;
   final int sFirebaseCreationTimeMs;

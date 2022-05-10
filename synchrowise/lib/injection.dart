@@ -73,7 +73,7 @@ Future<void> _setupInfrastructure() async {
   );
 
   getIt.registerSingleton<IAvatarRepository>(
-    AvatarRepository(),
+    AvatarRepository(getIt<Client>()),
   );
 }
 

@@ -10,10 +10,13 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_sy
 import 'package:synchrowise/infrastructure/core/string_values.dart';
 
 class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
+  //* Dependencies
   final Client _client;
 
+  //* Constructor
   const SynchrowiseUserRepository(this._client);
 
+  //* Method implementations
   @override
   Future<Either<SynchrowiseUserRepositoryFailure, Unit>> create({
     required SynchrowiseUser synchrowiseUser,

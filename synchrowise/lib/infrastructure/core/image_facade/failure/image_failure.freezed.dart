@@ -15,8 +15,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ImageFailureTearOff {
-  const _$ImageFailureTearOff();
+class _$ImageFacadeFailureTearOff {
+  const _$ImageFacadeFailureTearOff();
 
   _ImagePick imagePick(String? message) {
     return _ImagePick(
@@ -42,10 +42,10 @@ class _$ImageFailureTearOff {
 }
 
 /// @nodoc
-const $ImageFailure = _$ImageFailureTearOff();
+const $ImageFacadeFailure = _$ImageFacadeFailureTearOff();
 
 /// @nodoc
-mixin _$ImageFailure {
+mixin _$ImageFacadeFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) imagePick,
@@ -99,19 +99,20 @@ mixin _$ImageFailure {
 }
 
 /// @nodoc
-abstract class $ImageFailureCopyWith<$Res> {
-  factory $ImageFailureCopyWith(
-          ImageFailure value, $Res Function(ImageFailure) then) =
-      _$ImageFailureCopyWithImpl<$Res>;
+abstract class $ImageFacadeFailureCopyWith<$Res> {
+  factory $ImageFacadeFailureCopyWith(
+          ImageFacadeFailure value, $Res Function(ImageFacadeFailure) then) =
+      _$ImageFacadeFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ImageFailureCopyWithImpl<$Res> implements $ImageFailureCopyWith<$Res> {
-  _$ImageFailureCopyWithImpl(this._value, this._then);
+class _$ImageFacadeFailureCopyWithImpl<$Res>
+    implements $ImageFacadeFailureCopyWith<$Res> {
+  _$ImageFacadeFailureCopyWithImpl(this._value, this._then);
 
-  final ImageFailure _value;
+  final ImageFacadeFailure _value;
   // ignore: unused_field
-  final $Res Function(ImageFailure) _then;
+  final $Res Function(ImageFacadeFailure) _then;
 }
 
 /// @nodoc
@@ -123,7 +124,8 @@ abstract class _$ImagePickCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ImagePickCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
+class __$ImagePickCopyWithImpl<$Res>
+    extends _$ImageFacadeFailureCopyWithImpl<$Res>
     implements _$ImagePickCopyWith<$Res> {
   __$ImagePickCopyWithImpl(_ImagePick _value, $Res Function(_ImagePick) _then)
       : super(_value, (v) => _then(v as _ImagePick));
@@ -154,7 +156,7 @@ class _$_ImagePick implements _ImagePick {
 
   @override
   String toString() {
-    return 'ImageFailure.imagePick(message: $message)';
+    return 'ImageFacadeFailure.imagePick(message: $message)';
   }
 
   @override
@@ -249,7 +251,7 @@ class _$_ImagePick implements _ImagePick {
   }
 }
 
-abstract class _ImagePick implements ImageFailure {
+abstract class _ImagePick implements ImageFacadeFailure {
   const factory _ImagePick(String? message) = _$_ImagePick;
 
   String? get message;
@@ -267,7 +269,8 @@ abstract class _$ImageCropCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ImageCropCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
+class __$ImageCropCopyWithImpl<$Res>
+    extends _$ImageFacadeFailureCopyWithImpl<$Res>
     implements _$ImageCropCopyWith<$Res> {
   __$ImageCropCopyWithImpl(_ImageCrop _value, $Res Function(_ImageCrop) _then)
       : super(_value, (v) => _then(v as _ImageCrop));
@@ -298,7 +301,7 @@ class _$_ImageCrop implements _ImageCrop {
 
   @override
   String toString() {
-    return 'ImageFailure.imageCrop(message: $message)';
+    return 'ImageFacadeFailure.imageCrop(message: $message)';
   }
 
   @override
@@ -393,7 +396,7 @@ class _$_ImageCrop implements _ImageCrop {
   }
 }
 
-abstract class _ImageCrop implements ImageFailure {
+abstract class _ImageCrop implements ImageFacadeFailure {
   const factory _ImageCrop(String? message) = _$_ImageCrop;
 
   String? get message;
@@ -411,7 +414,8 @@ abstract class _$ImageSizeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ImageSizeCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
+class __$ImageSizeCopyWithImpl<$Res>
+    extends _$ImageFacadeFailureCopyWithImpl<$Res>
     implements _$ImageSizeCopyWith<$Res> {
   __$ImageSizeCopyWithImpl(_ImageSize _value, $Res Function(_ImageSize) _then)
       : super(_value, (v) => _then(v as _ImageSize));
@@ -442,7 +446,7 @@ class _$_ImageSize implements _ImageSize {
 
   @override
   String toString() {
-    return 'ImageFailure.imageSize(imageSize: $imageSize)';
+    return 'ImageFacadeFailure.imageSize(imageSize: $imageSize)';
   }
 
   @override
@@ -537,7 +541,7 @@ class _$_ImageSize implements _ImageSize {
   }
 }
 
-abstract class _ImageSize implements ImageFailure {
+abstract class _ImageSize implements ImageFacadeFailure {
   const factory _ImageSize(double imageSize) = _$_ImageSize;
 
   double get imageSize;
@@ -554,7 +558,8 @@ abstract class _$ImageCancelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ImageCancelCopyWithImpl<$Res> extends _$ImageFailureCopyWithImpl<$Res>
+class __$ImageCancelCopyWithImpl<$Res>
+    extends _$ImageFacadeFailureCopyWithImpl<$Res>
     implements _$ImageCancelCopyWith<$Res> {
   __$ImageCancelCopyWithImpl(
       _ImageCancel _value, $Res Function(_ImageCancel) _then)
@@ -571,7 +576,7 @@ class _$_ImageCancel implements _ImageCancel {
 
   @override
   String toString() {
-    return 'ImageFailure.imageCancel()';
+    return 'ImageFacadeFailure.imageCancel()';
   }
 
   @override
@@ -658,6 +663,6 @@ class _$_ImageCancel implements _ImageCancel {
   }
 }
 
-abstract class _ImageCancel implements ImageFailure {
+abstract class _ImageCancel implements ImageFacadeFailure {
   const factory _ImageCancel() = _$_ImageCancel;
 }

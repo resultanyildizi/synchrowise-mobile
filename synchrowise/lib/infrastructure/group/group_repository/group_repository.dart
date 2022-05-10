@@ -10,10 +10,13 @@ import 'package:dartz/dartz.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
 
 class GroupRepository implements IGroupRepository {
+  //* Dependencies
   final Client _client;
 
-  GroupRepository(this._client);
+  //* Constructor
+  const GroupRepository(this._client);
 
+  //* Method implementations
   @override
   Future<Either<GroupRepositoryFailure, Unit>> create({
     required GroupData groupData,

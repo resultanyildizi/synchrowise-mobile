@@ -15,19 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$SplashFailureTearOff {
-  const _$SplashFailureTearOff();
+class _$SplashFacadeFailureTearOff {
+  const _$SplashFacadeFailureTearOff();
 
-  _UnknwonSplashFailure unknown() {
-    return const _UnknwonSplashFailure();
+  _UnknwonFailure unknown() {
+    return const _UnknwonFailure();
   }
 }
 
 /// @nodoc
-const $SplashFailure = _$SplashFailureTearOff();
+const $SplashFacadeFailure = _$SplashFacadeFailureTearOff();
 
 /// @nodoc
-mixin _$SplashFailure {
+mixin _$SplashFacadeFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
@@ -46,72 +46,73 @@ mixin _$SplashFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UnknwonSplashFailure value) unknown,
+    required TResult Function(_UnknwonFailure value) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UnknwonSplashFailure value)? unknown,
+    TResult Function(_UnknwonFailure value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UnknwonSplashFailure value)? unknown,
+    TResult Function(_UnknwonFailure value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SplashFailureCopyWith<$Res> {
-  factory $SplashFailureCopyWith(
-          SplashFailure value, $Res Function(SplashFailure) then) =
-      _$SplashFailureCopyWithImpl<$Res>;
+abstract class $SplashFacadeFailureCopyWith<$Res> {
+  factory $SplashFacadeFailureCopyWith(
+          SplashFacadeFailure value, $Res Function(SplashFacadeFailure) then) =
+      _$SplashFacadeFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SplashFailureCopyWithImpl<$Res>
-    implements $SplashFailureCopyWith<$Res> {
-  _$SplashFailureCopyWithImpl(this._value, this._then);
+class _$SplashFacadeFailureCopyWithImpl<$Res>
+    implements $SplashFacadeFailureCopyWith<$Res> {
+  _$SplashFacadeFailureCopyWithImpl(this._value, this._then);
 
-  final SplashFailure _value;
+  final SplashFacadeFailure _value;
   // ignore: unused_field
-  final $Res Function(SplashFailure) _then;
+  final $Res Function(SplashFacadeFailure) _then;
 }
 
 /// @nodoc
-abstract class _$UnknwonSplashFailureCopyWith<$Res> {
-  factory _$UnknwonSplashFailureCopyWith(_UnknwonSplashFailure value,
-          $Res Function(_UnknwonSplashFailure) then) =
-      __$UnknwonSplashFailureCopyWithImpl<$Res>;
+abstract class _$UnknwonFailureCopyWith<$Res> {
+  factory _$UnknwonFailureCopyWith(
+          _UnknwonFailure value, $Res Function(_UnknwonFailure) then) =
+      __$UnknwonFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnknwonSplashFailureCopyWithImpl<$Res>
-    extends _$SplashFailureCopyWithImpl<$Res>
-    implements _$UnknwonSplashFailureCopyWith<$Res> {
-  __$UnknwonSplashFailureCopyWithImpl(
-      _UnknwonSplashFailure _value, $Res Function(_UnknwonSplashFailure) _then)
-      : super(_value, (v) => _then(v as _UnknwonSplashFailure));
+class __$UnknwonFailureCopyWithImpl<$Res>
+    extends _$SplashFacadeFailureCopyWithImpl<$Res>
+    implements _$UnknwonFailureCopyWith<$Res> {
+  __$UnknwonFailureCopyWithImpl(
+      _UnknwonFailure _value, $Res Function(_UnknwonFailure) _then)
+      : super(_value, (v) => _then(v as _UnknwonFailure));
 
   @override
-  _UnknwonSplashFailure get _value => super._value as _UnknwonSplashFailure;
+  _UnknwonFailure get _value => super._value as _UnknwonFailure;
 }
 
 /// @nodoc
 
-class _$_UnknwonSplashFailure implements _UnknwonSplashFailure {
-  const _$_UnknwonSplashFailure();
+@Implements<UnknownSynchrowiseFailure>()
+class _$_UnknwonFailure implements _UnknwonFailure {
+  const _$_UnknwonFailure();
 
   @override
   String toString() {
-    return 'SplashFailure.unknown()';
+    return 'SplashFacadeFailure.unknown()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UnknwonSplashFailure);
+        (other.runtimeType == runtimeType && other is _UnknwonFailure);
   }
 
   @override
@@ -148,7 +149,7 @@ class _$_UnknwonSplashFailure implements _UnknwonSplashFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UnknwonSplashFailure value) unknown,
+    required TResult Function(_UnknwonFailure value) unknown,
   }) {
     return unknown(this);
   }
@@ -156,7 +157,7 @@ class _$_UnknwonSplashFailure implements _UnknwonSplashFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UnknwonSplashFailure value)? unknown,
+    TResult Function(_UnknwonFailure value)? unknown,
   }) {
     return unknown?.call(this);
   }
@@ -164,7 +165,7 @@ class _$_UnknwonSplashFailure implements _UnknwonSplashFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UnknwonSplashFailure value)? unknown,
+    TResult Function(_UnknwonFailure value)? unknown,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -174,6 +175,7 @@ class _$_UnknwonSplashFailure implements _UnknwonSplashFailure {
   }
 }
 
-abstract class _UnknwonSplashFailure implements SplashFailure {
-  const factory _UnknwonSplashFailure() = _$_UnknwonSplashFailure;
+abstract class _UnknwonFailure
+    implements SplashFacadeFailure, UnknownSynchrowiseFailure {
+  const factory _UnknwonFailure() = _$_UnknwonFailure;
 }

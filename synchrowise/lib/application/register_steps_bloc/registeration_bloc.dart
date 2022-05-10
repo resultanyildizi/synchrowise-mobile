@@ -95,7 +95,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
                 (user) async {
                   final failureOrAvatar = await _iAvatarRepo.create(
                     avatar: image,
-                    ownerId: user.synchrowiseId,
+                    owner: user,
                   );
 
                   return failureOrAvatar.fold(

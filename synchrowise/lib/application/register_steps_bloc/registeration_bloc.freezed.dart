@@ -1350,7 +1350,8 @@ class _$RegisterationStateTearOff {
   _RegisterationState call(
       {required Option<Either<ValueFailure, String>>
           valueFailureOrUsernameOption,
-      required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      required Option<Either<ImageFacadeFailure, File>>
+          imageFailureOrImageOption,
       required Option<Either<AvatarRepositoryFailure, Unit>>
           avatarFailureOrAvatarOption,
       required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
@@ -1380,7 +1381,7 @@ const $RegisterationState = _$RegisterationStateTearOff();
 mixin _$RegisterationState {
   Option<Either<ValueFailure, String>> get valueFailureOrUsernameOption =>
       throw _privateConstructorUsedError;
-  Option<Either<ImageFailure, File>> get imageFailureOrImageOption =>
+  Option<Either<ImageFacadeFailure, File>> get imageFailureOrImageOption =>
       throw _privateConstructorUsedError;
   Option<Either<AvatarRepositoryFailure, Unit>>
       get avatarFailureOrAvatarOption => throw _privateConstructorUsedError;
@@ -1404,7 +1405,7 @@ abstract class $RegisterationStateCopyWith<$Res> {
       _$RegisterationStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
-      Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      Option<Either<ImageFacadeFailure, File>> imageFailureOrImageOption,
       Option<Either<AvatarRepositoryFailure, Unit>> avatarFailureOrAvatarOption,
       Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
@@ -1443,7 +1444,7 @@ class _$RegisterationStateCopyWithImpl<$Res>
       imageFailureOrImageOption: imageFailureOrImageOption == freezed
           ? _value.imageFailureOrImageOption
           : imageFailureOrImageOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ImageFailure, File>>,
+              as Option<Either<ImageFacadeFailure, File>>,
       avatarFailureOrAvatarOption: avatarFailureOrAvatarOption == freezed
           ? _value.avatarFailureOrAvatarOption
           : avatarFailureOrAvatarOption // ignore: cast_nullable_to_non_nullable
@@ -1481,7 +1482,7 @@ abstract class _$RegisterationStateCopyWith<$Res>
   @override
   $Res call(
       {Option<Either<ValueFailure, String>> valueFailureOrUsernameOption,
-      Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      Option<Either<ImageFacadeFailure, File>> imageFailureOrImageOption,
       Option<Either<AvatarRepositoryFailure, Unit>> avatarFailureOrAvatarOption,
       Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
           usernameFailureOrUnitOption,
@@ -1522,7 +1523,7 @@ class __$RegisterationStateCopyWithImpl<$Res>
       imageFailureOrImageOption: imageFailureOrImageOption == freezed
           ? _value.imageFailureOrImageOption
           : imageFailureOrImageOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ImageFailure, File>>,
+              as Option<Either<ImageFacadeFailure, File>>,
       avatarFailureOrAvatarOption: avatarFailureOrAvatarOption == freezed
           ? _value.avatarFailureOrAvatarOption
           : avatarFailureOrAvatarOption // ignore: cast_nullable_to_non_nullable
@@ -1568,7 +1569,7 @@ class _$_RegisterationState extends _RegisterationState {
   @override
   final Option<Either<ValueFailure, String>> valueFailureOrUsernameOption;
   @override
-  final Option<Either<ImageFailure, File>> imageFailureOrImageOption;
+  final Option<Either<ImageFacadeFailure, File>> imageFailureOrImageOption;
   @override
   final Option<Either<AvatarRepositoryFailure, Unit>>
       avatarFailureOrAvatarOption;
@@ -1637,7 +1638,8 @@ abstract class _RegisterationState extends RegisterationState {
   const factory _RegisterationState(
       {required Option<Either<ValueFailure, String>>
           valueFailureOrUsernameOption,
-      required Option<Either<ImageFailure, File>> imageFailureOrImageOption,
+      required Option<Either<ImageFacadeFailure, File>>
+          imageFailureOrImageOption,
       required Option<Either<AvatarRepositoryFailure, Unit>>
           avatarFailureOrAvatarOption,
       required Option<Either<SynchrowiseUserRepositoryFailure, Unit>>
@@ -1652,7 +1654,7 @@ abstract class _RegisterationState extends RegisterationState {
   @override
   Option<Either<ValueFailure, String>> get valueFailureOrUsernameOption;
   @override
-  Option<Either<ImageFailure, File>> get imageFailureOrImageOption;
+  Option<Either<ImageFacadeFailure, File>> get imageFailureOrImageOption;
   @override
   Option<Either<AvatarRepositoryFailure, Unit>> get avatarFailureOrAvatarOption;
   @override
