@@ -90,6 +90,8 @@ class _DefaultTextAreaFieldState extends State<DefaultTextAreaField> {
                 Expanded(
                   child: TextFormField(
                     key: _textFieldKey,
+                    minLines: 6,
+                    maxLines: 6,
                     focusNode: _focusNode,
                     controller: _controller,
                     style: Theme.of(context)

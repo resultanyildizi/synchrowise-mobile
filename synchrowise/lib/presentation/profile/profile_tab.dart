@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
-import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
-import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class ProfileTab extends StatelessWidget {
   final SynchrowiseUser synchrowiseUser;
@@ -56,8 +54,18 @@ class ProfileTab extends StatelessWidget {
         icon: Icons.logout,
         btnText: "sign_out".tr(),
         onTap: () {
-          final profileBloc = context.read<ProfileBloc>();
-          profileBloc.signOut();
+          return synchrowisePopup(
+            context,
+            "signout".tr(),
+            "signout_desc".tr(),
+            "no".tr(),
+            () => SynchrowiseNavigator.pop(context),
+            "yes".tr(),
+            () {
+              final profileBloc = context.read<ProfileBloc>();
+              profileBloc.signOut();
+            },
+          );
         },
       ),
       SettingsSectionModel(

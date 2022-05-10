@@ -149,43 +149,41 @@ class _RegisterPageState extends State<RegisterPage> {
       create: (context) => getIt<RegisterationBloc>(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25.0),
-              child: MultiBlocListener(
-                listeners: [
-                  _getAuthBlocListener,
-                  _getRegisterFailureBlocListener,
-                  _getRegisterSuccessBlocListener,
-                  _getRegisterPageAnimatorListener,
-                ],
-                child: BlocBuilder<RegisterationBloc, RegisterationState>(
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                          child: ThinLineStepper(
-                            lineCount: 3,
-                            activeLineIndex: {state.step},
-                          ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 25.0),
+            child: MultiBlocListener(
+              listeners: [
+                _getAuthBlocListener,
+                _getRegisterFailureBlocListener,
+                _getRegisterSuccessBlocListener,
+                _getRegisterPageAnimatorListener,
+              ],
+              child: BlocBuilder<RegisterationBloc, RegisterationState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: ThinLineStepper(
+                          lineCount: 3,
+                          activeLineIndex: {state.step},
                         ),
-                        Expanded(
-                          child: PageView(
-                            physics: const NeverScrollableScrollPhysics(),
-                            controller: _pageController,
-                            children: const [
-                              RegisterSteps0(),
-                              RegisterSteps1(),
-                              RegisterSteps2(),
-                            ],
-                          ),
+                      ),
+                      Expanded(
+                        child: PageView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: _pageController,
+                          children: const [
+                            RegisterSteps0(),
+                            RegisterSteps1(),
+                            RegisterSteps2(),
+                          ],
                         ),
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

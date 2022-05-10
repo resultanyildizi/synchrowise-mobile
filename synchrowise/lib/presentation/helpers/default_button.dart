@@ -13,6 +13,7 @@ class DefaultButton extends StatelessWidget {
     required this.padding,
     this.height = 55,
     this.showProgress = false,
+    this.style,
     required this.onTap,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class DefaultButton extends StatelessWidget {
   final String text;
   final double padding;
   final double? height;
+  final TextStyle? style;
   final bool showProgress;
   final Function() onTap;
 
@@ -50,10 +52,11 @@ class DefaultButton extends StatelessWidget {
             : Text(
                 text,
                 textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4!
-                    .copyWith(color: textColor),
+                style: style ??
+                    Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(color: textColor),
               ),
       ),
     );

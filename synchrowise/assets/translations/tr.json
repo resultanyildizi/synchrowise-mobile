@@ -60,6 +60,8 @@
     "group_name_is_required": "Group ismi gerekli",
     "group_name": "Grup ismi",
     "group_name_desc": "Kullanmak istediğin bir kullanıcı adı seç. Diğer kullanıcılar bu eşsiz isim ile grubuna katılacaklar.",
+    "group_desc_title": "Grup Açıklaması",
+    "group_desc_subtitle": "Oluşturacağın gruba bir açıklama ekle.",
     "settings_desc": "Uygulama ayarlarını güncelle",
     "save": "Kaydet",
     "delete_account": "Hesabı sil",
@@ -78,5 +80,7 @@
     "yes": "Evet",
     "no": "Hayır",
     "profile": "Profil",
-    "home": "Anasayfa"
+    "home": "Anasayfa",
+    "signout": "Çıkış Yap",
+    "signout_desc": "Çıkış yapmak istediğine emin misin?"
 }

@@ -76,7 +76,7 @@ class _CreateGroupSteps1State extends State<CreateGroupSteps1>
                 title: "group_desc_title".tr(),
                 desc: "group_desc_subtitle".tr(),
                 btnText: "complete".tr(),
-                hintText: "group_desc".tr(),
+                hintText: "group_desc_title".tr(),
                 errorText: _getGroupDescErrorText(state),
                 focusNode: _focusNode,
               ),
