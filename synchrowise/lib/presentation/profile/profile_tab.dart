@@ -34,14 +34,16 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     List<SettingsSectionModel> settingsSection1 = [
       SettingsSectionModel(
-        icon: Icons.add_photo_alternate,
+        prefixIcon: Icons.add_photo_alternate,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "avatar".tr(),
         onTap: () {
           SynchrowiseNavigator.pushNamed(context, "/profile-update-avatar");
         },
       ),
       SettingsSectionModel(
-        icon: Icons.person,
+        prefixIcon: Icons.person,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "username".tr(),
         onTap: () {
           SynchrowiseNavigator.pushNamed(context, "/profile-update-username");
@@ -51,7 +53,8 @@ class ProfileTab extends StatelessWidget {
 
     List<SettingsSectionModel> settingsSection2 = [
       SettingsSectionModel(
-        icon: Icons.logout,
+        prefixIcon: Icons.logout,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "sign_out".tr(),
         onTap: () {
           return synchrowisePopup(
@@ -69,7 +72,8 @@ class ProfileTab extends StatelessWidget {
         },
       ),
       SettingsSectionModel(
-        icon: Icons.delete,
+        prefixIcon: Icons.delete,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "delete_account".tr(),
         onTap: () {
           return synchrowisePopup(
