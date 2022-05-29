@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
+import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 
 class GroupActionCards extends StatelessWidget {
   const GroupActionCards({
@@ -10,14 +11,16 @@ class GroupActionCards extends StatelessWidget {
     required this.cardBackgroundImage,
     required this.title,
     required this.desc,
-    this.color = Colors.white,
     required this.onTap,
+    required this.showProgress,
+    this.color = Colors.white,
   }) : super(key: key);
 
   final String cardBackgroundImage;
   final String title;
   final String desc;
   final Color? color;
+  final bool showProgress;
   final Function() onTap;
 
   @override
@@ -32,24 +35,26 @@ class GroupActionCards extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
           ),
           Column(
-            children: [
-              Text(
-                title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline2!
-                    .copyWith(color: color),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                desc,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(color: color),
-                textAlign: TextAlign.center,
-              ),
-            ],
+            children: showProgress
+                ? [const WaveLoadingIndicator(size: 22)]
+                : [
+                    Text(
+                      title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(color: color),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      desc,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(color: color),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
           ),
         ],
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
+import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -43,12 +42,7 @@ class DefaultButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: showProgress
-            ? const SpinKitWave(
-                color: Colors.white,
-                itemCount: 3,
-                size: 14,
-                duration: Duration(milliseconds: 1500),
-              )
+            ? const WaveLoadingIndicator()
             : Text(
                 text,
                 textAlign: TextAlign.center,

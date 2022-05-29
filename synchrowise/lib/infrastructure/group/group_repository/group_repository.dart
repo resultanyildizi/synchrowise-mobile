@@ -148,6 +148,8 @@ class GroupRepository implements IGroupRepository {
 
       if (result.statusCode == 200) {
         return right(GroupData.fromMap(json.decode(result.body)));
+      } else if (result.statusCode == 404) {
+        return left(const GroupRepositoryFailure.notFound());
       } else {
         return left(GroupRepositoryFailure.server(
           result.statusCode,

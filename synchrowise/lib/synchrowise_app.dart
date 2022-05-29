@@ -116,7 +116,7 @@ class SynchrowiseApp extends StatelessWidget {
             case "/register":
               nextPage = const RegisterPage();
               break;
-            case "/create_group":
+            case "/create-group":
               nextPage = const CreateGroupPage();
               break;
             case "/profile-update-username":

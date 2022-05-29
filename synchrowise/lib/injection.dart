@@ -6,6 +6,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/group_bloc/bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
@@ -78,48 +79,55 @@ Future<void> _setupInfrastructure() async {
 }
 
 Future<void> _setupBlocs() async {
-  getIt.registerFactory<AuthBloc>(
-    () => AuthBloc(
+  getIt.registerFactory<AuthBloc>(() {
+    return AuthBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserStorage>(),
-    ),
-  );
-  getIt.registerFactory<SigninFormBloc>(
-    () => SigninFormBloc(
-      getIt<IAuthFacade>(),
-      getIt<ISynchrowiseUserRepository>(),
-      getIt<ISynchrowiseUserStorage>(),
-    ),
-  );
-  getIt.registerFactory<SignupFormBloc>(
-    () => SignupFormBloc(
+    );
+  });
+  getIt.registerFactory<SigninFormBloc>(() {
+    return SigninFormBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserRepository>(),
       getIt<ISynchrowiseUserStorage>(),
-    ),
-  );
+    );
+  });
+  getIt.registerFactory<SignupFormBloc>(() {
+    return SignupFormBloc(
+      getIt<IAuthFacade>(),
+      getIt<ISynchrowiseUserRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+    );
+  });
 
-  getIt.registerFactory<RegisterationBloc>(
-    () => RegisterationBloc(
+  getIt.registerFactory<RegisterationBloc>(() {
+    return RegisterationBloc(
       getIt<ISynchrowiseUserRepository>(),
       getIt<IAvatarRepository>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<IImageFacade>(),
-    ),
-  );
+    );
+  });
 
-  getIt.registerFactory<CreateGroupBloc>(
-    () => CreateGroupBloc(
+  getIt.registerFactory<CreateGroupBloc>(() {
+    return CreateGroupBloc(
       getIt<ISynchrowiseUserStorage>(),
       getIt<IGroupRepository>(),
-    ),
-  );
+    );
+  });
 
-  getIt.registerFactory<ProfileBloc>(
-    () => ProfileBloc(
+  getIt.registerFactory<ProfileBloc>(() {
+    return ProfileBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<ISynchrowiseUserRepository>(),
-    ),
-  );
+    );
+  });
+
+  getIt.registerFactory<GetGroupBloc>(() {
+    return GetGroupBloc(
+      getIt<IGroupRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+    );
+  });
 }
