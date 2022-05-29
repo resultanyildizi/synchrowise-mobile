@@ -26,9 +26,9 @@ class SettingSections extends StatelessWidget {
                 onTap: () => settingSectionList[i].onTap(),
                 child: Row(
                   children: [
-                    settingSectionList[i].icon != null
+                    settingSectionList[i].prefixIcon != null
                         ? Icon(
-                            settingSectionList[i].icon,
+                            settingSectionList[i].prefixIcon,
                             size: 25,
                             color: grayDarkColor2,
                           )
@@ -42,11 +42,19 @@ class SettingSections extends StatelessWidget {
                           .copyWith(color: Colors.black),
                     ),
                     const Spacer(),
-                    const Icon(
-                      Icons.keyboard_arrow_right,
-                      size: 25,
-                      color: grayDarkColor,
-                    ),
+                    settingSectionList[i].suffixIcon != null
+                        ? Icon(
+                            settingSectionList[i].suffixIcon,
+                            size: 25,
+                            color: settingSectionList[i].suffixIconColor ??
+                                grayDarkColor,
+                          )
+                        : Transform.scale(
+                            alignment: Alignment.centerRight,
+                            scale: 0.7,
+                            child: settingSectionList[i].suffixWidget,
+                          ),
+                    const SizedBox(width: 4),
                   ],
                 ),
               ),
@@ -68,13 +76,19 @@ class SettingSections extends StatelessWidget {
 }
 
 class SettingsSectionModel {
-  final IconData? icon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final Widget? suffixWidget;
+  final Color? suffixIconColor;
   final String btnText;
   final Function() onTap;
 
   SettingsSectionModel({
-    required this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.suffixWidget,
+    this.suffixIconColor,
     required this.btnText,
     required this.onTap,
-  });
+  }) : assert(!(suffixIcon != null && suffixWidget != null));
 }

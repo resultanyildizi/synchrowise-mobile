@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({Key? key}) : super(key: key);
@@ -9,35 +10,47 @@ class SettingsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     List<SettingsSectionModel> settingsSection1 = [
       SettingsSectionModel(
-        icon: Icons.language,
+        prefixIcon: Icons.language,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "language".tr(),
-        onTap: () {},
+        onTap: () {
+          SynchrowiseNavigator.pushNamed(context, "/language");
+        },
       ),
       SettingsSectionModel(
-        icon: Icons.notifications,
+        prefixIcon: Icons.notifications,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "notifications".tr(),
-        onTap: () {},
+        onTap: () {
+          SynchrowiseNavigator.pushNamed(context, "/notifications");
+        },
       )
     ];
 
     List<SettingsSectionModel> settingsSection2 = [
       SettingsSectionModel(
-        icon: Icons.language,
+        prefixIcon: Icons.language,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "about_us".tr(),
         onTap: () {},
       ),
       SettingsSectionModel(
-        icon: Icons.mail,
+        prefixIcon: Icons.mail,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "contact_us".tr(),
-        onTap: () {},
+        onTap: () {
+          SynchrowiseNavigator.pushNamed(context, "/contact_us");
+        },
       ),
       SettingsSectionModel(
-        icon: Icons.privacy_tip,
+        prefixIcon: Icons.privacy_tip,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "privacy_policy".tr(),
         onTap: () {},
       ),
       SettingsSectionModel(
-        icon: Icons.article,
+        prefixIcon: Icons.article,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "terms_of_service".tr(),
         onTap: () {},
       )
@@ -45,12 +58,14 @@ class SettingsTab extends StatelessWidget {
 
     List<SettingsSectionModel> settingsSection3 = [
       SettingsSectionModel(
-        icon: Icons.thumb_up,
+        prefixIcon: Icons.thumb_up,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "rate_us".tr(),
         onTap: () {},
       ),
       SettingsSectionModel(
-        icon: Icons.share,
+        prefixIcon: Icons.share,
+        suffixIcon: Icons.keyboard_arrow_right,
         btnText: "share_us".tr(),
         onTap: () {},
       ),

@@ -9,6 +9,10 @@ import 'package:synchrowise/presentation/auth/reset_password_page.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
+import 'package:synchrowise/presentation/group/join_group_page.dart';
+import 'package:synchrowise/presentation/settings/contact_us_settings_page.dart';
+import 'package:synchrowise/presentation/settings/language_settings_page.dart';
+import 'package:synchrowise/presentation/settings/notifications_settings_page.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
@@ -124,6 +128,18 @@ class SynchrowiseApp extends StatelessWidget {
               break;
             case "/profile-update-avatar":
               nextPage = const ProfileUpdateAvatarPage();
+              break;
+            case "/join_group":
+              nextPage = const JoinGroupPage();
+              break;
+            case "/notifications":
+              nextPage = const NotificationsSettingsPage();
+              break;
+            case "/language":
+              nextPage = const LanguageSettingsPage();
+              break;
+            case "/contact_us":
+              nextPage = const ContactUsSettingsPage();
               break;
           }
 

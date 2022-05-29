@@ -83,5 +83,13 @@
     "profile": "Profil",
     "home": "Anasayfa",
     "signout": "Çıkış Yap",
-    "signout_desc": "Çıkış yapmak istediğine emin misin?"
+    "signout_desc": "Çıkış yapmak istediğine emin misin?",
+    "join_group": "Gruba Katıl",
+    "join_group_desc": "Gruba katıl açıklaması",
+    "group_key": "Grup kodu",
+    "join": "Katıl",
+    "group_notifications": "Group Bildirimleri",
+    "message_notifications": "Mesaj Bildirimleri",
+    "turkish": "Türkçe",
+    "english": "İngilizce"
 }

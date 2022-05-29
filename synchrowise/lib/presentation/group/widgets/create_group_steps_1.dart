@@ -65,6 +65,10 @@ class _CreateGroupSteps1State extends State<CreateGroupSteps1>
                   createGroupBloc.goBack();
                 },
               ),
+              Text(
+                "group_desc_title".tr(),
+                style: Theme.of(context).textTheme.headline2,
+              ),
               SingleTextAreaFieldForm(
                 onTextChanged: (groupDesc) {
                   final createGroupBloc = context.read<CreateGroupBloc>();
@@ -73,7 +77,6 @@ class _CreateGroupSteps1State extends State<CreateGroupSteps1>
                 saveButton: () {
                   // final createGroupBloc = context.read<CreateGroupBloc>();
                 },
-                title: "group_desc_title".tr(),
                 desc: "group_desc_subtitle".tr(),
                 btnText: "complete".tr(),
                 hintText: "group_desc_title".tr(),

@@ -7,7 +7,6 @@ import 'package:synchrowise/presentation/helpers/default_text_area_field.dart';
 class SingleTextAreaFieldForm extends StatelessWidget {
   final Function(String text) onTextChanged;
   final Function() saveButton;
-  final String title;
   final String desc;
   final String btnText;
   final String hintText;
@@ -18,7 +17,6 @@ class SingleTextAreaFieldForm extends StatelessWidget {
     Key? key,
     required this.onTextChanged,
     required this.saveButton,
-    required this.title,
     required this.desc,
     required this.btnText,
     required this.hintText,
@@ -32,10 +30,6 @@ class SingleTextAreaFieldForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 32),
-        Text(
-          title.tr(),
-          style: Theme.of(context).textTheme.headline2,
-        ),
         Text(
           desc.tr(),
           style: Theme.of(context).textTheme.subtitle1,

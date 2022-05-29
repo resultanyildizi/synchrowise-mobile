@@ -126,8 +126,10 @@ class HomeTab extends StatelessWidget {
                     cardBackgroundImage: blueCardImagePath,
                     title: "join_a_group".tr(),
                     desc: "join_a_group_description".tr(),
-                    onTap: () {},
                     showProgress: false,
+                    onTap: () {
+                      SynchrowiseNavigator.pushNamed(context, '/join-group');
+                    },
                   ),
                 ],
               );
