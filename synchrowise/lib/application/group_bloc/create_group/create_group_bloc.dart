@@ -25,7 +25,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
   void saveGroupDesc() => add(const CreateGroupEvent.saveDesc());
   void goBack() => add(const CreateGroupEvent.goBack());
 
-  GroupData? groupData;
+  GroupData? _groupData;
 
   CreateGroupBloc(
     this._iUserStorage,
@@ -41,7 +41,14 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
             state.copyWith(failureOrGroupNameOption: some(validatedGroupName)),
           );
         },
-        updateGroupDescText: (event) {},
+        updateGroupDescText: (event) {
+          final validatedGroupDesc =
+              validateGroupDesc(groupDesc: event.groupDesc.trim());
+
+          emit(
+            state.copyWith(failureOrGroupDescOption: some(validatedGroupDesc)),
+          );
+        },
         saveGroupName: (event) async {
           emit(state.copyWith(
             progressing: true,
@@ -65,19 +72,19 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 );
               },
               (user) async {
-                groupData = GroupData.toCreateGroup(
+                _groupData = GroupData.toCreateGroup(
                   groupName: groupName,
                   groupOwner: user,
                 );
 
                 late Either<GroupRepositoryFailure, Unit> failureOrUnit;
 
-                if (groupData == null) {
+                if (_groupData == null) {
                   failureOrUnit = await _iGroupRepository.create(
-                    groupData: groupData!,
+                    groupData: _groupData!,
                   );
                 } else {
-                  if (groupData!.groupName != groupName) {
+                  if (_groupData!.groupName != groupName) {
                     // Todo: update group name
                     // failureOrUnit = await _iGroupRepository.update(
                     //   groupData: groupData!,
@@ -109,7 +116,20 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
             emit(state.copyWith(showErrors: true));
           }
         },
-        saveDesc: (event) {},
+        saveDesc: (event) {
+          final newState = state.failureOrGroupDescOption.fold(
+            () {
+              return state.copyWith(showErrors: true);
+            },
+            (groupDesc) {
+              return state.copyWith(
+                groupDescFailureOrUnitOption: some(right(unit)),
+              );
+            },
+          );
+
+          emit(newState);
+        },
         goBack: (_) {
           assert(
             state.step > 0,

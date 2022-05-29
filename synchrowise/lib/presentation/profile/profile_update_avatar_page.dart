@@ -153,9 +153,7 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
 
                                     authState.maybeMap(
                                       authorized: (state) {
-                                        registerationBloc.registerFields(
-                                          synchrowiseUser: state.user,
-                                        );
+                                        registerationBloc.registerFields();
                                       },
                                       orElse: () => null,
                                     );

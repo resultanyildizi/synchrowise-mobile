@@ -42,7 +42,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
   void removeAvatarImage() => add(const RegisterationEvent.removeAvatarImage());
   void updateUsernameText({required String username}) =>
       add(RegisterationEvent.updateUsernameText(username: username));
-  void registerFields({required SynchrowiseUser synchrowiseUser}) {
+  void registerFields() {
     add(const RegisterationEvent.registerFields());
   }
 

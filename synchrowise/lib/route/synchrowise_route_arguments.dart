@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 
 class SynchrowiseRouteArguments {
   final BuildContext context;
@@ -9,4 +8,13 @@ class SynchrowiseRouteArguments {
   }
 
   SynchrowiseRouteArguments(this.context);
+}
+
+class CreateGroupPageRouteArguments extends SynchrowiseRouteArguments {
+  final void Function() onSuccess;
+
+  CreateGroupPageRouteArguments(
+    BuildContext context, {
+    required this.onSuccess,
+  }) : super(context);
 }

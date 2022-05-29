@@ -82,9 +82,7 @@ class RegisterSteps2 extends StatelessWidget {
 
                     authState.maybeMap(
                       authorized: (state) {
-                        registerStepsBloc.registerFields(
-                          synchrowiseUser: state.user,
-                        );
+                        registerStepsBloc.registerFields();
                       },
                       orElse: () => null,
                     );

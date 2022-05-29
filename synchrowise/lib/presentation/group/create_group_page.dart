@@ -1,18 +1,27 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
+import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
-import 'package:synchrowise/route/synchrowise_navigator.dart';
-import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/group/widgets/create_group_steps_0.dart';
 import 'package:synchrowise/presentation/group/widgets/create_group_steps_1.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
+import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 
 class CreateGroupPage extends StatefulWidget {
-  const CreateGroupPage({Key? key}) : super(key: key);
+  final void Function() onSuccess;
+
+  const CreateGroupPage({
+    Key? key,
+    required this.onSuccess,
+  }) : super(key: key);
 
   @override
   State<CreateGroupPage> createState() => _CreateGroupPageState();
@@ -73,18 +82,15 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
 
           failureOrUnit.fold(
             (f) {
-              f.map(
+              f.maybeMap(
                 connection: (_) {
                   showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
                 },
                 server: (_) {
                   showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
                 },
-                unknown: (_) {
+                orElse: () {
                   showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-                },
-                notFound: (_) {
-                  showErrorToast("not_found_error".tr(), ToastGravity.BOTTOM);
                 },
               );
             },
@@ -96,18 +102,15 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
 
           failureOrUnit.fold(
             (f) {
-              f.map(
+              f.maybeMap(
                 connection: (_) {
                   showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
                 },
                 server: (_) {
                   showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
                 },
-                unknown: (_) {
+                orElse: () {
                   showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-                },
-                notFound: (_) {
-                  showErrorToast("not_found_error".tr(), ToastGravity.BOTTOM);
                 },
               );
             },
@@ -121,24 +124,28 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
   BlocListener get _getCreateGroupSuccessBlocListener {
     return BlocListener<CreateGroupBloc, CreateGroupState>(
       listenWhen: (previous, current) {
-        return current.failureOrGroupDescOption.isSome() &&
-            current.failureOrGroupNameOption.isSome() &&
+        return current.groupDescFailureOrUnitOption.isSome() &&
+            current.groupNameFailureOrUnitOption.isSome() &&
             current.storageFailureOrUnitOption.isSome();
       },
       listener: (context, state) {
-        final groupDescSuccess = state.failureOrGroupDescOption
-            .fold(() => throw AssertionError(), (fou) => fou.isRight());
-
         final storageSuccess = state.storageFailureOrUnitOption
             .fold(() => throw AssertionError(), (fos) => fos.isRight());
 
-        final groupNameSuccess = state.failureOrGroupNameOption
+        final groupDescSuccess = state.groupDescFailureOrUnitOption
+            .fold(() => throw AssertionError(), (fou) => fou.isRight());
+
+        final groupNameSuccess = state.groupNameFailureOrUnitOption
             .fold(() => throw AssertionError(), (foa) => foa.isRight());
+
+        log("storageSuccess: $storageSuccess");
+        log("groupDescSuccess: $groupDescSuccess");
+        log("groupNameSuccess: $groupNameSuccess");
 
         final success = groupNameSuccess && storageSuccess && groupDescSuccess;
 
         if (success) {
-          // TODO : go to group info page
+          widget.onSuccess();
         }
       },
     );

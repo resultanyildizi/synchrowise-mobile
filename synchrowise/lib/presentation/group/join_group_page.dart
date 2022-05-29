@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
-import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/presentation/core/widgets/single_text_field_form.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
