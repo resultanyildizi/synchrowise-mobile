@@ -9,6 +9,7 @@ import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
+import 'package:synchrowise/application/language_bloc/language_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
@@ -127,6 +128,10 @@ Future<void> _setupBlocs() async {
 
   getIt.registerFactory<BottomNavbarBloc>(() {
     return BottomNavbarBloc();
+  });
+
+  getIt.registerFactory<LanguageBloc>(() {
+    return LanguageBloc();
   });
 
   getIt.registerFactory<GetGroupBloc>(() {

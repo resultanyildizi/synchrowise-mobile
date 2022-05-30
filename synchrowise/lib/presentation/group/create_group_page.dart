@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
-import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';

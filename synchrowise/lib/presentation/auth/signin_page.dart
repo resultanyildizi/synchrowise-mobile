@@ -8,7 +8,6 @@ import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
-import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
@@ -112,7 +111,9 @@ class SigninPage extends StatelessWidget {
                       handleSynchrowiseFailure(context, failure);
                     }
                   },
-                  (user) {
+                  (_) {
+                    log(_.toString());
+
                     context.read<AuthBloc>().check();
                   },
                 );

@@ -1,17 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:kt_dart/kt.dart';
+
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 
 @immutable
 class GroupData extends Equatable {
   final String groupName;
   final String groupId;
+  final String groupDesc;
   final SynchrowiseUser groupOwner;
   final KtList<SynchrowiseUser> members;
 
   const GroupData({
     required this.groupName,
+    required this.groupDesc,
     required this.groupId,
     required this.members,
     required this.groupOwner,
@@ -20,10 +23,12 @@ class GroupData extends Equatable {
   factory GroupData.toCreateGroup({
     required String groupName,
     required SynchrowiseUser groupOwner,
+    required String groupDesc,
   }) {
     return GroupData(
       groupName: groupName,
       groupOwner: groupOwner,
+      groupDesc: '',
       groupId: '',
       members: const KtList.empty(),
     );
@@ -34,8 +39,12 @@ class GroupData extends Equatable {
     return GroupData(
       groupName: map['groupName'],
       groupOwner: map['ownerId'],
-      members: KtList.from(map['members']),
-      groupId: map['groupId'],
+      groupDesc: map['description'],
+      members: KtList.from(map['groupMember'] as List<dynamic>)
+          .cast<Map<String, dynamic>>()
+          .map((e) => SynchrowiseUser.fromMap(e))
+          .toList(),
+      groupId: map['guid'],
     );
   }
 
@@ -43,6 +52,16 @@ class GroupData extends Equatable {
     return {
       'groupName': groupName,
       'ownerID': groupOwner.synchrowiseId,
+      'description': groupDesc,
+    };
+  }
+
+  Map<String, dynamic> toUpdateMap() {
+    return {
+      'groupName': groupName,
+      'description': groupDesc,
+      'ownerID': groupOwner.synchrowiseId,
+      'groupId': groupId,
     };
   }
 
@@ -54,6 +73,22 @@ class GroupData extends Equatable {
 
   @override
   List<Object> get props => [groupName, groupOwner, groupId, members];
+
+  GroupData copyWith({
+    String? groupName,
+    String? groupId,
+    String? groupDesc,
+    SynchrowiseUser? groupOwner,
+    KtList<SynchrowiseUser>? members,
+  }) {
+    return GroupData(
+      groupName: groupName ?? this.groupName,
+      groupId: groupId ?? this.groupId,
+      groupDesc: groupDesc ?? this.groupDesc,
+      groupOwner: groupOwner ?? this.groupOwner,
+      members: members ?? this.members,
+    );
+  }
 }
 
 // {

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
-import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
@@ -92,6 +91,8 @@ class ProfileTab extends StatelessWidget {
         },
       )
     ];
+
+    log(context.synchrowiseUser.toMap().toString());
 
     return MultiBlocListener(
       listeners: [_getProfileBlocListener],

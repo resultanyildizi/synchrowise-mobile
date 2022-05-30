@@ -29,16 +29,16 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
   String? _getGroupNameErrorText(CreateGroupState state) {
     return state.showErrors
         ? state.failureOrGroupNameOption.fold(
-            () => "group_name_is_required".tr(),
+            () => "group_key_is_required".tr(),
             (fou) => fou.fold(
               (l) {
                 return l.maybeMap(
                   minLength: (failure) {
-                    return "group_name_must_be_at_least_min_characters"
+                    return "group_key_must_be_at_least_min_characters"
                         .tr(namedArgs: {"min": failure.length.toString()});
                   },
                   invalidGroupName: (_) {
-                    return "group_name_is_invalid".tr();
+                    return "group_key_is_invalid".tr();
                   },
                   orElse: () {
                     return null;
@@ -86,10 +86,10 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
                   final createGroupBloc = context.read<CreateGroupBloc>();
                   createGroupBloc.saveGroupName();
                 },
-                title: "group_name".tr(),
-                desc: "group_name_desc".tr(),
+                title: "group_key".tr(),
+                desc: "group_key_desc".tr(),
                 btnText: "continue".tr(),
-                hintText: "group_name".tr(),
+                hintText: "group_key".tr(),
                 errorText: _getGroupNameErrorText(state),
                 focusNode: _focusNode,
               ),

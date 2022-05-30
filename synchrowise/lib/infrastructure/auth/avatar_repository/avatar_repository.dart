@@ -9,7 +9,6 @@ import 'package:synchrowise/infrastructure/auth/avatar_repository/failure/avatar
 import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:dartz/dartz.dart';
 import 'dart:io';
-import 'package:http_parser/http_parser.dart';
 
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
 import 'package:synchrowise/infrastructure/core/string_values.dart';

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
@@ -124,7 +122,7 @@ class _HomePageTabViewState extends State<HomePageTabView>
                   child: PageView(
                     physics: const NeverScrollableScrollPhysics(),
                     controller: _pageController,
-                    children: [ProfileTab(), HomeTab(), SettingsTab()],
+                    children: const [ProfileTab(), HomeTab(), SettingsTab()],
                   ),
                 ),
               ],

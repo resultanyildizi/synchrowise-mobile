@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
-import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
 
 part 'get_group_event.dart';

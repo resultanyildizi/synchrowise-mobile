@@ -1,15 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/signup_form_bloc/signup_form_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
-import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';

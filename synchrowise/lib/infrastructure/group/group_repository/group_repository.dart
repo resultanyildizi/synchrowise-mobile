@@ -52,11 +52,11 @@ class GroupRepository implements IGroupRepository {
   }) async {
     try {
       final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/Create");
+      final uri = Uri.parse("$api/Group");
 
-      final result = await _client.post(
+      final result = await _client.put(
         uri,
-        body: jsonEncode(groupData.toCreateMap()),
+        body: jsonEncode(groupData.toUpdateMap()),
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
 
@@ -139,7 +139,7 @@ class GroupRepository implements IGroupRepository {
   }) async {
     try {
       final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/User/$synchrowiseUserId");
+      final uri = Uri.parse("$api/Group/Member/Get/$synchrowiseUserId");
 
       final result = await _client.get(
         uri,
@@ -147,7 +147,9 @@ class GroupRepository implements IGroupRepository {
       );
 
       if (result.statusCode == 200) {
-        return right(GroupData.fromMap(json.decode(result.body)));
+        final map = json.decode(result.body);
+
+        return right(GroupData.fromMap(map['data']));
       } else if (result.statusCode == 404) {
         return left(const GroupRepositoryFailure.notFound());
       } else {

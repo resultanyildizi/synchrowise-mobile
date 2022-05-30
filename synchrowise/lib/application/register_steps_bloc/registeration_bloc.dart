@@ -7,7 +7,6 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
-import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/failure/avatar_failure.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';

@@ -1,37 +1,42 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 @immutable
 class Avatar extends Equatable {
-  final String path;
+  final String url;
 
-  const Avatar({required this.path});
+  const Avatar({required this.url});
 
   Map<String, dynamic> toMap() {
-    return {'path': path};
+    return {'url': url};
   }
 
   factory Avatar.fromMap(Map<String, dynamic> map) {
-    if (map['path'] == null) {
+    if (map['url'] == null) {
       return Avatar.defaultAvatar();
     }
-    return Avatar(path: map['path']);
+
+    log('Avatar.fromMap: map: $map');
+
+    return Avatar(url: map['url']);
   }
 
   factory Avatar.defaultAvatar() {
     return const Avatar(
-        path:
+        url:
             'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png');
   }
 
   String get getHttpsPath {
-    if (path.startsWith('http://') || path.startsWith('https://')) {
-      return path.replaceAll('\\', '/');
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url.replaceAll('\\', '/');
     } else {
-      return "https://${path.replaceAll("\\", "/")}";
+      return "https://${url.replaceAll("\\", "/")}";
     }
   }
 
   @override
-  List<Object?> get props => [path];
+  List<Object?> get props => [url];
 }

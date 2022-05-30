@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:dartz/dartz.dart';
@@ -44,7 +42,9 @@ class SyncrowiseUserSembastStorage implements ISynchrowiseUserStorage {
   }) async {
     try {
       final record = _storeRef.record('syncrowise_user');
-      await record.put(_database, user.toMap());
+
+      final data = user.toMap();
+      await record.put(_database, data, merge: true);
 
       return right(unit);
     } catch (_) {

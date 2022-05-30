@@ -30,7 +30,7 @@
     "hi_wave_icon": "Merhaba {username} 👋",
     "send": "Gönder",
     "what_would_you_like_to_do": "Ne yapmak istersin?",
-    "open_your_group": "Gruba gir",
+    "open_your_group": "Grubunu açmak için dokun",
     "create_a_group": "Grup oluştur",
     "create_a_group_description": "Arkadaşlarını davet etmek için bir grup oluştur.",
     "join_a_group": "Gruba katıl",
@@ -57,10 +57,9 @@
     "invalid_email_or_password": "Geçersiz e-posta veya şifre",
     "account_disabled": "Bu hesap devre dışı",
     "crop": "Kırp",
-    "group_name_must_be_at_least_min_characters": "Group ismi en az {min} karakter olmalı",
-    "group_name_is_required": "Group ismi gerekli",
-    "group_name": "Grup ismi",
-    "group_name_desc": "Kullanmak istediğin bir kullanıcı adı seç. Diğer kullanıcılar bu eşsiz isim ile grubuna katılacaklar.",
+    "group_key_must_be_at_least_min_characters": "Group kodu en az {min} karakter olmalı",
+    "group_key_is_required": "Group kodu gerekli",
+    "group_key_desc": "Kullanmak istediğin bir group kodu seç. Diğer kullanıcılar bu eşsiz kod ile grubuna katılacaklar.",
     "group_desc_title": "Grup Açıklaması",
     "group_desc_subtitle": "Oluşturacağın gruba bir açıklama ekle.",
     "settings_desc": "Uygulama ayarlarını güncelle",
@@ -91,5 +90,5 @@
     "group_notifications": "Group Bildirimleri",
     "message_notifications": "Mesaj Bildirimleri",
     "turkish": "Türkçe",
-    "english": "İngilizce"
+    "english": "English"
 }

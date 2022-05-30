@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -72,23 +74,36 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 );
               },
               (user) async {
-                _groupData = GroupData.toCreateGroup(
-                  groupName: groupName,
-                  groupOwner: user,
-                );
-
                 late Either<GroupRepositoryFailure, Unit> failureOrUnit;
 
                 if (_groupData == null) {
-                  failureOrUnit = await _iGroupRepository.create(
-                    groupData: _groupData!,
+                  final groupData = GroupData.toCreateGroup(
+                    groupName: groupName,
+                    groupOwner: user,
+                    groupDesc: '',
                   );
+
+                  failureOrUnit = await _iGroupRepository.create(
+                    groupData: groupData,
+                  );
+
+                  if (failureOrUnit.isRight()) {
+                    _groupData = groupData;
+                  }
+
+                  log(failureOrUnit.toString());
                 } else {
                   if (_groupData!.groupName != groupName) {
-                    // Todo: update group name
-                    // failureOrUnit = await _iGroupRepository.update(
-                    //   groupData: groupData!,
-                    // );
+                    final groupData = _groupData!.copyWith(
+                      groupName: groupName,
+                    );
+
+                    failureOrUnit =
+                        await _iGroupRepository.update(groupData: groupData);
+
+                    if (failureOrUnit.isRight()) {
+                      _groupData = groupData;
+                    }
                   } else {
                     failureOrUnit = right(unit);
                   }

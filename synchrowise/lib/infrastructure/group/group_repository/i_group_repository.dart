@@ -15,6 +15,14 @@ abstract class IGroupRepository {
   ///*
   ///* Returns `Unit` if it is successful
   ///* Returns `GroupRepositoryFailure` if an exception occurs
+  Future<Either<GroupRepositoryFailure, Unit>> update({
+    required GroupData groupData,
+  });
+
+  ///* Deletes the group on the server with given `groupData` model
+  ///*
+  ///* Returns `Unit` if it is successful
+  ///* Returns `GroupRepositoryFailure` if an exception occurs
   Future<Either<GroupRepositoryFailure, Unit>> delete({
     required GroupData groupData,
   });
