@@ -6,6 +6,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
+import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
@@ -122,6 +123,10 @@ Future<void> _setupBlocs() async {
       getIt<ISynchrowiseUserStorage>(),
       getIt<ISynchrowiseUserRepository>(),
     );
+  });
+
+  getIt.registerFactory<BottomNavbarBloc>(() {
+    return BottomNavbarBloc();
   });
 
   getIt.registerFactory<GetGroupBloc>(() {

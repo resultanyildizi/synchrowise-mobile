@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -185,6 +186,8 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
                 (user) async {
                   final usernameFailureOrUnit = await _iUserRepo.update(
                       synchrowiseUser: user.copyWith(username: username));
+
+                  log('usernameFailureOrUnit: $usernameFailureOrUnit');
 
                   if (user.username == username) {
                     return state.copyWith(

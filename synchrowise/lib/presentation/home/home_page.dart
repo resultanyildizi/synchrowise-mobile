@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
+import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
               return const SomethingWentWrongPage();
             }
 
-            return _buildLoggedInPage(context, authorizedState.user);
+            return const HomePageTabView();
           },
           unauthorized: (_) => const SomethingWentWrongPage(),
           initial: (_) => _buildInitialPage(context),
@@ -63,20 +64,12 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavBar(),
     );
   }
-
-  Widget _buildLoggedInPage(
-      BuildContext context, SynchrowiseUser synchrowiseUser) {
-    return HomePageTabView(synchrowiseUser: synchrowiseUser);
-  }
 }
 
 class HomePageTabView extends StatefulWidget {
   const HomePageTabView({
     Key? key,
-    required this.synchrowiseUser,
   }) : super(key: key);
-
-  final SynchrowiseUser synchrowiseUser;
 
   @override
   State<HomePageTabView> createState() => _HomePageTabViewState();
@@ -85,12 +78,9 @@ class HomePageTabView extends StatefulWidget {
 class _HomePageTabViewState extends State<HomePageTabView>
     with TickerProviderStateMixin {
   late PageController _pageController;
-  late BottomNavbarBloc _bottomNavBarBloc;
 
   @override
   void initState() {
-    _bottomNavBarBloc = BottomNavbarBloc();
-
     _pageController = PageController(initialPage: 1, keepPage: true);
 
     super.initState();
@@ -99,7 +89,6 @@ class _HomePageTabViewState extends State<HomePageTabView>
   @override
   void dispose() {
     _pageController.dispose();
-    _bottomNavBarBloc.close();
 
     super.dispose();
   }
@@ -108,42 +97,40 @@ class _HomePageTabViewState extends State<HomePageTabView>
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<GetGroupBloc>(
+          create: (context) => getIt<GetGroupBloc>()..fetch(),
+        ),
         BlocProvider<BottomNavbarBloc>(
-          create: (context) => _bottomNavBarBloc,
+          create: (context) => getIt<BottomNavbarBloc>(),
         ),
         BlocProvider(
           create: (context) => getIt<ProfileBloc>(),
         ),
       ],
-      child: Provider<SynchrowiseUser>(
-        create: (_) => widget.synchrowiseUser,
-        child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
-          listener: (context, state) {
-            _pageController.animateToPage(state.index,
-                curve: Curves.easeIn,
-                duration: const Duration(milliseconds: 300));
-          },
-          child: Scaffold(
-            body: SafeArea(
-              child: Column(
-                children: [
-                  const AppLogoAndName(),
-                  Expanded(
-                    child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: _pageController,
-                      children: [
-                        ProfileTab(synchrowiseUser: widget.synchrowiseUser),
-                        const HomeTab(),
-                        const SettingsTab(),
-                      ],
-                    ),
+      child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
+        listener: (context, state) {
+          _pageController.animateToPage(
+            state.index,
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 300),
+          );
+        },
+        child: Scaffold(
+          body: SafeArea(
+            child: Column(
+              children: [
+                const AppLogoAndName(),
+                Expanded(
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: _pageController,
+                    children: [ProfileTab(), HomeTab(), SettingsTab()],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            bottomNavigationBar: const BottomNavBar(),
           ),
+          bottomNavigationBar: const BottomNavBar(),
         ),
       ),
     );

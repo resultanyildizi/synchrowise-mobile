@@ -12,7 +12,10 @@ class Avatar extends Equatable {
   }
 
   factory Avatar.fromMap(Map<String, dynamic> map) {
-    return Avatar(path: map['path'] as String);
+    if (map['path'] == null) {
+      return Avatar.defaultAvatar();
+    }
+    return Avatar(path: map['path']);
   }
 
   factory Avatar.defaultAvatar() {
@@ -22,7 +25,11 @@ class Avatar extends Equatable {
   }
 
   String get getHttpsPath {
-    return "https://${path.replaceAll("\\", "/")}";
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path.replaceAll('\\', '/');
+    } else {
+      return "https://${path.replaceAll("\\", "/")}";
+    }
   }
 
   @override
