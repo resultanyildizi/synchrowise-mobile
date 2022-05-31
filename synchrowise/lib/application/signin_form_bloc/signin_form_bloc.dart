@@ -103,7 +103,7 @@ class SigninFormBloc extends Bloc<SigninFormEvent, SigninFormState> {
           },
           updatePasswordText: (event) async {
             final validatedPass =
-                validateSigninPassword(password: event.password);
+                validateSigninPassword(password: event.password.trim());
 
             final newstate = state.copyWith(
               failureOrUserOption: none(),

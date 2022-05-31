@@ -60,7 +60,7 @@ Either<ValueFailure, String> validateConfirmPassword({
 Either<ValueFailure, String> validateSigninPassword({
   required String password,
 }) {
-  if (password.trim().isEmpty) {
+  if (password.isEmpty) {
     return left(const ValueFailure.emptyPassword());
   }
 
@@ -71,4 +71,24 @@ Either<ValueFailure, String> validateSigninPassword({
   }
 
   return right(password);
+}
+
+Either<ValueFailure, String> validateSubject({required String subject}) {
+  if (subject.length < 3) {
+    return left(const ValueFailure.minLength(3));
+  }
+
+  if (subject.length > 80) {
+    return left(const ValueFailure.maxLength(50));
+  }
+
+  return right(subject);
+}
+
+Either<ValueFailure, String> validateMessage({required String message}) {
+  if (message.length > 500) {
+    return left(const ValueFailure.maxLength(500));
+  }
+
+  return right(message);
 }
