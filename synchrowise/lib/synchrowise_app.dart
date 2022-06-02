@@ -10,6 +10,7 @@ import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/group/join_group_page.dart';
+import 'package:synchrowise/presentation/media/media_page.dart';
 import 'package:synchrowise/presentation/settings/contact_us_settings_page.dart';
 import 'package:synchrowise/presentation/settings/language_settings_page.dart';
 import 'package:synchrowise/presentation/settings/notifications_settings_page.dart';
@@ -42,6 +43,7 @@ class SynchrowiseApp extends StatelessWidget {
         locale: context.locale,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
           brightness: Brightness.light,
           primaryColor: primaryColor,
           fontFamily: "Poppins",
@@ -145,6 +147,9 @@ class SynchrowiseApp extends StatelessWidget {
               break;
             case "/contact_us":
               nextPage = const ContactUsSettingsPage();
+              break;
+            case "/media":
+              nextPage = const MediaPage();
               break;
           }
 

@@ -20,11 +20,6 @@ class MyHttpOverrides extends HttpOverrides {
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
 
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
