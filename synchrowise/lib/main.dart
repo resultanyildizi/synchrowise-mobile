@@ -20,23 +20,22 @@ class MyHttpOverrides extends HttpOverrides {
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
 
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
   await setupInjector();
   await setupEnv();
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('tr')],
-      fallbackLocale: const Locale('en'),
-      path: 'assets/translations',
-      child: const SynchrowiseApp(),
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then(
+    (_) => runApp(
+      EasyLocalization(
+        supportedLocales: const [Locale('en'), Locale('tr')],
+        fallbackLocale: const Locale('en'),
+        path: 'assets/translations',
+        child: const SynchrowiseApp(),
+      ),
     ),
   );
 }

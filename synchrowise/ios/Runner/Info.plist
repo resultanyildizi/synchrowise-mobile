@@ -65,5 +65,15 @@
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<true/>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>tr</string>
+		</array>
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		</dict>
 	</dict>
 </plist>
