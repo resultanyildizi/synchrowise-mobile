@@ -23,11 +23,9 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
       add(CreateGroupEvent.updateGroupNameText(groupName: groupName));
   void updateGroupDescText({required String groupDesc}) =>
       add(CreateGroupEvent.updateGroupDescText(groupDesc: groupDesc));
-  void saveGroupName() => add(const CreateGroupEvent.saveGroupName());
-  void saveGroupDesc() => add(const CreateGroupEvent.saveDesc());
+  void submitGroup() => add(const CreateGroupEvent.submitGroup());
+  void saveUsername() => add(const CreateGroupEvent.saveGroupKey());
   void goBack() => add(const CreateGroupEvent.goBack());
-
-  GroupData? _groupData;
 
   CreateGroupBloc(
     this._iUserStorage,
@@ -51,10 +49,21 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
             state.copyWith(failureOrGroupDescOption: some(validatedGroupDesc)),
           );
         },
-        saveGroupName: (event) async {
+        saveGroupKey: (event) async {
+          final newState = state.failureOrGroupNameOption.fold(
+            () => state.copyWith(showErrors: true),
+            (a) => a.fold(
+              (f) => state.copyWith(showErrors: true),
+              (_) => state.copyWith(showErrors: false, step: 1),
+            ),
+          );
+
+          emit(newState);
+        },
+        submitGroup: (event) async {
           emit(state.copyWith(
             progressing: true,
-            groupNameFailureOrUnitOption: none(),
+            submitFailureOrUnitOption: none(),
             storageFailureOrUnitOption: none(),
           ));
 
@@ -64,7 +73,13 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 (failure) => null, (groupName) => groupName),
           );
 
-          if (groupName != null) {
+          final groupDesc = state.failureOrGroupDescOption.fold(
+            () => null,
+            (failureOrGroupDesc) => failureOrGroupDesc.fold(
+                (failure) => null, (groupDesc) => groupDesc),
+          );
+
+          if (groupName != null && groupDesc != null) {
             final failureOrUser = await _iUserStorage.get();
 
             final newState = await failureOrUser.fold(
@@ -76,49 +91,25 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
               (user) async {
                 late Either<GroupRepositoryFailure, Unit> failureOrUnit;
 
-                if (_groupData == null) {
-                  final groupData = GroupData.toCreateGroup(
-                    groupName: groupName,
-                    groupOwner: user,
-                    groupDesc: '',
-                  );
+                final groupData = GroupData.toCreateGroup(
+                  groupName: groupName,
+                  groupDesc: groupDesc,
+                  groupOwner: user,
+                );
 
-                  failureOrUnit = await _iGroupRepository.create(
-                    groupData: groupData,
-                  );
-
-                  if (failureOrUnit.isRight()) {
-                    _groupData = groupData;
-                  }
-
-                  log(failureOrUnit.toString());
-                } else {
-                  if (_groupData!.groupName != groupName) {
-                    final groupData = _groupData!.copyWith(
-                      groupName: groupName,
-                    );
-
-                    failureOrUnit =
-                        await _iGroupRepository.update(groupData: groupData);
-
-                    if (failureOrUnit.isRight()) {
-                      _groupData = groupData;
-                    }
-                  } else {
-                    failureOrUnit = right(unit);
-                  }
-                }
+                failureOrUnit =
+                    await _iGroupRepository.create(groupData: groupData);
 
                 return failureOrUnit.fold(
                   (f) {
                     return state.copyWith(
-                      groupNameFailureOrUnitOption: some(left(f)),
+                      submitFailureOrUnitOption: some(left(f)),
                       storageFailureOrUnitOption: some(right(unit)),
                     );
                   },
                   (_) {
                     return state.copyWith(
-                      groupNameFailureOrUnitOption: some(right(unit)),
+                      submitFailureOrUnitOption: some(right(unit)),
                       storageFailureOrUnitOption: some(right(unit)),
                       step: 1,
                     );
@@ -130,20 +121,6 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
           } else {
             emit(state.copyWith(showErrors: true));
           }
-        },
-        saveDesc: (event) {
-          final newState = state.failureOrGroupDescOption.fold(
-            () {
-              return state.copyWith(showErrors: true);
-            },
-            (groupDesc) {
-              return state.copyWith(
-                groupDescFailureOrUnitOption: some(right(unit)),
-              );
-            },
-          );
-
-          emit(newState);
         },
         goBack: (_) {
           assert(

@@ -32,12 +32,12 @@ class _$CreateGroupEventTearOff {
     );
   }
 
-  _CreateGroupSaveGroupNameEvent saveGroupName() {
-    return const _CreateGroupSaveGroupNameEvent();
+  _CreateGroupSubmitGroupEvent submitGroup() {
+    return const _CreateGroupSubmitGroupEvent();
   }
 
-  _CreateGroupSaveGroupDescEvent saveDesc() {
-    return const _CreateGroupSaveGroupDescEvent();
+  _CreateGroupSaveUsernameEvent saveGroupKey() {
+    return const _CreateGroupSaveUsernameEvent();
   }
 
   _CreateGroupGoBackEvent goBack() {
@@ -54,8 +54,8 @@ mixin _$CreateGroupEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,8 +63,8 @@ mixin _$CreateGroupEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,8 +72,8 @@ mixin _$CreateGroupEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) =>
@@ -84,9 +84,8 @@ mixin _$CreateGroupEvent {
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) =>
       throw _privateConstructorUsedError;
@@ -96,8 +95,8 @@ mixin _$CreateGroupEvent {
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) =>
       throw _privateConstructorUsedError;
@@ -107,8 +106,8 @@ mixin _$CreateGroupEvent {
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) =>
@@ -205,8 +204,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) {
     return updateGroupNameText(groupName);
@@ -217,8 +216,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) {
     return updateGroupNameText?.call(groupName);
@@ -229,8 +228,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) {
@@ -247,9 +246,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) {
     return updateGroupNameText(this);
@@ -262,8 +260,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) {
     return updateGroupNameText?.call(this);
@@ -276,8 +274,8 @@ class _$_CreateGroupUpdateGroupNameTextEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) {
@@ -373,8 +371,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) {
     return updateGroupDescText(groupDesc);
@@ -385,8 +383,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) {
     return updateGroupDescText?.call(groupDesc);
@@ -397,8 +395,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) {
@@ -415,9 +413,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) {
     return updateGroupDescText(this);
@@ -430,8 +427,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) {
     return updateGroupDescText?.call(this);
@@ -444,8 +441,8 @@ class _$_CreateGroupUpdateGroupDescTextEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) {
@@ -469,43 +466,42 @@ abstract class _CreateGroupUpdateGroupDescTextEvent
 }
 
 /// @nodoc
-abstract class _$CreateGroupSaveGroupNameEventCopyWith<$Res> {
-  factory _$CreateGroupSaveGroupNameEventCopyWith(
-          _CreateGroupSaveGroupNameEvent value,
-          $Res Function(_CreateGroupSaveGroupNameEvent) then) =
-      __$CreateGroupSaveGroupNameEventCopyWithImpl<$Res>;
+abstract class _$CreateGroupSubmitGroupEventCopyWith<$Res> {
+  factory _$CreateGroupSubmitGroupEventCopyWith(
+          _CreateGroupSubmitGroupEvent value,
+          $Res Function(_CreateGroupSubmitGroupEvent) then) =
+      __$CreateGroupSubmitGroupEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CreateGroupSaveGroupNameEventCopyWithImpl<$Res>
+class __$CreateGroupSubmitGroupEventCopyWithImpl<$Res>
     extends _$CreateGroupEventCopyWithImpl<$Res>
-    implements _$CreateGroupSaveGroupNameEventCopyWith<$Res> {
-  __$CreateGroupSaveGroupNameEventCopyWithImpl(
-      _CreateGroupSaveGroupNameEvent _value,
-      $Res Function(_CreateGroupSaveGroupNameEvent) _then)
-      : super(_value, (v) => _then(v as _CreateGroupSaveGroupNameEvent));
+    implements _$CreateGroupSubmitGroupEventCopyWith<$Res> {
+  __$CreateGroupSubmitGroupEventCopyWithImpl(
+      _CreateGroupSubmitGroupEvent _value,
+      $Res Function(_CreateGroupSubmitGroupEvent) _then)
+      : super(_value, (v) => _then(v as _CreateGroupSubmitGroupEvent));
 
   @override
-  _CreateGroupSaveGroupNameEvent get _value =>
-      super._value as _CreateGroupSaveGroupNameEvent;
+  _CreateGroupSubmitGroupEvent get _value =>
+      super._value as _CreateGroupSubmitGroupEvent;
 }
 
 /// @nodoc
 
-class _$_CreateGroupSaveGroupNameEvent
-    implements _CreateGroupSaveGroupNameEvent {
-  const _$_CreateGroupSaveGroupNameEvent();
+class _$_CreateGroupSubmitGroupEvent implements _CreateGroupSubmitGroupEvent {
+  const _$_CreateGroupSubmitGroupEvent();
 
   @override
   String toString() {
-    return 'CreateGroupEvent.saveGroupName()';
+    return 'CreateGroupEvent.submitGroup()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CreateGroupSaveGroupNameEvent);
+            other is _CreateGroupSubmitGroupEvent);
   }
 
   @override
@@ -516,11 +512,11 @@ class _$_CreateGroupSaveGroupNameEvent
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) {
-    return saveGroupName();
+    return submitGroup();
   }
 
   @override
@@ -528,11 +524,11 @@ class _$_CreateGroupSaveGroupNameEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) {
-    return saveGroupName?.call();
+    return submitGroup?.call();
   }
 
   @override
@@ -540,13 +536,13 @@ class _$_CreateGroupSaveGroupNameEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) {
-    if (saveGroupName != null) {
-      return saveGroupName();
+    if (submitGroup != null) {
+      return submitGroup();
     }
     return orElse();
   }
@@ -558,12 +554,11 @@ class _$_CreateGroupSaveGroupNameEvent
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) {
-    return saveGroupName(this);
+    return submitGroup(this);
   }
 
   @override
@@ -573,11 +568,11 @@ class _$_CreateGroupSaveGroupNameEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) {
-    return saveGroupName?.call(this);
+    return submitGroup?.call(this);
   }
 
   @override
@@ -587,61 +582,59 @@ class _$_CreateGroupSaveGroupNameEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) {
-    if (saveGroupName != null) {
-      return saveGroupName(this);
+    if (submitGroup != null) {
+      return submitGroup(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateGroupSaveGroupNameEvent implements CreateGroupEvent {
-  const factory _CreateGroupSaveGroupNameEvent() =
-      _$_CreateGroupSaveGroupNameEvent;
+abstract class _CreateGroupSubmitGroupEvent implements CreateGroupEvent {
+  const factory _CreateGroupSubmitGroupEvent() = _$_CreateGroupSubmitGroupEvent;
 }
 
 /// @nodoc
-abstract class _$CreateGroupSaveGroupDescEventCopyWith<$Res> {
-  factory _$CreateGroupSaveGroupDescEventCopyWith(
-          _CreateGroupSaveGroupDescEvent value,
-          $Res Function(_CreateGroupSaveGroupDescEvent) then) =
-      __$CreateGroupSaveGroupDescEventCopyWithImpl<$Res>;
+abstract class _$CreateGroupSaveUsernameEventCopyWith<$Res> {
+  factory _$CreateGroupSaveUsernameEventCopyWith(
+          _CreateGroupSaveUsernameEvent value,
+          $Res Function(_CreateGroupSaveUsernameEvent) then) =
+      __$CreateGroupSaveUsernameEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CreateGroupSaveGroupDescEventCopyWithImpl<$Res>
+class __$CreateGroupSaveUsernameEventCopyWithImpl<$Res>
     extends _$CreateGroupEventCopyWithImpl<$Res>
-    implements _$CreateGroupSaveGroupDescEventCopyWith<$Res> {
-  __$CreateGroupSaveGroupDescEventCopyWithImpl(
-      _CreateGroupSaveGroupDescEvent _value,
-      $Res Function(_CreateGroupSaveGroupDescEvent) _then)
-      : super(_value, (v) => _then(v as _CreateGroupSaveGroupDescEvent));
+    implements _$CreateGroupSaveUsernameEventCopyWith<$Res> {
+  __$CreateGroupSaveUsernameEventCopyWithImpl(
+      _CreateGroupSaveUsernameEvent _value,
+      $Res Function(_CreateGroupSaveUsernameEvent) _then)
+      : super(_value, (v) => _then(v as _CreateGroupSaveUsernameEvent));
 
   @override
-  _CreateGroupSaveGroupDescEvent get _value =>
-      super._value as _CreateGroupSaveGroupDescEvent;
+  _CreateGroupSaveUsernameEvent get _value =>
+      super._value as _CreateGroupSaveUsernameEvent;
 }
 
 /// @nodoc
 
-class _$_CreateGroupSaveGroupDescEvent
-    implements _CreateGroupSaveGroupDescEvent {
-  const _$_CreateGroupSaveGroupDescEvent();
+class _$_CreateGroupSaveUsernameEvent implements _CreateGroupSaveUsernameEvent {
+  const _$_CreateGroupSaveUsernameEvent();
 
   @override
   String toString() {
-    return 'CreateGroupEvent.saveDesc()';
+    return 'CreateGroupEvent.saveGroupKey()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CreateGroupSaveGroupDescEvent);
+            other is _CreateGroupSaveUsernameEvent);
   }
 
   @override
@@ -652,11 +645,11 @@ class _$_CreateGroupSaveGroupDescEvent
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) {
-    return saveDesc();
+    return saveGroupKey();
   }
 
   @override
@@ -664,11 +657,11 @@ class _$_CreateGroupSaveGroupDescEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) {
-    return saveDesc?.call();
+    return saveGroupKey?.call();
   }
 
   @override
@@ -676,13 +669,13 @@ class _$_CreateGroupSaveGroupDescEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) {
-    if (saveDesc != null) {
-      return saveDesc();
+    if (saveGroupKey != null) {
+      return saveGroupKey();
     }
     return orElse();
   }
@@ -694,12 +687,11 @@ class _$_CreateGroupSaveGroupDescEvent
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) {
-    return saveDesc(this);
+    return saveGroupKey(this);
   }
 
   @override
@@ -709,11 +701,11 @@ class _$_CreateGroupSaveGroupDescEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) {
-    return saveDesc?.call(this);
+    return saveGroupKey?.call(this);
   }
 
   @override
@@ -723,21 +715,21 @@ class _$_CreateGroupSaveGroupDescEvent
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) {
-    if (saveDesc != null) {
-      return saveDesc(this);
+    if (saveGroupKey != null) {
+      return saveGroupKey(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateGroupSaveGroupDescEvent implements CreateGroupEvent {
-  const factory _CreateGroupSaveGroupDescEvent() =
-      _$_CreateGroupSaveGroupDescEvent;
+abstract class _CreateGroupSaveUsernameEvent implements CreateGroupEvent {
+  const factory _CreateGroupSaveUsernameEvent() =
+      _$_CreateGroupSaveUsernameEvent;
 }
 
 /// @nodoc
@@ -783,8 +775,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String groupName) updateGroupNameText,
     required TResult Function(String groupDesc) updateGroupDescText,
-    required TResult Function() saveGroupName,
-    required TResult Function() saveDesc,
+    required TResult Function() submitGroup,
+    required TResult Function() saveGroupKey,
     required TResult Function() goBack,
   }) {
     return goBack();
@@ -795,8 +787,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
   }) {
     return goBack?.call();
@@ -807,8 +799,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String groupName)? updateGroupNameText,
     TResult Function(String groupDesc)? updateGroupDescText,
-    TResult Function()? saveGroupName,
-    TResult Function()? saveDesc,
+    TResult Function()? submitGroup,
+    TResult Function()? saveGroupKey,
     TResult Function()? goBack,
     required TResult orElse(),
   }) {
@@ -825,9 +817,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
         updateGroupNameText,
     required TResult Function(_CreateGroupUpdateGroupDescTextEvent value)
         updateGroupDescText,
-    required TResult Function(_CreateGroupSaveGroupNameEvent value)
-        saveGroupName,
-    required TResult Function(_CreateGroupSaveGroupDescEvent value) saveDesc,
+    required TResult Function(_CreateGroupSubmitGroupEvent value) submitGroup,
+    required TResult Function(_CreateGroupSaveUsernameEvent value) saveGroupKey,
     required TResult Function(_CreateGroupGoBackEvent value) goBack,
   }) {
     return goBack(this);
@@ -840,8 +831,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
   }) {
     return goBack?.call(this);
@@ -854,8 +845,8 @@ class _$_CreateGroupGoBackEvent implements _CreateGroupGoBackEvent {
         updateGroupNameText,
     TResult Function(_CreateGroupUpdateGroupDescTextEvent value)?
         updateGroupDescText,
-    TResult Function(_CreateGroupSaveGroupNameEvent value)? saveGroupName,
-    TResult Function(_CreateGroupSaveGroupDescEvent value)? saveDesc,
+    TResult Function(_CreateGroupSubmitGroupEvent value)? submitGroup,
+    TResult Function(_CreateGroupSaveUsernameEvent value)? saveGroupKey,
     TResult Function(_CreateGroupGoBackEvent value)? goBack,
     required TResult orElse(),
   }) {
@@ -877,10 +868,8 @@ class _$CreateGroupStateTearOff {
   _CreateGroupState call(
       {required Option<Either<ValueFailure, String>> failureOrGroupNameOption,
       required Option<Either<GroupRepositoryFailure, Unit>>
-          groupNameFailureOrUnitOption,
+          submitFailureOrUnitOption,
       required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
-      required Option<Either<GroupRepositoryFailure, Unit>>
-          groupDescFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       required bool showErrors,
@@ -888,9 +877,8 @@ class _$CreateGroupStateTearOff {
       required int step}) {
     return _CreateGroupState(
       failureOrGroupNameOption: failureOrGroupNameOption,
-      groupNameFailureOrUnitOption: groupNameFailureOrUnitOption,
+      submitFailureOrUnitOption: submitFailureOrUnitOption,
       failureOrGroupDescOption: failureOrGroupDescOption,
-      groupDescFailureOrUnitOption: groupDescFailureOrUnitOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
       showErrors: showErrors,
       progressing: progressing,
@@ -906,12 +894,10 @@ const $CreateGroupState = _$CreateGroupStateTearOff();
 mixin _$CreateGroupState {
   Option<Either<ValueFailure, String>> get failureOrGroupNameOption =>
       throw _privateConstructorUsedError;
-  Option<Either<GroupRepositoryFailure, Unit>>
-      get groupNameFailureOrUnitOption => throw _privateConstructorUsedError;
+  Option<Either<GroupRepositoryFailure, Unit>> get submitFailureOrUnitOption =>
+      throw _privateConstructorUsedError;
   Option<Either<ValueFailure, String>> get failureOrGroupDescOption =>
       throw _privateConstructorUsedError;
-  Option<Either<GroupRepositoryFailure, Unit>>
-      get groupDescFailureOrUnitOption => throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption => throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
@@ -930,9 +916,8 @@ abstract class $CreateGroupStateCopyWith<$Res> {
       _$CreateGroupStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      Option<Either<GroupRepositoryFailure, Unit>> groupNameFailureOrUnitOption,
+      Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
       Option<Either<ValueFailure, String>> failureOrGroupDescOption,
-      Option<Either<GroupRepositoryFailure, Unit>> groupDescFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       bool showErrors,
@@ -952,9 +937,8 @@ class _$CreateGroupStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrGroupNameOption = freezed,
-    Object? groupNameFailureOrUnitOption = freezed,
+    Object? submitFailureOrUnitOption = freezed,
     Object? failureOrGroupDescOption = freezed,
-    Object? groupDescFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? showErrors = freezed,
     Object? progressing = freezed,
@@ -965,18 +949,14 @@ class _$CreateGroupStateCopyWithImpl<$Res>
           ? _value.failureOrGroupNameOption
           : failureOrGroupNameOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      groupNameFailureOrUnitOption: groupNameFailureOrUnitOption == freezed
-          ? _value.groupNameFailureOrUnitOption
-          : groupNameFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+      submitFailureOrUnitOption: submitFailureOrUnitOption == freezed
+          ? _value.submitFailureOrUnitOption
+          : submitFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<GroupRepositoryFailure, Unit>>,
       failureOrGroupDescOption: failureOrGroupDescOption == freezed
           ? _value.failureOrGroupDescOption
           : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      groupDescFailureOrUnitOption: groupDescFailureOrUnitOption == freezed
-          ? _value.groupDescFailureOrUnitOption
-          : groupDescFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<GroupRepositoryFailure, Unit>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1006,9 +986,8 @@ abstract class _$CreateGroupStateCopyWith<$Res>
   @override
   $Res call(
       {Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      Option<Either<GroupRepositoryFailure, Unit>> groupNameFailureOrUnitOption,
+      Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
       Option<Either<ValueFailure, String>> failureOrGroupDescOption,
-      Option<Either<GroupRepositoryFailure, Unit>> groupDescFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       bool showErrors,
@@ -1030,9 +1009,8 @@ class __$CreateGroupStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrGroupNameOption = freezed,
-    Object? groupNameFailureOrUnitOption = freezed,
+    Object? submitFailureOrUnitOption = freezed,
     Object? failureOrGroupDescOption = freezed,
-    Object? groupDescFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? showErrors = freezed,
     Object? progressing = freezed,
@@ -1043,18 +1021,14 @@ class __$CreateGroupStateCopyWithImpl<$Res>
           ? _value.failureOrGroupNameOption
           : failureOrGroupNameOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      groupNameFailureOrUnitOption: groupNameFailureOrUnitOption == freezed
-          ? _value.groupNameFailureOrUnitOption
-          : groupNameFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+      submitFailureOrUnitOption: submitFailureOrUnitOption == freezed
+          ? _value.submitFailureOrUnitOption
+          : submitFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<GroupRepositoryFailure, Unit>>,
       failureOrGroupDescOption: failureOrGroupDescOption == freezed
           ? _value.failureOrGroupDescOption
           : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure, String>>,
-      groupDescFailureOrUnitOption: groupDescFailureOrUnitOption == freezed
-          ? _value.groupDescFailureOrUnitOption
-          : groupDescFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<GroupRepositoryFailure, Unit>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1080,9 +1054,8 @@ class __$CreateGroupStateCopyWithImpl<$Res>
 class _$_CreateGroupState implements _CreateGroupState {
   const _$_CreateGroupState(
       {required this.failureOrGroupNameOption,
-      required this.groupNameFailureOrUnitOption,
+      required this.submitFailureOrUnitOption,
       required this.failureOrGroupDescOption,
-      required this.groupDescFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
       required this.showErrors,
       required this.progressing,
@@ -1091,13 +1064,9 @@ class _$_CreateGroupState implements _CreateGroupState {
   @override
   final Option<Either<ValueFailure, String>> failureOrGroupNameOption;
   @override
-  final Option<Either<GroupRepositoryFailure, Unit>>
-      groupNameFailureOrUnitOption;
+  final Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption;
   @override
   final Option<Either<ValueFailure, String>> failureOrGroupDescOption;
-  @override
-  final Option<Either<GroupRepositoryFailure, Unit>>
-      groupDescFailureOrUnitOption;
   @override
   final Option<Either<SynchrowiseUserStorageFailure, Unit>>
       storageFailureOrUnitOption;
@@ -1110,7 +1079,7 @@ class _$_CreateGroupState implements _CreateGroupState {
 
   @override
   String toString() {
-    return 'CreateGroupState(failureOrGroupNameOption: $failureOrGroupNameOption, groupNameFailureOrUnitOption: $groupNameFailureOrUnitOption, failureOrGroupDescOption: $failureOrGroupDescOption, groupDescFailureOrUnitOption: $groupDescFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, showErrors: $showErrors, progressing: $progressing, step: $step)';
+    return 'CreateGroupState(failureOrGroupNameOption: $failureOrGroupNameOption, submitFailureOrUnitOption: $submitFailureOrUnitOption, failureOrGroupDescOption: $failureOrGroupDescOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, showErrors: $showErrors, progressing: $progressing, step: $step)';
   }
 
   @override
@@ -1121,13 +1090,9 @@ class _$_CreateGroupState implements _CreateGroupState {
             const DeepCollectionEquality().equals(
                 other.failureOrGroupNameOption, failureOrGroupNameOption) &&
             const DeepCollectionEquality().equals(
-                other.groupNameFailureOrUnitOption,
-                groupNameFailureOrUnitOption) &&
+                other.submitFailureOrUnitOption, submitFailureOrUnitOption) &&
             const DeepCollectionEquality().equals(
                 other.failureOrGroupDescOption, failureOrGroupDescOption) &&
-            const DeepCollectionEquality().equals(
-                other.groupDescFailureOrUnitOption,
-                groupDescFailureOrUnitOption) &&
             const DeepCollectionEquality().equals(
                 other.storageFailureOrUnitOption, storageFailureOrUnitOption) &&
             const DeepCollectionEquality()
@@ -1141,9 +1106,8 @@ class _$_CreateGroupState implements _CreateGroupState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failureOrGroupNameOption),
-      const DeepCollectionEquality().hash(groupNameFailureOrUnitOption),
+      const DeepCollectionEquality().hash(submitFailureOrUnitOption),
       const DeepCollectionEquality().hash(failureOrGroupDescOption),
-      const DeepCollectionEquality().hash(groupDescFailureOrUnitOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(progressing),
@@ -1159,10 +1123,8 @@ abstract class _CreateGroupState implements CreateGroupState {
   const factory _CreateGroupState(
       {required Option<Either<ValueFailure, String>> failureOrGroupNameOption,
       required Option<Either<GroupRepositoryFailure, Unit>>
-          groupNameFailureOrUnitOption,
+          submitFailureOrUnitOption,
       required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
-      required Option<Either<GroupRepositoryFailure, Unit>>
-          groupDescFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       required bool showErrors,
@@ -1172,11 +1134,9 @@ abstract class _CreateGroupState implements CreateGroupState {
   @override
   Option<Either<ValueFailure, String>> get failureOrGroupNameOption;
   @override
-  Option<Either<GroupRepositoryFailure, Unit>> get groupNameFailureOrUnitOption;
+  Option<Either<GroupRepositoryFailure, Unit>> get submitFailureOrUnitOption;
   @override
   Option<Either<ValueFailure, String>> get failureOrGroupDescOption;
-  @override
-  Option<Either<GroupRepositoryFailure, Unit>> get groupDescFailureOrUnitOption;
   @override
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption;

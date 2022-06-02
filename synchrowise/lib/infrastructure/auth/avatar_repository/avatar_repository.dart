@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:path/path.dart' as path show extension;
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
@@ -12,6 +11,7 @@ import 'dart:io';
 
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
 import 'package:synchrowise/infrastructure/core/string_values.dart';
+import 'package:synchrowise/setup_env.dart';
 
 class AvatarRepository implements IAvatarRepository {
   //* Dependencies
@@ -26,8 +26,7 @@ class AvatarRepository implements IAvatarRepository {
     required File avatar,
     required SynchrowiseUser owner,
   }) async {
-    final api = dotenv.get("API_URL");
-    final uri = Uri.parse("$api/User");
+    final uri = Uri.parse("$apiurl/User");
 
     final fileext = path.extension(avatar.path);
 

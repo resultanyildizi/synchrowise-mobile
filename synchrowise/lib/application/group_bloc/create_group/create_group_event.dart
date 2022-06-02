@@ -6,8 +6,8 @@ class CreateGroupEvent with _$CreateGroupEvent {
       {required String groupName}) = _CreateGroupUpdateGroupNameTextEvent;
   const factory CreateGroupEvent.updateGroupDescText(
       {required String groupDesc}) = _CreateGroupUpdateGroupDescTextEvent;
-  const factory CreateGroupEvent.saveGroupName() =
-      _CreateGroupSaveGroupNameEvent;
-  const factory CreateGroupEvent.saveDesc() = _CreateGroupSaveGroupDescEvent;
+  const factory CreateGroupEvent.submitGroup() = _CreateGroupSubmitGroupEvent;
+  const factory CreateGroupEvent.saveGroupKey() = _CreateGroupSaveUsernameEvent;
+
   const factory CreateGroupEvent.goBack() = _CreateGroupGoBackEvent;
 }

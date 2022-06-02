@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,8 +46,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
   BlocListener get _getCreateGroupFailureBlocListener {
     return BlocListener<CreateGroupBloc, CreateGroupState>(
       listenWhen: (previous, current) {
-        return current.groupNameFailureOrUnitOption.isSome() ||
-            current.groupDescFailureOrUnitOption.isSome() ||
+        return current.submitFailureOrUnitOption.isSome() ||
             current.storageFailureOrUnitOption.isSome();
       },
       listener: (context, state) {
@@ -75,28 +72,8 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
             },
             (_) {},
           );
-        } else if (state.groupNameFailureOrUnitOption.isSome()) {
-          final failureOrUnit = state.groupNameFailureOrUnitOption
-              .getOrElse(() => throw AssertionError());
-
-          failureOrUnit.fold(
-            (f) {
-              f.maybeMap(
-                connection: (_) {
-                  showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
-                },
-                server: (_) {
-                  showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
-                },
-                orElse: () {
-                  showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-                },
-              );
-            },
-            (_) {},
-          );
-        } else if (state.groupDescFailureOrUnitOption.isSome()) {
-          final failureOrUnit = state.groupDescFailureOrUnitOption
+        } else if (state.submitFailureOrUnitOption.isSome()) {
+          final failureOrUnit = state.submitFailureOrUnitOption
               .getOrElse(() => throw AssertionError());
 
           failureOrUnit.fold(
@@ -123,25 +100,17 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
   BlocListener get _getCreateGroupSuccessBlocListener {
     return BlocListener<CreateGroupBloc, CreateGroupState>(
       listenWhen: (previous, current) {
-        return current.groupDescFailureOrUnitOption.isSome() &&
-            current.groupNameFailureOrUnitOption.isSome() &&
+        return current.submitFailureOrUnitOption.isSome() &&
             current.storageFailureOrUnitOption.isSome();
       },
       listener: (context, state) {
         final storageSuccess = state.storageFailureOrUnitOption
             .fold(() => throw AssertionError(), (fos) => fos.isRight());
 
-        final groupDescSuccess = state.groupDescFailureOrUnitOption
-            .fold(() => throw AssertionError(), (fou) => fou.isRight());
-
-        final groupNameSuccess = state.groupNameFailureOrUnitOption
+        final groupNameSuccess = state.submitFailureOrUnitOption
             .fold(() => throw AssertionError(), (foa) => foa.isRight());
 
-        log("storageSuccess: $storageSuccess");
-        log("groupDescSuccess: $groupDescSuccess");
-        log("groupNameSuccess: $groupNameSuccess");
-
-        final success = groupNameSuccess && storageSuccess && groupDescSuccess;
+        final success = groupNameSuccess && storageSuccess;
 
         if (success) {
           widget.onSuccess();

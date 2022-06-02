@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>701586192211-788c7pjqs3eiqsgeh9j6ff1fl4kq83vc.apps.googleusercontent.com</string>
+	<string>546249380040-ufj3sj7l0c1hd12s6po0rgdp1425dlek.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.701586192211-788c7pjqs3eiqsgeh9j6ff1fl4kq83vc</string>
+	<string>com.googleusercontent.apps.546249380040-ufj3sj7l0c1hd12s6po0rgdp1425dlek</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>701586192211-f6dff0sbk1sbd38l83js46kklnm803oq.apps.googleusercontent.com</string>
+	<string>546249380040-rm4bm1udv5bvg5spvk7c1ujh1j6ofcsl.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDOt5ocoQkYkcCckeZmYivrqcGv5IWNHDg</string>
+	<string>AIzaSyBWG5V4H6fkgh5TwoTBKjeAc3Fw7EJxDWc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>701586192211</string>
+	<string>546249380040</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mirror.synchrowise</string>
+	<string>com.synchrowise.app</string>
 	<key>PROJECT_ID</key>
-	<string>synchrowise-mirror</string>
+	<string>synchrowise-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>synchrowise-mirror.appspot.com</string>
+	<string>synchrowise-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:701586192211:ios:70397a294ea68f290ad3a6</string>
+	<string>1:546249380040:ios:c585cc9d14d5c13f7795fd</string>
 </dict>
 </plist>

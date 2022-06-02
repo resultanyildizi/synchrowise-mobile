@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/failure/synchrowise_user_repository_failure.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:dartz/dartz.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/core/string_values.dart';
+import 'package:synchrowise/setup_env.dart';
 
 class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
   //* Dependencies
@@ -22,8 +22,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/User");
+      final uri = Uri.parse("$apiurl/User");
 
       final result = await _client.post(
         uri,
@@ -52,8 +51,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser userFromCred,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/User/firebase/${userFromCred.firebaseId}");
+      final uri = Uri.parse("$apiurl/User/firebase/${userFromCred.firebaseId}");
 
       final result = await _client.get(
         uri,
@@ -86,8 +84,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/User");
+      final uri = Uri.parse("$apiurl/User");
 
       final result = await _client.put(
         uri,
@@ -115,8 +112,7 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/User/${synchrowiseUser.synchrowiseId}");
+      final uri = Uri.parse("$apiurl/User/${synchrowiseUser.synchrowiseId}");
 
       final result = await _client.delete(
         uri,

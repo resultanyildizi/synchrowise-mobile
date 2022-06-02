@@ -1,13 +1,14 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 import 'package:synchrowise/infrastructure/core/string_values.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
+import 'package:synchrowise/setup_env.dart';
 
 class GroupRepository implements IGroupRepository {
   //* Dependencies
@@ -22,8 +23,7 @@ class GroupRepository implements IGroupRepository {
     required GroupData groupData,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/Create");
+      final uri = Uri.parse("$apiurl/Group/Create");
 
       final result = await _client.post(
         uri,
@@ -51,8 +51,9 @@ class GroupRepository implements IGroupRepository {
     required GroupData groupData,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group");
+      final uri = Uri.parse("$apiurl/Group/${groupData.groupId}");
+
+      log(groupData.toUpdateMap().toString());
 
       final result = await _client.put(
         uri,
@@ -80,8 +81,7 @@ class GroupRepository implements IGroupRepository {
     required GroupData groupData,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/${groupData.groupId}");
+      final uri = Uri.parse("$apiurl/Group/${groupData.groupId}");
 
       final result = await _client.delete(
         uri,
@@ -109,8 +109,7 @@ class GroupRepository implements IGroupRepository {
     required String groupId,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/$groupId");
+      final uri = Uri.parse("$apiurl/Group/$groupId");
 
       final result = await _client.get(
         uri,
@@ -138,8 +137,7 @@ class GroupRepository implements IGroupRepository {
     required String synchrowiseUserId,
   }) async {
     try {
-      final api = dotenv.get("API_URL");
-      final uri = Uri.parse("$api/Group/Member/Get/$synchrowiseUserId");
+      final uri = Uri.parse("$apiurl/Group/Member/Get/$synchrowiseUserId");
 
       final result = await _client.get(
         uri,

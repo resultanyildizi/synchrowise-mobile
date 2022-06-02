@@ -5,10 +5,8 @@ class CreateGroupState with _$CreateGroupState {
   const factory CreateGroupState({
     required Option<Either<ValueFailure, String>> failureOrGroupNameOption,
     required Option<Either<GroupRepositoryFailure, Unit>>
-        groupNameFailureOrUnitOption,
+        submitFailureOrUnitOption,
     required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
-    required Option<Either<GroupRepositoryFailure, Unit>>
-        groupDescFailureOrUnitOption,
     required Option<Either<SynchrowiseUserStorageFailure, Unit>>
         storageFailureOrUnitOption,
     required bool showErrors,
@@ -19,8 +17,7 @@ class CreateGroupState with _$CreateGroupState {
   factory CreateGroupState.initial() {
     return CreateGroupState(
       storageFailureOrUnitOption: none(),
-      groupNameFailureOrUnitOption: none(),
-      groupDescFailureOrUnitOption: none(),
+      submitFailureOrUnitOption: none(),
       failureOrGroupNameOption: none(),
       failureOrGroupDescOption: none(),
       progressing: false,

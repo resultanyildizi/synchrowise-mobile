@@ -84,7 +84,7 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
                     "${WordPair.random().asString}${Random().nextInt(100)}",
                 saveButton: () {
                   final createGroupBloc = context.read<CreateGroupBloc>();
-                  createGroupBloc.saveGroupName();
+                  createGroupBloc.saveUsername();
                 },
                 title: "group_key".tr(),
                 desc: "group_key_desc".tr(),

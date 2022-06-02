@@ -76,7 +76,7 @@ class _CreateGroupSteps1State extends State<CreateGroupSteps1>
                 },
                 saveButton: () {
                   final createGroupBloc = context.read<CreateGroupBloc>();
-                  createGroupBloc.saveGroupDesc();
+                  createGroupBloc.submitGroup();
                 },
                 desc: "group_desc_subtitle".tr(),
                 btnText: "complete".tr(),

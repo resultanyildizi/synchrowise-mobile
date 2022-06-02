@@ -60,7 +60,7 @@ class HomeTab extends StatelessWidget {
                     return [
                       GroupActionCards(
                         cardBackgroundImage: whiteCardImagePath,
-                        title: loaded.groupData.groupName,
+                        title: loaded.groupData.groupKey,
                         desc: "open_your_group".tr(),
                         color: primaryColor,
                         onTap: () {
