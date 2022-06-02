@@ -53,6 +53,10 @@ class _$RegisterationEventTearOff {
   _RegisterationRemoveAvatarImageEvent removeAvatarImage() {
     return const _RegisterationRemoveAvatarImageEvent();
   }
+
+  _RegisterationDeleteAvatarImageEvent deleteAvatarImage() {
+    return const _RegisterationDeleteAvatarImageEvent();
+  }
 }
 
 /// @nodoc
@@ -71,6 +75,7 @@ mixin _$RegisterationEvent {
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +89,7 @@ mixin _$RegisterationEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +103,7 @@ mixin _$RegisterationEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +121,8 @@ mixin _$RegisterationEvent {
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +137,8 @@ mixin _$RegisterationEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -142,6 +153,8 @@ mixin _$RegisterationEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -244,6 +257,7 @@ class _$_RegisterationUpdateUsernameTextEvent
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return updateUsernameText(username);
   }
@@ -260,6 +274,7 @@ class _$_RegisterationUpdateUsernameTextEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return updateUsernameText?.call(username);
   }
@@ -276,6 +291,7 @@ class _$_RegisterationUpdateUsernameTextEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (updateUsernameText != null) {
@@ -299,6 +315,8 @@ class _$_RegisterationUpdateUsernameTextEvent
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return updateUsernameText(this);
   }
@@ -316,6 +334,8 @@ class _$_RegisterationUpdateUsernameTextEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return updateUsernameText?.call(this);
   }
@@ -333,6 +353,8 @@ class _$_RegisterationUpdateUsernameTextEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (updateUsernameText != null) {
@@ -447,6 +469,7 @@ class _$_RegisterationUpdateAvatarImageEvent
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return updateAvatarImage(androidUiSettings, iosUiSettings);
   }
@@ -463,6 +486,7 @@ class _$_RegisterationUpdateAvatarImageEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return updateAvatarImage?.call(androidUiSettings, iosUiSettings);
   }
@@ -479,6 +503,7 @@ class _$_RegisterationUpdateAvatarImageEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (updateAvatarImage != null) {
@@ -502,6 +527,8 @@ class _$_RegisterationUpdateAvatarImageEvent
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return updateAvatarImage(this);
   }
@@ -519,6 +546,8 @@ class _$_RegisterationUpdateAvatarImageEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return updateAvatarImage?.call(this);
   }
@@ -536,6 +565,8 @@ class _$_RegisterationUpdateAvatarImageEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (updateAvatarImage != null) {
@@ -615,6 +646,7 @@ class _$_RegisterationSaveUsernameEvent
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return saveUsername();
   }
@@ -631,6 +663,7 @@ class _$_RegisterationSaveUsernameEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return saveUsername?.call();
   }
@@ -647,6 +680,7 @@ class _$_RegisterationSaveUsernameEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (saveUsername != null) {
@@ -670,6 +704,8 @@ class _$_RegisterationSaveUsernameEvent
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return saveUsername(this);
   }
@@ -687,6 +723,8 @@ class _$_RegisterationSaveUsernameEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return saveUsername?.call(this);
   }
@@ -704,6 +742,8 @@ class _$_RegisterationSaveUsernameEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (saveUsername != null) {
@@ -773,6 +813,7 @@ class _$_RegisterationRegisterFieldsEvent
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return registerFields();
   }
@@ -789,6 +830,7 @@ class _$_RegisterationRegisterFieldsEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return registerFields?.call();
   }
@@ -805,6 +847,7 @@ class _$_RegisterationRegisterFieldsEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (registerFields != null) {
@@ -828,6 +871,8 @@ class _$_RegisterationRegisterFieldsEvent
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return registerFields(this);
   }
@@ -845,6 +890,8 @@ class _$_RegisterationRegisterFieldsEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return registerFields?.call(this);
   }
@@ -862,6 +909,8 @@ class _$_RegisterationRegisterFieldsEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (registerFields != null) {
@@ -928,6 +977,7 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return goBack();
   }
@@ -944,6 +994,7 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return goBack?.call();
   }
@@ -960,6 +1011,7 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (goBack != null) {
@@ -983,6 +1035,8 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return goBack(this);
   }
@@ -1000,6 +1054,8 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return goBack?.call(this);
   }
@@ -1017,6 +1073,8 @@ class _$_RegisterationGoBackEvent implements _RegisterationGoBackEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (goBack != null) {
@@ -1082,6 +1140,7 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return goNext();
   }
@@ -1098,6 +1157,7 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return goNext?.call();
   }
@@ -1114,6 +1174,7 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (goNext != null) {
@@ -1137,6 +1198,8 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return goNext(this);
   }
@@ -1154,6 +1217,8 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return goNext?.call(this);
   }
@@ -1171,6 +1236,8 @@ class _$_RegisterationGoNextEvent implements _RegisterationGoNextEvent {
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (goNext != null) {
@@ -1239,6 +1306,7 @@ class _$_RegisterationRemoveAvatarImageEvent
     required TResult Function() goBack,
     required TResult Function() goNext,
     required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
   }) {
     return removeAvatarImage();
   }
@@ -1255,6 +1323,7 @@ class _$_RegisterationRemoveAvatarImageEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
   }) {
     return removeAvatarImage?.call();
   }
@@ -1271,6 +1340,7 @@ class _$_RegisterationRemoveAvatarImageEvent
     TResult Function()? goBack,
     TResult Function()? goNext,
     TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (removeAvatarImage != null) {
@@ -1294,6 +1364,8 @@ class _$_RegisterationRemoveAvatarImageEvent
     required TResult Function(_RegisterationGoNextEvent value) goNext,
     required TResult Function(_RegisterationRemoveAvatarImageEvent value)
         removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
   }) {
     return removeAvatarImage(this);
   }
@@ -1311,6 +1383,8 @@ class _$_RegisterationRemoveAvatarImageEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
   }) {
     return removeAvatarImage?.call(this);
   }
@@ -1328,6 +1402,8 @@ class _$_RegisterationRemoveAvatarImageEvent
     TResult Function(_RegisterationGoNextEvent value)? goNext,
     TResult Function(_RegisterationRemoveAvatarImageEvent value)?
         removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
     required TResult orElse(),
   }) {
     if (removeAvatarImage != null) {
@@ -1341,6 +1417,174 @@ abstract class _RegisterationRemoveAvatarImageEvent
     implements RegisterationEvent {
   const factory _RegisterationRemoveAvatarImageEvent() =
       _$_RegisterationRemoveAvatarImageEvent;
+}
+
+/// @nodoc
+abstract class _$RegisterationDeleteAvatarImageEventCopyWith<$Res> {
+  factory _$RegisterationDeleteAvatarImageEventCopyWith(
+          _RegisterationDeleteAvatarImageEvent value,
+          $Res Function(_RegisterationDeleteAvatarImageEvent) then) =
+      __$RegisterationDeleteAvatarImageEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RegisterationDeleteAvatarImageEventCopyWithImpl<$Res>
+    extends _$RegisterationEventCopyWithImpl<$Res>
+    implements _$RegisterationDeleteAvatarImageEventCopyWith<$Res> {
+  __$RegisterationDeleteAvatarImageEventCopyWithImpl(
+      _RegisterationDeleteAvatarImageEvent _value,
+      $Res Function(_RegisterationDeleteAvatarImageEvent) _then)
+      : super(_value, (v) => _then(v as _RegisterationDeleteAvatarImageEvent));
+
+  @override
+  _RegisterationDeleteAvatarImageEvent get _value =>
+      super._value as _RegisterationDeleteAvatarImageEvent;
+}
+
+/// @nodoc
+
+class _$_RegisterationDeleteAvatarImageEvent
+    implements _RegisterationDeleteAvatarImageEvent {
+  const _$_RegisterationDeleteAvatarImageEvent();
+
+  @override
+  String toString() {
+    return 'RegisterationEvent.deleteAvatarImage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _RegisterationDeleteAvatarImageEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username) updateUsernameText,
+    required TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)
+        updateAvatarImage,
+    required TResult Function() saveUsername,
+    required TResult Function() registerFields,
+    required TResult Function() goBack,
+    required TResult Function() goNext,
+    required TResult Function() removeAvatarImage,
+    required TResult Function() deleteAvatarImage,
+  }) {
+    return deleteAvatarImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String username)? updateUsernameText,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
+    TResult Function()? saveUsername,
+    TResult Function()? registerFields,
+    TResult Function()? goBack,
+    TResult Function()? goNext,
+    TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
+  }) {
+    return deleteAvatarImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username)? updateUsernameText,
+    TResult Function(
+            AndroidUiSettings androidUiSettings, IOSUiSettings iosUiSettings)?
+        updateAvatarImage,
+    TResult Function()? saveUsername,
+    TResult Function()? registerFields,
+    TResult Function()? goBack,
+    TResult Function()? goNext,
+    TResult Function()? removeAvatarImage,
+    TResult Function()? deleteAvatarImage,
+    required TResult orElse(),
+  }) {
+    if (deleteAvatarImage != null) {
+      return deleteAvatarImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RegisterationUpdateUsernameTextEvent value)
+        updateUsernameText,
+    required TResult Function(_RegisterationUpdateAvatarImageEvent value)
+        updateAvatarImage,
+    required TResult Function(_RegisterationSaveUsernameEvent value)
+        saveUsername,
+    required TResult Function(_RegisterationRegisterFieldsEvent value)
+        registerFields,
+    required TResult Function(_RegisterationGoBackEvent value) goBack,
+    required TResult Function(_RegisterationGoNextEvent value) goNext,
+    required TResult Function(_RegisterationRemoveAvatarImageEvent value)
+        removeAvatarImage,
+    required TResult Function(_RegisterationDeleteAvatarImageEvent value)
+        deleteAvatarImage,
+  }) {
+    return deleteAvatarImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
+        updateUsernameText,
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
+        updateAvatarImage,
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
+        removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
+  }) {
+    return deleteAvatarImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RegisterationUpdateUsernameTextEvent value)?
+        updateUsernameText,
+    TResult Function(_RegisterationUpdateAvatarImageEvent value)?
+        updateAvatarImage,
+    TResult Function(_RegisterationSaveUsernameEvent value)? saveUsername,
+    TResult Function(_RegisterationRegisterFieldsEvent value)? registerFields,
+    TResult Function(_RegisterationGoBackEvent value)? goBack,
+    TResult Function(_RegisterationGoNextEvent value)? goNext,
+    TResult Function(_RegisterationRemoveAvatarImageEvent value)?
+        removeAvatarImage,
+    TResult Function(_RegisterationDeleteAvatarImageEvent value)?
+        deleteAvatarImage,
+    required TResult orElse(),
+  }) {
+    if (deleteAvatarImage != null) {
+      return deleteAvatarImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterationDeleteAvatarImageEvent
+    implements RegisterationEvent {
+  const factory _RegisterationDeleteAvatarImageEvent() =
+      _$_RegisterationDeleteAvatarImageEvent;
 }
 
 /// @nodoc

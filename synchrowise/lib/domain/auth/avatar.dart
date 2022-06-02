@@ -6,11 +6,12 @@ import 'package:flutter/foundation.dart';
 @immutable
 class Avatar extends Equatable {
   final String url;
+  final String id;
 
-  const Avatar({required this.url});
+  const Avatar({required this.url, required this.id});
 
   Map<String, dynamic> toMap() {
-    return {'url': url};
+    return {'url': url, 'guid': id};
   }
 
   factory Avatar.fromMap(Map<String, dynamic> map) {
@@ -18,15 +19,15 @@ class Avatar extends Equatable {
       return Avatar.defaultAvatar();
     }
 
-    log('Avatar.fromMap: map: $map');
-
-    return Avatar(url: map['url']);
+    return Avatar(url: map['url'], id: map['guid']);
   }
 
   factory Avatar.defaultAvatar() {
     return const Avatar(
-        url:
-            'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png');
+      url:
+          'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png',
+      id: 'default',
+    );
   }
 
   String get getHttpsPath {
@@ -35,6 +36,10 @@ class Avatar extends Equatable {
     } else {
       return "https://${url.replaceAll("\\", "/")}";
     }
+  }
+
+  bool get maybeDefault {
+    return url.toLowerCase().contains("default");
   }
 
   @override

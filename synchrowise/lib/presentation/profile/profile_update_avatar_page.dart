@@ -68,6 +68,10 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
                           );
                         },
                       );
+                    } else if (state.hasAvatarSucceeded &&
+                        state.hasStorageSucceeded) {
+                      context.read<AuthBloc>().check();
+                      SynchrowiseNavigator.pop(context);
                     }
                   },
                 ),
@@ -105,7 +109,12 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
                                     showLoadingIndicator: state.progressing,
                                     currentAvatarUrl:
                                         authorized.user.avatar.getHttpsPath,
-                                    onCloseButtonTap: () {},
+                                    onCloseButtonTap: () {
+                                      if (!authorized
+                                          .user.avatar.maybeDefault) {
+                                        registerationBloc.deleteAvatarImage();
+                                      }
+                                    },
                                     onUploadButton: () {
                                       _uploadImage(context);
                                     },
@@ -114,7 +123,13 @@ class ProfileUpdateAvatarPage extends StatelessWidget {
                                     (failure) {
                                       return ImageSectionEmpty(
                                         showLoadingIndicator: state.progressing,
-                                        onCloseButtonTap: () {},
+                                        onCloseButtonTap: () {
+                                          if (!authorized
+                                              .user.avatar.maybeDefault) {
+                                            registerationBloc
+                                                .deleteAvatarImage();
+                                          }
+                                        },
                                         currentAvatarUrl:
                                             authorized.user.avatar.getHttpsPath,
                                         onUploadButton: () {

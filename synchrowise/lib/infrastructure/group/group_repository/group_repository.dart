@@ -157,6 +157,7 @@ class GroupRepository implements IGroupRepository {
         ));
       }
     } on SocketException catch (_) {
+      log(_.toString());
       return left(const GroupRepositoryFailure.connection());
     } catch (e) {
       return left(GroupRepositoryFailure.unknown(e.toString()));

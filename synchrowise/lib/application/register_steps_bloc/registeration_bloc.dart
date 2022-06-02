@@ -40,6 +40,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
   }
 
   void removeAvatarImage() => add(const RegisterationEvent.removeAvatarImage());
+  void deleteAvatarImage() => add(const RegisterationEvent.deleteAvatarImage());
   void updateUsernameText({required String username}) =>
       add(RegisterationEvent.updateUsernameText(username: username));
   void registerFields() {
@@ -93,7 +94,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
                   );
                 },
                 (user) async {
-                  final failureOrAvatar = await _iAvatarRepo.create(
+                  final failureOrAvatar = await _iAvatarRepo.upload(
                     avatar: image,
                     owner: user,
                   );
@@ -261,7 +262,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
 
             emit(await newstate);
           },
-          removeAvatarImage: (_) {
+          removeAvatarImage: (_) async {
             emit(state.copyWith(
               showErrors: false,
               imageFailureOrImageOption: none(),
@@ -270,7 +271,52 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
               usernameFailureOrUnitOption: none(),
             ));
           },
-          goBack: (_) {
+          deleteAvatarImage: (_) async {
+            final failureOrUser = await _iUserStorage.get();
+
+            final newState = await failureOrUser.fold(
+              (f) async {
+                return state.copyWith(
+                  storageFailureOrUnitOption: some(left(f)),
+                );
+              },
+              (user) async {
+                final failureOrAvatar = await _iAvatarRepo.delete(owner: user);
+
+                return failureOrAvatar.fold(
+                  (f) async {
+                    return state.copyWith(
+                      avatarFailureOrAvatarOption: some(left(f)),
+                      storageFailureOrUnitOption: some(right(unit)),
+                    );
+                  },
+                  (avatar) async {
+                    final failureOrUnit = await _iUserStorage.update(
+                      user: user.copyWith(avatar: avatar),
+                    );
+
+                    return failureOrUnit.fold(
+                      (f) {
+                        return state.copyWith(
+                          storageFailureOrUnitOption: some(left(f)),
+                          avatarFailureOrAvatarOption: some(right(unit)),
+                        );
+                      },
+                      (_) {
+                        return state.copyWith(
+                          avatarFailureOrAvatarOption: some(right(unit)),
+                          storageFailureOrUnitOption: some(right(unit)),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            );
+
+            emit(newState);
+          },
+          goBack: (_) async {
             assert(
               state.step > 0,
               'Cannot go back from step 0. This event must not be called from step 0.',
@@ -289,7 +335,7 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
               ),
             );
           },
-          goNext: (_) {
+          goNext: (_) async {
             emit(state.copyWith(
               step: 1,
               storageFailureOrUnitOption: none(),

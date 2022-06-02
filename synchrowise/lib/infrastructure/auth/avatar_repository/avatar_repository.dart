@@ -22,79 +22,59 @@ class AvatarRepository implements IAvatarRepository {
 
   //* Method implementations
   @override
-  Future<Either<AvatarRepositoryFailure, Avatar>> create({
+  Future<Either<AvatarRepositoryFailure, Avatar>> upload({
     required File avatar,
     required SynchrowiseUser owner,
   }) async {
-    final uri = Uri.parse("$apiurl/User");
+    final uri = Uri.parse("$apiurl/User/Avatar");
 
     final fileext = path.extension(avatar.path);
 
     assert(fileext == ".jpg" || fileext == ".jpeg" || fileext == ".png");
 
-    final response = await _client.post(
-      uri,
-      body: {
-        "File": base64Encode(avatar.readAsBytesSync()),
-        "OwnerGuid": owner.synchrowiseId,
-      },
-      headers: {
-        HeaderKeys.contentType: HeaderValues.multipartFormData,
-      },
+    final multipartFile = await MultipartFile.fromPath(
+      "file",
+      avatar.path,
     );
 
-    if (response.statusCode == 200) {
-      final avatarMap = jsonDecode(response.body);
-      final avatar = Avatar.fromMap(avatarMap);
+    final request = MultipartRequest("POST", uri);
 
-      return right(avatar);
+    request.fields.addAll({"ownerId": owner.synchrowiseId});
+
+    request.files.add(multipartFile);
+
+    final streamed = await request.send();
+
+    final result = await Response.fromStream(streamed);
+
+    if (result.statusCode == 200) {
+      return right(Avatar.fromMap(json.decode(result.body)["data"]));
     } else {
-      log(response.body);
-      return left(
-          AvatarRepositoryFailure.server(response.statusCode, response.body));
+      log(result.statusCode.toString());
+      log(result.body);
+
+      return left(AvatarRepositoryFailure.server(
+        result.statusCode,
+        result.body,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<AvatarRepositoryFailure, Avatar>> delete({
+    required SynchrowiseUser owner,
+  }) async {
+    final uri = Uri.parse("$apiurl/User/${owner.synchrowiseId}/Avatar");
+
+    final response = await _client.delete(uri);
+
+    if (response.statusCode == 200) {
+      return right(Avatar.fromMap(json.decode(response.body)["data"]));
+    } else {
+      return left(AvatarRepositoryFailure.server(
+        response.statusCode,
+        response.body,
+      ));
     }
   }
 }
-
-
-
-//  final mediaType = MediaType.parse("image/$fileext");
-
-//     final multipartFile = await MultipartFile.fromPath(
-//       "File",
-//       avatar.path,
-//       filename: avatar.path.split('/').last,
-//       contentType: mediaType,
-//     );
-
-//     final request = MultipartRequest("POST", uri);
-
-//     request.fields.addAll({"OwnerGuid": ownerId});
-
-//     request.headers.addAll({
-//       HeaderKeys.contentType: HeaderValues.multipartFormData,
-//     });
-
-//     request.files.add(multipartFile);
-
-//     final streamed = await request.send();
-
-//     final result = await Response.fromStream(streamed);
-
-//     if (result.statusCode == 200) {
-//       return right(
-//         const Avatar(
-//           path:
-//               "https://media.istockphoto.com/photos/businessman-silhouette-as-avatar-or-default-profile-picture-picture-id476085198?k=20&m=476085198&s=612x612&w=0&h=8J3VgOZab_OiYoIuZfiMIvucFYB8vWYlKnSjKuKeYQM=",
-//         ),
-//       );
-//     } else {
-//       log(result.statusCode.toString());
-//       log(json.decode(result.body).toString());
-
-//       return left(AvatarRepositoryFailure.server(
-//         result.statusCode,
-//         result.body,
-//       ));
-//     }
-//   }

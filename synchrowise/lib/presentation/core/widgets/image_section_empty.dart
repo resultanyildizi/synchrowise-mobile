@@ -43,10 +43,10 @@ class ImageSectionEmpty extends StatelessWidget {
           else
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: CachedNetworkImage(
+              child: Image.network(
+                currentAvatarUrl!,
                 width: MediaQuery.of(context).size.width - 70,
                 height: MediaQuery.of(context).size.height / 2.5,
-                imageUrl: currentAvatarUrl!,
                 fit: BoxFit.cover,
               ),
             ),

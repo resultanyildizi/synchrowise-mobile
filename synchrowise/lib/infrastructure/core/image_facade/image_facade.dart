@@ -22,7 +22,7 @@ class ImageFacade implements IImageFacade {
     try {
       final pickedImage = await _imagePicker
           .pickImage(source: ImageSource.gallery)
-          .timeout(const Duration(seconds: 5));
+          .timeout(const Duration(minutes: 1));
 
       if (pickedImage != null) {
         return right(File(pickedImage.path));

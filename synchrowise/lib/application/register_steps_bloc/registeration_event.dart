@@ -16,4 +16,7 @@ class RegisterationEvent with _$RegisterationEvent {
   const factory RegisterationEvent.goNext() = _RegisterationGoNextEvent;
   const factory RegisterationEvent.removeAvatarImage() =
       _RegisterationRemoveAvatarImageEvent;
+
+  const factory RegisterationEvent.deleteAvatarImage() =
+      _RegisterationDeleteAvatarImageEvent;
 }
