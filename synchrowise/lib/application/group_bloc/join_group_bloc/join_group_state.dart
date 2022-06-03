@@ -2,6 +2,8 @@ part of 'join_group_bloc.dart';
 
 @freezed
 class JoinGroupState with _$JoinGroupState {
+  const JoinGroupState._();
+
   const factory JoinGroupState({
     required Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
     required Option<Either<GroupRepositoryFailure, GroupData>>
@@ -20,5 +22,21 @@ class JoinGroupState with _$JoinGroupState {
       showErrors: false,
       isSubmitting: false,
     );
+  }
+
+  bool get hasJoinFailed {
+    return joinFailureOrGroupDataOption.fold(() => false, (r) => r.isLeft());
+  }
+
+  bool get hasStorageFailed {
+    return storageFailureOrUnitOption.fold(() => false, (fos) => fos.isLeft());
+  }
+
+  bool get hasJoinSucceded {
+    return joinFailureOrGroupDataOption.fold(() => false, (r) => r.isRight());
+  }
+
+  bool get hasStorageSucceded {
+    return storageFailureOrUnitOption.fold(() => false, (fos) => fos.isRight());
   }
 }

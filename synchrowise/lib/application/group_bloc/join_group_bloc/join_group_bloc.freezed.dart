@@ -497,13 +497,14 @@ class __$JoinGroupStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_JoinGroupState implements _JoinGroupState {
+class _$_JoinGroupState extends _JoinGroupState {
   const _$_JoinGroupState(
       {required this.failureOrGroupKeyOption,
       required this.joinFailureOrGroupDataOption,
       required this.storageFailureOrUnitOption,
       required this.showErrors,
-      required this.isSubmitting});
+      required this.isSubmitting})
+      : super._();
 
   @override
   final Option<Either<ValueFailure, String>> failureOrGroupKeyOption;
@@ -556,7 +557,7 @@ class _$_JoinGroupState implements _JoinGroupState {
       __$JoinGroupStateCopyWithImpl<_JoinGroupState>(this, _$identity);
 }
 
-abstract class _JoinGroupState implements JoinGroupState {
+abstract class _JoinGroupState extends JoinGroupState {
   const factory _JoinGroupState(
       {required Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
       required Option<Either<GroupRepositoryFailure, GroupData>>
@@ -565,6 +566,7 @@ abstract class _JoinGroupState implements JoinGroupState {
           storageFailureOrUnitOption,
       required bool showErrors,
       required bool isSubmitting}) = _$_JoinGroupState;
+  const _JoinGroupState._() : super._();
 
   @override
   Option<Either<ValueFailure, String>> get failureOrGroupKeyOption;

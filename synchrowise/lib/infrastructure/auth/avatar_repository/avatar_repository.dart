@@ -50,9 +50,6 @@ class AvatarRepository implements IAvatarRepository {
     if (result.statusCode == 200) {
       return right(Avatar.fromMap(json.decode(result.body)["data"]));
     } else {
-      log(result.statusCode.toString());
-      log(result.body);
-
       return left(AvatarRepositoryFailure.server(
         result.statusCode,
         result.body,

@@ -36,8 +36,6 @@ class GetGroupBloc extends Bloc<GetGroupEvent, GetGroupState> {
                   synchrowiseUserId: user.synchrowiseId,
                 );
 
-                log(failureOrGroupData.toString());
-
                 return failureOrGroupData.fold(
                   (failure) => _GetGroupFailureState(failure: failure),
                   (groupData) => _GetGroupLoadedState(groupData: groupData),

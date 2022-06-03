@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
+import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
@@ -21,9 +22,17 @@ class ProfileTab extends StatelessWidget {
       listener: (context, state) {
         return state.failureOrUnitOption.fold(
           () {},
-          (_) {
-            final authBloc = context.read<AuthBloc>();
-            authBloc.check();
+          (failureOrUnit) {
+            failureOrUnit.fold(
+              (f) {
+                SynchrowiseNavigator.pop(context);
+                handleSynchrowiseFailure(context, f);
+              },
+              (r) {
+                final authBloc = context.read<AuthBloc>();
+                authBloc.check();
+              },
+            );
           },
         );
       },

@@ -38,7 +38,7 @@ class GroupData extends Equatable {
     // Todo: fix this
     return GroupData(
       groupKey: map['groupName'],
-      groupOwner: map['ownerId'],
+      groupOwner: SynchrowiseUser.fromMap(map['groupOwner']),
       groupDesc: map['description'],
       members: KtList.from(map['groupMember'] as List<dynamic>)
           .cast<Map<String, dynamic>>()

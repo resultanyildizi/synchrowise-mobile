@@ -137,7 +137,22 @@ class HomeTab extends StatelessWidget {
                   desc: "join_a_group_description".tr(),
                   showProgress: false,
                   onTap: () {
-                    SynchrowiseNavigator.pushNamed(context, '/join-group');
+                    SynchrowiseNavigator.pushNamed(
+                      context,
+                      '/join-group',
+                      arguments: JoinGroupPageRouteArguments(
+                        context,
+                        onSuccess: () {
+                          context.read<GetGroupBloc>().fetch();
+
+                          SynchrowiseNavigator.pushNamedAndRemoveUntil(
+                            context,
+                            "/media",
+                            (p0) => false,
+                          );
+                        },
+                      ),
+                    );
                   },
                 ),
               ],
