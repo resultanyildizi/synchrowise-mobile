@@ -3,8 +3,10 @@ import 'package:synchrowise/domain/messaging/synchrowise_message.dart';
 import 'package:synchrowise/infrastructure/messaging/i_synchrowise_messaging.dart';
 
 class SynchrowiseFirebaseMessaging extends ISynchrowiseMessaging {
+  //* Constructor
   SynchrowiseFirebaseMessaging();
 
+  //* Method implementations
   @override
   Stream<String?> subscribeToken() async* {
     yield await FirebaseMessaging.instance.getToken();

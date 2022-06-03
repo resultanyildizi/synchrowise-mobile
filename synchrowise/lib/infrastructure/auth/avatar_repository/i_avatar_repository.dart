@@ -9,8 +9,8 @@ abstract class IAvatarRepository {
   ///* Uploads the `avatar` image file to the server.
   ///* The server automatically updates the avatar image of the user for given `synchrowiseUser` model.
   ///*
-  ///* Returns `Avatar` if it is successful
-  ///* Returns `AvatarRepositoryFailure` if an exception occurs
+  ///* Returns `Avatar` if it is successful.
+  ///* Returns `AvatarRepositoryFailure` if an exception occurs.
   Future<Either<AvatarRepositoryFailure, Avatar>> upload({
     required File avatar,
     required SynchrowiseUser owner,
@@ -18,8 +18,8 @@ abstract class IAvatarRepository {
 
   ///* Deletes the avatar image of the user for given `synchrowiseUser` model.
   ///*
-  ///* Returns `Avatar` if it is successful
-  ///* Returns `AvatarRepositoryFailure` if an exception occurs
+  ///* Returns `Avatar` if it is successful.
+  ///* Returns `AvatarRepositoryFailure` if an exception occurs.
   Future<Either<AvatarRepositoryFailure, Avatar>> delete({
     required SynchrowiseUser owner,
   });

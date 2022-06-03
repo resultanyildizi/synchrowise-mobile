@@ -41,7 +41,7 @@ class NotificationSettingsBloc
 
               final failureOrUnit = await _iNotificationRepository.update(
                 notificationData: updatedNotifData,
-                owner: user,
+                synchrowiseUser: user,
               );
 
               return failureOrUnit.fold(
@@ -81,7 +81,7 @@ class NotificationSettingsBloc
 
               final failureOrUnit = await _iNotificationRepository.update(
                 notificationData: updatedNotifData,
-                owner: user,
+                synchrowiseUser: user,
               );
 
               return failureOrUnit.fold(

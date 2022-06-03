@@ -21,11 +21,11 @@ class NotificationRepository implements INotificationRepository {
   @override
   Future<Either<NotificationRepositoryFailure, Unit>> update({
     required NotificationSettingsData notificationData,
-    required SynchrowiseUser owner,
+    required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final uri =
-          Uri.parse("$apiurl/User/${owner.synchrowiseId}/Notifications");
+      final uri = Uri.parse(
+          "$apiurl/User/${synchrowiseUser.synchrowiseId}/Notifications");
 
       final result = await _client.post(
         uri,
