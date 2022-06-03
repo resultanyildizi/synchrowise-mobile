@@ -22,7 +22,7 @@ class SettingsTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "notifications".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/notifications");
+          SynchrowiseNavigator.pushNamed(context, "/notification-settings");
         },
       )
     ];

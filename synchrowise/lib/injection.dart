@@ -11,6 +11,7 @@ import 'package:synchrowise/application/group_bloc/create_group/create_group_blo
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/group_bloc/join_group_bloc/join_group_bloc.dart';
 import 'package:synchrowise/application/language_bloc/language_bloc.dart';
+import 'package:synchrowise/application/notification_settings_bloc/notification_settings_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/application/signin_form_bloc/signin_form_bloc.dart';
@@ -27,6 +28,8 @@ import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/group_repository.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
+import 'package:synchrowise/infrastructure/notification/i_notification_repository.dart';
+import 'package:synchrowise/infrastructure/notification/notification_repository.dart';
 import 'package:synchrowise/services/core/synchrowise_database.dart';
 
 GetIt getIt = GetIt.instance;
@@ -49,6 +52,11 @@ Future<void> _setupServices() async {
 }
 
 Future<void> _setupInfrastructure() async {
+  getIt.registerSingleton<INotificationRepository>(
+    NotificationRepository(
+      getIt<Client>(),
+    ),
+  );
   getIt.registerSingleton<IAuthFacade>(
     AuthFacade(
       getIt<FirebaseAuth>(),
@@ -82,6 +90,12 @@ Future<void> _setupInfrastructure() async {
 }
 
 Future<void> _setupBlocs() async {
+  getIt.registerFactory<NotificationSettingsBloc>(() {
+    return NotificationSettingsBloc(
+      getIt<INotificationRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
+    );
+  });
   getIt.registerFactory<AuthBloc>(() {
     return AuthBloc(
       getIt<IAuthFacade>(),

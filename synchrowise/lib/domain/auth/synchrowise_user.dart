@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:synchrowise/domain/auth/avatar.dart';
+import 'package:synchrowise/domain/auth/notification_settings_data.dart';
 import 'package:synchrowise/domain/auth/premium.dart';
 
 /// The parameters below are only used when the user is created by the server.
@@ -21,20 +21,22 @@ class SynchrowiseUser extends Equatable {
   final String? username;
   final String? emailAddress;
   final Premium premium;
+  final NotificationSettingsData notificationData;
   final bool sEmailVerified;
   final bool sIsNewUser;
   final int sFirebaseCreationTimeMs;
   final int sFirebaseLastSigninTimeMs;
 
   const SynchrowiseUser({
-    required this.username,
     required this.firebaseId,
     required this.synchrowiseId,
     required this.avatar,
     required this.signInMethod,
     required this.firebaseIdToken,
+    required this.username,
     required this.emailAddress,
     required this.premium,
+    required this.notificationData,
     this.sEmailVerified = false,
     this.sIsNewUser = false,
     this.sFirebaseCreationTimeMs = -1,
@@ -52,6 +54,7 @@ class SynchrowiseUser extends Equatable {
       username,
       emailAddress,
       premium,
+      notificationData,
       sEmailVerified,
       sIsNewUser,
       sFirebaseCreationTimeMs,
@@ -69,6 +72,7 @@ class SynchrowiseUser extends Equatable {
       'sign_in_method': signInMethod,
       'username': username,
       'premium': premium.value,
+      'notifications': notificationData.toMap(),
       // --
       'email_verified': sEmailVerified,
       'is_New_user': sIsNewUser,
@@ -85,6 +89,7 @@ class SynchrowiseUser extends Equatable {
       'email': emailAddress,
       'email_verified': sEmailVerified,
       'firebase_Last_Signin_Time': sFirebaseLastSigninTimeMs,
+      'notifications': notificationData,
     };
   }
 
@@ -111,6 +116,8 @@ class SynchrowiseUser extends Equatable {
       firebaseIdToken: map['firebase_id_token'] as String,
       emailAddress: map['email'] as String,
       premium: Premium.fromValue(map['premium'] as int),
+      notificationData: NotificationSettingsData.fromMap(
+          map['notifications'] as Map<String, dynamic>),
       sEmailVerified: map['email_verified'] as bool,
       sIsNewUser: map['is_New_user'] as bool,
       sFirebaseCreationTimeMs: map['firebase_Creation_Time'] as int,
@@ -126,6 +133,7 @@ class SynchrowiseUser extends Equatable {
       avatar: Avatar.fromMap(data['avatar']),
       premium: Premium.fromValue(data['premiumType']),
       // --
+      notificationData: notificationData,
       firebaseId: firebaseId,
       firebaseIdToken: firebaseIdToken,
       sFirebaseCreationTimeMs: sFirebaseCreationTimeMs,
@@ -145,6 +153,11 @@ class SynchrowiseUser extends Equatable {
     String? username,
     String? emailAddress,
     Premium? premium,
+    NotificationSettingsData? notifications,
+    bool? sEmailVerified,
+    bool? sIsNewUser,
+    int? sFirebaseCreationTimeMs,
+    int? sFirebaseLastSigninTimeMs,
   }) {
     return SynchrowiseUser(
       firebaseId: firebaseId ?? this.firebaseId,
@@ -155,10 +168,13 @@ class SynchrowiseUser extends Equatable {
       username: username ?? this.username,
       emailAddress: emailAddress ?? this.emailAddress,
       premium: premium ?? this.premium,
-      sEmailVerified: sEmailVerified,
-      sIsNewUser: sIsNewUser,
-      sFirebaseCreationTimeMs: sFirebaseCreationTimeMs,
-      sFirebaseLastSigninTimeMs: sFirebaseLastSigninTimeMs,
+      notificationData: notifications ?? this.notificationData,
+      sEmailVerified: sEmailVerified ?? this.sEmailVerified,
+      sIsNewUser: sIsNewUser ?? this.sIsNewUser,
+      sFirebaseCreationTimeMs:
+          sFirebaseCreationTimeMs ?? this.sFirebaseCreationTimeMs,
+      sFirebaseLastSigninTimeMs:
+          sFirebaseLastSigninTimeMs ?? this.sFirebaseLastSigninTimeMs,
     );
   }
 }

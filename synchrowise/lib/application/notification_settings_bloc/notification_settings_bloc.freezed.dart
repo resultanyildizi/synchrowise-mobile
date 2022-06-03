@@ -18,8 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NotificationSettingsEventTearOff {
   const _$NotificationSettingsEventTearOff();
 
-  _Started started() {
-    return const _Started();
+  _UpdateGroupNotificationEvent updateGroupNotification() {
+    return const _UpdateGroupNotificationEvent();
+  }
+
+  _UpdateMessageNotificationEvent updateMessageNotification() {
+    return const _UpdateMessageNotificationEvent();
   }
 }
 
@@ -30,33 +34,45 @@ const $NotificationSettingsEvent = _$NotificationSettingsEventTearOff();
 mixin _$NotificationSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() updateGroupNotification,
+    required TResult Function() updateMessageNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateGroupNotificationEvent value)
+        updateGroupNotification,
+    required TResult Function(_UpdateMessageNotificationEvent value)
+        updateMessageNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,36 +96,42 @@ class _$NotificationSettingsEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$UpdateGroupNotificationEventCopyWith<$Res> {
+  factory _$UpdateGroupNotificationEventCopyWith(
+          _UpdateGroupNotificationEvent value,
+          $Res Function(_UpdateGroupNotificationEvent) then) =
+      __$UpdateGroupNotificationEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
+class __$UpdateGroupNotificationEventCopyWithImpl<$Res>
     extends _$NotificationSettingsEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+    implements _$UpdateGroupNotificationEventCopyWith<$Res> {
+  __$UpdateGroupNotificationEventCopyWithImpl(
+      _UpdateGroupNotificationEvent _value,
+      $Res Function(_UpdateGroupNotificationEvent) _then)
+      : super(_value, (v) => _then(v as _UpdateGroupNotificationEvent));
 
   @override
-  _Started get _value => super._value as _Started;
+  _UpdateGroupNotificationEvent get _value =>
+      super._value as _UpdateGroupNotificationEvent;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_UpdateGroupNotificationEvent implements _UpdateGroupNotificationEvent {
+  const _$_UpdateGroupNotificationEvent();
 
   @override
   String toString() {
-    return 'NotificationSettingsEvent.started()';
+    return 'NotificationSettingsEvent.updateGroupNotification()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType &&
+            other is _UpdateGroupNotificationEvent);
   }
 
   @override
@@ -118,27 +140,30 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() updateGroupNotification,
+    required TResult Function() updateMessageNotification,
   }) {
-    return started();
+    return updateGroupNotification();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
   }) {
-    return started?.call();
+    return updateGroupNotification?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (updateGroupNotification != null) {
+      return updateGroupNotification();
     }
     return orElse();
   }
@@ -146,42 +171,175 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateGroupNotificationEvent value)
+        updateGroupNotification,
+    required TResult Function(_UpdateMessageNotificationEvent value)
+        updateMessageNotification,
   }) {
-    return started(this);
+    return updateGroupNotification(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
   }) {
-    return started?.call(this);
+    return updateGroupNotification?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (updateGroupNotification != null) {
+      return updateGroupNotification(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements NotificationSettingsEvent {
-  const factory _Started() = _$_Started;
+abstract class _UpdateGroupNotificationEvent
+    implements NotificationSettingsEvent {
+  const factory _UpdateGroupNotificationEvent() =
+      _$_UpdateGroupNotificationEvent;
+}
+
+/// @nodoc
+abstract class _$UpdateMessageNotificationEventCopyWith<$Res> {
+  factory _$UpdateMessageNotificationEventCopyWith(
+          _UpdateMessageNotificationEvent value,
+          $Res Function(_UpdateMessageNotificationEvent) then) =
+      __$UpdateMessageNotificationEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$UpdateMessageNotificationEventCopyWithImpl<$Res>
+    extends _$NotificationSettingsEventCopyWithImpl<$Res>
+    implements _$UpdateMessageNotificationEventCopyWith<$Res> {
+  __$UpdateMessageNotificationEventCopyWithImpl(
+      _UpdateMessageNotificationEvent _value,
+      $Res Function(_UpdateMessageNotificationEvent) _then)
+      : super(_value, (v) => _then(v as _UpdateMessageNotificationEvent));
+
+  @override
+  _UpdateMessageNotificationEvent get _value =>
+      super._value as _UpdateMessageNotificationEvent;
+}
+
+/// @nodoc
+
+class _$_UpdateMessageNotificationEvent
+    implements _UpdateMessageNotificationEvent {
+  const _$_UpdateMessageNotificationEvent();
+
+  @override
+  String toString() {
+    return 'NotificationSettingsEvent.updateMessageNotification()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UpdateMessageNotificationEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() updateGroupNotification,
+    required TResult Function() updateMessageNotification,
+  }) {
+    return updateMessageNotification();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
+  }) {
+    return updateMessageNotification?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? updateGroupNotification,
+    TResult Function()? updateMessageNotification,
+    required TResult orElse(),
+  }) {
+    if (updateMessageNotification != null) {
+      return updateMessageNotification();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateGroupNotificationEvent value)
+        updateGroupNotification,
+    required TResult Function(_UpdateMessageNotificationEvent value)
+        updateMessageNotification,
+  }) {
+    return updateMessageNotification(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
+  }) {
+    return updateMessageNotification?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateGroupNotificationEvent value)?
+        updateGroupNotification,
+    TResult Function(_UpdateMessageNotificationEvent value)?
+        updateMessageNotification,
+    required TResult orElse(),
+  }) {
+    if (updateMessageNotification != null) {
+      return updateMessageNotification(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateMessageNotificationEvent
+    implements NotificationSettingsEvent {
+  const factory _UpdateMessageNotificationEvent() =
+      _$_UpdateMessageNotificationEvent;
 }
 
 /// @nodoc
 class _$NotificationSettingsStateTearOff {
   const _$NotificationSettingsStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _NotificationSettingsState call(
+      {required Option<Either<NotificationRepositoryFailure, Unit>>
+          failureOrUnitOption}) {
+    return _NotificationSettingsState(
+      failureOrUnitOption: failureOrUnitOption,
+    );
   }
 }
 
@@ -190,37 +348,11 @@ const $NotificationSettingsState = _$NotificationSettingsStateTearOff();
 
 /// @nodoc
 mixin _$NotificationSettingsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
+  Option<Either<NotificationRepositoryFailure, Unit>> get failureOrUnitOption =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+
+  @JsonKey(ignore: true)
+  $NotificationSettingsStateCopyWith<NotificationSettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -229,6 +361,9 @@ abstract class $NotificationSettingsStateCopyWith<$Res> {
   factory $NotificationSettingsStateCopyWith(NotificationSettingsState value,
           $Res Function(NotificationSettingsState) then) =
       _$NotificationSettingsStateCopyWithImpl<$Res>;
+  $Res call(
+      {Option<Either<NotificationRepositoryFailure, Unit>>
+          failureOrUnitOption});
 }
 
 /// @nodoc
@@ -239,101 +374,100 @@ class _$NotificationSettingsStateCopyWithImpl<$Res>
   final NotificationSettingsState _value;
   // ignore: unused_field
   final $Res Function(NotificationSettingsState) _then;
-}
-
-/// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$InitialCopyWithImpl<$Res>
-    extends _$NotificationSettingsStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  $Res call({
+    Object? failureOrUnitOption = freezed,
+  }) {
+    return _then(_value.copyWith(
+      failureOrUnitOption: failureOrUnitOption == freezed
+          ? _value.failureOrUnitOption
+          : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<NotificationRepositoryFailure, Unit>>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$NotificationSettingsStateCopyWith<$Res>
+    implements $NotificationSettingsStateCopyWith<$Res> {
+  factory _$NotificationSettingsStateCopyWith(_NotificationSettingsState value,
+          $Res Function(_NotificationSettingsState) then) =
+      __$NotificationSettingsStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Option<Either<NotificationRepositoryFailure, Unit>>
+          failureOrUnitOption});
+}
+
+/// @nodoc
+class __$NotificationSettingsStateCopyWithImpl<$Res>
+    extends _$NotificationSettingsStateCopyWithImpl<$Res>
+    implements _$NotificationSettingsStateCopyWith<$Res> {
+  __$NotificationSettingsStateCopyWithImpl(_NotificationSettingsState _value,
+      $Res Function(_NotificationSettingsState) _then)
+      : super(_value, (v) => _then(v as _NotificationSettingsState));
+
+  @override
+  _NotificationSettingsState get _value =>
+      super._value as _NotificationSettingsState;
+
+  @override
+  $Res call({
+    Object? failureOrUnitOption = freezed,
+  }) {
+    return _then(_NotificationSettingsState(
+      failureOrUnitOption: failureOrUnitOption == freezed
+          ? _value.failureOrUnitOption
+          : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<NotificationRepositoryFailure, Unit>>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_NotificationSettingsState implements _NotificationSettingsState {
+  const _$_NotificationSettingsState({required this.failureOrUnitOption});
+
+  @override
+  final Option<Either<NotificationRepositoryFailure, Unit>> failureOrUnitOption;
 
   @override
   String toString() {
-    return 'NotificationSettingsState.initial()';
+    return 'NotificationSettingsState(failureOrUnitOption: $failureOrUnitOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType &&
+            other is _NotificationSettingsState &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrUnitOption, failureOrUnitOption));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureOrUnitOption));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  _$NotificationSettingsStateCopyWith<_NotificationSettingsState>
+      get copyWith =>
+          __$NotificationSettingsStateCopyWithImpl<_NotificationSettingsState>(
+              this, _$identity);
 }
 
-abstract class _Initial implements NotificationSettingsState {
-  const factory _Initial() = _$_Initial;
+abstract class _NotificationSettingsState implements NotificationSettingsState {
+  const factory _NotificationSettingsState(
+      {required Option<Either<NotificationRepositoryFailure, Unit>>
+          failureOrUnitOption}) = _$_NotificationSettingsState;
+
+  @override
+  Option<Either<NotificationRepositoryFailure, Unit>> get failureOrUnitOption;
+  @override
+  @JsonKey(ignore: true)
+  _$NotificationSettingsStateCopyWith<_NotificationSettingsState>
+      get copyWith => throw _privateConstructorUsedError;
 }
