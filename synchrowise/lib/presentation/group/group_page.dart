@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:synchrowise/presentation/core/widgets/circle_stepper.dart';
 import 'package:synchrowise/presentation/group/widgets/group_header.dart';
 import 'package:synchrowise/presentation/group/widgets/group_participant.dart';
-import 'package:synchrowise/presentation/group/widgets/video_player.dart';
+import 'package:synchrowise/presentation/group/widgets/media_player.dart';
 
-class MediaPage extends StatefulWidget {
-  const MediaPage({Key? key}) : super(key: key);
+class GroupPage extends StatefulWidget {
+  const GroupPage({Key? key}) : super(key: key);
 
   @override
-  State<MediaPage> createState() => _MediaPageState();
+  State<GroupPage> createState() => _GroupPageState();
 }
 
-class _MediaPageState extends State<MediaPage> {
+class _GroupPageState extends State<GroupPage> {
   late List<Participant> participantList;
-  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
 
     participantList = [
       Participant("Selim Gülce", true, false),
@@ -40,15 +31,10 @@ class _MediaPageState extends State<MediaPage> {
       Participant("Semih Taş", false, false),
       Participant("Habib Müküs", false, false),
     ];
-
-    _pageController = PageController(initialPage: 0);
   }
 
   @override
   void dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
     super.dispose();
   }
 
@@ -56,28 +42,16 @@ class _MediaPageState extends State<MediaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const MediaPlayer(),
-              const SizedBox(height: 30),
-              const MediaHeader(),
-              const SizedBox(height: 20),
-              const CircleStepper(),
-              const SizedBox(height: 20),
-              SizedBox(
-                height: 450,
-                child: PageView(
-                  controller: _pageController,
-                  children: [
-                    MediaParticipant(participantList: participantList),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const MediaPlayer(),
+            const SizedBox(height: 30),
+            const GroupHeader(),
+            const SizedBox(height: 20),
+            GroupParticipant(participantList: participantList),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );

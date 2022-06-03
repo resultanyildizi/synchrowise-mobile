@@ -148,8 +148,8 @@ class SynchrowiseApp extends StatelessWidget {
             case "/contact_us":
               nextPage = const ContactUsSettingsPage();
               break;
-            case "/media":
-              nextPage = const MediaPage();
+            case "/group":
+              nextPage = const GroupPage();
               break;
           }
 
