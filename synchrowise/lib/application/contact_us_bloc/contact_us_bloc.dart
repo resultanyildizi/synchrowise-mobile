@@ -14,6 +14,8 @@ class ContactUsBloc extends Bloc<ContactUsEvent, ContactUsState> {
     on<ContactUsEvent>((event, emit) {
       event.map(
         send: (event) async {
+          ///* Sends the contact form to the server
+
           final email = state.failureOrEmailOption.fold(
             () => null,
             (failureOrEmail) =>
@@ -53,14 +55,26 @@ class ContactUsBloc extends Bloc<ContactUsEvent, ContactUsState> {
             emit(state.copyWith(showErrors: true));
           }
         },
-        updateEmailText: (event) => emit(state.copyWith(
-            failureOrEmailOption: some(validateEmail(email: event.email)))),
-        updateSubjectText: (event) => emit(state.copyWith(
-            failureOrSubjectOption:
-                some(validateSubject(subject: event.subject.trim())))),
-        updateMessageText: (event) => emit(state.copyWith(
-            failureOrMessageOption:
-                some(validateMessage(message: event.message.trim())))),
+        updateEmailText: (event) {
+          //* Updates and validates the email text
+
+          emit(state.copyWith(
+              failureOrEmailOption: some(validateEmail(email: event.email))));
+        },
+        updateSubjectText: (event) {
+          //* Updates and validates the subject text
+
+          emit(state.copyWith(
+              failureOrSubjectOption:
+                  some(validateSubject(subject: event.subject.trim()))));
+        },
+        updateMessageText: (event) {
+          //* Updates and validates the message text
+
+          emit(state.copyWith(
+              failureOrMessageOption:
+                  some(validateMessage(message: event.message.trim()))));
+        },
       );
     });
   }

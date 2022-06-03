@@ -16,6 +16,7 @@ part 'join_group_state.dart';
 part 'join_group_bloc.freezed.dart';
 
 class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
+  ///* Dependencies
   final IGroupRepository _iGroupRepository;
   final ISynchrowiseUserStorage _iUserStorage;
 
@@ -30,6 +31,7 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
       (event, emit) async {
         await event.map(
           updateGroupKeyText: (event) {
+            //* Updates and validates the group key text
             emit(state.copyWith(
               failureOrGroupKeyOption: some(
                 validateGroupKey(groupKey: event.groupKey.trim()),
@@ -37,6 +39,7 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
             ));
           },
           submit: (event) async {
+            //* Joins the user to the group for entered group key
             final groupKey = state.failureOrGroupKeyOption.fold(
               () => null,
               (a) => a.fold(

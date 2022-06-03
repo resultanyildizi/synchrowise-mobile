@@ -12,6 +12,7 @@ part 'get_group_state.dart';
 part 'get_group_bloc.freezed.dart';
 
 class GetGroupBloc extends Bloc<GetGroupEvent, GetGroupState> {
+  ///* Dependencies
   final IGroupRepository _iGroupRepository;
   final ISynchrowiseUserStorage _iUserStorage;
 
@@ -23,6 +24,8 @@ class GetGroupBloc extends Bloc<GetGroupEvent, GetGroupState> {
       (event, emit) async {
         await event.map(
           fetch: (_) async {
+            ///* Fetches the group data for the user
+
             emit(const _GetGroupLoadingState());
 
             final userOrFailure = await _iUserStorage.get();

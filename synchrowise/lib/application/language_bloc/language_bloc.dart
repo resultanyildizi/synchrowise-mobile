@@ -17,6 +17,8 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
     on<LanguageEvent>((event, emit) {
       event.map(
         setLanguageCode: (event) async {
+          ///* Updates the language code in the user's storage
+
           final state = await _setLanguageCodeEventToState(event);
           emit(state);
         },
