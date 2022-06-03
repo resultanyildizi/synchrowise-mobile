@@ -49,7 +49,7 @@ class NotificationSettingsBloc
                     state.copyWith(failureOrUnitOption: some(left(failure))),
                 (_) async {
                   final failureOrUser = await _iUserStorage.update(
-                    user: user.copyWith(notifications: updatedNotifData),
+                    user: user.copyWith(notificationData: updatedNotifData),
                   );
 
                   return failureOrUser.fold(
@@ -89,7 +89,7 @@ class NotificationSettingsBloc
                     state.copyWith(failureOrUnitOption: some(left(failure))),
                 (_) async {
                   final failureOrUser = await _iUserStorage.update(
-                    user: user.copyWith(notifications: updatedNotifData),
+                    user: user.copyWith(notificationData: updatedNotifData),
                   );
 
                   return failureOrUser.fold(

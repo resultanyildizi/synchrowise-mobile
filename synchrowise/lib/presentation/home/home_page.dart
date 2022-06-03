@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
+import 'package:synchrowise/application/messaging_bloc/messaging_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/domain/messaging/media_message.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
@@ -101,18 +105,46 @@ class _HomePageTabViewState extends State<HomePageTabView>
         BlocProvider<BottomNavbarBloc>(
           create: (context) => getIt<BottomNavbarBloc>(),
         ),
-        BlocProvider(
+        BlocProvider<ProfileBloc>(
           create: (context) => getIt<ProfileBloc>(),
         ),
+        BlocProvider<MessagingBloc>(
+          create: (context) => getIt<MessagingBloc>()..start(),
+        ),
       ],
-      child: BlocListener<BottomNavbarBloc, BottomNavbarState>(
-        listener: (context, state) {
-          _pageController.animateToPage(
-            state.index,
-            curve: Curves.easeIn,
-            duration: const Duration(milliseconds: 300),
-          );
-        },
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<BottomNavbarBloc, BottomNavbarState>(
+            listener: (context, state) {
+              _pageController.animateToPage(
+                state.index,
+                curve: Curves.easeIn,
+                duration: const Duration(milliseconds: 300),
+              );
+            },
+          ),
+          BlocListener<MessagingBloc, MessagingState>(
+            listener: (context, state) {
+              state.map(
+                initial: (_) {},
+                onMessage: (onMessage) {
+                  final message = onMessage.message;
+
+                  if (message is MediaMessage) {
+                    showSuccessToast(message.senderName, ToastGravity.BOTTOM);
+                  }
+                },
+                onMessageOpenedApp: (onMessageOpenedApp) {
+                  final message = onMessageOpenedApp.message;
+
+                  if (message is MediaMessage) {
+                    showSuccessToast(message.senderName, ToastGravity.BOTTOM);
+                  }
+                },
+              );
+            },
+          ),
+        ],
         child: Scaffold(
           body: SafeArea(
             child: Column(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:http/http.dart';
@@ -84,13 +85,17 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final uri = Uri.parse("$apiurl/User");
+      final uri = Uri.parse("$apiurl/User/${synchrowiseUser.synchrowiseId}");
+
+      final data = jsonEncode(synchrowiseUser.toUpdateMap());
 
       final result = await _client.put(
         uri,
         body: jsonEncode(synchrowiseUser.toUpdateMap()),
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
+
+      log(result.body);
 
       if (result.statusCode == 200) {
         return right(unit);
