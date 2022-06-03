@@ -18,3 +18,12 @@ class CreateGroupPageRouteArguments extends SynchrowiseRouteArguments {
     required this.onSuccess,
   }) : super(context);
 }
+
+class JoinGroupPageRouteArguments extends SynchrowiseRouteArguments {
+  final void Function() onSuccess;
+
+  JoinGroupPageRouteArguments(
+    BuildContext context, {
+    required this.onSuccess,
+  }) : super(context);
+}

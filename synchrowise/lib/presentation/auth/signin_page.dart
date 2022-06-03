@@ -99,7 +99,6 @@ class SigninPage extends StatelessWidget {
         },
         child: BlocConsumer<SigninFormBloc, SigninFormState>(
           listener: (context, state) {
-            log(state.toString());
             state.failureOrUserOption.fold(
               () => null,
               (failureOrUnit) {
@@ -112,8 +111,6 @@ class SigninPage extends StatelessWidget {
                     }
                   },
                   (_) {
-                    log(_.toString());
-
                     context.read<AuthBloc>().check();
                   },
                 );

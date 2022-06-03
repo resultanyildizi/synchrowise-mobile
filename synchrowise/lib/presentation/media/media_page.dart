@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/core/widgets/circle_stepper.dart';
-import 'package:synchrowise/presentation/media/widgets/media_buttons.dart';
 import 'package:synchrowise/presentation/media/widgets/media_header.dart';
 import 'package:synchrowise/presentation/media/widgets/media_participant.dart';
 import 'package:synchrowise/presentation/media/widgets/video_player.dart';

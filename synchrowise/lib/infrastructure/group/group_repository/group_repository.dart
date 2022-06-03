@@ -53,8 +53,6 @@ class GroupRepository implements IGroupRepository {
     try {
       final uri = Uri.parse("$apiurl/Group/${groupData.groupId}");
 
-      log(groupData.toUpdateMap().toString());
-
       final result = await _client.put(
         uri,
         body: jsonEncode(groupData.toUpdateMap()),
@@ -156,7 +154,6 @@ class GroupRepository implements IGroupRepository {
         ));
       }
     } on SocketException catch (_) {
-      log(_.toString());
       return left(const GroupRepositoryFailure.connection());
     } catch (e) {
       return left(GroupRepositoryFailure.unknown(e.toString()));
@@ -176,7 +173,7 @@ class GroupRepository implements IGroupRepository {
       );
 
       if (result.statusCode == 200) {
-        return right(GroupData.fromMap(json.decode(result.body)));
+        return right(GroupData.fromMap(json.decode(result.body)['data']));
       } else if (result.statusCode == 404) {
         return left(const GroupRepositoryFailure.notFound());
       } else {
@@ -208,8 +205,10 @@ class GroupRepository implements IGroupRepository {
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
 
+      log(result.body);
+
       if (result.statusCode == 200) {
-        return right(GroupData.fromMap(json.decode(result.body)));
+        return right(GroupData.fromMap(json.decode(result.body)['data']));
       } else if (result.statusCode == 404) {
         return left(const GroupRepositoryFailure.notFound());
       } else {

@@ -129,7 +129,9 @@ class SynchrowiseApp extends StatelessWidget {
               nextPage = CreateGroupPage(onSuccess: onSuccess);
               break;
             case "/join-group":
-              nextPage = const JoinGroupPage();
+              final onSuccess =
+                  (arguments as JoinGroupPageRouteArguments).onSuccess;
+              nextPage = JoinGroupPage(onSuccess: onSuccess);
               break;
 
             case "/profile-update-username":

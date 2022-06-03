@@ -44,25 +44,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             (_) async => state.copyWith(
                 failureOrUnitOption: some(left(UnknownSynchrowiseFailure()))),
             (user) async {
-              final failureOrUnits = <Either<SynchrowiseFailure, Unit>>[];
+              final failureOrUnit =
+                  await _iUserRepo.delete(synchrowiseUser: user);
 
-              failureOrUnits.add(
-                await _iUserRepo.delete(synchrowiseUser: user),
+              return failureOrUnit.fold(
+                (f) async {
+                  return state.copyWith(
+                      failureOrUnitOption:
+                          some(left(UnknownSynchrowiseFailure())));
+                },
+                (_) async {
+                  await _iUserStore.delete();
+                  await _iAuthFacade.deleteAccount();
+
+                  return state.copyWith(failureOrUnitOption: some(right(unit)));
+                },
               );
-
-              failureOrUnits.add(await _iAuthFacade.deleteAccount());
-
-              failureOrUnits.add(await _iUserStore.delete());
-
-              final result = failureOrUnits.every((fou) => fou.isRight());
-
-              if (result) {
-                return state.copyWith(
-                    failureOrUnitOption:
-                        some(left(UnknownSynchrowiseFailure())));
-              } else {
-                return state.copyWith(failureOrUnitOption: some(right(unit)));
-              }
             },
           );
 

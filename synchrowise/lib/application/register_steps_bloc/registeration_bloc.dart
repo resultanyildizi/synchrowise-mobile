@@ -187,8 +187,6 @@ class RegisterationBloc extends Bloc<RegisterationEvent, RegisterationState> {
                   final usernameFailureOrUnit = await _iUserRepo.update(
                       synchrowiseUser: user.copyWith(username: username));
 
-                  log('usernameFailureOrUnit: $usernameFailureOrUnit');
-
                   if (user.username == username) {
                     return state.copyWith(
                       usernameFailureOrUnitOption: some(right(unit)),
