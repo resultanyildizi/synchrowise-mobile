@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/core/widgets/close_icon.dart';
-import 'package:synchrowise/presentation/media/media_page.dart';
-import 'package:synchrowise/presentation/media/widgets/media_buttons.dart';
+import 'package:synchrowise/presentation/group/group_page.dart';
+import 'package:synchrowise/presentation/group/widgets/group_buttons.dart';
 
 class MediaParticipant extends StatelessWidget {
   const MediaParticipant({
