@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
-class MediaHeader extends StatelessWidget {
-  const MediaHeader({
+class GroupHeader extends StatelessWidget {
+  const GroupHeader({
     Key? key,
   }) : super(key: key);
 

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
@@ -29,6 +31,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       allowPlaybackSpeedChanging: false,
+      allowFullScreen: false,
       cupertinoProgressColors: ChewieProgressColors(
         playedColor: primaryColor,
         bufferedColor: Colors.white,
@@ -63,11 +66,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
         if (snapshot.connectionState == ConnectionState.done) {
           return AspectRatio(
             aspectRatio: _videoPlayerController.value.aspectRatio,
-            child: Stack(
-              children: [
-                Chewie(controller: _chewieController),
-              ],
-            ),
+            child: Chewie(controller: _chewieController),
           );
         } else {
           return AspectRatio(

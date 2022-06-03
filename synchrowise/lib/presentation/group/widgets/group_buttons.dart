@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
-class MediaButtons extends StatelessWidget {
-  MediaButtons({
+class GroupButtons extends StatelessWidget {
+  GroupButtons({
     Key? key,
     required this.isAdmin,
   }) : super(key: key);
