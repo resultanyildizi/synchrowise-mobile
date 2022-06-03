@@ -28,25 +28,29 @@ class _CreateGroupSteps0State extends State<CreateGroupSteps0>
 
   String? _getGroupNameErrorText(CreateGroupState state) {
     return state.showErrors
-        ? state.failureOrGroupNameOption.fold(
-            () => "group_key_is_required".tr(),
-            (fou) => fou.fold(
-              (l) {
-                return l.maybeMap(
-                  minLength: (failure) {
-                    return "group_key_must_be_at_least_min_characters"
-                        .tr(namedArgs: {"min": failure.length.toString()});
-                  },
-                  invalidGroupName: (_) {
-                    return "group_key_is_invalid".tr();
-                  },
-                  orElse: () {
-                    return null;
-                  },
-                );
-              },
-              (_) => null,
-            ),
+        ? state.failureOrGroupKeyOption.fold(
+            () {
+              return "group_key_is_required".tr();
+            },
+            (fou) {
+              return fou.fold(
+                (l) {
+                  return l.maybeMap(
+                    minLength: (failure) {
+                      return "group_key_must_be_at_least_min_characters"
+                          .tr(namedArgs: {"min": failure.length.toString()});
+                    },
+                    invalidGroupName: (_) {
+                      return "group_key_is_invalid".tr();
+                    },
+                    orElse: () {
+                      return null;
+                    },
+                  );
+                },
+                (_) => null,
+              );
+            },
           )
         : null;
   }

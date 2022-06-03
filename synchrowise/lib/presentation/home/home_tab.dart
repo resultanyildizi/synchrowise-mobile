@@ -64,7 +64,7 @@ class HomeTab extends StatelessWidget {
                         desc: "open_your_group".tr(),
                         color: primaryColor,
                         onTap: () {
-                          // Todo: open group page
+                          SynchrowiseNavigator.pushNamed(context, '/media');
                         },
                         showProgress: false,
                       )
@@ -91,8 +91,9 @@ class HomeTab extends StatelessWidget {
 
                                       SynchrowiseNavigator.pop(context);
                                       showSuccessToast(
-                                          "group created successfully",
-                                          ToastGravity.BOTTOM);
+                                        "group created successfully",
+                                        ToastGravity.BOTTOM,
+                                      );
                                     },
                                   ),
                                 );

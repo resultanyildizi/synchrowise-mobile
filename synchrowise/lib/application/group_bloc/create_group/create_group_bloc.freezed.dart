@@ -866,20 +866,20 @@ class _$CreateGroupStateTearOff {
   const _$CreateGroupStateTearOff();
 
   _CreateGroupState call(
-      {required Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      required Option<Either<GroupRepositoryFailure, Unit>>
+      {required Option<Either<GroupRepositoryFailure, Unit>>
           submitFailureOrUnitOption,
-      required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
+      required Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
+      required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       required bool showErrors,
       required bool progressing,
       required int step}) {
     return _CreateGroupState(
-      failureOrGroupNameOption: failureOrGroupNameOption,
       submitFailureOrUnitOption: submitFailureOrUnitOption,
-      failureOrGroupDescOption: failureOrGroupDescOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
+      failureOrGroupKeyOption: failureOrGroupKeyOption,
+      failureOrGroupDescOption: failureOrGroupDescOption,
       showErrors: showErrors,
       progressing: progressing,
       step: step,
@@ -892,14 +892,14 @@ const $CreateGroupState = _$CreateGroupStateTearOff();
 
 /// @nodoc
 mixin _$CreateGroupState {
-  Option<Either<ValueFailure, String>> get failureOrGroupNameOption =>
-      throw _privateConstructorUsedError;
   Option<Either<GroupRepositoryFailure, Unit>> get submitFailureOrUnitOption =>
-      throw _privateConstructorUsedError;
-  Option<Either<ValueFailure, String>> get failureOrGroupDescOption =>
       throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption => throw _privateConstructorUsedError;
+  Option<Either<ValueFailure, String>> get failureOrGroupKeyOption =>
+      throw _privateConstructorUsedError;
+  Option<Either<ValueFailure, String>> get failureOrGroupDescOption =>
+      throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   bool get progressing => throw _privateConstructorUsedError;
   int get step => throw _privateConstructorUsedError;
@@ -915,11 +915,11 @@ abstract class $CreateGroupStateCopyWith<$Res> {
           CreateGroupState value, $Res Function(CreateGroupState) then) =
       _$CreateGroupStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
-      Option<Either<ValueFailure, String>> failureOrGroupDescOption,
+      {Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
+      Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
+      Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       bool showErrors,
       bool progressing,
       int step});
@@ -936,31 +936,31 @@ class _$CreateGroupStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? failureOrGroupNameOption = freezed,
     Object? submitFailureOrUnitOption = freezed,
-    Object? failureOrGroupDescOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
+    Object? failureOrGroupKeyOption = freezed,
+    Object? failureOrGroupDescOption = freezed,
     Object? showErrors = freezed,
     Object? progressing = freezed,
     Object? step = freezed,
   }) {
     return _then(_value.copyWith(
-      failureOrGroupNameOption: failureOrGroupNameOption == freezed
-          ? _value.failureOrGroupNameOption
-          : failureOrGroupNameOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure, String>>,
       submitFailureOrUnitOption: submitFailureOrUnitOption == freezed
           ? _value.submitFailureOrUnitOption
           : submitFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<GroupRepositoryFailure, Unit>>,
-      failureOrGroupDescOption: failureOrGroupDescOption == freezed
-          ? _value.failureOrGroupDescOption
-          : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure, String>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<SynchrowiseUserStorageFailure, Unit>>,
+      failureOrGroupKeyOption: failureOrGroupKeyOption == freezed
+          ? _value.failureOrGroupKeyOption
+          : failureOrGroupKeyOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
+      failureOrGroupDescOption: failureOrGroupDescOption == freezed
+          ? _value.failureOrGroupDescOption
+          : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
       showErrors: showErrors == freezed
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
@@ -985,11 +985,11 @@ abstract class _$CreateGroupStateCopyWith<$Res>
       __$CreateGroupStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
-      Option<Either<ValueFailure, String>> failureOrGroupDescOption,
+      {Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
+      Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
+      Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       bool showErrors,
       bool progressing,
       int step});
@@ -1008,31 +1008,31 @@ class __$CreateGroupStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? failureOrGroupNameOption = freezed,
     Object? submitFailureOrUnitOption = freezed,
-    Object? failureOrGroupDescOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
+    Object? failureOrGroupKeyOption = freezed,
+    Object? failureOrGroupDescOption = freezed,
     Object? showErrors = freezed,
     Object? progressing = freezed,
     Object? step = freezed,
   }) {
     return _then(_CreateGroupState(
-      failureOrGroupNameOption: failureOrGroupNameOption == freezed
-          ? _value.failureOrGroupNameOption
-          : failureOrGroupNameOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure, String>>,
       submitFailureOrUnitOption: submitFailureOrUnitOption == freezed
           ? _value.submitFailureOrUnitOption
           : submitFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<GroupRepositoryFailure, Unit>>,
-      failureOrGroupDescOption: failureOrGroupDescOption == freezed
-          ? _value.failureOrGroupDescOption
-          : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure, String>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<SynchrowiseUserStorageFailure, Unit>>,
+      failureOrGroupKeyOption: failureOrGroupKeyOption == freezed
+          ? _value.failureOrGroupKeyOption
+          : failureOrGroupKeyOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
+      failureOrGroupDescOption: failureOrGroupDescOption == freezed
+          ? _value.failureOrGroupDescOption
+          : failureOrGroupDescOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure, String>>,
       showErrors: showErrors == freezed
           ? _value.showErrors
           : showErrors // ignore: cast_nullable_to_non_nullable
@@ -1053,23 +1053,23 @@ class __$CreateGroupStateCopyWithImpl<$Res>
 
 class _$_CreateGroupState implements _CreateGroupState {
   const _$_CreateGroupState(
-      {required this.failureOrGroupNameOption,
-      required this.submitFailureOrUnitOption,
-      required this.failureOrGroupDescOption,
+      {required this.submitFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
+      required this.failureOrGroupKeyOption,
+      required this.failureOrGroupDescOption,
       required this.showErrors,
       required this.progressing,
       required this.step});
 
   @override
-  final Option<Either<ValueFailure, String>> failureOrGroupNameOption;
-  @override
   final Option<Either<GroupRepositoryFailure, Unit>> submitFailureOrUnitOption;
-  @override
-  final Option<Either<ValueFailure, String>> failureOrGroupDescOption;
   @override
   final Option<Either<SynchrowiseUserStorageFailure, Unit>>
       storageFailureOrUnitOption;
+  @override
+  final Option<Either<ValueFailure, String>> failureOrGroupKeyOption;
+  @override
+  final Option<Either<ValueFailure, String>> failureOrGroupDescOption;
   @override
   final bool showErrors;
   @override
@@ -1079,7 +1079,7 @@ class _$_CreateGroupState implements _CreateGroupState {
 
   @override
   String toString() {
-    return 'CreateGroupState(failureOrGroupNameOption: $failureOrGroupNameOption, submitFailureOrUnitOption: $submitFailureOrUnitOption, failureOrGroupDescOption: $failureOrGroupDescOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, showErrors: $showErrors, progressing: $progressing, step: $step)';
+    return 'CreateGroupState(submitFailureOrUnitOption: $submitFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, failureOrGroupKeyOption: $failureOrGroupKeyOption, failureOrGroupDescOption: $failureOrGroupDescOption, showErrors: $showErrors, progressing: $progressing, step: $step)';
   }
 
   @override
@@ -1088,13 +1088,13 @@ class _$_CreateGroupState implements _CreateGroupState {
         (other.runtimeType == runtimeType &&
             other is _CreateGroupState &&
             const DeepCollectionEquality().equals(
-                other.failureOrGroupNameOption, failureOrGroupNameOption) &&
-            const DeepCollectionEquality().equals(
                 other.submitFailureOrUnitOption, submitFailureOrUnitOption) &&
             const DeepCollectionEquality().equals(
-                other.failureOrGroupDescOption, failureOrGroupDescOption) &&
-            const DeepCollectionEquality().equals(
                 other.storageFailureOrUnitOption, storageFailureOrUnitOption) &&
+            const DeepCollectionEquality().equals(
+                other.failureOrGroupKeyOption, failureOrGroupKeyOption) &&
+            const DeepCollectionEquality().equals(
+                other.failureOrGroupDescOption, failureOrGroupDescOption) &&
             const DeepCollectionEquality()
                 .equals(other.showErrors, showErrors) &&
             const DeepCollectionEquality()
@@ -1105,10 +1105,10 @@ class _$_CreateGroupState implements _CreateGroupState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(failureOrGroupNameOption),
       const DeepCollectionEquality().hash(submitFailureOrUnitOption),
-      const DeepCollectionEquality().hash(failureOrGroupDescOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
+      const DeepCollectionEquality().hash(failureOrGroupKeyOption),
+      const DeepCollectionEquality().hash(failureOrGroupDescOption),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(progressing),
       const DeepCollectionEquality().hash(step));
@@ -1121,25 +1121,25 @@ class _$_CreateGroupState implements _CreateGroupState {
 
 abstract class _CreateGroupState implements CreateGroupState {
   const factory _CreateGroupState(
-      {required Option<Either<ValueFailure, String>> failureOrGroupNameOption,
-      required Option<Either<GroupRepositoryFailure, Unit>>
+      {required Option<Either<GroupRepositoryFailure, Unit>>
           submitFailureOrUnitOption,
-      required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
+      required Option<Either<ValueFailure, String>> failureOrGroupKeyOption,
+      required Option<Either<ValueFailure, String>> failureOrGroupDescOption,
       required bool showErrors,
       required bool progressing,
       required int step}) = _$_CreateGroupState;
 
   @override
-  Option<Either<ValueFailure, String>> get failureOrGroupNameOption;
-  @override
   Option<Either<GroupRepositoryFailure, Unit>> get submitFailureOrUnitOption;
-  @override
-  Option<Either<ValueFailure, String>> get failureOrGroupDescOption;
   @override
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption;
+  @override
+  Option<Either<ValueFailure, String>> get failureOrGroupKeyOption;
+  @override
+  Option<Either<ValueFailure, String>> get failureOrGroupDescOption;
   @override
   bool get showErrors;
   @override

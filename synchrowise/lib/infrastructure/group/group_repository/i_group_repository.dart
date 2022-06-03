@@ -42,4 +42,22 @@ abstract class IGroupRepository {
   Future<Either<GroupRepositoryFailure, GroupData>> getByUserId({
     required String synchrowiseUserId,
   });
+
+  ///* Gets the group from the server for given `groupKey`
+  ///*
+  ///* Returns `GroupData` if it is successful
+  ///* Returns `GroupRepositoryFailure` if an exception occurs
+  Future<Either<GroupRepositoryFailure, GroupData>> getByGroupKey({
+    required String groupKey,
+  });
+
+  ///* Adds the user with given `synchrowiseUserId` as a new member
+  ///* to the group on the server with given `groupData` model
+  ///*
+  ///* Returns `GroupData` if it is successful
+  ///* Returns `GroupRepositoryFailure` if an exception occurs
+  Future<Either<GroupRepositoryFailure, GroupData>> addMember({
+    required GroupData groupData,
+    required String synchrowiseUserId,
+  });
 }

@@ -34,11 +34,11 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
     on<CreateGroupEvent>((event, emit) async {
       await event.map(
         updateGroupNameText: (event) {
-          final validatedGroupName =
-              validateGroupName(groupName: event.groupName.trim());
+          final validatedGroupKey =
+              validateGroupKey(groupKey: event.groupName.trim());
 
           emit(
-            state.copyWith(failureOrGroupNameOption: some(validatedGroupName)),
+            state.copyWith(failureOrGroupKeyOption: some(validatedGroupKey)),
           );
         },
         updateGroupDescText: (event) {
@@ -50,7 +50,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
           );
         },
         saveGroupKey: (event) async {
-          final newState = state.failureOrGroupNameOption.fold(
+          final newState = state.failureOrGroupKeyOption.fold(
             () => state.copyWith(showErrors: true),
             (a) => a.fold(
               (f) => state.copyWith(showErrors: true),
@@ -67,7 +67,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
             storageFailureOrUnitOption: none(),
           ));
 
-          final groupName = state.failureOrGroupNameOption.fold(
+          final groupName = state.failureOrGroupKeyOption.fold(
             () => null,
             (failureOrGroupName) => failureOrGroupName.fold(
                 (failure) => null, (groupName) => groupName),

@@ -131,7 +131,6 @@ class GroupRepository implements IGroupRepository {
     }
   }
 
-  // Todo: fix this
   @override
   Future<Either<GroupRepositoryFailure, GroupData>> getByUserId({
     required String synchrowiseUserId,
@@ -158,6 +157,68 @@ class GroupRepository implements IGroupRepository {
       }
     } on SocketException catch (_) {
       log(_.toString());
+      return left(const GroupRepositoryFailure.connection());
+    } catch (e) {
+      return left(GroupRepositoryFailure.unknown(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<GroupRepositoryFailure, GroupData>> getByGroupKey({
+    required String groupKey,
+  }) async {
+    try {
+      final uri = Uri.parse("$apiurl/Group/Name/$groupKey");
+
+      final result = await _client.get(
+        uri,
+        headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
+      );
+
+      if (result.statusCode == 200) {
+        return right(GroupData.fromMap(json.decode(result.body)));
+      } else if (result.statusCode == 404) {
+        return left(const GroupRepositoryFailure.notFound());
+      } else {
+        return left(GroupRepositoryFailure.server(
+          result.statusCode,
+          result.body,
+        ));
+      }
+    } on SocketException catch (_) {
+      return left(const GroupRepositoryFailure.connection());
+    } catch (e) {
+      return left(GroupRepositoryFailure.unknown(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<GroupRepositoryFailure, GroupData>> addMember({
+    required GroupData groupData,
+    required String synchrowiseUserId,
+  }) async {
+    try {
+      final uri = Uri.parse("$apiurl/Group/${groupData.groupId}/Member");
+
+      final result = await _client.post(
+        uri,
+        body: jsonEncode({
+          'memberId': synchrowiseUserId,
+        }),
+        headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
+      );
+
+      if (result.statusCode == 200) {
+        return right(GroupData.fromMap(json.decode(result.body)));
+      } else if (result.statusCode == 404) {
+        return left(const GroupRepositoryFailure.notFound());
+      } else {
+        return left(GroupRepositoryFailure.server(
+          result.statusCode,
+          result.body,
+        ));
+      }
+    } on SocketException catch (_) {
       return left(const GroupRepositoryFailure.connection());
     } catch (e) {
       return left(GroupRepositoryFailure.unknown(e.toString()));
