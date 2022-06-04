@@ -54,9 +54,9 @@ class _ContactUsSettingsPageState extends State<ContactUsSettingsPage> {
                 SingleTextAreaFieldForm(
                   onTextChanged: (desc) {},
                   saveButton: () {},
-                  desc: "Bize ulaş açıklaması",
+                  desc: "Bizimle düşüncelerini paylaşmak ister misiniz?",
                   btnText: "complete".tr(),
-                  hintText: "Bize ulaş",
+                  hintText: "Açıklama...",
                   errorText: null,
                   focusNode: _focusNode,
                 ),
