@@ -14,6 +14,7 @@ import 'package:synchrowise/presentation/group/group_page.dart';
 import 'package:synchrowise/presentation/settings/contact_us_settings_page.dart';
 import 'package:synchrowise/presentation/settings/language_settings_page.dart';
 import 'package:synchrowise/presentation/settings/notification_settings_page.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
 import 'package:synchrowise/presentation/home/home_page.dart';
@@ -38,143 +39,64 @@ class SynchrowiseApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          brightness: Brightness.light,
-          primaryColor: primaryColor,
-          fontFamily: "Poppins",
-          textTheme: const TextTheme(
-            headline1: TextStyle(
-              fontSize: 40.0,
-              fontWeight: FontWeight.w700,
-              color: grayDarkColor,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            brightness: Brightness.light,
+            primaryColor: primaryColor,
+            fontFamily: "Poppins",
+            textTheme: const TextTheme(
+              headline1: TextStyle(
+                fontSize: 40.0,
+                fontWeight: FontWeight.w700,
+                color: grayDarkColor,
+              ),
+              headline2: TextStyle(
+                fontSize: 32.0,
+                fontWeight: FontWeight.w700,
+                color: grayDarkColor,
+              ),
+              headline3: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w700,
+                color: grayDarkColor,
+              ),
+              headline4: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w700,
+                color: grayDarkColor,
+              ),
+              headline5: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w700,
+                color: grayDarkColor,
+              ),
+              headline6: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w400,
+                color: grayDarkColor,
+              ),
+              subtitle1: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w400,
+                color: grayColor,
+              ),
+              subtitle2: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w300,
+                color: grayDarkColor,
+              ),
+              bodyText1: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
+              bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
             ),
-            headline2: TextStyle(
-              fontSize: 32.0,
-              fontWeight: FontWeight.w700,
-              color: grayDarkColor,
-            ),
-            headline3: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.w700,
-              color: grayDarkColor,
-            ),
-            headline4: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w700,
-              color: grayDarkColor,
-            ),
-            headline5: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w700,
-              color: grayDarkColor,
-            ),
-            headline6: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w400,
-              color: grayDarkColor,
-            ),
-            subtitle1: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w400,
-              color: grayColor,
-            ),
-            subtitle2: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w300,
-              color: grayDarkColor,
-            ),
-            bodyText1: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
-            bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
           ),
-        ),
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          final arguments = settings.arguments as SynchrowiseRouteArguments?;
-          final routeName = arguments?.routeName;
-
-          late final Widget nextPage;
-          late final Route<dynamic> route;
-
-          switch (settings.name) {
-            case "/":
-              nextPage = const SplashPage();
-              break;
-            case "/welcome":
-              nextPage = const WelcomePage();
-              break;
-            case "/signin":
-              nextPage = const SigninPage();
-              break;
-            case "/signup":
-              nextPage = const SignupPage();
-              break;
-            case "/home":
-              nextPage = const HomePage();
-              break;
-            case "/reset-password":
-              nextPage = const ResetPasswordPage();
-              break;
-            case "/register":
-              nextPage = const RegisterPage();
-              break;
-            case "/create-group":
-              final onSuccess =
-                  (arguments as CreateGroupPageRouteArguments).onSuccess;
-
-              nextPage = CreateGroupPage(onSuccess: onSuccess);
-              break;
-            case "/join-group":
-              final onSuccess =
-                  (arguments as JoinGroupPageRouteArguments).onSuccess;
-              nextPage = JoinGroupPage(onSuccess: onSuccess);
-              break;
-
-            case "/profile-update-username":
-              nextPage = const ProfileUpdateUsernamePage();
-              break;
-            case "/profile-update-avatar":
-              nextPage = const ProfileUpdateAvatarPage();
-              break;
-
-            case "/notification-settings":
-              nextPage = const NotificationSettingsPage();
-              break;
-            case "/language":
-              nextPage = const LanguageSettingsPage();
-              break;
-            case "/contact_us":
-              nextPage = const ContactUsSettingsPage();
-              break;
-            case "/group":
-              nextPage = const GroupPage();
-              break;
-          }
-
-          if (routeName == "/") {
-            route = PageTransition(
-              reverseDuration: const Duration(seconds: 1),
-              duration: const Duration(seconds: 1),
-              alignment: Alignment.bottomCenter,
-              type: PageTransitionType.fade,
-              child: nextPage,
-              fullscreenDialog: true,
-              settings: settings,
-            );
-          } else {
-            route = MaterialPageRoute(
-              builder: (context) => nextPage,
-              settings: settings,
-            );
-          }
-
-          return route;
-        },
-      ),
+          initialRoute: '/',
+          onGenerateRoute: (settings) {
+            return SynchrowiseNavigator.onGenerateRoute(settings);
+          }),
     );
   }
 }
