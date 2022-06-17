@@ -27,7 +27,7 @@ class UserSummary extends Equatable {
       avatar: Avatar.fromMap(map['avatar']),
       username: map['username'],
       email: map['email'],
-      premium: Premium.fromValue(map['premium']),
+      premium: Premium.fromValue(map['premiumType']),
     );
   }
 

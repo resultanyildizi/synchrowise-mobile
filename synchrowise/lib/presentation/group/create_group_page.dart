@@ -135,6 +135,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
     return BlocProvider(
       create: (context) => getIt<CreateGroupBloc>(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 25.0),
