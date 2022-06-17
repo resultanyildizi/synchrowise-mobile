@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:synchrowise/application/core/input_validator.dart';
+import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
@@ -94,7 +95,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 final groupData = GroupData.toCreateGroup(
                   groupName: groupName,
                   groupDesc: groupDesc,
-                  groupOwner: user,
+                  groupOwner: UserSummary.fromSynchrowiseUser(user),
                 );
 
                 failureOrUnit =

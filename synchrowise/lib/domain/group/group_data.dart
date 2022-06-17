@@ -3,14 +3,15 @@ import 'package:flutter/foundation.dart';
 import 'package:kt_dart/kt.dart';
 
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/domain/auth/user_summary.dart';
 
 @immutable
 class GroupData extends Equatable {
   final String groupKey;
   final String groupId;
   final String groupDesc;
-  final SynchrowiseUser groupOwner;
-  final KtList<SynchrowiseUser> members;
+  final UserSummary groupOwner;
+  final KtList<UserSummary> members;
 
   const GroupData({
     required this.groupKey,
@@ -22,8 +23,8 @@ class GroupData extends Equatable {
 
   factory GroupData.toCreateGroup({
     required String groupName,
-    required SynchrowiseUser groupOwner,
     required String groupDesc,
+    required UserSummary groupOwner,
   }) {
     return GroupData(
       groupKey: groupName,
@@ -38,11 +39,11 @@ class GroupData extends Equatable {
     // Todo: fix this
     return GroupData(
       groupKey: map['groupName'],
-      groupOwner: SynchrowiseUser.fromMap(map['groupOwner']),
+      groupOwner: UserSummary.fromMap(map['groupOwner']),
       groupDesc: map['description'],
       members: KtList.from(map['groupMember'] as List<dynamic>)
           .cast<Map<String, dynamic>>()
-          .map((e) => SynchrowiseUser.fromMap(e))
+          .map((e) => UserSummary.fromMap(e))
           .toList(),
       groupId: map['guid'],
     );
@@ -77,8 +78,8 @@ class GroupData extends Equatable {
     String? groupKey,
     String? groupId,
     String? groupDesc,
-    SynchrowiseUser? groupOwner,
-    KtList<SynchrowiseUser>? members,
+    UserSummary? groupOwner,
+    KtList<UserSummary>? members,
   }) {
     return GroupData(
       groupKey: groupKey ?? this.groupKey,

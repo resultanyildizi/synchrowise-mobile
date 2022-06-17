@@ -88,6 +88,7 @@ class SynchrowiseUser extends Equatable {
   Map<String, dynamic> toUpdateMap() {
     return {
       'firebase_id_token': firebaseIdToken,
+      'guid': synchrowiseId,
       'username': username,
       'email': emailAddress,
       'email_verified': sEmailVerified,
