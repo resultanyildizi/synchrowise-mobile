@@ -3,14 +3,15 @@ import 'package:synchrowise/presentation/group/widgets/group_header.dart';
 import 'package:synchrowise/presentation/group/widgets/group_participant.dart';
 import 'package:synchrowise/presentation/group/widgets/media_player.dart';
 
-class GroupPage extends StatefulWidget {
-  const GroupPage({Key? key}) : super(key: key);
+class GroupSessionPage extends StatefulWidget {
+  static const routeName = '/main/group-session';
+  const GroupSessionPage({Key? key}) : super(key: key);
 
   @override
-  State<GroupPage> createState() => _GroupPageState();
+  State<GroupSessionPage> createState() => _GroupSessionPageState();
 }
 
-class _GroupPageState extends State<GroupPage> {
+class _GroupSessionPageState extends State<GroupSessionPage> {
   late List<Participant> participantList;
 
   @override

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/single_text_area_field_form.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class ContactUsSettingsPage extends StatefulWidget {
+  static const routeName = '/main/contact-us-settings';
   const ContactUsSettingsPage({Key? key}) : super(key: key);
 
   @override

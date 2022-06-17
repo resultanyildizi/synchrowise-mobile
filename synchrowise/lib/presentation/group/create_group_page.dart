@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/group/widgets/create_group_steps_0.dart';
@@ -13,6 +14,7 @@ import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 
 class CreateGroupPage extends StatefulWidget {
+  static const routeName = '/main/create-group';
   final void Function() onSuccess;
 
   const CreateGroupPage({
@@ -60,7 +62,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                 get: (_) {
                   SynchrowiseNavigator.pushNamedAndRemoveUntil(
                     context,
-                    "/welcome",
+                    WelcomePage.routeName,
                     (route) => false,
                     arguments: SynchrowiseRouteArguments(context),
                   );

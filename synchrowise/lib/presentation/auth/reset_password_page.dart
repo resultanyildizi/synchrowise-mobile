@@ -6,6 +6,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
 class ResetPasswordPage extends StatelessWidget {
+  static const routeName = 'welcome/reset-password';
   const ResetPasswordPage({Key? key}) : super(key: key);
 
   @override

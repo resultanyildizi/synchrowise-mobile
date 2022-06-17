@@ -19,8 +19,9 @@ import 'package:synchrowise/presentation/home/home_tab.dart';
 import 'package:synchrowise/presentation/settings/settings_tab.dart';
 import 'package:synchrowise/presentation/profile/profile_tab.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MainPage extends StatelessWidget {
+  static const routeName = '/main';
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

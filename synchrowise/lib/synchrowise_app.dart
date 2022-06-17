@@ -1,27 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/reset_password_page.dart';
-import 'package:synchrowise/presentation/auth/signin_page.dart';
-import 'package:synchrowise/presentation/auth/signup_page.dart';
-import 'package:synchrowise/presentation/auth/welcome_page.dart';
-import 'package:synchrowise/presentation/group/join_group_page.dart';
-import 'package:synchrowise/presentation/group/group_page.dart';
-import 'package:synchrowise/presentation/settings/contact_us_settings_page.dart';
-import 'package:synchrowise/presentation/settings/language_settings_page.dart';
-import 'package:synchrowise/presentation/settings/notification_settings_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
-import 'package:synchrowise/route/synchrowise_route_arguments.dart';
-import 'package:synchrowise/presentation/group/create_group_page.dart';
-import 'package:synchrowise/presentation/home/home_page.dart';
-import 'package:synchrowise/presentation/profile/profile_update_avatar_page.dart';
-import 'package:synchrowise/presentation/profile/profile_update_username_page.dart';
-import 'package:synchrowise/presentation/register/register_page.dart';
-import 'package:synchrowise/presentation/splash/splash.dart';
 
 class SynchrowiseApp extends StatelessWidget {
   const SynchrowiseApp({Key? key}) : super(key: key);
@@ -93,7 +76,7 @@ class SynchrowiseApp extends StatelessWidget {
               bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
             ),
           ),
-          initialRoute: '/',
+          initialRoute: '/splash',
           onGenerateRoute: (settings) {
             return SynchrowiseNavigator.onGenerateRoute(settings);
           }),

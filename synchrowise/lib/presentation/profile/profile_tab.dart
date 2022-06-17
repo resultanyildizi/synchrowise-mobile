@@ -8,6 +8,8 @@ import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
+import 'package:synchrowise/presentation/profile/profile_update_avatar_page.dart';
+import 'package:synchrowise/presentation/profile/profile_update_username_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
@@ -47,7 +49,10 @@ class ProfileTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "avatar".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/profile-update-avatar");
+          SynchrowiseNavigator.pushNamed(
+            context,
+            ProfileUpdateAvatarPage.routeName,
+          );
         },
       ),
       SettingsSectionModel(
@@ -55,7 +60,10 @@ class ProfileTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "username".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/profile-update-username");
+          SynchrowiseNavigator.pushNamed(
+            context,
+            ProfileUpdateUsernamePage.routeName,
+          );
         },
       )
     ];

@@ -7,8 +7,11 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
+import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
+import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -17,6 +20,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
 class SignupPage extends StatelessWidget {
+  static const String routeName = '/welcome/signup';
   const SignupPage({Key? key}) : super(key: key);
 
   String? _getEmailError(SignupFormState state) {
@@ -112,13 +116,13 @@ class SignupPage extends StatelessWidget {
               if (state.user.username == null) {
                 SynchrowiseNavigator.pushReplacementNamed(
                   context,
-                  "/register",
+                  RegisterPage.routeName,
                   arguments: SynchrowiseRouteArguments(context),
                 );
               } else {
                 SynchrowiseNavigator.pushReplacementNamed(
                   context,
-                  "/home",
+                  MainPage.routeName,
                   arguments: SynchrowiseRouteArguments(context),
                 );
               }
@@ -255,7 +259,7 @@ class SignupPage extends StatelessWidget {
                             onTap: () {
                               SynchrowiseNavigator.pushReplacementNamed(
                                 context,
-                                '/signin',
+                                SigninPage.routeName,
                               );
                             },
                             child: Text(

@@ -7,7 +7,7 @@ import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
 import 'package:synchrowise/presentation/group/group_page.dart';
 import 'package:synchrowise/presentation/group/join_group_page.dart';
-import 'package:synchrowise/presentation/home/home_page.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
 import 'package:synchrowise/presentation/profile/profile_update_avatar_page.dart';
 import 'package:synchrowise/presentation/profile/profile_update_username_page.dart';
 import 'package:synchrowise/presentation/register/register_page.dart';
@@ -26,56 +26,55 @@ class SynchrowiseNavigator {
     late final Route<dynamic> route;
 
     switch (settings.name) {
-      case "/":
+      case SplashPage.routeName:
         nextPage = const SplashPage();
         break;
-      case "/welcome":
+      case WelcomePage.routeName:
         nextPage = const WelcomePage();
         break;
-      case "/signin":
+      case SigninPage.routeName:
         nextPage = const SigninPage();
         break;
-      case "/signup":
+      case SignupPage.routeName:
         nextPage = const SignupPage();
         break;
-      case "/home":
-        nextPage = const HomePage();
+      case MainPage.routeName:
+        nextPage = const MainPage();
         break;
-      case "/reset-password":
+      case ResetPasswordPage.routeName:
         nextPage = const ResetPasswordPage();
         break;
-      case "/register":
+      case RegisterPage.routeName:
         nextPage = const RegisterPage();
         break;
-      case "/create-group":
+      case CreateGroupPage.routeName:
         final onSuccess =
             (arguments as CreateGroupPageRouteArguments).onSuccess;
-
         nextPage = CreateGroupPage(onSuccess: onSuccess);
         break;
-      case "/join-group":
+      case JoinGroupPage.routeName:
         final onSuccess = (arguments as JoinGroupPageRouteArguments).onSuccess;
         nextPage = JoinGroupPage(onSuccess: onSuccess);
         break;
 
-      case "/profile-update-username":
-        nextPage = const ProfileUpdateUsernamePage();
-        break;
-      case "/profile-update-avatar":
-        nextPage = const ProfileUpdateAvatarPage();
+      case GroupSessionPage.routeName:
+        nextPage = const GroupSessionPage();
         break;
 
-      case "/notification-settings":
+      case ProfileUpdateUsernamePage.routeName:
+        nextPage = const ProfileUpdateUsernamePage();
+        break;
+      case ProfileUpdateAvatarPage.routeName:
+        nextPage = const ProfileUpdateAvatarPage();
+        break;
+      case NotificationSettingsPage.routeName:
         nextPage = const NotificationSettingsPage();
         break;
-      case "/language":
+      case LanguageSettingsPage.routeName:
         nextPage = const LanguageSettingsPage();
         break;
-      case "/contact_us":
+      case ContactUsSettingsPage.routeName:
         nextPage = const ContactUsSettingsPage();
-        break;
-      case "/group":
-        nextPage = const GroupPage();
         break;
     }
 

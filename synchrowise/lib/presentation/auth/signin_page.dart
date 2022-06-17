@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +8,11 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/failure/auth_facade_failure.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/helpers/handle_auth_failure.dart';
+import 'package:synchrowise/presentation/auth/reset_password_page.dart';
+import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -20,6 +21,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/presentation/helpers/default_text_field.dart';
 
 class SigninPage extends StatelessWidget {
+  static const String routeName = '/welcome/signin';
   const SigninPage({Key? key}) : super(key: key);
 
   String? _getEmailError(SigninFormState state) {
@@ -89,8 +91,8 @@ class SigninPage extends StatelessWidget {
               } else {
                 SynchrowiseNavigator.pushNamedAndRemoveUntil(
                   context,
-                  "/home",
-                  (route) => false,
+                  MainPage.routeName,
+                  (_) => false,
                   arguments: SynchrowiseRouteArguments(context),
                 );
               }
@@ -183,7 +185,7 @@ class SigninPage extends StatelessWidget {
                               ..onTap = () {
                                 SynchrowiseNavigator.pushNamed(
                                   context,
-                                  "/reset-password",
+                                  ResetPasswordPage.routeName,
                                 );
                               },
                             text: "forgot_password".tr(),
@@ -236,7 +238,7 @@ class SigninPage extends StatelessWidget {
                             onTap: () {
                               SynchrowiseNavigator.pushReplacementNamed(
                                 context,
-                                '/signup',
+                                SignupPage.routeName,
                                 arguments: SynchrowiseRouteArguments(context),
                               );
                             },

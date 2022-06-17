@@ -1,11 +1,3 @@
-// import 'package:synchrowise/domain/auth/avatar.dart';
-
-// class SynchrowiseUserSummary {
-//   final String synchrowiseId;
-//   final Avatar avatar;
-
-// }
-
 import 'package:equatable/equatable.dart';
 import 'package:synchrowise/domain/auth/avatar.dart';
 import 'package:synchrowise/domain/auth/premium.dart';

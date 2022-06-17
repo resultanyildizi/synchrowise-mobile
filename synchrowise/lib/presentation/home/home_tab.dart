@@ -7,6 +7,9 @@ import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/presentation/group/create_group_page.dart';
+import 'package:synchrowise/presentation/group/group_page.dart';
+import 'package:synchrowise/presentation/group/join_group_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
@@ -64,7 +67,10 @@ class HomeTab extends StatelessWidget {
                         desc: "open_your_group".tr(),
                         color: primaryColor,
                         onTap: () {
-                          SynchrowiseNavigator.pushNamed(context, '/media');
+                          SynchrowiseNavigator.pushNamed(
+                            context,
+                            GroupSessionPage.routeName,
+                          );
                         },
                         showProgress: false,
                       )
@@ -83,7 +89,7 @@ class HomeTab extends StatelessWidget {
                               onTap: () {
                                 SynchrowiseNavigator.pushNamed(
                                   context,
-                                  '/create-group',
+                                  CreateGroupPage.routeName,
                                   arguments: CreateGroupPageRouteArguments(
                                     context,
                                     onSuccess: () {
@@ -139,7 +145,7 @@ class HomeTab extends StatelessWidget {
                   onTap: () {
                     SynchrowiseNavigator.pushNamed(
                       context,
-                      '/join-group',
+                      JoinGroupPage.routeName,
                       arguments: JoinGroupPageRouteArguments(
                         context,
                         onSuccess: () {

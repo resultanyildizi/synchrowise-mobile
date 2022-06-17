@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/failure/image_failure.dart';
 import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
@@ -17,7 +18,7 @@ void handleSynchrowiseFailure(
   } else if (failure is UnauthorizedSynchrowiseFailure) {
     SynchrowiseNavigator.pushNamedAndRemoveUntil(
       context,
-      "/welcome",
+      WelcomePage.routeName,
       (_) => false,
     );
   }

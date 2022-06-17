@@ -14,6 +14,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class ProfileUpdateAvatarPage extends StatelessWidget {
+  static const routeName = '/main/update-avatar';
   const ProfileUpdateAvatarPage({Key? key}) : super(key: key);
 
   @override

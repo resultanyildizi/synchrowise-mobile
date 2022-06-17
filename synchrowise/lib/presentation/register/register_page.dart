@@ -5,8 +5,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/register_steps_bloc/registeration_bloc.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/thin_line_stepper.dart';
 import 'package:synchrowise/presentation/register/register_steps_0.dart';
@@ -15,6 +17,7 @@ import 'package:synchrowise/presentation/register/register_steps_2.dart';
 import 'package:synchrowise/presentation/register/widgets/show_register_successful_bottom_sheet.dart';
 
 class RegisterPage extends StatefulWidget {
+  static const routeName = '/register';
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
@@ -44,10 +47,13 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocListener<AuthBloc, AuthState>(listener: (context, state) {
       state.maybeMap(
         unauthorized: (_) {
-          SynchrowiseNavigator.pushNamed(context, "/welcome");
+          SynchrowiseNavigator.pushNamed(context, WelcomePage.routeName);
         },
         authorized: (_) {
-          SynchrowiseNavigator.pushReplacementNamed(context, "/home");
+          SynchrowiseNavigator.pushReplacementNamed(
+            context,
+            MainPage.routeName,
+          );
         },
         orElse: () {},
       );

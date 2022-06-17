@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/presentation/auth/signin_page.dart';
+import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/helpers/default_button.dart';
 
 class WelcomePage extends StatelessWidget {
+  static const routeName = '/welcome';
   const WelcomePage({Key? key}) : super(key: key);
 
   @override
@@ -40,7 +43,7 @@ class WelcomePage extends StatelessWidget {
               text: "sign_in".tr(),
               padding: 35,
               onTap: () {
-                SynchrowiseNavigator.pushNamed(context, '/signin');
+                SynchrowiseNavigator.pushNamed(context, SigninPage.routeName);
               },
             ),
             const SizedBox(height: 15),
@@ -51,7 +54,7 @@ class WelcomePage extends StatelessWidget {
               text: "sign_up".tr(),
               padding: 35,
               onTap: () {
-                SynchrowiseNavigator.pushNamed(context, '/signup');
+                SynchrowiseNavigator.pushNamed(context, SignupPage.routeName);
               },
             ),
             const SizedBox(height: 80),

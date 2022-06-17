@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
+import 'package:synchrowise/presentation/settings/contact_us_settings_page.dart';
+import 'package:synchrowise/presentation/settings/language_settings_page.dart';
+import 'package:synchrowise/presentation/settings/notification_settings_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SettingsTab extends StatelessWidget {
@@ -14,7 +17,10 @@ class SettingsTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "language".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/language");
+          SynchrowiseNavigator.pushNamed(
+            context,
+            LanguageSettingsPage.routeName,
+          );
         },
       ),
       SettingsSectionModel(
@@ -22,7 +28,10 @@ class SettingsTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "notifications".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/notification-settings");
+          SynchrowiseNavigator.pushNamed(
+            context,
+            NotificationSettingsPage.routeName,
+          );
         },
       )
     ];
@@ -39,7 +48,10 @@ class SettingsTab extends StatelessWidget {
         suffixIcon: Icons.keyboard_arrow_right,
         btnText: "contact_us".tr(),
         onTap: () {
-          SynchrowiseNavigator.pushNamed(context, "/contact_us");
+          SynchrowiseNavigator.pushNamed(
+            context,
+            ContactUsSettingsPage.routeName,
+          );
         },
       ),
       SettingsSectionModel(

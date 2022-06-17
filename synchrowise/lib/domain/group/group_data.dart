@@ -36,7 +36,6 @@ class GroupData extends Equatable {
   }
 
   factory GroupData.fromMap(Map<String, dynamic> map) {
-    // Todo: fix this
     return GroupData(
       groupKey: map['groupName'],
       groupOwner: UserSummary.fromMap(map['groupOwner']),
@@ -66,9 +65,7 @@ class GroupData extends Equatable {
   }
 
   Map<String, dynamic> toDeleteMap() {
-    return {
-      'userID': groupOwner,
-    };
+    return {'userID': groupOwner};
   }
 
   @override

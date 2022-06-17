@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
+import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SplashPage extends StatelessWidget {
+  static const routeName = '/splash';
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -14,16 +18,24 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {
-            SynchrowiseNavigator.pushReplacementNamed(context, "/welcome");
+            SynchrowiseNavigator.pushReplacementNamed(
+                context, WelcomePage.routeName);
           },
           unauthorized: (_) {
-            SynchrowiseNavigator.pushReplacementNamed(context, "/welcome");
+            SynchrowiseNavigator.pushReplacementNamed(
+                context, WelcomePage.routeName);
           },
           authorized: (user) {
             if (user.user.username != null) {
-              SynchrowiseNavigator.pushReplacementNamed(context, "/home");
+              SynchrowiseNavigator.pushReplacementNamed(
+                context,
+                MainPage.routeName,
+              );
             } else {
-              SynchrowiseNavigator.pushReplacementNamed(context, "/register");
+              SynchrowiseNavigator.pushReplacementNamed(
+                context,
+                RegisterPage.routeName,
+              );
             }
           },
         );

@@ -13,6 +13,7 @@ import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
 import 'package:synchrowise/presentation/core/widgets/single_text_field_form.dart';
 
 class ProfileUpdateUsernamePage extends StatelessWidget {
+  static const routeName = '/main/update-username';
   const ProfileUpdateUsernamePage({Key? key}) : super(key: key);
 
   String? _getUsernameErrorText(RegisterationState state) {

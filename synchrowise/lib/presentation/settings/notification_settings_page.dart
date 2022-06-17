@@ -15,6 +15,7 @@ import 'package:synchrowise/presentation/core/widgets/setting_sections.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class NotificationSettingsPage extends StatelessWidget {
+  static const routeName = '/main/notification-settings';
   const NotificationSettingsPage({Key? key}) : super(key: key);
 
   @override

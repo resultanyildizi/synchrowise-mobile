@@ -11,6 +11,7 @@ import 'package:synchrowise/presentation/helpers/default_button.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class LanguageSettingsPage extends StatelessWidget {
+  static const routeName = '/main/language-settings';
   const LanguageSettingsPage({Key? key}) : super(key: key);
 
   @override

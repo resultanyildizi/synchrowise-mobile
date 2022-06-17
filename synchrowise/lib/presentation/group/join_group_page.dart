@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group_bloc/join_group_bloc/join_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -13,6 +12,7 @@ import 'package:synchrowise/presentation/core/widgets/single_text_field_form.dar
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class JoinGroupPage extends StatefulWidget {
+  static const routeName = '/main/join-group';
   final void Function() onSuccess;
 
   const JoinGroupPage({Key? key, required this.onSuccess}) : super(key: key);
@@ -95,7 +95,7 @@ class _JoinGroupPageState extends State<JoinGroupPage> {
                 get: (_) {
                   SynchrowiseNavigator.pushNamedAndRemoveUntil(
                     context,
-                    "/welcome",
+                    WelcomePage.routeName,
                     (route) => false,
                   );
                 },
