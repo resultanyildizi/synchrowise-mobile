@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/splash/splash.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SynchrowiseApp extends StatelessWidget {
@@ -76,7 +77,7 @@ class SynchrowiseApp extends StatelessWidget {
               bodyText2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300),
             ),
           ),
-          initialRoute: '/splash',
+          initialRoute: SplashPage.routeName,
           onGenerateRoute: (settings) {
             return SynchrowiseNavigator.onGenerateRoute(settings);
           }),

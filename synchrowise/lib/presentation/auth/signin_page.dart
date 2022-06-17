@@ -13,6 +13,7 @@ import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/widgets/google_button.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/presentation/main/main_page.dart';
+import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';
@@ -87,7 +88,10 @@ class SigninPage extends StatelessWidget {
             unauthorized: (_) {},
             authorized: (state) {
               if (state.user.username == null) {
-                SynchrowiseNavigator.pushReplacementNamed(context, "/register");
+                SynchrowiseNavigator.pushReplacementNamed(
+                  context,
+                  RegisterPage.routeName,
+                );
               } else {
                 SynchrowiseNavigator.pushNamedAndRemoveUntil(
                   context,

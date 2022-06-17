@@ -8,7 +8,7 @@ import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
-import 'package:synchrowise/presentation/group/group_page.dart';
+import 'package:synchrowise/presentation/group/group_session_page.dart';
 import 'package:synchrowise/presentation/group/join_group_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/home/widgets/group_action_cards.dart';

@@ -4,8 +4,9 @@ import 'package:synchrowise/presentation/auth/reset_password_page.dart';
 import 'package:synchrowise/presentation/auth/signin_page.dart';
 import 'package:synchrowise/presentation/auth/signup_page.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
+import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
-import 'package:synchrowise/presentation/group/group_page.dart';
+import 'package:synchrowise/presentation/group/group_session_page.dart';
 import 'package:synchrowise/presentation/group/join_group_page.dart';
 import 'package:synchrowise/presentation/main/main_page.dart';
 import 'package:synchrowise/presentation/profile/profile_update_avatar_page.dart';
@@ -78,7 +79,7 @@ class SynchrowiseNavigator {
         break;
     }
 
-    if (routeName == "/") {
+    if (routeName == SplashPage.routeName) {
       route = PageTransition(
         reverseDuration: const Duration(seconds: 1),
         duration: const Duration(seconds: 1),

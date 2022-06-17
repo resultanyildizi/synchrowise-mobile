@@ -9,7 +9,7 @@ import 'package:synchrowise/presentation/register/register_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class SplashPage extends StatelessWidget {
-  static const routeName = '/splash';
+  static const routeName = '/';
   const SplashPage({Key? key}) : super(key: key);
 
   @override
