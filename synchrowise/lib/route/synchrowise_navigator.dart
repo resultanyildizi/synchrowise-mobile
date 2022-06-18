@@ -59,7 +59,9 @@ class SynchrowiseNavigator {
         break;
 
       case GroupSessionPage.routeName:
-        nextPage = const GroupSessionPage();
+        final groupData =
+            (arguments as GroupSessionPageRouteArguments).groupData;
+        nextPage = GroupSessionPage(groupData: groupData);
         break;
 
       case ProfileUpdateUsernamePage.routeName:

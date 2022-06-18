@@ -1,58 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/injection.dart';
+import 'package:synchrowise/presentation/group/widgets/group_buttons.dart';
 import 'package:synchrowise/presentation/group/widgets/group_header.dart';
 import 'package:synchrowise/presentation/group/widgets/group_participant.dart';
 import 'package:synchrowise/presentation/group/widgets/media_player.dart';
+import 'package:kt_dart/kt.dart';
 
-class GroupSessionPage extends StatefulWidget {
+class GroupSessionPage extends StatelessWidget {
   static const routeName = '/main/group-session';
-  const GroupSessionPage({Key? key}) : super(key: key);
+  const GroupSessionPage({Key? key, required this.groupData}) : super(key: key);
 
-  @override
-  State<GroupSessionPage> createState() => _GroupSessionPageState();
-}
-
-class _GroupSessionPageState extends State<GroupSessionPage> {
-  late List<Participant> participantList;
-
-  @override
-  void initState() {
-    super.initState();
-
-    participantList = [
-      Participant("Selim Gülce", true, false),
-      Participant("Nurettin Resul Tanyıldızı", false, false),
-      Participant("Melihcan Kazım Karaca", false, true),
-      Participant("Şevval Alpaslan", false, false),
-      Participant("Emre Gülce", false, false),
-      Participant("Ahmet Varol", false, false),
-      Participant("Yasin Kemer", false, false),
-      Participant("Mehmet Yavuz", false, false),
-      Participant("Doğan Dinçer", false, false),
-      Participant("Ali Can", false, false),
-      Participant("Semih Taş", false, false),
-      Participant("Habib Müküs", false, false),
-    ];
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  final GroupData groupData;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const MediaPlayer(),
-            const SizedBox(height: 30),
-            const GroupHeader(),
-            const SizedBox(height: 20),
-            GroupParticipant(participantList: participantList),
-            const SizedBox(height: 10),
-          ],
+    return BlocProvider<GroupSessionBloc>(
+      create: (context) {
+        final bloc = getIt<GroupSessionBloc>();
+        return bloc;
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: BlocBuilder<GroupSessionBloc, GroupSessionState>(
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const MediaPlayer(),
+                  const SizedBox(height: 30),
+                  const GroupHeader(),
+                  const SizedBox(height: 20),
+                  GroupParticipant(
+                    participantList: groupData.members.map(
+                      (member) {
+                        return Participant(
+                          member.username,
+                          member.synchrowiseId ==
+                              groupData.groupOwner.synchrowiseId,
+                          false,
+                        );
+                      },
+                    ),
+                  ),
+                  GroupButtons(groupOwner: groupData.groupOwner),
+                  const SizedBox(height: 10),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

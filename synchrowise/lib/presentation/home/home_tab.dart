@@ -70,6 +70,10 @@ class HomeTab extends StatelessWidget {
                           SynchrowiseNavigator.pushNamed(
                             context,
                             GroupSessionPage.routeName,
+                            arguments: GroupSessionPageRouteArguments(
+                              context,
+                              groupData: loaded.groupData,
+                            ),
                           );
                         },
                         showProgress: false,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
 
 class SynchrowiseRouteArguments {
   final BuildContext context;
@@ -25,5 +26,14 @@ class JoinGroupPageRouteArguments extends SynchrowiseRouteArguments {
   JoinGroupPageRouteArguments(
     BuildContext context, {
     required this.onSuccess,
+  }) : super(context);
+}
+
+class GroupSessionPageRouteArguments extends SynchrowiseRouteArguments {
+  final GroupData groupData;
+
+  GroupSessionPageRouteArguments(
+    BuildContext context, {
+    required this.groupData,
   }) : super(context);
 }

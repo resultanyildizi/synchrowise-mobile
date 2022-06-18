@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/core/widgets/close_icon.dart';
 import 'package:synchrowise/presentation/group/group_session_page.dart';
-import 'package:synchrowise/presentation/group/widgets/group_buttons.dart';
 
 class GroupParticipant extends StatelessWidget {
   const GroupParticipant({
@@ -11,7 +11,7 @@ class GroupParticipant extends StatelessWidget {
     required this.participantList,
   }) : super(key: key);
 
-  final List<Participant> participantList;
+  final KtList<Participant> participantList;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,6 @@ class GroupParticipant extends StatelessWidget {
             const SizedBox(height: 20),
             ParticipantBody(participantList: participantList),
             const SizedBox(height: 10),
-            GroupButtons(isAdmin: true),
           ],
         ),
       ),
@@ -40,13 +39,13 @@ class ParticipantBody extends StatelessWidget {
     required this.participantList,
   }) : super(key: key);
 
-  final List<Participant> participantList;
+  final KtList<Participant> participantList;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: participantList.length,
+        itemCount: participantList.size,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 10.0),

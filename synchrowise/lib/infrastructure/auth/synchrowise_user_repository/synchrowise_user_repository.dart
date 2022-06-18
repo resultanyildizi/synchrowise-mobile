@@ -85,15 +85,13 @@ class SynchrowiseUserRepository implements ISynchrowiseUserRepository {
     required SynchrowiseUser synchrowiseUser,
   }) async {
     try {
-      final uri = Uri.parse("$apiurl/User");
+      final uri = Uri.parse("$apiurl/User/{${synchrowiseUser.synchrowiseId}}");
 
       final result = await _client.put(
         uri,
         body: jsonEncode(synchrowiseUser.toUpdateMap()),
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
-
-      log(result.body);
 
       if (result.statusCode == 200) {
         return right(unit);

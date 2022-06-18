@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,8 +8,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
-import 'package:synchrowise/application/group_bloc/create_group/create_group_bloc.dart';
+import 'package:synchrowise/application/group_bloc/create_group_bloc/create_group_bloc.dart';
 import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
+import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/application/group_bloc/join_group_bloc/join_group_bloc.dart';
 import 'package:synchrowise/application/language_bloc/language_bloc.dart';
 import 'package:synchrowise/application/notification_settings_bloc/notification_settings_bloc.dart';
@@ -27,6 +29,8 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/syncrowise_user_sembast_storage.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart';
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
+import 'package:synchrowise/infrastructure/core/media_facade/i_media_picker_facade.dart';
+import 'package:synchrowise/infrastructure/core/media_facade/media_picker_facade.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/group_repository.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
 import 'package:synchrowise/infrastructure/notification/i_notification_repository.dart';
@@ -52,13 +56,12 @@ Future<void> _setupServices() async {
   getIt.registerSingleton<ImagePicker>(ImagePicker());
   getIt.registerSingleton<ImageCropper>(ImageCropper());
   getIt.registerSingleton<Database>(database);
+  getIt.registerSingleton<FilePicker>(FilePicker.platform);
 }
 
 Future<void> _setupInfrastructure() async {
   getIt.registerSingleton<INotificationRepository>(
-    NotificationRepository(
-      getIt<Client>(),
-    ),
+    NotificationRepository(getIt<Client>()),
   );
   getIt.registerSingleton<IAuthFacade>(
     AuthFacade(
@@ -66,33 +69,30 @@ Future<void> _setupInfrastructure() async {
       getIt<GoogleSignIn>(),
     ),
   );
-
   getIt.registerSingleton<IImageFacade>(
     ImageFacade(
       getIt<ImagePicker>(),
       getIt<ImageCropper>(),
     ),
   );
-
   getIt.registerSingleton<ISynchrowiseUserStorage>(SyncrowiseUserSembastStorage(
     getIt<Database>(),
     StoreRef<String, Map<String, dynamic>?>.main(),
   ));
-
   getIt.registerSingleton<ISynchrowiseUserRepository>(
     SynchrowiseUserRepository(getIt<Client>()),
   );
-
   getIt.registerSingleton<IGroupRepository>(
     GroupRepository(getIt<Client>()),
   );
-
   getIt.registerSingleton<IAvatarRepository>(
     AvatarRepository(getIt<Client>()),
   );
-
   getIt.registerSingleton<ISynchrowiseMessaging>(
     SynchrowiseFirebaseMessaging(),
+  );
+  getIt.registerSingleton<IMediaPickerFacade>(
+    MediaPickerFacade(getIt<FilePicker>()),
   );
 }
 
@@ -123,7 +123,6 @@ Future<void> _setupBlocs() async {
       getIt<ISynchrowiseUserStorage>(),
     );
   });
-
   getIt.registerFactory<RegisterationBloc>(() {
     return RegisterationBloc(
       getIt<ISynchrowiseUserRepository>(),
@@ -132,14 +131,12 @@ Future<void> _setupBlocs() async {
       getIt<IImageFacade>(),
     );
   });
-
   getIt.registerFactory<CreateGroupBloc>(() {
     return CreateGroupBloc(
       getIt<ISynchrowiseUserStorage>(),
       getIt<IGroupRepository>(),
     );
   });
-
   getIt.registerFactory<ProfileBloc>(() {
     return ProfileBloc(
       getIt<IAuthFacade>(),
@@ -147,34 +144,35 @@ Future<void> _setupBlocs() async {
       getIt<ISynchrowiseUserRepository>(),
     );
   });
-
   getIt.registerFactory<BottomNavbarBloc>(() {
     return BottomNavbarBloc();
   });
-
   getIt.registerFactory<LanguageBloc>(() {
     return LanguageBloc();
   });
-
   getIt.registerFactory<GetGroupBloc>(() {
     return GetGroupBloc(
       getIt<IGroupRepository>(),
       getIt<ISynchrowiseUserStorage>(),
     );
   });
-
   getIt.registerFactory<JoinGroupBloc>(() {
     return JoinGroupBloc(
       getIt<IGroupRepository>(),
       getIt<ISynchrowiseUserStorage>(),
     );
   });
-
   getIt.registerFactory<MessagingBloc>(() {
     return MessagingBloc(
       getIt<ISynchrowiseMessaging>(),
       getIt<ISynchrowiseUserRepository>(),
       getIt<ISynchrowiseUserStorage>(),
+    );
+  });
+  getIt.registerFactory<GroupSessionBloc>(() {
+    return GroupSessionBloc(
+      getIt<IMediaPickerFacade>(),
+      getIt<IGroupRepository>(),
     );
   });
 }
