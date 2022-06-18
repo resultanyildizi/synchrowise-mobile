@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -14,8 +12,14 @@ class AuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
+  // BehaviourSubject<UserCredential> _userCredentialSubject =
+  //     BehaviourSubject<UserCredential>.sempty();
+
   ///* Constructor
-  const AuthFacade(this._firebaseAuth, this._googleSignIn);
+  AuthFacade(
+    this._firebaseAuth,
+    this._googleSignIn,
+  );
 
   ///* Method implementations
   @override

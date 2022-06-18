@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:kt_dart/kt.dart';
 
-import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 
 @immutable

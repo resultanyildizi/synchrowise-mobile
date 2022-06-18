@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
+import 'package:signalr_core/signalr_core.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
 import 'package:synchrowise/application/core/share_content_bloc/share_content_bloc.dart';
@@ -24,6 +25,8 @@ import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
+import 'package:synchrowise/infrastructure/auth/socket_facade/i_socket_facade.dart';
+import 'package:synchrowise/infrastructure/auth/socket_facade/socket_facade.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
@@ -62,6 +65,7 @@ Future<void> _setupServices() async {
   getIt.registerSingleton<ImageCropper>(ImageCropper());
   getIt.registerSingleton<Database>(database);
   getIt.registerSingleton<FilePicker>(FilePicker.platform);
+  getIt.registerFactory<HubConnectionBuilder>(() => HubConnectionBuilder());
 }
 
 Future<void> _setupInfrastructure() async {
@@ -77,11 +81,11 @@ Future<void> _setupInfrastructure() async {
       getIt<GoogleSignIn>(),
     ),
   );
+  getIt.registerSingleton<ISocketFacade>(
+    SocketFacade(getIt<HubConnectionBuilder>()),
+  );
   getIt.registerSingleton<IImageFacade>(
-    ImageFacade(
-      getIt<ImagePicker>(),
-      getIt<ImageCropper>(),
-    ),
+    ImageFacade(getIt<ImagePicker>(), getIt<ImageCropper>()),
   );
   getIt.registerSingleton<ISynchrowiseUserStorage>(SyncrowiseUserSembastStorage(
     getIt<Database>(),
@@ -116,6 +120,7 @@ Future<void> _setupBlocs() async {
     return AuthBloc(
       getIt<IAuthFacade>(),
       getIt<ISynchrowiseUserStorage>(),
+      getIt<ISocketFacade>(),
     );
   });
   getIt.registerFactory<SigninFormBloc>(() {
