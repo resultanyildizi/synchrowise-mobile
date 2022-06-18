@@ -12,8 +12,25 @@ class MediaPickerFacade implements IMediaPickerFacade {
 
   @override
   Future<Either<MediaFailure, Media>> uploadFromDevice() async {
+    final commonVideoExt = [
+      'mp4',
+      'mov',
+      'm4v',
+      'avi',
+      'wmv',
+      'mkv',
+      'webm',
+      'mov',
+      'mp4',
+      'mpg',
+      'mpeg',
+    ];
+
+    final commonAudioExt = ['mp', 'mp3', 'mp2', 'wav'];
+
     final result = await filePicker.pickFiles(
-      type: FileType.audio,
+      type: FileType.custom,
+      allowedExtensions: [...commonAudioExt],
       allowMultiple: false,
     );
 
@@ -21,7 +38,7 @@ class MediaPickerFacade implements IMediaPickerFacade {
       final file = result.files.single;
 
       final fileSize = _getImageSizeMB(file);
-      if (fileSize > 100) {
+      if (fileSize > 300) {
         return left(MediaFailure.sizeFailure(fileSize));
       }
 
