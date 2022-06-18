@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:synchrowise/application/core/share_content_bloc/share_content_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class GroupHeader extends StatelessWidget {
@@ -66,10 +68,14 @@ class GroupHeader extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
             child: CustomAnimatedButton(
-              onTap: () {},
-              child: const Icon(
-                Icons.share,
-              ),
+              onTap: () {
+                getIt<ShareContentBloc>().share(
+                  text:
+                      "${groupData.groupUrl}\n\nAramıza katılmak için bağlantı linkine tıklayabilirsin!",
+                  subject: "Synchrowise grup daveti",
+                );
+              },
+              child: const Icon(Icons.share),
             ),
           ),
         ],

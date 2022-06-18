@@ -8,10 +8,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sembast/sembast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
-import 'package:synchrowise/application/group_bloc/create_group_bloc/create_group_bloc.dart';
-import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
-import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
-import 'package:synchrowise/application/group_bloc/join_group_bloc/join_group_bloc.dart';
+import 'package:synchrowise/application/core/share_content_bloc/share_content_bloc.dart';
+import 'package:synchrowise/application/group/create_group_bloc/create_group_bloc.dart';
+import 'package:synchrowise/application/group/get_group_bloc/get_group_bloc.dart';
+import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
+import 'package:synchrowise/application/group/join_group_bloc/join_group_bloc.dart';
 import 'package:synchrowise/application/language_bloc/language_bloc.dart';
 import 'package:synchrowise/application/notification_settings_bloc/notification_settings_bloc.dart';
 import 'package:synchrowise/application/messaging_bloc/messaging_bloc.dart';
@@ -31,6 +32,8 @@ import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/i_media_picker_facade.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/media_picker_facade.dart';
+import 'package:synchrowise/infrastructure/core/share_facade/i_share_facade.dart';
+import 'package:synchrowise/infrastructure/core/share_facade/share_facade.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/group_repository.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
 import 'package:synchrowise/infrastructure/notification/i_notification_repository.dart';
@@ -94,6 +97,7 @@ Future<void> _setupInfrastructure() async {
   getIt.registerSingleton<IMediaPickerFacade>(
     MediaPickerFacade(getIt<FilePicker>()),
   );
+  getIt.registerSingleton<IShareFacade>(ShareFacade());
 }
 
 Future<void> _setupBlocs() async {
@@ -176,4 +180,10 @@ Future<void> _setupBlocs() async {
       getIt<ISynchrowiseUserStorage>(),
     );
   });
+
+  getIt.registerLazySingleton<ShareContentBloc>(
+    () {
+      return ShareContentBloc(getIt<IShareFacade>());
+    },
+  );
 }

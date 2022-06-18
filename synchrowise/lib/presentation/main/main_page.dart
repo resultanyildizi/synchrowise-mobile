@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/auth_bloc/auth_bloc.dart';
 import 'package:synchrowise/application/bottom_navbar_bloc/bottom_navbar_bloc.dart';
-import 'package:synchrowise/application/group_bloc/get_group_bloc/get_group_bloc.dart';
+import 'package:synchrowise/application/group/get_group_bloc/get_group_bloc.dart';
 import 'package:synchrowise/application/messaging_bloc/messaging_bloc.dart';
 import 'package:synchrowise/application/profile_bloc/profile_bloc.dart';
 import 'package:synchrowise/constants.dart';
