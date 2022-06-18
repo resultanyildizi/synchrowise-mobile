@@ -1,3 +1,4 @@
+import 'package:path/path.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
 import 'package:dartz/dartz.dart';
@@ -12,25 +13,8 @@ class MediaPickerFacade implements IMediaPickerFacade {
 
   @override
   Future<Either<MediaFailure, Media>> uploadFromDevice() async {
-    final commonVideoExt = [
-      'mp4',
-      'mov',
-      'm4v',
-      'avi',
-      'wmv',
-      'mkv',
-      'webm',
-      'mov',
-      'mp4',
-      'mpg',
-      'mpeg',
-    ];
-
-    final commonAudioExt = ['mp', 'mp3', 'mp2', 'wav'];
-
     final result = await filePicker.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: [...commonAudioExt],
+      type: FileType.any,
       allowMultiple: false,
     );
 
@@ -44,7 +28,15 @@ class MediaPickerFacade implements IMediaPickerFacade {
 
       final path = file.path!;
 
-      return right(Media(file: File(path)));
+      final media = Media(file: File(path));
+
+      if (media.type == MediaType.unknown) {
+        return left(
+          MediaFailure.unsupportedFailure(extension(media.file.path)),
+        );
+      }
+
+      return right(media);
     } else {
       return left(const MediaFailure.pickFailure(null));
     }

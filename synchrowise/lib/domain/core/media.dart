@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:path/path.dart';
@@ -10,13 +11,15 @@ class Media extends Equatable {
   MediaType get type {
     final ext = extension(file.path);
 
-    if (ext == 'mp4' ||
-        ext == 'mov' ||
-        ext == 'avi' ||
-        ext == 'mpg' ||
-        ext == 'mpeg') {
+    log(ext);
+
+    if (ext == '.mp4' ||
+        ext == '.mov' ||
+        ext == '.avi' ||
+        ext == '.mpg' ||
+        ext == '.mpeg') {
       return MediaType.video;
-    } else if (ext == 'mp3' || ext == 'wav') {
+    } else if (ext == '.mp3' || ext == '.wav') {
       return MediaType.audio;
     } else {
       return MediaType.unknown;

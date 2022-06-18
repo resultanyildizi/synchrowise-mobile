@@ -7,4 +7,6 @@ part 'media_failure.freezed.dart';
 abstract class MediaFailure extends SynchrowiseFailure with _$MediaFailure {
   const factory MediaFailure.pickFailure(String? message) = _PickFailure;
   const factory MediaFailure.sizeFailure(double mediaSize) = _SizeFailure;
+  const factory MediaFailure.unsupportedFailure(String ext) =
+      _UnsupportedFailure;
 }

@@ -29,6 +29,12 @@ class _$MediaFailureTearOff {
       mediaSize,
     );
   }
+
+  _UnsupportedFailure unsupportedFailure(String ext) {
+    return _UnsupportedFailure(
+      ext,
+    );
+  }
 }
 
 /// @nodoc
@@ -40,18 +46,21 @@ mixin _$MediaFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
+    required TResult Function(String ext) unsupportedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,18 +68,21 @@ mixin _$MediaFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
+    required TResult Function(_UnsupportedFailure value) unsupportedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,6 +170,7 @@ class _$_PickFailure implements _PickFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
+    required TResult Function(String ext) unsupportedFailure,
   }) {
     return pickFailure(message);
   }
@@ -167,6 +180,7 @@ class _$_PickFailure implements _PickFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
   }) {
     return pickFailure?.call(message);
   }
@@ -176,6 +190,7 @@ class _$_PickFailure implements _PickFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
     required TResult orElse(),
   }) {
     if (pickFailure != null) {
@@ -189,6 +204,7 @@ class _$_PickFailure implements _PickFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
+    required TResult Function(_UnsupportedFailure value) unsupportedFailure,
   }) {
     return pickFailure(this);
   }
@@ -198,6 +214,7 @@ class _$_PickFailure implements _PickFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
   }) {
     return pickFailure?.call(this);
   }
@@ -207,6 +224,7 @@ class _$_PickFailure implements _PickFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
     required TResult orElse(),
   }) {
     if (pickFailure != null) {
@@ -291,6 +309,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
+    required TResult Function(String ext) unsupportedFailure,
   }) {
     return sizeFailure(mediaSize);
   }
@@ -300,6 +319,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
   }) {
     return sizeFailure?.call(mediaSize);
   }
@@ -309,6 +329,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
     required TResult orElse(),
   }) {
     if (sizeFailure != null) {
@@ -322,6 +343,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
+    required TResult Function(_UnsupportedFailure value) unsupportedFailure,
   }) {
     return sizeFailure(this);
   }
@@ -331,6 +353,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
   }) {
     return sizeFailure?.call(this);
   }
@@ -340,6 +363,7 @@ class _$_SizeFailure implements _SizeFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
     required TResult orElse(),
   }) {
     if (sizeFailure != null) {
@@ -355,5 +379,145 @@ abstract class _SizeFailure implements MediaFailure {
   double get mediaSize;
   @JsonKey(ignore: true)
   _$SizeFailureCopyWith<_SizeFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UnsupportedFailureCopyWith<$Res> {
+  factory _$UnsupportedFailureCopyWith(
+          _UnsupportedFailure value, $Res Function(_UnsupportedFailure) then) =
+      __$UnsupportedFailureCopyWithImpl<$Res>;
+  $Res call({String ext});
+}
+
+/// @nodoc
+class __$UnsupportedFailureCopyWithImpl<$Res>
+    extends _$MediaFailureCopyWithImpl<$Res>
+    implements _$UnsupportedFailureCopyWith<$Res> {
+  __$UnsupportedFailureCopyWithImpl(
+      _UnsupportedFailure _value, $Res Function(_UnsupportedFailure) _then)
+      : super(_value, (v) => _then(v as _UnsupportedFailure));
+
+  @override
+  _UnsupportedFailure get _value => super._value as _UnsupportedFailure;
+
+  @override
+  $Res call({
+    Object? ext = freezed,
+  }) {
+    return _then(_UnsupportedFailure(
+      ext == freezed
+          ? _value.ext
+          : ext // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UnsupportedFailure implements _UnsupportedFailure {
+  const _$_UnsupportedFailure(this.ext);
+
+  @override
+  final String ext;
+
+  @override
+  String toString() {
+    return 'MediaFailure.unsupportedFailure(ext: $ext)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UnsupportedFailure &&
+            const DeepCollectionEquality().equals(other.ext, ext));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(ext));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UnsupportedFailureCopyWith<_UnsupportedFailure> get copyWith =>
+      __$UnsupportedFailureCopyWithImpl<_UnsupportedFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) pickFailure,
+    required TResult Function(double mediaSize) sizeFailure,
+    required TResult Function(String ext) unsupportedFailure,
+  }) {
+    return unsupportedFailure(ext);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? pickFailure,
+    TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
+  }) {
+    return unsupportedFailure?.call(ext);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? pickFailure,
+    TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
+    required TResult orElse(),
+  }) {
+    if (unsupportedFailure != null) {
+      return unsupportedFailure(ext);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PickFailure value) pickFailure,
+    required TResult Function(_SizeFailure value) sizeFailure,
+    required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+  }) {
+    return unsupportedFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PickFailure value)? pickFailure,
+    TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+  }) {
+    return unsupportedFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PickFailure value)? pickFailure,
+    TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    required TResult orElse(),
+  }) {
+    if (unsupportedFailure != null) {
+      return unsupportedFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnsupportedFailure implements MediaFailure {
+  const factory _UnsupportedFailure(String ext) = _$_UnsupportedFailure;
+
+  String get ext;
+  @JsonKey(ignore: true)
+  _$UnsupportedFailureCopyWith<_UnsupportedFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
