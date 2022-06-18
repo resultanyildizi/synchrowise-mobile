@@ -49,7 +49,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
           return Text(errorMessage);
         },
         customControls: MaterialControls(
-          backgroundImage: appLogo,
+          backgroundImage: appLogoMedium,
           onTapToPause: (currentPosition) {
             log("paused and current position is $currentPosition");
           },

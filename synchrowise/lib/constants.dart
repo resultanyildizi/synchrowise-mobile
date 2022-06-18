@@ -33,6 +33,12 @@ final Image appLogoSmall = Image.asset(
   height: 40,
 );
 
+final Image appLogoMedium = Image.asset(
+  "assets/images/logo.png",
+  width: 80,
+  height: 80,
+);
+
 final AndroidUiSettings cropAndroidUiSettings = AndroidUiSettings(
   toolbarColor: primaryColor,
   toolbarWidgetColor: Colors.white,

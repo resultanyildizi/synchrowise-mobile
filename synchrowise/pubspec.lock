@@ -180,8 +180,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "74b6f51"
-      resolved-ref: "74b6f516c8cda66277f205e11edab8929b896cab"
+      ref: "008bf87"
+      resolved-ref: "008bf870791d7563b3f7525d4b35bea177465572"
       url: "https://github.com/gulceselim/chewie.git"
     source: git
     version: "1.3.3"
