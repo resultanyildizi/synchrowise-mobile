@@ -137,6 +137,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
   BlocListener<GroupSessionBloc, GroupSessionState>
       _getMediaChangedBlocListener() {
     return BlocListener<GroupSessionBloc, GroupSessionState>(
+      listenWhen: (p, c) => p.failureOrMediaOption != c.failureOrMediaOption,
       bloc: _groupSessionBloc,
       listener: (context, state) {
         _updateMediaController();
