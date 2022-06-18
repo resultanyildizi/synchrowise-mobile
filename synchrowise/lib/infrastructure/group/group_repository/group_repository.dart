@@ -77,13 +77,14 @@ class GroupRepository implements IGroupRepository {
   @override
   Future<Either<GroupRepositoryFailure, Unit>> delete({
     required GroupData groupData,
+    required String synchrowiseUserId,
   }) async {
     try {
       final uri = Uri.parse("$apiurl/Group/${groupData.groupId}");
 
       final result = await _client.delete(
         uri,
-        body: jsonEncode(groupData.toDeleteMap()),
+        body: jsonEncode({"userID": synchrowiseUserId}),
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
 

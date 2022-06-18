@@ -48,7 +48,10 @@ class GroupSessionPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   GroupParticipant(participantList: participantList),
-                  GroupButtons(groupOwner: groupData.groupOwner),
+                  GroupButtons(
+                    groupOwner: groupData.groupOwner,
+                    groupData: groupData,
+                  ),
                   const SizedBox(height: 10),
                 ],
               );

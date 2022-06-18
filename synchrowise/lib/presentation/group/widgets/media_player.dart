@@ -60,13 +60,13 @@ class _MediaPlayerState extends State<MediaPlayer> {
             backgroundImage:
                 media.type == MediaType.audio ? appLogoMedium : null,
             onTapToPause: (currentPosition) {
-              log("paused and current position is $currentPosition");
+              _groupSessionBloc.pauseMedia();
             },
             onTapToPlay: (currentPosition) {
-              log("playing and current position is $currentPosition");
+              _groupSessionBloc.playMedia();
             },
             onTapToUpdateCurrentPosition: (currentPosition) {
-              log("currentPosition is $currentPosition");
+              _groupSessionBloc.seekMedia();
             },
           ),
         );

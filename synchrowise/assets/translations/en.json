@@ -92,5 +92,7 @@
     "turkish": "Türkçe",
     "english": "English",
     "x_person_in_group": "{count} person in group",
-    "x_people_in_group": "{count} people in group"
+    "x_people_in_group": "{count} people in group",
+    "delete_group": "Delete group",
+    "delete_group_desc": "Are you sure you want to delete the group?"
 }
