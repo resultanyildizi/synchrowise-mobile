@@ -35,8 +35,8 @@ final Image appLogoSmall = Image.asset(
 
 final Image appLogoMedium = Image.asset(
   "assets/images/logo.png",
-  width: 80,
-  height: 80,
+  width: 120,
+  height: 120,
 );
 
 final AndroidUiSettings cropAndroidUiSettings = AndroidUiSettings(
