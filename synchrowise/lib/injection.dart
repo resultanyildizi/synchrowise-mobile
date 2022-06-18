@@ -173,6 +173,7 @@ Future<void> _setupBlocs() async {
     return GroupSessionBloc(
       getIt<IMediaPickerFacade>(),
       getIt<IGroupRepository>(),
+      getIt<ISynchrowiseUserStorage>(),
     );
   });
 }

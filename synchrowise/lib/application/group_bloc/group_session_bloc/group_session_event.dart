@@ -10,6 +10,9 @@ class GroupSessionEvent with _$GroupSessionEvent {
 
   factory GroupSessionEvent.leaveGroup() = _LeaveGroupEvent;
 
+  factory GroupSessionEvent.deleteGroup({required GroupData groupData}) =
+      _DeleteGroupEvent;
+
   factory GroupSessionEvent.playMedia() = _PlayMediaEvent;
 
   factory GroupSessionEvent.pauseMedia() = _PauseMediaEvent;

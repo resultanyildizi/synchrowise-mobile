@@ -90,5 +90,7 @@
     "group_notifications": "Group Bildirimleri",
     "message_notifications": "Mesaj Bildirimleri",
     "turkish": "Türkçe",
-    "english": "English"
+    "english": "English",
+    "delete_group": "Grubu sil",
+    "delete_group_desc": "Grubu silmek istediğine emin misin?"
 }

@@ -51,13 +51,13 @@ class _MediaPlayerState extends State<MediaPlayer> {
         customControls: MaterialControls(
           backgroundImage: appLogoMedium,
           onTapToPause: (currentPosition) {
-            log("paused and current position is $currentPosition");
+            _groupSessionBloc.pauseMedia();
           },
           onTapToPlay: (currentPosition) {
-            log("playing and current position is $currentPosition");
+            _groupSessionBloc.playMedia();
           },
           onTapToUpdateCurrentPosition: (currentPosition) {
-            log("currentPosition is $currentPosition");
+            _groupSessionBloc.seekMedia();
           },
         ),
       );

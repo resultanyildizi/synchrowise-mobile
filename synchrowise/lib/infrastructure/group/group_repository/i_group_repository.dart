@@ -25,6 +25,7 @@ abstract class IGroupRepository {
   ///* Returns `GroupRepositoryFailure` if an exception occurs.
   Future<Either<GroupRepositoryFailure, Unit>> delete({
     required GroupData groupData,
+    required String synchrowiseUserId,
   });
 
   ///* Gets the group from the server for given `groupId`.

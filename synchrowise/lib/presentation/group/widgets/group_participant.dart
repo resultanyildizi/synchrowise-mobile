@@ -102,7 +102,7 @@ class ParticipantBody extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    CloseIcon(onTap: () {}),
+                    if (index != 0) CloseIcon(onTap: () {}),
                   ],
                 ),
               ),

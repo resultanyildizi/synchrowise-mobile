@@ -90,5 +90,7 @@
     "group_notifications": "Group notifications",
     "message_notifications": "Message notifications",
     "turkish": "Türkçe",
-    "english": "English"
+    "english": "English",
+    "delete_group": "Delete group",
+    "delete_group_desc": "Are you sure you want to delete the group?"
 }
