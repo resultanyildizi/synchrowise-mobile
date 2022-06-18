@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -43,14 +40,21 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           final newState = failureOrMedia.fold(
             (f) {
-              return state.copyWith(failureOrMediaOption: some(left(f)));
+              return f.maybeMap(
+                pickFailure: (_) {
+                  return state;
+                },
+                orElse: () {
+                  return state.copyWith(failureOrMediaOption: some(left(f)));
+                },
+              );
             },
             (media) {
               return state.copyWith(failureOrMediaOption: some(right(media)));
             },
           );
 
-          emit(newState.copyWith(isProgressing: true));
+          emit(newState.copyWith(isProgressing: false));
         },
         removeMedia: (e) async {},
         leaveGroup: (e) async {},

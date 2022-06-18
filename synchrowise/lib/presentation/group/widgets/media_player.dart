@@ -1,10 +1,16 @@
 import 'dart:developer';
 
 import 'package:chewie/chewie.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/domain/core/media.dart';
+import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
+import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 import 'package:video_player/video_player.dart';
 
 class MediaPlayer extends StatefulWidget {
@@ -28,44 +34,47 @@ class _MediaPlayerState extends State<MediaPlayer> {
     if (media != null) {
       _videoPlayerController = VideoPlayerController.file(media.file);
 
-      _chewieController = ChewieController(
-        videoPlayerController: _videoPlayerController!,
-        allowPlaybackSpeedChanging: false,
-        allowFullScreen: false,
-        showOptions: false,
-        cupertinoProgressColors: ChewieProgressColors(
-          playedColor: primaryColor,
-          bufferedColor: Colors.white,
-          handleColor: Colors.white,
-          backgroundColor: grayColor,
-        ),
-        materialProgressColors: ChewieProgressColors(
-          playedColor: primaryColor,
-          bufferedColor: Colors.white,
-          handleColor: Colors.white,
-          backgroundColor: grayColor,
-        ),
-        errorBuilder: (context, errorMessage) {
-          return Text(errorMessage);
-        },
-        customControls: MaterialControls(
-          backgroundImage: appLogoMedium,
-          onTapToPause: (currentPosition) {
-            log("paused and current position is $currentPosition");
+      _videoPlayerController!.initialize().then((value) {
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController!,
+          allowPlaybackSpeedChanging: false,
+          allowFullScreen: false,
+          showOptions: false,
+          cupertinoProgressColors: ChewieProgressColors(
+            playedColor: primaryColor,
+            bufferedColor: Colors.white,
+            handleColor: Colors.white,
+            backgroundColor: grayColor,
+          ),
+          materialProgressColors: ChewieProgressColors(
+            playedColor: primaryColor,
+            bufferedColor: Colors.white,
+            handleColor: Colors.white,
+            backgroundColor: grayColor,
+          ),
+          errorBuilder: (context, errorMessage) {
+            return Text(errorMessage);
           },
-          onTapToPlay: (currentPosition) {
-            log("playing and current position is $currentPosition");
-          },
-          onTapToUpdateCurrentPosition: (currentPosition) {
-            log("currentPosition is $currentPosition");
-          },
-        ),
-      );
+          customControls: MaterialControls(
+            backgroundColor: Colors.black,
+            backgroundImage:
+                media.type == MediaType.audio ? appLogoMedium : null,
+            onTapToPause: (currentPosition) {
+              log("paused and current position is $currentPosition");
+            },
+            onTapToPlay: (currentPosition) {
+              log("playing and current position is $currentPosition");
+            },
+            onTapToUpdateCurrentPosition: (currentPosition) {
+              log("currentPosition is $currentPosition");
+            },
+          ),
+        );
+        setState(() {});
+      });
 
-      _videoPlayerController!.initialize();
+      setState(() {});
     }
-
-    setState(() {});
   }
 
   @override
@@ -80,22 +89,90 @@ class _MediaPlayerState extends State<MediaPlayer> {
   void dispose() {
     _videoPlayerController?.dispose();
     _chewieController?.dispose();
+    _groupSessionBloc.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    return MultiBlocListener(
+      listeners: [
+        _getMediaChangedBlocListener(),
+        _getMediaFailureBlocListener(),
+      ],
+      child: BlocBuilder<GroupSessionBloc, GroupSessionState>(
+        builder: (context, state) {
+          return AspectRatio(
+            aspectRatio: 16 / 9,
+            child: _chewieController == null
+                ? state.isProgressing
+                    ? const SizedBox(
+                        child: WaveLoadingIndicator(
+                        color: secondaryColor,
+                        size: 18,
+                      ))
+                    : GestureDetector(
+                        onTap: () {
+                          _groupSessionBloc.uploadMedia();
+                        },
+                        child: const Center(
+                          child: Icon(
+                            Icons.video_library,
+                            color: secondaryColor,
+                            size: 36,
+                          ),
+                        ),
+                      )
+                : Chewie(controller: _chewieController!),
+          );
+        },
+      ),
+    );
+  }
+
+  BlocListener<GroupSessionBloc, GroupSessionState>
+      _getMediaChangedBlocListener() {
     return BlocListener<GroupSessionBloc, GroupSessionState>(
       bloc: _groupSessionBloc,
       listener: (context, state) {
         _updateMediaController();
       },
-      child: _chewieController == null
-          ? Container()
-          : AspectRatio(
-              aspectRatio: _videoPlayerController!.value.aspectRatio,
-              child: Chewie(controller: _chewieController!),
-            ),
+    );
+  }
+
+  BlocListener<GroupSessionBloc, GroupSessionState>
+      _getMediaFailureBlocListener() {
+    return BlocListener<GroupSessionBloc, GroupSessionState>(
+      bloc: _groupSessionBloc,
+      listener: (context, state) {
+        state.failureOrMediaOption.fold(
+          () => null,
+          (fom) {
+            return fom.fold(
+              (f) {
+                if (f is MediaFailure) {
+                  f.map(
+                    pickFailure: (_) {},
+                    sizeFailure: (f) {
+                      showErrorToast(
+                        "media_size_too_big".tr(),
+                        ToastGravity.BOTTOM,
+                      );
+                    },
+                    unsupportedFailure: (f) {
+                      showErrorToast(
+                        "media_unsupported".tr(),
+                        ToastGravity.BOTTOM,
+                      );
+                    },
+                  );
+                }
+              },
+              (_) {},
+            );
+          },
+        );
+      },
     );
   }
 }

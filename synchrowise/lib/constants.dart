@@ -8,7 +8,6 @@ const Color primaryDarkColor = Color.fromRGBO(155, 0, 40, 1);
 const Color primaryExtraLightColor = Color.fromARGB(5, 210, 62, 79);
 const Color secondaryColor = Color(0xFF2B41A2);
 const Color secondaryLightColor = Color.fromARGB(10, 50, 71, 166);
-const Color secondaryDarkColor = Color(0xFF001b72);
 const Color grayColor = Color(0xFFA8A7A8);
 const Color grayDarkColor2 = Color(0xFF807A7C);
 const Color grayDarkColor = Color(0xFF2B2628);

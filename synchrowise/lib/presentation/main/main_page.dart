@@ -11,10 +11,10 @@ import 'package:synchrowise/domain/messaging/media_message.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/something_went_wrong_page.dart';
+import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/presentation/core/widgets/app_logo_and_name.dart';
 import 'package:synchrowise/presentation/core/widgets/bottom_nav_bar.dart';
-import 'package:synchrowise/presentation/core/widgets/wave_progress_indicator.dart';
 import 'package:synchrowise/presentation/home/home_tab.dart';
 import 'package:synchrowise/presentation/settings/settings_tab.dart';
 import 'package:synchrowise/presentation/profile/profile_tab.dart';
@@ -61,7 +61,7 @@ class MainPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(defaultPadding),
-          child: WaveProgressIndicator(),
+          child: WaveLoadingIndicator(),
         ),
       ),
       bottomNavigationBar: BottomNavBar(),

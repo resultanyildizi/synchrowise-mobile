@@ -18,6 +18,16 @@ class GroupSessionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final participantList = groupData.members.map(
+      (member) {
+        return Participant(
+          member.username,
+          member.synchrowiseId == groupData.groupOwner.synchrowiseId,
+          false,
+        );
+      },
+    );
+
     return BlocProvider<GroupSessionBloc>(
       create: (context) {
         final bloc = getIt<GroupSessionBloc>();
@@ -32,20 +42,12 @@ class GroupSessionPage extends StatelessWidget {
                 children: [
                   const MediaPlayer(),
                   const SizedBox(height: 30),
-                  const GroupHeader(),
-                  const SizedBox(height: 20),
-                  GroupParticipant(
-                    participantList: groupData.members.map(
-                      (member) {
-                        return Participant(
-                          member.username,
-                          member.synchrowiseId ==
-                              groupData.groupOwner.synchrowiseId,
-                          false,
-                        );
-                      },
-                    ),
+                  GroupHeader(
+                    groupName: groupData.groupKey,
+                    memberCount: groupData.members.size,
                   ),
+                  const SizedBox(height: 20),
+                  GroupParticipant(participantList: participantList),
                   GroupButtons(groupOwner: groupData.groupOwner),
                   const SizedBox(height: 10),
                 ],

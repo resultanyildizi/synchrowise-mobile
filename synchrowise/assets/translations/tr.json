@@ -90,5 +90,7 @@
     "group_notifications": "Group Bildirimleri",
     "message_notifications": "Mesaj Bildirimleri",
     "turkish": "Türkçe",
-    "english": "English"
+    "english": "English",
+    "x_people_in_group": "{count} kişi grupta",
+    "x_person_in_group": "{count} kişi grupta"
 }

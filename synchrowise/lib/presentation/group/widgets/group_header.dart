@@ -1,10 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class GroupHeader extends StatelessWidget {
+  final String groupName;
+  final int memberCount;
+
   const GroupHeader({
     Key? key,
+    required this.groupName,
+    required this.memberCount,
   }) : super(key: key);
 
   @override
@@ -18,7 +24,7 @@ class GroupHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Forest Gump",
+                groupName,
                 style: Theme.of(context)
                     .textTheme
                     .headline6!
@@ -27,7 +33,14 @@ class GroupHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "8 kişi izliyor",
+                    (memberCount > 1
+                            ? "x_people_in_group"
+                            : "x_person_in_group")
+                        .tr(
+                      namedArgs: {
+                        "count": memberCount.toString(),
+                      },
+                    ),
                     style: Theme.of(context)
                         .textTheme
                         .headline6!

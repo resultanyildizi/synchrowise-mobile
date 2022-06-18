@@ -107,8 +107,8 @@ class _GroupButton extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 35,
-          color: secondaryDarkColor,
+          size: 32,
+          color: secondaryColor,
         ),
       ),
     );
