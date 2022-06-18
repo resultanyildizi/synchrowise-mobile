@@ -13,6 +13,9 @@ class GroupData extends Equatable {
   final UserSummary groupOwner;
   final KtList<UserSummary> members;
 
+  @override
+  List<Object> get props => [groupKey, groupOwner, groupId, members];
+
   const GroupData({
     required this.groupKey,
     required this.groupDesc,
@@ -68,8 +71,9 @@ class GroupData extends Equatable {
     return {'userID': groupOwner};
   }
 
-  @override
-  List<Object> get props => [groupKey, groupOwner, groupId, members];
+  String get groupUrl {
+    return 'https://synchrowise-app.com/join/$groupKey';
+  }
 
   GroupData copyWith({
     String? groupKey,

@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
+import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
@@ -56,7 +56,8 @@ class _MediaPlayerState extends State<MediaPlayer> {
             return Text(errorMessage);
           },
           customControls: MaterialControls(
-            backgroundColor: Colors.black,
+            backgroundColor:
+                media.type == MediaType.audio ? Colors.transparent : null,
             backgroundImage:
                 media.type == MediaType.audio ? appLogoMedium : null,
             onTapToPause: (currentPosition) {
@@ -104,26 +105,29 @@ class _MediaPlayerState extends State<MediaPlayer> {
         builder: (context, state) {
           return AspectRatio(
             aspectRatio: 16 / 9,
-            child: _chewieController == null
-                ? state.isProgressing
-                    ? const SizedBox(
-                        child: WaveLoadingIndicator(
-                        color: secondaryColor,
-                        size: 18,
-                      ))
-                    : GestureDetector(
-                        onTap: () {
-                          _groupSessionBloc.uploadMedia();
-                        },
-                        child: const Center(
-                          child: Icon(
-                            Icons.video_library,
-                            color: secondaryColor,
-                            size: 36,
+            child: Container(
+              color: _chewieController == null ? Colors.white : Colors.black,
+              child: _chewieController == null
+                  ? state.isProgressing
+                      ? const SizedBox(
+                          child: WaveLoadingIndicator(
+                          color: secondaryColor,
+                          size: 18,
+                        ))
+                      : GestureDetector(
+                          onTap: () {
+                            _groupSessionBloc.uploadMedia();
+                          },
+                          child: const Center(
+                            child: Icon(
+                              Icons.video_library,
+                              color: secondaryColor,
+                              size: 36,
+                            ),
                           ),
-                        ),
-                      )
-                : Chewie(controller: _chewieController!),
+                        )
+                  : Chewie(controller: _chewieController!),
+            ),
           );
         },
       ),
