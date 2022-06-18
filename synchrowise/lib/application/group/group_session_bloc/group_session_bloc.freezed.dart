@@ -1344,7 +1344,7 @@ class _$GroupSessionStateTearOff {
   const _$GroupSessionStateTearOff();
 
   _GroupSessionState call(
-      {required Option<Either<SynchrowiseFailure, Media>> failureOrMediaOption,
+      {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
       required Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
@@ -1365,7 +1365,7 @@ const $GroupSessionState = _$GroupSessionStateTearOff();
 
 /// @nodoc
 mixin _$GroupSessionState {
-  Option<Either<SynchrowiseFailure, Media>> get failureOrMediaOption =>
+  Option<Either<MediaFailure, Media>> get failureOrMediaOption =>
       throw _privateConstructorUsedError;
   Option<Either<SynchrowiseFailure, Unit>> get failureOrUnitOption =>
       throw _privateConstructorUsedError;
@@ -1386,7 +1386,7 @@ abstract class $GroupSessionStateCopyWith<$Res> {
           GroupSessionState value, $Res Function(GroupSessionState) then) =
       _$GroupSessionStateCopyWithImpl<$Res>;
   $Res call(
-      {Option<Either<SynchrowiseFailure, Media>> failureOrMediaOption,
+      {Option<Either<MediaFailure, Media>> failureOrMediaOption,
       Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
@@ -1415,7 +1415,7 @@ class _$GroupSessionStateCopyWithImpl<$Res>
       failureOrMediaOption: failureOrMediaOption == freezed
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SynchrowiseFailure, Media>>,
+              as Option<Either<MediaFailure, Media>>,
       failureOrUnitOption: failureOrUnitOption == freezed
           ? _value.failureOrUnitOption
           : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1444,7 +1444,7 @@ abstract class _$GroupSessionStateCopyWith<$Res>
       __$GroupSessionStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Option<Either<SynchrowiseFailure, Media>> failureOrMediaOption,
+      {Option<Either<MediaFailure, Media>> failureOrMediaOption,
       Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
@@ -1475,7 +1475,7 @@ class __$GroupSessionStateCopyWithImpl<$Res>
       failureOrMediaOption: failureOrMediaOption == freezed
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SynchrowiseFailure, Media>>,
+              as Option<Either<MediaFailure, Media>>,
       failureOrUnitOption: failureOrUnitOption == freezed
           ? _value.failureOrUnitOption
           : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1507,7 +1507,7 @@ class _$_GroupSessionState implements _GroupSessionState {
       required this.isProgressing});
 
   @override
-  final Option<Either<SynchrowiseFailure, Media>> failureOrMediaOption;
+  final Option<Either<MediaFailure, Media>> failureOrMediaOption;
   @override
   final Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption;
   @override
@@ -1557,7 +1557,7 @@ class _$_GroupSessionState implements _GroupSessionState {
 
 abstract class _GroupSessionState implements GroupSessionState {
   const factory _GroupSessionState(
-      {required Option<Either<SynchrowiseFailure, Media>> failureOrMediaOption,
+      {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
       required Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
@@ -1565,7 +1565,7 @@ abstract class _GroupSessionState implements GroupSessionState {
       required bool isProgressing}) = _$_GroupSessionState;
 
   @override
-  Option<Either<SynchrowiseFailure, Media>> get failureOrMediaOption;
+  Option<Either<MediaFailure, Media>> get failureOrMediaOption;
   @override
   Option<Either<SynchrowiseFailure, Unit>> get failureOrUnitOption;
   @override

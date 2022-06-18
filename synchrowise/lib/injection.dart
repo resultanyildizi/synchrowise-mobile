@@ -32,6 +32,8 @@ import 'package:synchrowise/infrastructure/core/image_facade/i_image_facade.dart
 import 'package:synchrowise/infrastructure/core/image_facade/image_facade.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/i_media_picker_facade.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/media_picker_facade.dart';
+import 'package:synchrowise/infrastructure/group/group_file_repository/group_file_repository.dart';
+import 'package:synchrowise/infrastructure/group/group_file_repository/i_group_file_repository.dart';
 import 'package:synchrowise/infrastructure/core/share_facade/i_share_facade.dart';
 import 'package:synchrowise/infrastructure/core/share_facade/share_facade.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/group_repository.dart';
@@ -63,6 +65,9 @@ Future<void> _setupServices() async {
 }
 
 Future<void> _setupInfrastructure() async {
+  getIt.registerSingleton<IGroupFileRepository>(
+    GroupFileRepository(),
+  );
   getIt.registerSingleton<INotificationRepository>(
     NotificationRepository(getIt<Client>()),
   );
@@ -178,6 +183,7 @@ Future<void> _setupBlocs() async {
       getIt<IMediaPickerFacade>(),
       getIt<IGroupRepository>(),
       getIt<ISynchrowiseUserStorage>(),
+      getIt<IGroupFileRepository>(),
     );
   });
 
