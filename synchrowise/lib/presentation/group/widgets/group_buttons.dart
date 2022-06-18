@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
-import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
@@ -13,16 +12,13 @@ import 'package:synchrowise/route/synchrowise_navigator.dart';
 class GroupButtons extends StatelessWidget {
   const GroupButtons({
     Key? key,
-    required this.groupOwner,
-    required this.groupData,
   }) : super(key: key);
-
-  final UserSummary groupOwner;
-  final GroupData groupData;
 
   @override
   Widget build(BuildContext context) {
     final _groupSessionBloc = context.read<GroupSessionBloc>();
+
+    final _groupData = context.read<GroupData>();
 
     final _buttonList = [
       _GroupButton(
@@ -40,7 +36,7 @@ class GroupButtons extends StatelessWidget {
             () => SynchrowiseNavigator.pop(context),
             "yes".tr(),
             () {
-              _groupSessionBloc.deleteGroup(groupData: groupData);
+              _groupSessionBloc.deleteGroup(groupData: _groupData);
             },
           );
         },
@@ -48,8 +44,8 @@ class GroupButtons extends StatelessWidget {
       ),
     ];
 
-    final isAdmin =
-        context.synchrowiseUser.synchrowiseId == groupOwner.synchrowiseId;
+    final isAdmin = context.synchrowiseUser.synchrowiseId ==
+        _groupData.groupOwner.synchrowiseId;
 
     return Container(
       color: Colors.white,

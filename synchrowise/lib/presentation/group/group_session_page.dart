@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:synchrowise/application/group_bloc/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
@@ -33,29 +34,26 @@ class GroupSessionPage extends StatelessWidget {
         final bloc = getIt<GroupSessionBloc>();
         return bloc;
       },
-      child: Scaffold(
-        body: SafeArea(
-          child: BlocBuilder<GroupSessionBloc, GroupSessionState>(
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const MediaPlayer(),
-                  const SizedBox(height: 30),
-                  GroupHeader(
-                    groupName: groupData.groupKey,
-                    memberCount: groupData.members.size,
-                  ),
-                  const SizedBox(height: 20),
-                  GroupParticipant(participantList: participantList),
-                  GroupButtons(
-                    groupOwner: groupData.groupOwner,
-                    groupData: groupData,
-                  ),
-                  const SizedBox(height: 10),
-                ],
-              );
-            },
+      child: Provider<GroupData>(
+        create: (context) => groupData,
+        child: Scaffold(
+          body: SafeArea(
+            child: BlocBuilder<GroupSessionBloc, GroupSessionState>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    MediaPlayer(),
+                    SizedBox(height: 30),
+                    GroupHeader(),
+                    SizedBox(height: 20),
+                    GroupParticipant(),
+                    GroupButtons(),
+                    SizedBox(height: 10),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

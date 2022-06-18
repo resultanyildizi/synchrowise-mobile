@@ -1,20 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:synchrowise/constants.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/presentation/helpers/custom_animated_button.dart';
 
 class GroupHeader extends StatelessWidget {
-  final String groupName;
-  final int memberCount;
-
   const GroupHeader({
     Key? key,
-    required this.groupName,
-    required this.memberCount,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final groupData = context.read<GroupData>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -24,7 +23,7 @@ class GroupHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                groupName,
+                groupData.groupKey,
                 style: Theme.of(context)
                     .textTheme
                     .headline6!
@@ -33,12 +32,12 @@ class GroupHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    (memberCount > 1
+                    (groupData.members.size > 1
                             ? "x_people_in_group"
                             : "x_person_in_group")
                         .tr(
                       namedArgs: {
-                        "count": memberCount.toString(),
+                        "count": groupData.members.size.toString(),
                       },
                     ),
                     style: Theme.of(context)
