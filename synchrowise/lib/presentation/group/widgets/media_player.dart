@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
         videoPlayerController: _videoPlayerController!,
         allowPlaybackSpeedChanging: false,
         allowFullScreen: false,
+        showOptions: false,
         cupertinoProgressColors: ChewieProgressColors(
           playedColor: primaryColor,
           bufferedColor: Colors.white,
@@ -45,6 +48,17 @@ class _MediaPlayerState extends State<MediaPlayer> {
         errorBuilder: (context, errorMessage) {
           return Text(errorMessage);
         },
+        customControls: MaterialControls(
+          onTapToPause: (currentPosition) {
+            log("paused and current position is $currentPosition");
+          },
+          onTapToPlay: (currentPosition) {
+            log("playing and current position is $currentPosition");
+          },
+          onTapToUpdateCurrentPosition: (currentPosition) {
+            log("currentPosition is $currentPosition");
+          },
+        ),
       );
 
       _videoPlayerController!.initialize();
