@@ -37,6 +37,13 @@ class GroupSessionPage extends StatelessWidget {
         create: (context) => groupData,
         child: WillPopScope(
           onWillPop: () async {
+            final title = "leave_group".tr();
+            final content = "leave_group_desc".tr();
+
+            // admin değilsem
+            // groupSessionBloc.leaveGroup(groupData: groupData);
+            // SynchrowiseNavigator.pop(context);
+
             synchrowisePopup(
               context,
               "delete_group".tr(),

@@ -113,5 +113,7 @@
     "media_unsupportted_error": "Medya türü desteklenmiyor",
     "media_size_error": "Medya boyutu çok büyük",
     "group_key_is_invalid": "Grup kodu geçersiz",
-    "server_error": "Beklemeyen bir sunucu hatası oluştu"
+    "server_error": "Beklemeyen bir sunucu hatası oluştu",
+    "group_created_successfully": "Grup başarıyla oluşturuldu",
+    "joined_group_successfully": "Gruba başarıyla katıldın"
 }

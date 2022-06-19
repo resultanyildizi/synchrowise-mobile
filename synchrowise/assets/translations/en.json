@@ -113,5 +113,7 @@
     "media_unsupportted_error": "Media type is not supported",
     "media_size_error": "Media size is too big",
     "group_key_is_invalid": "Group key is invalid",
-    "server_error": "There is an unknown server error"
+    "server_error": "There is an unknown server error",
+    "group_created_successfully": "Group created successfully",
+    "joined_group_successfully": "Joined group successfully"
 }

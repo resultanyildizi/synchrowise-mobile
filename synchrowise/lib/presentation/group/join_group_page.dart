@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group/join_group_bloc/join_group_bloc.dart';
 import 'package:synchrowise/injection.dart';
-import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/handle_syncrowise_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/core/widgets/default_back_button.dart';

@@ -102,7 +102,7 @@ class HomeTab extends StatelessWidget {
 
                                       SynchrowiseNavigator.pop(context);
                                       showSuccessToast(
-                                        "group created successfully",
+                                        "group_created_successfully".tr(),
                                         ToastGravity.BOTTOM,
                                       );
                                     },
@@ -164,10 +164,12 @@ class HomeTab extends StatelessWidget {
                             onSuccess: () {
                               context.read<GetGroupBloc>().fetch();
 
-                              SynchrowiseNavigator.pushNamedAndRemoveUntil(
-                                context,
-                                WelcomePage.routeName,
-                                (p0) => false,
+                              context.read<GetGroupBloc>().fetch();
+
+                              SynchrowiseNavigator.pop(context);
+                              showSuccessToast(
+                                "joined_group_successfully".tr(),
+                                ToastGravity.BOTTOM,
                               );
                             },
                           ),
