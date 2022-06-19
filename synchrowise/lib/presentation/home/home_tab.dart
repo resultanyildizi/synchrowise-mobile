@@ -6,6 +6,7 @@ import 'package:synchrowise/application/group/get_group_bloc/get_group_bloc.dart
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
+import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/group/create_group_page.dart';
 import 'package:synchrowise/presentation/group/group_session_page.dart';
@@ -165,7 +166,7 @@ class HomeTab extends StatelessWidget {
 
                               SynchrowiseNavigator.pushNamedAndRemoveUntil(
                                 context,
-                                "/media",
+                                WelcomePage.routeName,
                                 (p0) => false,
                               );
                             },
