@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/core/media.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 import 'package:video_player/video_player.dart';
@@ -104,6 +106,11 @@ class _MediaPlayerState extends State<MediaPlayer> {
       ],
       child: BlocBuilder<GroupSessionBloc, GroupSessionState>(
         builder: (context, state) {
+          final groupData = context.read<GroupData>();
+
+          final iAmAdmin = groupData.groupOwner.synchrowiseId ==
+              context.synchrowiseUser.synchrowiseId;
+
           return AspectRatio(
             aspectRatio: 16 / 9,
             child: Container(
@@ -118,7 +125,9 @@ class _MediaPlayerState extends State<MediaPlayer> {
                         )
                       : GestureDetector(
                           onTap: () {
-                            _groupSessionBloc.uploadMedia();
+                            if (iAmAdmin) {
+                              _groupSessionBloc.uploadMedia();
+                            }
                           },
                           child: const Center(
                             child: Icon(
