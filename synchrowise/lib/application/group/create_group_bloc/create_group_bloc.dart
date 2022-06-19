@@ -100,15 +100,15 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 final failureOrGroup =
                     await _iGroupRepository.create(groupData: groupData);
 
-                return failureOrGroup.fold(
-                  (f) {
+                return await failureOrGroup.fold(
+                  (f) async {
                     return state.copyWith(
                       submitFailureOrUnitOption: some(left(f)),
                       storageFailureOrUnitOption: some(right(unit)),
                     );
                   },
-                  (group) {
-                    _iSocketFacade.sendJoinGroupMessage(group.groupId);
+                  (group) async {
+                    await _iSocketFacade.sendJoinGroupMessage(group.groupId);
                     return state.copyWith(
                       submitFailureOrUnitOption: some(right(unit)),
                       storageFailureOrUnitOption: some(right(unit)),
