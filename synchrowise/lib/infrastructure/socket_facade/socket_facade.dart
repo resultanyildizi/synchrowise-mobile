@@ -40,6 +40,14 @@ class SocketFacade implements ISocketFacade {
           log(data.toString());
         }
       });
+
+      _connection!.on('JoinedGroup', (messages) {
+        log(messages.toString());
+      });
+
+      _connection!.on('LeftGroup', (messages) {
+        log(messages.toString());
+      });
     } catch (_) {
       await _connection?.stop();
       _connection = null;
@@ -48,11 +56,11 @@ class SocketFacade implements ISocketFacade {
 
   @override
   Future<void> sendJoinGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'JoinedGroup');
+    return _connection!.send(methodName: 'JoinGroup', args: [groupId]);
   }
 
   @override
   Future<void> sendLeaveGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'LeftGroup');
+    return _connection!.send(methodName: 'LeaveGroup', args: [groupId]);
   }
 }
