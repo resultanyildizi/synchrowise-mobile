@@ -1345,14 +1345,18 @@ class _$GroupSessionStateTearOff {
 
   _GroupSessionState call(
       {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
-      required Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
+      required Option<Either<GroupRepositoryFailure, Unit>>
+          groupFailureOrUnitOption,
+      required Option<Either<GroupFileRepositoryFailure, Unit>>
+          fileFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       required Option<KtList<UserSummary>> membersOption,
       required bool isProgressing}) {
     return _GroupSessionState(
       failureOrMediaOption: failureOrMediaOption,
-      failureOrUnitOption: failureOrUnitOption,
+      groupFailureOrUnitOption: groupFailureOrUnitOption,
+      fileFailureOrUnitOption: fileFailureOrUnitOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
       membersOption: membersOption,
       isProgressing: isProgressing,
@@ -1367,8 +1371,10 @@ const $GroupSessionState = _$GroupSessionStateTearOff();
 mixin _$GroupSessionState {
   Option<Either<MediaFailure, Media>> get failureOrMediaOption =>
       throw _privateConstructorUsedError;
-  Option<Either<SynchrowiseFailure, Unit>> get failureOrUnitOption =>
+  Option<Either<GroupRepositoryFailure, Unit>> get groupFailureOrUnitOption =>
       throw _privateConstructorUsedError;
+  Option<Either<GroupFileRepositoryFailure, Unit>>
+      get fileFailureOrUnitOption => throw _privateConstructorUsedError;
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption => throw _privateConstructorUsedError;
   Option<KtList<UserSummary>> get membersOption =>
@@ -1387,7 +1393,8 @@ abstract class $GroupSessionStateCopyWith<$Res> {
       _$GroupSessionStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<MediaFailure, Media>> failureOrMediaOption,
-      Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
+      Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption,
+      Option<Either<GroupFileRepositoryFailure, Unit>> fileFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       Option<KtList<UserSummary>> membersOption,
@@ -1406,7 +1413,8 @@ class _$GroupSessionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrMediaOption = freezed,
-    Object? failureOrUnitOption = freezed,
+    Object? groupFailureOrUnitOption = freezed,
+    Object? fileFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? membersOption = freezed,
     Object? isProgressing = freezed,
@@ -1416,10 +1424,14 @@ class _$GroupSessionStateCopyWithImpl<$Res>
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MediaFailure, Media>>,
-      failureOrUnitOption: failureOrUnitOption == freezed
-          ? _value.failureOrUnitOption
-          : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SynchrowiseFailure, Unit>>,
+      groupFailureOrUnitOption: groupFailureOrUnitOption == freezed
+          ? _value.groupFailureOrUnitOption
+          : groupFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<GroupRepositoryFailure, Unit>>,
+      fileFailureOrUnitOption: fileFailureOrUnitOption == freezed
+          ? _value.fileFailureOrUnitOption
+          : fileFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<GroupFileRepositoryFailure, Unit>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1445,7 +1457,8 @@ abstract class _$GroupSessionStateCopyWith<$Res>
   @override
   $Res call(
       {Option<Either<MediaFailure, Media>> failureOrMediaOption,
-      Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
+      Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption,
+      Option<Either<GroupFileRepositoryFailure, Unit>> fileFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       Option<KtList<UserSummary>> membersOption,
@@ -1466,7 +1479,8 @@ class __$GroupSessionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrMediaOption = freezed,
-    Object? failureOrUnitOption = freezed,
+    Object? groupFailureOrUnitOption = freezed,
+    Object? fileFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
     Object? membersOption = freezed,
     Object? isProgressing = freezed,
@@ -1476,10 +1490,14 @@ class __$GroupSessionStateCopyWithImpl<$Res>
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MediaFailure, Media>>,
-      failureOrUnitOption: failureOrUnitOption == freezed
-          ? _value.failureOrUnitOption
-          : failureOrUnitOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SynchrowiseFailure, Unit>>,
+      groupFailureOrUnitOption: groupFailureOrUnitOption == freezed
+          ? _value.groupFailureOrUnitOption
+          : groupFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<GroupRepositoryFailure, Unit>>,
+      fileFailureOrUnitOption: fileFailureOrUnitOption == freezed
+          ? _value.fileFailureOrUnitOption
+          : fileFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<GroupFileRepositoryFailure, Unit>>,
       storageFailureOrUnitOption: storageFailureOrUnitOption == freezed
           ? _value.storageFailureOrUnitOption
           : storageFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -1501,7 +1519,8 @@ class __$GroupSessionStateCopyWithImpl<$Res>
 class _$_GroupSessionState implements _GroupSessionState {
   const _$_GroupSessionState(
       {required this.failureOrMediaOption,
-      required this.failureOrUnitOption,
+      required this.groupFailureOrUnitOption,
+      required this.fileFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
       required this.membersOption,
       required this.isProgressing});
@@ -1509,7 +1528,10 @@ class _$_GroupSessionState implements _GroupSessionState {
   @override
   final Option<Either<MediaFailure, Media>> failureOrMediaOption;
   @override
-  final Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption;
+  final Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption;
+  @override
+  final Option<Either<GroupFileRepositoryFailure, Unit>>
+      fileFailureOrUnitOption;
   @override
   final Option<Either<SynchrowiseUserStorageFailure, Unit>>
       storageFailureOrUnitOption;
@@ -1520,7 +1542,7 @@ class _$_GroupSessionState implements _GroupSessionState {
 
   @override
   String toString() {
-    return 'GroupSessionState(failureOrMediaOption: $failureOrMediaOption, failureOrUnitOption: $failureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, membersOption: $membersOption, isProgressing: $isProgressing)';
+    return 'GroupSessionState(failureOrMediaOption: $failureOrMediaOption, groupFailureOrUnitOption: $groupFailureOrUnitOption, fileFailureOrUnitOption: $fileFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, membersOption: $membersOption, isProgressing: $isProgressing)';
   }
 
   @override
@@ -1530,8 +1552,10 @@ class _$_GroupSessionState implements _GroupSessionState {
             other is _GroupSessionState &&
             const DeepCollectionEquality()
                 .equals(other.failureOrMediaOption, failureOrMediaOption) &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrUnitOption, failureOrUnitOption) &&
+            const DeepCollectionEquality().equals(
+                other.groupFailureOrUnitOption, groupFailureOrUnitOption) &&
+            const DeepCollectionEquality().equals(
+                other.fileFailureOrUnitOption, fileFailureOrUnitOption) &&
             const DeepCollectionEquality().equals(
                 other.storageFailureOrUnitOption, storageFailureOrUnitOption) &&
             const DeepCollectionEquality()
@@ -1544,7 +1568,8 @@ class _$_GroupSessionState implements _GroupSessionState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failureOrMediaOption),
-      const DeepCollectionEquality().hash(failureOrUnitOption),
+      const DeepCollectionEquality().hash(groupFailureOrUnitOption),
+      const DeepCollectionEquality().hash(fileFailureOrUnitOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
       const DeepCollectionEquality().hash(membersOption),
       const DeepCollectionEquality().hash(isProgressing));
@@ -1558,7 +1583,10 @@ class _$_GroupSessionState implements _GroupSessionState {
 abstract class _GroupSessionState implements GroupSessionState {
   const factory _GroupSessionState(
       {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
-      required Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
+      required Option<Either<GroupRepositoryFailure, Unit>>
+          groupFailureOrUnitOption,
+      required Option<Either<GroupFileRepositoryFailure, Unit>>
+          fileFailureOrUnitOption,
       required Option<Either<SynchrowiseUserStorageFailure, Unit>>
           storageFailureOrUnitOption,
       required Option<KtList<UserSummary>> membersOption,
@@ -1567,7 +1595,9 @@ abstract class _GroupSessionState implements GroupSessionState {
   @override
   Option<Either<MediaFailure, Media>> get failureOrMediaOption;
   @override
-  Option<Either<SynchrowiseFailure, Unit>> get failureOrUnitOption;
+  Option<Either<GroupRepositoryFailure, Unit>> get groupFailureOrUnitOption;
+  @override
+  Option<Either<GroupFileRepositoryFailure, Unit>> get fileFailureOrUnitOption;
   @override
   Option<Either<SynchrowiseUserStorageFailure, Unit>>
       get storageFailureOrUnitOption;

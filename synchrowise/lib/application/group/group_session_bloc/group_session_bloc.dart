@@ -10,7 +10,6 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/i_media_picker_facade.dart';
-import 'package:synchrowise/infrastructure/failures/synchrowise_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_file_repository/failure/group_file_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_file_repository/i_group_file_repository.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
@@ -48,7 +47,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           emit(state.copyWith(
             failureOrMediaOption: none(),
             isProgressing: true,
-            failureOrUnitOption: none(),
+            fileFailureOrUnitOption: none(),
             storageFailureOrUnitOption: none(),
           ));
 
@@ -85,11 +84,11 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
                 return failureOrUnit.fold((f) {
                   return state.copyWith(
-                    failureOrUnitOption: some(left(f)),
+                    fileFailureOrUnitOption: some(left(f)),
                   );
                 }, (_) {
                   return state.copyWith(
-                    failureOrUnitOption: some(right(unit)),
+                    fileFailureOrUnitOption: some(right(unit)),
                   );
                 });
               });
@@ -104,9 +103,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         leaveGroup: (e) async {},
         deleteGroup: (e) async {
           emit(state.copyWith(
-            failureOrMediaOption: none(),
             isProgressing: true,
-            failureOrUnitOption: none(),
+            groupFailureOrUnitOption: none(),
             storageFailureOrUnitOption: none(),
           ));
 
@@ -126,11 +124,11 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
             return failureOrUnit.fold((f) {
               return state.copyWith(
-                failureOrUnitOption: some(left(f)),
+                groupFailureOrUnitOption: some(left(f)),
               );
             }, (_) {
               return state.copyWith(
-                failureOrUnitOption: some(right(unit)),
+                groupFailureOrUnitOption: some(right(unit)),
               );
             });
           });

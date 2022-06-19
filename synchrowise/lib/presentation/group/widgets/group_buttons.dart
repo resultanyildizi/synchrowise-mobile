@@ -37,6 +37,7 @@ class GroupButtons extends StatelessWidget {
             "yes".tr(),
             () {
               _groupSessionBloc.deleteGroup(groupData: _groupData);
+              SynchrowiseNavigator.pop(context);
             },
           );
         },

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "546249380040-757agb18irinpho9ar6oc6lam4da1ij0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.synchrowise.app",
+            "certificate_hash": "6dac722a38c8d2a75aad8876829d3f7554a8ebcc"
+          }
+        },
+        {
           "client_id": "546249380040-rm4bm1udv5bvg5spvk7c1ujh1j6ofcsl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

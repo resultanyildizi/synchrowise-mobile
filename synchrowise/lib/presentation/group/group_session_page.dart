@@ -5,8 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
-import 'package:synchrowise/infrastructure/group/group_file_repository/failure/group_file_repository_failure.dart';
-import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
@@ -14,6 +12,7 @@ import 'package:synchrowise/presentation/group/widgets/group_buttons.dart';
 import 'package:synchrowise/presentation/group/widgets/group_header.dart';
 import 'package:synchrowise/presentation/group/widgets/group_participant.dart';
 import 'package:synchrowise/presentation/group/widgets/media_player.dart';
+import 'package:synchrowise/presentation/main/main_page.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
 import 'package:synchrowise/route/synchrowise_route_arguments.dart';
 
@@ -37,7 +36,8 @@ class GroupSessionPage extends StatelessWidget {
             child: BlocConsumer<GroupSessionBloc, GroupSessionState>(
               listenWhen: (previous, current) {
                 return current.failureOrMediaOption.isSome() ||
-                    current.failureOrUnitOption.isSome() ||
+                    current.fileFailureOrUnitOption.isSome() ||
+                    current.groupFailureOrUnitOption.isSome() ||
                     current.storageFailureOrUnitOption.isSome();
               },
               listener: (context, state) {
@@ -112,42 +112,50 @@ void _groupSessionBlocHandleFailure(
       },
       (_) {},
     );
-  } else if (state.failureOrUnitOption.isSome()) {
+  } else if (state.fileFailureOrUnitOption.isSome()) {
     final failureOrUnit =
-        state.failureOrUnitOption.getOrElse(() => throw AssertionError());
+        state.fileFailureOrUnitOption.getOrElse(() => throw AssertionError());
 
     failureOrUnit.fold(
       (f) {
-        if (f is GroupFileRepositoryFailure) {
-          f.maybeMap(
-            connection: (_) {
-              showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
-            },
-            server: (_) {
-              showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
-            },
-            orElse: () {
-              showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-            },
-          );
-        } else if (f is GroupRepositoryFailure) {
-          f.maybeMap(
-            connection: (_) {
-              showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
-            },
-            server: (_) {
-              showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
-            },
-            notFound: (_) {
-              showErrorToast("not_found".tr(), ToastGravity.BOTTOM);
-            },
-            orElse: () {
-              showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-            },
-          );
-        }
+        f.maybeMap(
+          connection: (_) {
+            showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
+          },
+          server: (_) {
+            showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+          },
+          orElse: () {
+            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+          },
+        );
       },
       (_) {},
+    );
+  } else if (state.groupFailureOrUnitOption.isSome()) {
+    final failureOrUnit =
+        state.groupFailureOrUnitOption.getOrElse(() => throw AssertionError());
+
+    failureOrUnit.fold(
+      (f) {
+        f.maybeMap(
+          connection: (_) {
+            showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
+          },
+          server: (_) {
+            showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+          },
+          notFound: (_) {
+            showErrorToast("not_found".tr(), ToastGravity.BOTTOM);
+          },
+          orElse: () {
+            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+          },
+        );
+      },
+      (_) {
+        SynchrowiseNavigator.pushNamed(context, MainPage.routeName);
+      },
     );
   }
 }

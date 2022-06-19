@@ -4,7 +4,10 @@ part of 'group_session_bloc.dart';
 class GroupSessionState with _$GroupSessionState {
   const factory GroupSessionState({
     required Option<Either<MediaFailure, Media>> failureOrMediaOption,
-    required Option<Either<SynchrowiseFailure, Unit>> failureOrUnitOption,
+    required Option<Either<GroupRepositoryFailure, Unit>>
+        groupFailureOrUnitOption,
+    required Option<Either<GroupFileRepositoryFailure, Unit>>
+        fileFailureOrUnitOption,
     required Option<Either<SynchrowiseUserStorageFailure, Unit>>
         storageFailureOrUnitOption,
     required Option<KtList<UserSummary>> membersOption,
@@ -15,7 +18,8 @@ class GroupSessionState with _$GroupSessionState {
     return GroupSessionState(
       storageFailureOrUnitOption: none(),
       failureOrMediaOption: none(),
-      failureOrUnitOption: none(),
+      groupFailureOrUnitOption: none(),
+      fileFailureOrUnitOption: none(),
       membersOption: none(),
       isProgressing: false,
     );
