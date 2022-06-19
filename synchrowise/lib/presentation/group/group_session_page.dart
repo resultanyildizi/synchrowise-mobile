@@ -8,6 +8,7 @@ import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
+import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
 import 'package:synchrowise/presentation/group/widgets/group_buttons.dart';
 import 'package:synchrowise/presentation/group/widgets/group_header.dart';
 import 'package:synchrowise/presentation/group/widgets/group_participant.dart';
@@ -24,15 +25,32 @@ class GroupSessionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late GroupSessionBloc _groupSessionBloc;
+
     return BlocProvider<GroupSessionBloc>(
       create: (context) {
         final bloc = getIt<GroupSessionBloc>();
+        _groupSessionBloc = bloc;
         return bloc;
       },
       child: Provider<GroupData>(
         create: (context) => groupData,
         child: WillPopScope(
-          onWillPop: () async => false,
+          onWillPop: () async {
+            synchrowisePopup(
+              context,
+              "delete_group".tr(),
+              "delete_group_desc".tr(),
+              "no".tr(),
+              () => SynchrowiseNavigator.pop(context),
+              "yes".tr(),
+              () {
+                _groupSessionBloc.deleteGroup(groupData: groupData);
+              },
+            );
+
+            return false;
+          },
           child: Scaffold(
             body: SafeArea(
               child: BlocConsumer<GroupSessionBloc, GroupSessionState>(
