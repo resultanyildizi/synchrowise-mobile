@@ -122,7 +122,7 @@ class _LeaveButton extends StatelessWidget {
             ),
             const SizedBox(width: 15),
             Text(
-              "leave".tr(),
+              "leave_group".tr(),
               style:
                   Theme.of(context).textTheme.headline6!.copyWith(fontSize: 20),
             )
