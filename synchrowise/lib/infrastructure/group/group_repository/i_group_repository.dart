@@ -7,7 +7,7 @@ abstract class IGroupRepository {
   ///*
   ///* Returns `Unit` if it is successful.
   ///* Returns `GroupRepositoryFailure` if an exception occurs.
-  Future<Either<GroupRepositoryFailure, Unit>> create({
+  Future<Either<GroupRepositoryFailure, GroupData>> create({
     required GroupData groupData,
   });
 

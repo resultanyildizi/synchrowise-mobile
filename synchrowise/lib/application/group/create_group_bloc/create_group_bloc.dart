@@ -9,6 +9,7 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
+import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
 
 part 'create_group_event.dart';
 part 'create_group_state.dart';
@@ -17,6 +18,7 @@ part 'create_group_bloc.freezed.dart';
 class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
   final ISynchrowiseUserStorage _iUserStorage;
   final IGroupRepository _iGroupRepository;
+  final ISocketFacade _iSocketFacade;
 
   void updateGroupNameText({required String groupName}) =>
       add(CreateGroupEvent.updateGroupNameText(groupName: groupName));
@@ -29,6 +31,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
   CreateGroupBloc(
     this._iUserStorage,
     this._iGroupRepository,
+    this._iSocketFacade,
   ) : super(CreateGroupState.initial()) {
     on<CreateGroupEvent>((event, emit) async {
       await event.map(
@@ -88,25 +91,24 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                 );
               },
               (user) async {
-                late Either<GroupRepositoryFailure, Unit> failureOrUnit;
-
                 final groupData = GroupData.toCreateGroup(
                   groupName: groupName,
                   groupDesc: groupDesc,
                   groupOwner: UserSummary.fromSynchrowiseUser(user),
                 );
 
-                failureOrUnit =
+                final failureOrGroup =
                     await _iGroupRepository.create(groupData: groupData);
 
-                return failureOrUnit.fold(
-                  (f) {
+                return await failureOrGroup.fold(
+                  (f) async {
                     return state.copyWith(
                       submitFailureOrUnitOption: some(left(f)),
                       storageFailureOrUnitOption: some(right(unit)),
                     );
                   },
-                  (_) {
+                  (group) async {
+                    await _iSocketFacade.sendJoinGroupMessage(group.groupId);
                     return state.copyWith(
                       submitFailureOrUnitOption: some(right(unit)),
                       storageFailureOrUnitOption: some(right(unit)),

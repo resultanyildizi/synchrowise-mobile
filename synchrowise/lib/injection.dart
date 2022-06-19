@@ -149,6 +149,7 @@ Future<void> _setupBlocs() async {
     return CreateGroupBloc(
       getIt<ISynchrowiseUserStorage>(),
       getIt<IGroupRepository>(),
+      getIt<ISocketFacade>(),
     );
   });
   getIt.registerFactory<ProfileBloc>(() {
