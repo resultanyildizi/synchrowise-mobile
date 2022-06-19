@@ -65,8 +65,6 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
                     groupKey: groupKey,
                   );
 
-                  log(failureOrGroupData.toString());
-
                   return await failureOrGroupData.fold(
                     (f) async {
                       return state.copyWith(
@@ -81,8 +79,6 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
                         groupData: groupData,
                         synchrowiseUserId: user.synchrowiseId,
                       );
-
-                      log(failureOrGroupData.toString());
 
                       return failureOrGroupData.fold(
                         (f) async {
