@@ -25,8 +25,6 @@ import 'package:synchrowise/infrastructure/auth/auth_facade/auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/auth_facade/i_auth_facade.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/avatar_repository.dart';
 import 'package:synchrowise/infrastructure/auth/avatar_repository/i_avatar_repository.dart';
-import 'package:synchrowise/infrastructure/auth/socket_facade/i_socket_facade.dart';
-import 'package:synchrowise/infrastructure/auth/socket_facade/socket_facade.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/i_synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_repository/synchrowise_user_repository.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
@@ -45,6 +43,8 @@ import 'package:synchrowise/infrastructure/notification/i_notification_repositor
 import 'package:synchrowise/infrastructure/notification/notification_repository.dart';
 import 'package:synchrowise/infrastructure/messaging/i_synchrowise_messaging.dart';
 import 'package:synchrowise/infrastructure/messaging/synchrowise_firebase_messaging.dart';
+import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
+import 'package:synchrowise/infrastructure/socket_facade/socket_facade.dart';
 import 'package:synchrowise/services/core/synchrowise_database.dart';
 
 GetIt getIt = GetIt.instance;
