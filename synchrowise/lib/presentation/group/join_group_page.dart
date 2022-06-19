@@ -93,11 +93,7 @@ class _JoinGroupPageState extends State<JoinGroupPage> {
             (f) {
               f.maybeMap(
                 get: (_) {
-                  SynchrowiseNavigator.pushNamedAndRemoveUntil(
-                    context,
-                    WelcomePage.routeName,
-                    (route) => false,
-                  );
+                  SynchrowiseNavigator.pop(context);
                 },
                 orElse: () {
                   showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
