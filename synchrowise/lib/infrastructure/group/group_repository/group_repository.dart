@@ -19,7 +19,7 @@ class GroupRepository implements IGroupRepository {
 
   //* Method implementations
   @override
-  Future<Either<GroupRepositoryFailure, Unit>> create({
+  Future<Either<GroupRepositoryFailure, GroupData>> create({
     required GroupData groupData,
   }) async {
     try {
@@ -31,8 +31,10 @@ class GroupRepository implements IGroupRepository {
         headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
       );
 
+      final data = jsonDecode(result.body)["data"];
+
       if (result.statusCode == 200) {
-        return right(unit);
+        return Right(GroupData.fromMap(data));
       } else {
         return left(GroupRepositoryFailure.server(
           result.statusCode,
