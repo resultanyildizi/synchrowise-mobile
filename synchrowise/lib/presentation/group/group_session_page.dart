@@ -61,19 +61,19 @@ class GroupSessionPage extends StatelessWidget {
                       current.storageFailureOrUnitOption.isSome();
                 },
                 listener: (context, state) {
-                  if (state.hasStorageFailed) {
+                  if (state.storageFailureOrUnitOption.isSome()) {
                     _handleStorageFailure(context, state);
                   }
 
-                  if (state.hasFileFailed) {
+                  if (state.fileFailureOrUnitOption.isSome()) {
                     _handleFileFailure(context, state);
                   }
 
-                  if (state.hasGroupFailed) {
+                  if (state.groupFailureOrUnitOption.isSome()) {
                     _handleGroupFailure(context, state);
                   }
 
-                  if (state.hasMediaFailed) {
+                  if (state.failureOrMediaOption.isSome()) {
                     _handleMediaFailure(state);
                   }
                 },
@@ -108,13 +108,13 @@ void _handleMediaFailure(GroupSessionState state) {
     (f) {
       f.maybeMap(
         pickFailure: (_) {
-          showErrorToast("pick_error".tr(), ToastGravity.BOTTOM);
+          showErrorToast("media_pick_error".tr(), ToastGravity.BOTTOM);
         },
         sizeFailure: (_) {
-          showErrorToast("size_error".tr(), ToastGravity.BOTTOM);
+          showErrorToast("media_size_error".tr(), ToastGravity.BOTTOM);
         },
         unsupportedFailure: (_) {
-          showErrorToast("unsupported_error".tr(), ToastGravity.BOTTOM);
+          showErrorToast("media_unsupported_error".tr(), ToastGravity.BOTTOM);
         },
         orElse: () {
           showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);

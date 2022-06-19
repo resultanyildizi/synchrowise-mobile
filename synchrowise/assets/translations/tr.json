@@ -103,5 +103,15 @@
     "hours_ago": "{time} saat önce",
     "hour_ago": "{time} saat önce",
     "minutes_ago": "{time} dakika önce",
-    "minute_ago": "{time} dakika önce"
+    "minute_ago": "{time} dakika önce",
+    "login_required": "Giriş yapmak zorunlu",
+    "user_not_found": "Kullanıcı bulunamadı",
+    "image_crop_error": "Resim kırpılırken bir hata oluştu",
+    "image_pick_error": "Resmi seçerken bir hata oluştu",
+    "image_size_error": "Resim boyutu çok büyük",
+    "media_pick_error": "Medyayı seçerken bir hata oluştu",
+    "media_unsupportted_error": "Medya türü desteklenmiyor",
+    "media_size_error": "Medya boyutu çok büyük",
+    "group_key_is_invalid": "Grup kodu geçersiz",
+    "server_error": "Beklemeyen bir sunucu hatası oluştu"
 }

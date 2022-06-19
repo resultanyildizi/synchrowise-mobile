@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:synchrowise/domain/auth/synchrowise_user.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
@@ -117,6 +116,10 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             isProgressing: true,
             groupFailureOrUnitOption: none(),
             storageFailureOrUnitOption: none(),
+            failureOrMediaOption: state.failureOrMediaOption.fold(
+              () => none(),
+              (a) => a.fold((l) => none(), (r) => some(a)),
+            ),
           ));
 
           final failureOrUser = await _iUserStorage.get();

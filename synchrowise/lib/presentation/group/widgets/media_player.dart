@@ -161,7 +161,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
                   pickFailure: (_) {},
                   sizeFailure: (f) {
                     showErrorToast(
-                      "media_size_too_big".tr(),
+                      "media_size_error".tr(),
                       ToastGravity.BOTTOM,
                     );
                   },
