@@ -21,9 +21,20 @@ class GroupButtons extends StatelessWidget {
     final _groupData = context.read<GroupData>();
 
     final _buttonList = [
-      _GroupButton(
-        onTap: () => _groupSessionBloc.uploadMedia(),
-        icon: Icons.upload,
+      BlocBuilder<GroupSessionBloc, GroupSessionState>(
+        builder: (context, state) {
+          final isStateNone = state.failureOrMediaOption.isNone();
+          return _GroupButton(
+            onTap: () {
+              if (isStateNone) {
+                _groupSessionBloc.uploadMedia();
+              } else {
+                _groupSessionBloc.removeMedia();
+              }
+            },
+            icon: isStateNone ? Icons.upload : Icons.delete,
+          );
+        },
       ),
       _GroupButton(onTap: () {}, icon: Icons.settings),
       _GroupButton(
@@ -54,7 +65,10 @@ class GroupButtons extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: !isAdmin
-            ? const _LeaveButton()
+            ? _LeaveButton(
+                groupData: _groupData,
+                groupSessionBloc: _groupSessionBloc,
+              )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [for (final _button in _buttonList) _button],
@@ -67,12 +81,30 @@ class GroupButtons extends StatelessWidget {
 class _LeaveButton extends StatelessWidget {
   const _LeaveButton({
     Key? key,
+    required this.groupSessionBloc,
+    required this.groupData,
   }) : super(key: key);
+
+  final GroupSessionBloc groupSessionBloc;
+  final GroupData groupData;
 
   @override
   Widget build(BuildContext context) {
     return CustomAnimatedButton(
-      onTap: () {},
+      onTap: () {
+        return synchrowisePopup(
+          context,
+          "leave_group".tr(),
+          "leave_group_desc".tr(),
+          "no".tr(),
+          () => SynchrowiseNavigator.pop(context),
+          "yes".tr(),
+          () {
+            groupSessionBloc.leaveGroup(groupData: groupData);
+            SynchrowiseNavigator.pop(context);
+          },
+        );
+      },
       child: Container(
         width: MediaQuery.of(context).size.width - 80,
         height: 60,

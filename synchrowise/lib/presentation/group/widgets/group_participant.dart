@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:provider/provider.dart';
+import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/presentation/core/widgets/close_icon.dart';
-import 'package:synchrowise/presentation/group/group_session_page.dart';
+import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
+import 'package:synchrowise/route/synchrowise_navigator.dart';
 
 class GroupParticipant extends StatelessWidget {
   const GroupParticipant({
@@ -15,6 +16,8 @@ class GroupParticipant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _groupSessionBloc = context.read<GroupSessionBloc>();
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -24,7 +27,7 @@ class GroupParticipant extends StatelessWidget {
           children: [
             const ParticipantHeader(),
             const SizedBox(height: 20),
-            const ParticipantBody(),
+            ParticipantBody(groupSessionBloc: _groupSessionBloc),
             const SizedBox(height: 10),
           ],
         ),
@@ -36,7 +39,10 @@ class GroupParticipant extends StatelessWidget {
 class ParticipantBody extends StatelessWidget {
   const ParticipantBody({
     Key? key,
+    required this.groupSessionBloc,
   }) : super(key: key);
+
+  final GroupSessionBloc groupSessionBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +106,26 @@ class ParticipantBody extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    if (index != 0) CloseIcon(onTap: () {}),
+                    if (index != 0)
+                      CloseIcon(
+                        onTap: () {
+                          return synchrowisePopup(
+                            context,
+                            "delete_member".tr(),
+                            "delete_member_desc".tr(),
+                            "no".tr(),
+                            () => SynchrowiseNavigator.pop(context),
+                            "yes".tr(),
+                            () {
+                              groupSessionBloc.deleteMember(
+                                groupData: groupData,
+                                member: member,
+                              );
+                              SynchrowiseNavigator.pop(context);
+                            },
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),

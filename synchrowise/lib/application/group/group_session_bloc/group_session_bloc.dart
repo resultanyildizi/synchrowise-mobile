@@ -28,8 +28,17 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   void init({required GroupData groupData}) =>
       add(GroupSessionEvent.init(groupData: groupData));
   void uploadMedia() => add(GroupSessionEvent.uploadMedia());
+  void removeMedia() => add(GroupSessionEvent.removeMedia());
   void deleteGroup({required GroupData groupData}) =>
       add(GroupSessionEvent.deleteGroup(groupData: groupData));
+  void leaveGroup({required GroupData groupData}) =>
+      add(GroupSessionEvent.leaveGroup(groupData: groupData));
+  void deleteMember(
+          {required GroupData groupData, required UserSummary member}) =>
+      add(GroupSessionEvent.deleteMember(
+        groupData: groupData,
+        member: member,
+      ));
   void playMedia() => add(GroupSessionEvent.playMedia());
   void pauseMedia() => add(GroupSessionEvent.pauseMedia());
   void seekMedia() => add(GroupSessionEvent.seekMedia());
@@ -99,8 +108,6 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           emit(newState.copyWith(isProgressing: false));
         },
-        removeMedia: (e) async {},
-        leaveGroup: (e) async {},
         deleteGroup: (e) async {
           emit(state.copyWith(
             isProgressing: true,
@@ -135,9 +142,70 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           emit(newState.copyWith(isProgressing: true));
         },
+        leaveGroup: (e) async {
+          emit(state.copyWith(
+            isProgressing: true,
+            groupFailureOrUnitOption: none(),
+            storageFailureOrUnitOption: none(),
+          ));
+
+          final failureOrUser = await _iUserStorage.get();
+
+          final newState = await failureOrUser.fold((failure) async {
+            return state.copyWith(
+              storageFailureOrUnitOption: some(left(failure)),
+            );
+          }, (user) async {
+            late Either<GroupRepositoryFailure, Unit> failureOrUnit;
+
+            failureOrUnit = await _iGroupRepo.deleteMember(
+              groupData: e.groupData,
+              synchrowiseUserId: user.synchrowiseId,
+            );
+
+            return failureOrUnit.fold((f) {
+              return state.copyWith(
+                groupFailureOrUnitOption: some(left(f)),
+              );
+            }, (_) {
+              return state.copyWith(
+                groupFailureOrUnitOption: some(right(unit)),
+              );
+            });
+          });
+
+          emit(newState.copyWith(isProgressing: true));
+        },
+        deleteMember: (e) async {
+          emit(state.copyWith(
+            isProgressing: true,
+            groupFailureOrUnitOption: none(),
+            storageFailureOrUnitOption: none(),
+          ));
+
+          final failureOrUnit = await _iGroupRepo.deleteMember(
+            groupData: e.groupData,
+            synchrowiseUserId: e.member.synchrowiseId,
+          );
+
+          final newState = failureOrUnit.fold((f) {
+            return state.copyWith(
+              groupFailureOrUnitOption: some(left(f)),
+            );
+          }, (_) {
+            return state.copyWith(
+              groupFailureOrUnitOption: some(right(unit)),
+            );
+          });
+
+          emit(newState.copyWith(isProgressing: true));
+        },
         playMedia: (e) async {},
         pauseMedia: (e) async {},
         seekMedia: (e) async {},
+        removeMedia: (e) async {
+          emit(state.copyWith(failureOrMediaOption: none()));
+        },
       );
     });
   }

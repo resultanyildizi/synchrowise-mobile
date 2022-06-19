@@ -8,7 +8,12 @@ class GroupSessionEvent with _$GroupSessionEvent {
 
   factory GroupSessionEvent.removeMedia() = _RemoveMediaEvent;
 
-  factory GroupSessionEvent.leaveGroup() = _LeaveGroupEvent;
+  factory GroupSessionEvent.leaveGroup({required GroupData groupData}) =
+      _LeaveGroupEvent;
+
+  factory GroupSessionEvent.deleteMember(
+      {required GroupData groupData,
+      required UserSummary member}) = _DeleteMemberEvent;
 
   factory GroupSessionEvent.deleteGroup({required GroupData groupData}) =
       _DeleteGroupEvent;
