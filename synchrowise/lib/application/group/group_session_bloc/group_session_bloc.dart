@@ -54,8 +54,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         init: (e) async {},
         uploadMedia: (e) async {
           emit(state.copyWith(
-            failureOrMediaOption: none(),
             isProgressing: true,
+            failureOrMediaOption: none(),
             fileFailureOrUnitOption: none(),
             storageFailureOrUnitOption: none(),
           ));
@@ -74,35 +74,39 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               );
             },
             (media) async {
-              late Either<SynchrowiseUserStorageFailure, SynchrowiseUser>
-                  failureOrUser;
+              final failureOrUser = await _iUserStorage.get();
 
-              failureOrUser = await _iUserStorage.get();
-
-              await failureOrUser.fold((failure) async {
-                return state.copyWith(
-                  storageFailureOrUnitOption: some(left(failure)),
-                );
-              }, (user) async {
-                late Either<GroupFileRepositoryFailure, Unit> failureOrUnit;
-
-                failureOrUnit = await _iGroupFileRepository.create(
-                  media: media.file,
-                  owner: user,
-                );
-
-                return failureOrUnit.fold((f) {
+              return await failureOrUser.fold(
+                (failure) async {
                   return state.copyWith(
-                    fileFailureOrUnitOption: some(left(f)),
+                    storageFailureOrUnitOption: some(left(failure)),
+                    failureOrMediaOption: some(right(media)),
                   );
-                }, (_) {
-                  return state.copyWith(
-                    fileFailureOrUnitOption: some(right(unit)),
+                },
+                (user) async {
+                  final failureOrUnit = await _iGroupFileRepository.create(
+                    media: media.file,
+                    owner: user,
                   );
-                });
-              });
 
-              return state.copyWith(failureOrMediaOption: some(right(media)));
+                  return failureOrUnit.fold(
+                    (f) {
+                      return state.copyWith(
+                        fileFailureOrUnitOption: some(left(f)),
+                        failureOrMediaOption: some(right(media)),
+                        storageFailureOrUnitOption: some(right(unit)),
+                      );
+                    },
+                    (_) {
+                      return state.copyWith(
+                        failureOrMediaOption: some(right(media)),
+                        storageFailureOrUnitOption: some(right(unit)),
+                        fileFailureOrUnitOption: some(right(unit)),
+                      );
+                    },
+                  );
+                },
+              );
             },
           );
 

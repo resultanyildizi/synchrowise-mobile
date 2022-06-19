@@ -1808,14 +1808,15 @@ class __$GroupSessionStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GroupSessionState implements _GroupSessionState {
+class _$_GroupSessionState extends _GroupSessionState {
   const _$_GroupSessionState(
       {required this.failureOrMediaOption,
       required this.groupFailureOrUnitOption,
       required this.fileFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
       required this.membersOption,
-      required this.isProgressing});
+      required this.isProgressing})
+      : super._();
 
   @override
   final Option<Either<MediaFailure, Media>> failureOrMediaOption;
@@ -1872,7 +1873,7 @@ class _$_GroupSessionState implements _GroupSessionState {
       __$GroupSessionStateCopyWithImpl<_GroupSessionState>(this, _$identity);
 }
 
-abstract class _GroupSessionState implements GroupSessionState {
+abstract class _GroupSessionState extends GroupSessionState {
   const factory _GroupSessionState(
       {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
       required Option<Either<GroupRepositoryFailure, Unit>>
@@ -1883,6 +1884,7 @@ abstract class _GroupSessionState implements GroupSessionState {
           storageFailureOrUnitOption,
       required Option<KtList<UserSummary>> membersOption,
       required bool isProgressing}) = _$_GroupSessionState;
+  const _GroupSessionState._() : super._();
 
   @override
   Option<Either<MediaFailure, Media>> get failureOrMediaOption;

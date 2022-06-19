@@ -61,10 +61,21 @@ class GroupSessionPage extends StatelessWidget {
                       current.storageFailureOrUnitOption.isSome();
                 },
                 listener: (context, state) {
-                  _handleStorageFailure(context, state);
-                  _handleGroupFailure(context, state);
-                  _handleFileFailure(state);
-                  _handleMediaFailure(state);
+                  if (state.hasStorageFailed) {
+                    _handleStorageFailure(context, state);
+                  }
+
+                  if (state.hasFileFailed) {
+                    _handleFileFailure(context, state);
+                  }
+
+                  if (state.hasGroupFailed) {
+                    _handleGroupFailure(context, state);
+                  }
+
+                  if (state.hasMediaFailed) {
+                    _handleMediaFailure(state);
+                  }
                 },
                 builder: (context, state) {
                   return Column(
@@ -114,7 +125,7 @@ void _handleMediaFailure(GroupSessionState state) {
   );
 }
 
-void _handleFileFailure(GroupSessionState state) {
+void _handleFileFailure(BuildContext context, GroupSessionState state) {
   final failureOrUnit =
       state.fileFailureOrUnitOption.getOrElse(() => throw AssertionError());
 

@@ -23,9 +23,6 @@ class GroupFileRepository implements IGroupFileRepository {
   }) async {
     try {
       final uri = Uri.parse("$apiurl/Group/${owner.synchrowiseId}/File");
-      final fileext = path.extension(media.path);
-
-      assert(fileext == ".jpg" || fileext == ".jpeg" || fileext == ".png");
 
       final multipartFile = await MultipartFile.fromPath(
         "File",
