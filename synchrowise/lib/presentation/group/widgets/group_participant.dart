@@ -77,8 +77,7 @@ class ParticipantBody extends StatelessWidget {
                       child: CachedNetworkImage(
                         width: 35,
                         height: 35,
-                        imageUrl:
-                            "https://lh4.googleusercontent.com/-nM2qPired7A/AAAAAAAAAAI/AAAAAAAAAAA/WVQBNKTRsgI/photo.jpg",
+                        imageUrl: member.avatar.getHttpsPath,
                       ),
                     ),
                     const SizedBox(width: 10),
