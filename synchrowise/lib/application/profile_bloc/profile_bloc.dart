@@ -54,8 +54,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                           some(left(UnknownSynchrowiseFailure())));
                 },
                 (_) async {
-                  await _iUserStore.delete();
                   await _iAuthFacade.deleteAccount();
+                  await _iUserStore.delete();
 
                   return state.copyWith(failureOrUnitOption: some(right(unit)));
                 },
