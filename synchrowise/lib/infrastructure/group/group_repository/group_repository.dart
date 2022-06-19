@@ -231,7 +231,7 @@ class GroupRepository implements IGroupRepository {
     try {
       final uri = Uri.parse("$apiurl/Group/${groupData.groupId}/Member/Remove");
 
-      final result = await _client.post(
+      final result = await _client.delete(
         uri,
         body: jsonEncode({
           'memberID': synchrowiseUserId,
