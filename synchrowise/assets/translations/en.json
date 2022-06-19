@@ -95,5 +95,9 @@
     "x_people_in_group": "{count} people in group",
     "delete_group": "Delete group",
     "delete_group_desc": "Are you sure you want to delete the group?",
-    "admin": "Admin"
+    "admin": "Admin",
+    "hours_ago": "{time} hours ago",
+    "hour_ago": "{time} hour ago",
+    "minute_ago": "{time} minute ago",
+    "minutes_ago": "{time} minutes ago"
 }

@@ -95,5 +95,9 @@
     "x_person_in_group": "{count} kişi grupta",
     "delete_group": "Grubu sil",
     "delete_group_desc": "Grubu silmek istediğine emin misin?",
-    "admin": "Kurucu"
+    "admin": "Kurucu",
+    "hours_ago": "{time} saat önce",
+    "hour_ago": "{time} saat önce",
+    "minutes_ago": "{time} dakika önce",
+    "minute_ago": "{time} dakika önce"
 }

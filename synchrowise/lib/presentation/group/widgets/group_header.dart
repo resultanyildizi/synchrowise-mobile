@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,12 +56,17 @@ class GroupHeader extends StatelessWidget {
                         .headline6!
                         .copyWith(color: grayDarkColor2),
                   ),
-                  Text(
-                    "12 dakika önce başladı",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: grayDarkColor2),
+                  StreamBuilder(
+                    stream: Stream.periodic(const Duration(seconds: 60)),
+                    builder: (context, _) {
+                      return Text(
+                        convertToString(groupData.createdAt),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: grayDarkColor2),
+                      );
+                    },
                   ),
                 ],
               )
@@ -81,5 +88,23 @@ class GroupHeader extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+String convertToString(DateTime createdAt) {
+  final ms = DateTime.now().toUtc().difference(createdAt);
+
+  final mins = ms.inMinutes;
+
+  if (mins > 60) {
+    return (ms.inHours > 1 ? "hours_ago" : "hour_ago").tr(
+      namedArgs: {"time": ms.inHours.toString()},
+    );
+  } else if (mins > 0) {
+    return (ms.inMinutes > 1 ? "minutes_ago" : "minute_ago").tr(
+      namedArgs: {"time": ms.inMinutes.toString()},
+    );
+  } else {
+    return "just now";
   }
 }
