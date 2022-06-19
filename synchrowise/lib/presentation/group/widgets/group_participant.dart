@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/presentation/core/widgets/close_icon.dart';
 import 'package:synchrowise/presentation/core/widgets/synchrowise_popup.dart';
 import 'package:synchrowise/route/synchrowise_navigator.dart';
@@ -55,6 +56,7 @@ class ParticipantBody extends StatelessWidget {
           final member = groupData.members[index];
           final isAdmin =
               member.synchrowiseId == groupData.groupOwner.synchrowiseId;
+          final myId = context.synchrowiseUser.synchrowiseId;
 
           return Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
@@ -105,7 +107,8 @@ class ParticipantBody extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    if (index != 0 && isAdmin)
+                    if (myId == groupData.groupOwner.synchrowiseId &&
+                        myId != member.synchrowiseId)
                       CloseIcon(
                         onTap: () {
                           return synchrowisePopup(
