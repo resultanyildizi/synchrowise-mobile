@@ -13,6 +13,7 @@ import 'package:synchrowise/infrastructure/group/group_file_repository/failure/g
 import 'package:synchrowise/infrastructure/group/group_file_repository/i_group_file_repository.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
+import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
 
 part 'group_session_event.dart';
 part 'group_session_state.dart';
@@ -23,6 +24,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   final ISynchrowiseUserStorage _iUserStorage;
   final IGroupRepository _iGroupRepo;
   final IGroupFileRepository _iGroupFileRepository;
+  final ISocketFacade _iSocketFacade;
 
   void init({required GroupData groupData}) =>
       add(GroupSessionEvent.init(groupData: groupData));
@@ -47,6 +49,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
     this._iGroupRepo,
     this._iUserStorage,
     this._iGroupFileRepository,
+    this._iSocketFacade,
   ) : super(GroupSessionState.initial()) {
     on<GroupSessionEvent>((event, emit) async {
       await event.map(
@@ -175,6 +178,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
                 groupFailureOrUnitOption: some(left(f)),
               );
             }, (_) {
+              _iSocketFacade.sendLeaveGroupMessage(e.groupData.groupId);
+
               return state.copyWith(
                 groupFailureOrUnitOption: some(right(unit)),
               );

@@ -10,23 +10,28 @@ import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synch
 import 'package:synchrowise/infrastructure/failures/value_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/failure/group_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_repository/i_group_repository.dart';
+import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
 
+part 'join_group_bloc.freezed.dart';
 part 'join_group_event.dart';
 part 'join_group_state.dart';
-part 'join_group_bloc.freezed.dart';
 
 class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
   ///* Dependencies
   final IGroupRepository _iGroupRepository;
   final ISynchrowiseUserStorage _iUserStorage;
+  final ISocketFacade _iSocketFacade;
 
   void updateGroupKeyText({required String groupKey}) =>
       add(JoinGroupEvent.updateGroupKeyText(groupKey: groupKey));
 
   void submit() => add(const JoinGroupEvent.submit());
 
-  JoinGroupBloc(this._iGroupRepository, this._iUserStorage)
-      : super(JoinGroupState.initial()) {
+  JoinGroupBloc(
+    this._iGroupRepository,
+    this._iUserStorage,
+    this._iSocketFacade,
+  ) : super(JoinGroupState.initial()) {
     on<JoinGroupEvent>(
       (event, emit) async {
         await event.map(
@@ -92,6 +97,8 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
                           );
                         },
                         (groupData) async {
+                          _iSocketFacade
+                              .sendJoinGroupMessage(groupData.groupId);
                           return state.copyWith(
                             joinFailureOrGroupDataOption:
                                 some(right(groupData)),

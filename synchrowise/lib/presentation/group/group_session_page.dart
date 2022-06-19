@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/injection.dart';
 import 'package:synchrowise/presentation/auth/welcome_page.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
@@ -37,22 +38,26 @@ class GroupSessionPage extends StatelessWidget {
         create: (context) => groupData,
         child: WillPopScope(
           onWillPop: () async {
-            final title = "leave_group".tr();
-            final content = "leave_group_desc".tr();
+            final isAdmin = groupData.groupOwner.synchrowiseId ==
+                context.synchrowiseUser.synchrowiseId;
 
-            // admin değilsem
-            // groupSessionBloc.leaveGroup(groupData: groupData);
-            // SynchrowiseNavigator.pop(context);
+            final title = isAdmin ? "delete_group".tr() : "leave_group".tr();
+            final content =
+                isAdmin ? "delete_group_desc".tr() : "leave_group_desc".tr();
+
+            final method = isAdmin
+                ? () => _groupSessionBloc.deleteGroup(groupData: groupData)
+                : () => _groupSessionBloc.leaveGroup(groupData: groupData);
 
             synchrowisePopup(
               context,
-              "delete_group".tr(),
-              "delete_group_desc".tr(),
+              title,
+              content,
               "no".tr(),
               () => SynchrowiseNavigator.pop(context),
               "yes".tr(),
               () {
-                _groupSessionBloc.deleteGroup(groupData: groupData);
+                method.call();
               },
             );
 

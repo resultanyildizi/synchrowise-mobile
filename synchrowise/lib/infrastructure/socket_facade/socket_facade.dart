@@ -46,11 +46,13 @@ class SocketFacade implements ISocketFacade {
     }
   }
 
+  @override
   Future<void> sendJoinGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'JoinGroup');
+    return _connection!.send(methodName: 'JoinedGroup');
   }
 
+  @override
   Future<void> sendLeaveGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'LeaveGroup');
+    return _connection!.send(methodName: 'LeftGroup');
   }
 }

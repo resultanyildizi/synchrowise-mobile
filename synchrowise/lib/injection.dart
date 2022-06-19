@@ -174,6 +174,7 @@ Future<void> _setupBlocs() async {
     return JoinGroupBloc(
       getIt<IGroupRepository>(),
       getIt<ISynchrowiseUserStorage>(),
+      getIt<ISocketFacade>(),
     );
   });
   getIt.registerFactory<MessagingBloc>(() {
@@ -189,6 +190,7 @@ Future<void> _setupBlocs() async {
       getIt<IGroupRepository>(),
       getIt<ISynchrowiseUserStorage>(),
       getIt<IGroupFileRepository>(),
+      getIt<ISocketFacade>(),
     );
   });
 
