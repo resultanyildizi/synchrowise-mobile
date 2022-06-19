@@ -6,7 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:synchrowise/application/group/group_session_bloc/group_session_bloc.dart';
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/core/media.dart';
-import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
 import 'package:video_player/video_player.dart';
@@ -73,6 +72,10 @@ class _MediaPlayerState extends State<MediaPlayer> {
       });
 
       setState(() {});
+    } else {
+      _videoPlayerController = null;
+      _chewieController = null;
+      setState(() {});
     }
   }
 
@@ -109,9 +112,10 @@ class _MediaPlayerState extends State<MediaPlayer> {
                   ? state.isProgressing
                       ? const SizedBox(
                           child: WaveLoadingIndicator(
-                          color: secondaryColor,
-                          size: 18,
-                        ))
+                            color: secondaryColor,
+                            size: 18,
+                          ),
+                        )
                       : GestureDetector(
                           onTap: () {
                             _groupSessionBloc.uploadMedia();
@@ -153,23 +157,21 @@ class _MediaPlayerState extends State<MediaPlayer> {
           (fom) {
             return fom.fold(
               (f) {
-                if (f is MediaFailure) {
-                  f.map(
-                    pickFailure: (_) {},
-                    sizeFailure: (f) {
-                      showErrorToast(
-                        "media_size_too_big".tr(),
-                        ToastGravity.BOTTOM,
-                      );
-                    },
-                    unsupportedFailure: (f) {
-                      showErrorToast(
-                        "media_unsupported".tr(),
-                        ToastGravity.BOTTOM,
-                      );
-                    },
-                  );
-                }
+                f.map(
+                  pickFailure: (_) {},
+                  sizeFailure: (f) {
+                    showErrorToast(
+                      "media_size_too_big".tr(),
+                      ToastGravity.BOTTOM,
+                    );
+                  },
+                  unsupportedFailure: (f) {
+                    showErrorToast(
+                      "media_unsupported".tr(),
+                      ToastGravity.BOTTOM,
+                    );
+                  },
+                );
               },
               (_) {},
             );
