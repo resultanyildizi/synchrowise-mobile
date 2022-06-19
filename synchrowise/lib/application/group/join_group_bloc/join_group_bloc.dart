@@ -93,7 +93,7 @@ class JoinGroupBloc extends Bloc<JoinGroupEvent, JoinGroupState> {
                           );
                         },
                         (groupData) async {
-                          _iSocketFacade
+                          await _iSocketFacade
                               .sendJoinGroupMessage(groupData.groupId);
                           return state.copyWith(
                             joinFailureOrGroupDataOption:
