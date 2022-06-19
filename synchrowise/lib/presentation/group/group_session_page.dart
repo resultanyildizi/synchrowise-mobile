@@ -31,32 +31,35 @@ class GroupSessionPage extends StatelessWidget {
       },
       child: Provider<GroupData>(
         create: (context) => groupData,
-        child: Scaffold(
-          body: SafeArea(
-            child: BlocConsumer<GroupSessionBloc, GroupSessionState>(
-              listenWhen: (previous, current) {
-                return current.failureOrMediaOption.isSome() ||
-                    current.fileFailureOrUnitOption.isSome() ||
-                    current.groupFailureOrUnitOption.isSome() ||
-                    current.storageFailureOrUnitOption.isSome();
-              },
-              listener: (context, state) {
-                _groupSessionBlocHandleFailure(context, state);
-              },
-              builder: (context, state) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    MediaPlayer(),
-                    SizedBox(height: 30),
-                    GroupHeader(),
-                    SizedBox(height: 20),
-                    GroupParticipant(),
-                    GroupButtons(),
-                    SizedBox(height: 10),
-                  ],
-                );
-              },
+        child: WillPopScope(
+          onWillPop: () async => false,
+          child: Scaffold(
+            body: SafeArea(
+              child: BlocConsumer<GroupSessionBloc, GroupSessionState>(
+                listenWhen: (previous, current) {
+                  return current.failureOrMediaOption.isSome() ||
+                      current.fileFailureOrUnitOption.isSome() ||
+                      current.groupFailureOrUnitOption.isSome() ||
+                      current.storageFailureOrUnitOption.isSome();
+                },
+                listener: (context, state) {
+                  _groupSessionBlocHandleFailure(context, state);
+                },
+                builder: (context, state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      MediaPlayer(),
+                      SizedBox(height: 30),
+                      GroupHeader(),
+                      SizedBox(height: 20),
+                      GroupParticipant(),
+                      GroupButtons(),
+                      SizedBox(height: 10),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),
