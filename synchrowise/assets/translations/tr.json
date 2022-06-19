@@ -46,7 +46,7 @@
     "username_must_be_at_least_min_characters": "Kullanıcı adın en az {min} karakter olmalı",
     "continue": "Devam et",
     "avatar": "Avatar",
-    "avatar_desc": "Kullanmak için bir avatar seç. Diğer kullanıcılar seni bu kullanıcı adı ile görecekler.",
+    "avatar_desc": "Kullanmak için bir avatar seç. Diğer kullanıcılar seni bu avatar ile görecekler.",
     "complete": "Tamamla",
     "registered_successfully": "Başarıyla kayıt oldun",
     "now_you_can_use_synchrowise": "Artık Synchrowise'ı kullanabilirsin",
