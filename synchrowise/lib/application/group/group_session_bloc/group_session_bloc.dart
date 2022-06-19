@@ -140,7 +140,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             });
           });
 
-          emit(newState.copyWith(isProgressing: true));
+          emit(newState.copyWith(isProgressing: false));
         },
         leaveGroup: (e) async {
           emit(state.copyWith(
@@ -174,7 +174,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             });
           });
 
-          emit(newState.copyWith(isProgressing: true));
+          emit(newState.copyWith(isProgressing: false));
         },
         deleteMember: (e) async {
           emit(state.copyWith(
@@ -198,7 +198,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             );
           });
 
-          emit(newState.copyWith(isProgressing: true));
+          emit(newState.copyWith(isProgressing: false));
         },
         playMedia: (e) async {},
         pauseMedia: (e) async {},

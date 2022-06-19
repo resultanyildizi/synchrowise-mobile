@@ -43,7 +43,10 @@ class GroupSessionPage extends StatelessWidget {
                       current.storageFailureOrUnitOption.isSome();
                 },
                 listener: (context, state) {
-                  _groupSessionBlocHandleFailure(context, state);
+                  _handleStorageFailure(context, state);
+                  _handleGroupFailure(context, state);
+                  _handleFileFailure(state);
+                  _handleMediaFailure(state);
                 },
                 builder: (context, state) {
                   return Column(
@@ -68,97 +71,100 @@ class GroupSessionPage extends StatelessWidget {
   }
 }
 
-void _groupSessionBlocHandleFailure(
-    BuildContext context, GroupSessionState state) {
-  if (state.storageFailureOrUnitOption.isSome()) {
-    final failureOrUnit = state.storageFailureOrUnitOption
-        .getOrElse(() => throw AssertionError());
+void _handleMediaFailure(GroupSessionState state) {
+  final failureOrUnit =
+      state.failureOrMediaOption.getOrElse(() => throw AssertionError());
 
-    failureOrUnit.fold(
-      (f) {
-        f.maybeMap(
-          get: (_) {
-            SynchrowiseNavigator.pushNamedAndRemoveUntil(
-              context,
-              WelcomePage.routeName,
-              (route) => false,
-              arguments: SynchrowiseRouteArguments(context),
-            );
-          },
-          orElse: () {
-            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-          },
-        );
-      },
-      (_) {},
-    );
-  } else if (state.failureOrMediaOption.isSome()) {
-    final failureOrUnit =
-        state.failureOrMediaOption.getOrElse(() => throw AssertionError());
+  failureOrUnit.fold(
+    (f) {
+      f.maybeMap(
+        pickFailure: (_) {
+          showErrorToast("pick_error".tr(), ToastGravity.BOTTOM);
+        },
+        sizeFailure: (_) {
+          showErrorToast("size_error".tr(), ToastGravity.BOTTOM);
+        },
+        unsupportedFailure: (_) {
+          showErrorToast("unsupported_error".tr(), ToastGravity.BOTTOM);
+        },
+        orElse: () {
+          showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+        },
+      );
+    },
+    (_) {},
+  );
+}
 
-    failureOrUnit.fold(
-      (f) {
-        f.maybeMap(
-          pickFailure: (_) {
-            showErrorToast("pick_error".tr(), ToastGravity.BOTTOM);
-          },
-          sizeFailure: (_) {
-            showErrorToast("size_error".tr(), ToastGravity.BOTTOM);
-          },
-          unsupportedFailure: (_) {
-            showErrorToast("unsupported_error".tr(), ToastGravity.BOTTOM);
-          },
-          orElse: () {
-            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-          },
-        );
-      },
-      (_) {},
-    );
-  } else if (state.fileFailureOrUnitOption.isSome()) {
-    final failureOrUnit =
-        state.fileFailureOrUnitOption.getOrElse(() => throw AssertionError());
+void _handleFileFailure(GroupSessionState state) {
+  final failureOrUnit =
+      state.fileFailureOrUnitOption.getOrElse(() => throw AssertionError());
 
-    failureOrUnit.fold(
-      (f) {
-        f.maybeMap(
-          connection: (_) {
-            showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
-          },
-          server: (_) {
-            showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
-          },
-          orElse: () {
-            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-          },
-        );
-      },
-      (_) {},
-    );
-  } else if (state.groupFailureOrUnitOption.isSome()) {
-    final failureOrUnit =
-        state.groupFailureOrUnitOption.getOrElse(() => throw AssertionError());
+  failureOrUnit.fold(
+    (f) {
+      f.maybeMap(
+        connection: (_) {
+          showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
+        },
+        server: (_) {
+          showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+        },
+        orElse: () {
+          showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+        },
+      );
+    },
+    (_) {},
+  );
+}
 
-    failureOrUnit.fold(
-      (f) {
-        f.maybeMap(
-          connection: (_) {
-            showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
-          },
-          server: (_) {
-            showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
-          },
-          notFound: (_) {
-            showErrorToast("not_found".tr(), ToastGravity.BOTTOM);
-          },
-          orElse: () {
-            showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
-          },
-        );
-      },
-      (_) {
-        SynchrowiseNavigator.pushNamed(context, MainPage.routeName);
-      },
-    );
-  }
+void _handleGroupFailure(BuildContext context, GroupSessionState state) {
+  final failureOrUnit =
+      state.groupFailureOrUnitOption.getOrElse(() => throw AssertionError());
+
+  failureOrUnit.fold(
+    (f) {
+      f.maybeMap(
+        connection: (_) {
+          showErrorToast("connection_error".tr(), ToastGravity.BOTTOM);
+        },
+        server: (_) {
+          showErrorToast("server_error".tr(), ToastGravity.BOTTOM);
+        },
+        notFound: (_) {
+          showErrorToast("not_found".tr(), ToastGravity.BOTTOM);
+        },
+        orElse: () {
+          showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+        },
+      );
+    },
+    (_) {
+      SynchrowiseNavigator.pushNamed(context, MainPage.routeName);
+    },
+  );
+}
+
+void _handleStorageFailure(BuildContext context, GroupSessionState state) {
+  final failureOrUnit =
+      state.storageFailureOrUnitOption.getOrElse(() => throw AssertionError());
+
+  failureOrUnit.fold(
+    (f) {
+      f.maybeMap(
+        get: (_) {
+          SynchrowiseNavigator.pushNamedAndRemoveUntil(
+            context,
+            WelcomePage.routeName,
+            (route) => false,
+            arguments: SynchrowiseRouteArguments(context),
+          );
+        },
+        orElse: () {
+          showErrorToast("unknown_error".tr(), ToastGravity.BOTTOM);
+        },
+      );
+    },
+    (_) {},
+  );
 }
