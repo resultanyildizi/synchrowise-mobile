@@ -224,4 +224,38 @@ class GroupRepository implements IGroupRepository {
       return left(GroupRepositoryFailure.unknown(e.toString()));
     }
   }
+
+  @override
+  Future<Either<GroupRepositoryFailure, Unit>> deleteMember(
+      {required GroupData groupData, required String synchrowiseUserId}) async {
+    try {
+      final uri = Uri.parse("$apiurl/Group/${groupData.groupId}/Member/Remove");
+
+      final result = await _client.post(
+        uri,
+        body: jsonEncode({
+          'memberID': synchrowiseUserId,
+          'ownerId': groupData.groupOwner.synchrowiseId,
+        }),
+        headers: {HeaderKeys.contentType: HeaderValues.jsonBody},
+      );
+
+      log(result.body);
+
+      if (result.statusCode == 200) {
+        return right(unit);
+      } else if (result.statusCode == 404) {
+        return left(const GroupRepositoryFailure.notFound());
+      } else {
+        return left(GroupRepositoryFailure.server(
+          result.statusCode,
+          result.body,
+        ));
+      }
+    } on SocketException catch (_) {
+      return left(const GroupRepositoryFailure.connection());
+    } catch (e) {
+      return left(GroupRepositoryFailure.unknown(e.toString()));
+    }
+  }
 }

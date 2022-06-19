@@ -61,4 +61,14 @@ abstract class IGroupRepository {
     required GroupData groupData,
     required String synchrowiseUserId,
   });
+
+  ///* Deletes the user with given `synchrowiseUserId`
+  ///* to the group on the server with given `groupData` model.
+  ///*
+  ///* Returns `Unit` if it is successful.
+  ///* Returns `GroupRepositoryFailure` if an exception occurs.
+  Future<Either<GroupRepositoryFailure, Unit>> deleteMember({
+    required GroupData groupData,
+    required String synchrowiseUserId,
+  });
 }
