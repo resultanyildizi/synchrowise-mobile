@@ -105,7 +105,7 @@ class ParticipantBody extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    if (index != 0)
+                    if (index != 0 && isAdmin)
                       CloseIcon(
                         onTap: () {
                           return synchrowisePopup(
