@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,57 +21,67 @@ class GroupHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                groupData.groupKey,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontSize: 20),
-              ),
-              Row(
-                children: [
-                  Text(
-                    (groupData.members.size > 1
-                            ? "x_people_in_group"
-                            : "x_person_in_group")
-                        .tr(
-                      namedArgs: {
-                        "count": groupData.members.size.toString(),
-                      },
+          Flexible(
+            flex: 8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  groupData.groupKey,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 20),
+                ),
+                Text(
+                  groupData.groupDesc,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 14),
+                ),
+                RichText(
+                    text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: (groupData.members.size > 1
+                              ? "x_people_in_group"
+                              : "x_person_in_group")
+                          .tr(
+                        namedArgs: {
+                          "count": groupData.members.size.toString(),
+                        },
+                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: grayDarkColor2),
                     ),
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: grayDarkColor2),
-                  ),
-                  Text(
-                    " · ",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .copyWith(color: grayDarkColor2),
-                  ),
-                  StreamBuilder(
-                    stream: Stream.periodic(const Duration(seconds: 60)),
-                    builder: (context, _) {
-                      return Text(
-                        convertToString(groupData.createdAt),
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: grayDarkColor2),
-                      );
-                    },
-                  ),
-                ],
-              )
-            ],
+                    TextSpan(
+                      text: " · ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: grayDarkColor2),
+                    ),
+                    TextSpan(
+                      text: convertToString(groupData.createdAt),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: grayDarkColor2),
+                    ),
+                  ],
+                )),
+              ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
+          Flexible(
+            flex: 1,
             child: CustomAnimatedButton(
               onTap: () {
                 getIt<ShareContentBloc>().share(

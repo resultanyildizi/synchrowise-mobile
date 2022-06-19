@@ -36,7 +36,7 @@ class GroupData extends Equatable {
       groupKey: groupName,
       groupOwner: groupOwner,
       createdAt: DateTime.now(),
-      groupDesc: '',
+      groupDesc: groupDesc,
       groupId: '',
       members: const KtList.empty(),
     );
