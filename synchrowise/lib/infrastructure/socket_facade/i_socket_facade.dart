@@ -1,4 +1,5 @@
 import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
+import 'package:synchrowise/domain/socket/play_video_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 
@@ -17,4 +18,5 @@ abstract class ISocketFacade {
   Stream<UserLeftSM> get userLeftStream;
   Stream<GroupFileUploadedSM> get groupFileUploadedStream;
   Stream<String> get deleteFileUploadStream;
+  Stream<PlayVideoSM> get playVideoStream;
 }

@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
 import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
+import 'package:synchrowise/domain/socket/play_video_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
@@ -22,6 +23,7 @@ class SocketFacade implements ISocketFacade {
   final _userLeftSubject = BehaviorSubject<UserLeftSM>();
   final _groupFileUploadedSubject = BehaviorSubject<GroupFileUploadedSM>();
   final _deleteFileUploadedSubject = BehaviorSubject<String>();
+  final _playVideoSubject = BehaviorSubject<PlayVideoSM>();
 
   @override
   Future<void> connectToSocket(String synchrowiseId) async {
@@ -63,22 +65,19 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('GroupFileDeleted', (messages) {
-        try {
-          if ((messages ?? []).isNotEmpty) {
-            final message = messages![0]['groupId'] as String;
+        if ((messages ?? []).isNotEmpty) {
+          final message = messages![0]['groupId'] as String;
 
-            _deleteFileUploadedSubject.add(message);
-          }
-        } catch (e) {
-          log(e.toString());
+          _deleteFileUploadedSubject.add(message);
         }
       });
 
       _connection!.on('PlayVideo', (messages) {
-        // {
-        //   "groupId": "",
-        //   "playTimeMs":""
-        // }
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          final playVideoMsg = PlayVideoSM.fromMap(message);
+          _playVideoSubject.add(playVideoMsg);
+        }
       });
 
       _connection!.on('StopVideo', (messages) {
@@ -121,6 +120,21 @@ class SocketFacade implements ISocketFacade {
   }
 
   @override
+  Future<void> sendPauseMessage() {
+    return _connection!.invoke('StopVideo');
+  }
+
+  @override
+  Future<void> sendPlayMesage() {
+    return _connection!.invoke('PlayVideo');
+  }
+
+  @override
+  Future<void> sendSeekMessage() {
+    return _connection!.invoke('SkipForwardVideo');
+  }
+
+  @override
   Stream<UserJoinedSM> get userJoinedStream => _userJoinedSubject.stream;
 
   @override
@@ -135,17 +149,5 @@ class SocketFacade implements ISocketFacade {
       _deleteFileUploadedSubject.stream;
 
   @override
-  Future<void> sendPauseMessage() {
-    return _connection!.invoke('StopVideo');
-  }
-
-  @override
-  Future<void> sendPlayMesage() {
-    return _connection!.invoke('PlayVideo');
-  }
-
-  @override
-  Future<void> sendSeekMessage() {
-    return _connection!.invoke('SkipForwardVideo');
-  }
+  Stream<PlayVideoSM> get playVideoStream => _playVideoSubject.stream;
 }
