@@ -294,6 +294,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           emit(state.copyWith(membersOption: some(newList)));
         },
         groupFileUploaded: (e) async {
+          emit(state.copyWith(
+              failureOrMediaOption: none(), isProgressing: true));
+
           final failureOrMedia =
               await _iMediaFacade.downloadFromUrl(url: e.message.getHttpsPath);
 
@@ -306,7 +309,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             ),
           );
 
-          emit(newState);
+          emit(newState.copyWith(isProgressing: false));
         },
         deleteFileUploaded: (e) async {
           emit(state.copyWith(failureOrMediaOption: none()));
