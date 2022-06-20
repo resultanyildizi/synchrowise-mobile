@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
+import 'package:synchrowise/domain/socket/user_joined_sm.dart';
+import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
 
 import 'package:synchrowise/services/core/socket_http_client.dart';
@@ -16,11 +18,11 @@ class SocketFacade implements ISocketFacade {
 
   HubConnection? _connection;
 
-  BehaviorSubject<UserSummary> _userJoinedSubject = BehaviorSubject();
-  BehaviorSubject<UserSummary> _userLeftSubject = BehaviorSubject();
+  final _userJoinedSubject = BehaviorSubject<UserJoinedSM>();
+  final _userLeftSubject = BehaviorSubject<UserLeftSM>();
 
   @override
-  Future<void> connectToSocket({required String synchrowiseId}) async {
+  Future<void> connectToSocket(String synchrowiseId) async {
     try {
       await _connection?.stop();
 
@@ -32,28 +34,24 @@ class SocketFacade implements ISocketFacade {
 
       await _connection!.start();
 
-      _connection!.on('ConnectionStart', (messages) {
-        log("x");
-        if (messages != null && messages.isNotEmpty) {
-          String encoded = messages.first;
-          final data = jsonDecode(encoded);
-          log(data.toString());
+      _connection!.on('JoinedGroup', (messages) {
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          _userJoinedSubject.add(UserJoinedSM.fromMap(message));
         }
       });
 
-      _connection!.on('JoinedGroup', (messages) {
-        log(messages.toString());
-      });
-
       _connection!.on('LeftGroup', (messages) {
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          _userLeftSubject.add(UserLeftSM.fromMap(message));
+        }
         log(messages.toString());
       });
 
-      _connection!.on('JoinGroupError', (messages) {
+      _connection!.on('GroupFileUploaded', (messages) {
         log(messages.toString());
       });
-
-      _connection!.on('GroupFileUploaded', (messages) {});
     } catch (_) {
       await _connection?.stop();
       _connection = null;
@@ -74,4 +72,10 @@ class SocketFacade implements ISocketFacade {
   Future<void> sendUploadMediaMessage(String fileGuid) {
     return _connection!.invoke('UploadGroupFile', args: [fileGuid]);
   }
+
+  @override
+  Stream<UserJoinedSM> get userJoinedStream => _userJoinedSubject.stream;
+
+  @override
+  Stream<UserLeftSM> get userLeftStream => _userLeftSubject.stream;
 }
