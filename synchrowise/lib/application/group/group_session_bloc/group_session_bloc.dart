@@ -28,7 +28,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
   void init({required GroupData groupData}) =>
       add(GroupSessionEvent.init(groupData: groupData));
-  void uploadMedia() => add(GroupSessionEvent.uploadMedia());
+  void uploadMedia({required GroupData groupData}) =>
+      add(GroupSessionEvent.uploadMedia(groupData: groupData));
   void removeMedia() => add(GroupSessionEvent.removeMedia());
   void deleteGroup({required GroupData groupData}) =>
       add(GroupSessionEvent.deleteGroup(groupData: groupData));
@@ -76,36 +77,24 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               );
             },
             (media) async {
-              final failureOrUser = await _iUserStorage.get();
+              final failureOrUnit = await _iGroupFileRepository.create(
+                media: media.file,
+                groupData: e.groupData,
+              );
 
-              return await failureOrUser.fold(
-                (failure) async {
+              return failureOrUnit.fold(
+                (f) {
                   return state.copyWith(
-                    storageFailureOrUnitOption: some(left(failure)),
+                    fileFailureOrUnitOption: some(left(f)),
                     failureOrMediaOption: some(right(media)),
+                    storageFailureOrUnitOption: some(right(unit)),
                   );
                 },
-                (user) async {
-                  final failureOrUnit = await _iGroupFileRepository.create(
-                    media: media.file,
-                    owner: user,
-                  );
-
-                  return failureOrUnit.fold(
-                    (f) {
-                      return state.copyWith(
-                        fileFailureOrUnitOption: some(left(f)),
-                        failureOrMediaOption: some(right(media)),
-                        storageFailureOrUnitOption: some(right(unit)),
-                      );
-                    },
-                    (_) {
-                      return state.copyWith(
-                        failureOrMediaOption: some(right(media)),
-                        storageFailureOrUnitOption: some(right(unit)),
-                        fileFailureOrUnitOption: some(right(unit)),
-                      );
-                    },
+                (_) {
+                  return state.copyWith(
+                    failureOrMediaOption: some(right(media)),
+                    storageFailureOrUnitOption: some(right(unit)),
+                    fileFailureOrUnitOption: some(right(unit)),
                   );
                 },
               );
@@ -166,24 +155,25 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               storageFailureOrUnitOption: some(left(failure)),
             );
           }, (user) async {
-            late Either<GroupRepositoryFailure, Unit> failureOrUnit;
-
-            failureOrUnit = await _iGroupRepo.deleteMember(
+            final failureOrUnit = await _iGroupRepo.deleteMember(
               groupData: e.groupData,
               synchrowiseUserId: user.synchrowiseId,
             );
 
-            return failureOrUnit.fold((f) {
-              return state.copyWith(
-                groupFailureOrUnitOption: some(left(f)),
-              );
-            }, (_) {
-              _iSocketFacade.sendLeaveGroupMessage(e.groupData.groupId);
+            return await failureOrUnit.fold(
+              (f) async {
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(left(f)),
+                );
+              },
+              (_) async {
+                await _iSocketFacade.sendLeaveGroupMessage();
 
-              return state.copyWith(
-                groupFailureOrUnitOption: some(right(unit)),
-              );
-            });
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(right(unit)),
+                );
+              },
+            );
           });
 
           emit(newState.copyWith(isProgressing: false));
@@ -200,15 +190,18 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             synchrowiseUserId: e.member.synchrowiseId,
           );
 
-          final newState = failureOrUnit.fold((f) {
-            return state.copyWith(
-              groupFailureOrUnitOption: some(left(f)),
-            );
-          }, (_) {
-            return state.copyWith(
-              groupFailureOrUnitOption: some(right(unit)),
-            );
-          });
+          final newState = failureOrUnit.fold(
+            (f) {
+              return state.copyWith(
+                groupFailureOrUnitOption: some(left(f)),
+              );
+            },
+            (_) {
+              return state.copyWith(
+                groupFailureOrUnitOption: some(right(unit)),
+              );
+            },
+          );
 
           emit(newState.copyWith(isProgressing: false));
         },

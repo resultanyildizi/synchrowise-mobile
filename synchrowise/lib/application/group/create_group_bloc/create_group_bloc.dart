@@ -108,7 +108,7 @@ class CreateGroupBloc extends Bloc<CreateGroupEvent, CreateGroupState> {
                     );
                   },
                   (group) async {
-                    await _iSocketFacade.sendJoinGroupMessage(group.groupId);
+                    await _iSocketFacade.sendJoinGroupMessage();
                     return state.copyWith(
                       submitFailureOrUnitOption: some(right(unit)),
                       storageFailureOrUnitOption: some(right(unit)),

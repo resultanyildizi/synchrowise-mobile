@@ -24,8 +24,10 @@ class _$GroupSessionEventTearOff {
     );
   }
 
-  _UploadMediaEvent uploadMedia() {
-    return _UploadMediaEvent();
+  _UploadMediaEvent uploadMedia({required GroupData groupData}) {
+    return _UploadMediaEvent(
+      groupData: groupData,
+    );
   }
 
   _RemoveMediaEvent removeMedia() {
@@ -73,7 +75,7 @@ mixin _$GroupSessionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -87,7 +89,7 @@ mixin _$GroupSessionEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -100,7 +102,7 @@ mixin _$GroupSessionEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -235,7 +237,7 @@ class _$_InitEvent implements _InitEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -252,7 +254,7 @@ class _$_InitEvent implements _InitEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -268,7 +270,7 @@ class _$_InitEvent implements _InitEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -351,6 +353,7 @@ abstract class _$UploadMediaEventCopyWith<$Res> {
   factory _$UploadMediaEventCopyWith(
           _UploadMediaEvent value, $Res Function(_UploadMediaEvent) then) =
       __$UploadMediaEventCopyWithImpl<$Res>;
+  $Res call({GroupData groupData});
 }
 
 /// @nodoc
@@ -363,32 +366,55 @@ class __$UploadMediaEventCopyWithImpl<$Res>
 
   @override
   _UploadMediaEvent get _value => super._value as _UploadMediaEvent;
+
+  @override
+  $Res call({
+    Object? groupData = freezed,
+  }) {
+    return _then(_UploadMediaEvent(
+      groupData: groupData == freezed
+          ? _value.groupData
+          : groupData // ignore: cast_nullable_to_non_nullable
+              as GroupData,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_UploadMediaEvent implements _UploadMediaEvent {
-  _$_UploadMediaEvent();
+  _$_UploadMediaEvent({required this.groupData});
+
+  @override
+  final GroupData groupData;
 
   @override
   String toString() {
-    return 'GroupSessionEvent.uploadMedia()';
+    return 'GroupSessionEvent.uploadMedia(groupData: $groupData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UploadMediaEvent);
+        (other.runtimeType == runtimeType &&
+            other is _UploadMediaEvent &&
+            const DeepCollectionEquality().equals(other.groupData, groupData));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(groupData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UploadMediaEventCopyWith<_UploadMediaEvent> get copyWith =>
+      __$UploadMediaEventCopyWithImpl<_UploadMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -398,14 +424,14 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
   }) {
-    return uploadMedia();
+    return uploadMedia(groupData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -414,14 +440,14 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
   }) {
-    return uploadMedia?.call();
+    return uploadMedia?.call(groupData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -432,7 +458,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
-      return uploadMedia();
+      return uploadMedia(groupData);
     }
     return orElse();
   }
@@ -491,7 +517,13 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
 }
 
 abstract class _UploadMediaEvent implements GroupSessionEvent {
-  factory _UploadMediaEvent() = _$_UploadMediaEvent;
+  factory _UploadMediaEvent({required GroupData groupData}) =
+      _$_UploadMediaEvent;
+
+  GroupData get groupData;
+  @JsonKey(ignore: true)
+  _$UploadMediaEventCopyWith<_UploadMediaEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -536,7 +568,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -553,7 +585,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -569,7 +601,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -708,7 +740,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -725,7 +757,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -741,7 +773,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -895,7 +927,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -912,7 +944,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -928,7 +960,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1075,7 +1107,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -1092,7 +1124,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1108,7 +1140,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1229,7 +1261,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -1246,7 +1278,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1262,7 +1294,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1377,7 +1409,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -1394,7 +1426,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1410,7 +1442,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1525,7 +1557,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GroupData groupData) init,
-    required TResult Function() uploadMedia,
+    required TResult Function(GroupData groupData) uploadMedia,
     required TResult Function() removeMedia,
     required TResult Function(GroupData groupData) leaveGroup,
     required TResult Function(GroupData groupData, UserSummary member)
@@ -1542,7 +1574,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
@@ -1558,7 +1590,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GroupData groupData)? init,
-    TResult Function()? uploadMedia,
+    TResult Function(GroupData groupData)? uploadMedia,
     TResult Function()? removeMedia,
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,

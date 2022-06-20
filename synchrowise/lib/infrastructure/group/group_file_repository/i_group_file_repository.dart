@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/infrastructure/group/group_file_repository/failure/group_file_repository_failure.dart';
 
 abstract class IGroupFileRepository {
@@ -11,6 +12,6 @@ abstract class IGroupFileRepository {
   ///* Returns `GroupFileRepositoryFailure` if an exception occurs.
   Future<Either<GroupFileRepositoryFailure, Unit>> create({
     required File media,
-    required SynchrowiseUser owner,
+    required GroupData groupData,
   });
 }

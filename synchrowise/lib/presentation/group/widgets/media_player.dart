@@ -126,7 +126,9 @@ class _MediaPlayerState extends State<MediaPlayer> {
                       : GestureDetector(
                           onTap: () {
                             if (iAmAdmin) {
-                              _groupSessionBloc.uploadMedia();
+                              _groupSessionBloc.uploadMedia(
+                                groupData: groupData,
+                              );
                             }
                           },
                           child: const Center(

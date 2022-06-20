@@ -27,7 +27,7 @@ class GroupButtons extends StatelessWidget {
           return _GroupButton(
             onTap: () {
               if (isStateNone) {
-                _groupSessionBloc.uploadMedia();
+                _groupSessionBloc.uploadMedia(groupData: _groupData);
               } else {
                 _groupSessionBloc.removeMedia();
               }

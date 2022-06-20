@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart';
 import 'package:synchrowise/domain/auth/synchrowise_user.dart';
+import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/infrastructure/group/group_file_repository/failure/group_file_repository_failure.dart';
 import 'package:synchrowise/infrastructure/group/group_file_repository/i_group_file_repository.dart';
 import 'package:synchrowise/setup_env.dart';
-import 'package:path/path.dart' as path show extension;
 
 class GroupFileRepository implements IGroupFileRepository {
   //* Dependencies
@@ -19,10 +19,10 @@ class GroupFileRepository implements IGroupFileRepository {
   @override
   Future<Either<GroupFileRepositoryFailure, Unit>> create({
     required File media,
-    required SynchrowiseUser owner,
+    required GroupData groupData,
   }) async {
     try {
-      final uri = Uri.parse("$apiurl/Group/${owner.synchrowiseId}/File");
+      final uri = Uri.parse("$apiurl/Group/${groupData.groupId}/File");
 
       final multipartFile = await MultipartFile.fromPath(
         "File",
@@ -31,7 +31,7 @@ class GroupFileRepository implements IGroupFileRepository {
 
       final request = MultipartRequest("POST", uri);
 
-      request.fields.addAll({"OwnerGuid": owner.synchrowiseId});
+      request.fields.addAll({"OwnerGuid": groupData.groupOwner.synchrowiseId});
 
       request.files.add(multipartFile);
 

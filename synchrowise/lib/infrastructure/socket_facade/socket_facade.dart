@@ -48,6 +48,12 @@ class SocketFacade implements ISocketFacade {
       _connection!.on('LeftGroup', (messages) {
         log(messages.toString());
       });
+
+      _connection!.on('JoinGroupError', (messages) {
+        log(messages.toString());
+      });
+
+      _connection!.on('GroupFileUploaded', (messages) {});
     } catch (_) {
       await _connection?.stop();
       _connection = null;
@@ -55,12 +61,17 @@ class SocketFacade implements ISocketFacade {
   }
 
   @override
-  Future<void> sendJoinGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'JoinGroup', args: [groupId]);
+  Future<void> sendJoinGroupMessage() {
+    return _connection!.invoke('JoinGroup');
   }
 
   @override
-  Future<void> sendLeaveGroupMessage(String groupId) {
-    return _connection!.send(methodName: 'LeaveGroup', args: [groupId]);
+  Future<void> sendLeaveGroupMessage() {
+    return _connection!.invoke('LeaveGroup');
+  }
+
+  @override
+  Future<void> sendUploadMediaMessage(String fileGuid) {
+    return _connection!.invoke('UploadGroupFile', args: [fileGuid]);
   }
 }
