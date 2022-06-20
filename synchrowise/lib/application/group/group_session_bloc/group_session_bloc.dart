@@ -294,7 +294,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           emit(state.copyWith(membersOption: some(newList)));
         },
         groupFileUploaded: (e) async {},
-        deleteFileUploaded: (e) async {},
+        deleteFileUploaded: (e) async {
+          emit(state.copyWith(failureOrMediaOption: none()));
+        },
       );
     });
   }
