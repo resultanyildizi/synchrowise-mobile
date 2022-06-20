@@ -20,6 +20,7 @@ class SocketFacade implements ISocketFacade {
 
   final _userJoinedSubject = BehaviorSubject<UserJoinedSM>();
   final _userLeftSubject = BehaviorSubject<UserLeftSM>();
+  final _groupFileUploadedSubject = BehaviorSubject<String>();
 
   @override
   Future<void> connectToSocket(String synchrowiseId) async {
@@ -98,4 +99,8 @@ class SocketFacade implements ISocketFacade {
 
   @override
   Stream<UserLeftSM> get userLeftStream => _userLeftSubject.stream;
+
+  @override
+  Stream<String> get groupFileUploadedStream =>
+      _groupFileUploadedSubject.stream;
 }
