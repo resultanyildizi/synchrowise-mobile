@@ -21,6 +21,7 @@ class SocketFacade implements ISocketFacade {
   final _userJoinedSubject = BehaviorSubject<UserJoinedSM>();
   final _userLeftSubject = BehaviorSubject<UserLeftSM>();
   final _groupFileUploadedSubject = BehaviorSubject<GroupFileUploadedSM>();
+  final _deleteFileUploadedSubject = BehaviorSubject<String>();
 
   @override
   Future<void> connectToSocket(String synchrowiseId) async {
@@ -62,7 +63,11 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('GroupFileDeleted', (messages) {
-        log(messages.toString());
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          final groupMediaMsg = message["groupId"];
+          _deleteFileUploadedSubject.add(groupMediaMsg);
+        }
       });
     } catch (_) {
       await _connection?.stop();
@@ -87,7 +92,7 @@ class SocketFacade implements ISocketFacade {
 
   @override
   Future<void> deleteFileUploadMessage() {
-    return _connection!.invoke('DeleteFileUploadMessage');
+    return _connection!.invoke('DeleteFileUploaded');
   }
 
   @override
@@ -99,4 +104,8 @@ class SocketFacade implements ISocketFacade {
   @override
   Stream<GroupFileUploadedSM> get groupFileUploadedStream =>
       _groupFileUploadedSubject.stream;
+
+  @override
+  Stream<String> get deleteFileUploadStream =>
+      _deleteFileUploadedSubject.stream;
 }

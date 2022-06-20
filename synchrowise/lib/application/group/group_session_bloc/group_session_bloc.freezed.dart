@@ -84,6 +84,12 @@ class _$GroupSessionEventTearOff {
       message: message,
     );
   }
+
+  _deleteFileUploadedEvent deleteFileUploaded({required String message}) {
+    return _deleteFileUploadedEvent(
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -106,6 +112,7 @@ mixin _$GroupSessionEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -122,6 +129,7 @@ mixin _$GroupSessionEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +146,7 @@ mixin _$GroupSessionEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +164,8 @@ mixin _$GroupSessionEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -171,6 +182,7 @@ mixin _$GroupSessionEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -187,6 +199,7 @@ mixin _$GroupSessionEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -286,6 +299,7 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return init(groupData);
   }
@@ -305,6 +319,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return init?.call(groupData);
   }
@@ -324,6 +339,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -347,6 +363,8 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return init(this);
   }
@@ -366,6 +384,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return init?.call(this);
   }
@@ -385,6 +404,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -481,6 +501,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return uploadMedia(groupData);
   }
@@ -500,6 +521,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return uploadMedia?.call(groupData);
   }
@@ -519,6 +541,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -542,6 +565,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return uploadMedia(this);
   }
@@ -561,6 +586,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return uploadMedia?.call(this);
   }
@@ -580,6 +606,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -653,6 +680,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return removeMedia();
   }
@@ -672,6 +700,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return removeMedia?.call();
   }
@@ -691,6 +720,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -714,6 +744,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return removeMedia(this);
   }
@@ -733,6 +765,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return removeMedia?.call(this);
   }
@@ -752,6 +785,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -843,6 +877,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return leaveGroup(groupData);
   }
@@ -862,6 +897,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return leaveGroup?.call(groupData);
   }
@@ -881,6 +917,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -904,6 +941,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return leaveGroup(this);
   }
@@ -923,6 +962,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return leaveGroup?.call(this);
   }
@@ -942,6 +982,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -1048,6 +1089,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return deleteMember(groupData, member);
   }
@@ -1067,6 +1109,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return deleteMember?.call(groupData, member);
   }
@@ -1086,6 +1129,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -1109,6 +1153,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return deleteMember(this);
   }
@@ -1128,6 +1174,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return deleteMember?.call(this);
   }
@@ -1147,6 +1194,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -1246,6 +1294,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return deleteGroup(groupData);
   }
@@ -1265,6 +1314,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return deleteGroup?.call(groupData);
   }
@@ -1284,6 +1334,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1307,6 +1358,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return deleteGroup(this);
   }
@@ -1326,6 +1379,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return deleteGroup?.call(this);
   }
@@ -1345,6 +1399,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1418,6 +1473,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return playMedia();
   }
@@ -1437,6 +1493,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return playMedia?.call();
   }
@@ -1456,6 +1513,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1479,6 +1537,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return playMedia(this);
   }
@@ -1498,6 +1558,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return playMedia?.call(this);
   }
@@ -1517,6 +1578,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1584,6 +1646,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return pauseMedia();
   }
@@ -1603,6 +1666,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return pauseMedia?.call();
   }
@@ -1622,6 +1686,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1645,6 +1710,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return pauseMedia(this);
   }
@@ -1664,6 +1731,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return pauseMedia?.call(this);
   }
@@ -1683,6 +1751,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1750,6 +1819,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return seekMedia();
   }
@@ -1769,6 +1839,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return seekMedia?.call();
   }
@@ -1788,6 +1859,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1811,6 +1883,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return seekMedia(this);
   }
@@ -1830,6 +1904,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return seekMedia?.call(this);
   }
@@ -1849,6 +1924,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1940,6 +2016,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return userLeft(message);
   }
@@ -1959,6 +2036,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return userLeft?.call(message);
   }
@@ -1978,6 +2056,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (userLeft != null) {
@@ -2001,6 +2080,8 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return userLeft(this);
   }
@@ -2020,6 +2101,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return userLeft?.call(this);
   }
@@ -2039,6 +2121,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (userLeft != null) {
@@ -2135,6 +2218,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return userJoined(message);
   }
@@ -2154,6 +2238,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return userJoined?.call(message);
   }
@@ -2173,6 +2258,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (userJoined != null) {
@@ -2196,6 +2282,8 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return userJoined(this);
   }
@@ -2215,6 +2303,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return userJoined?.call(this);
   }
@@ -2234,6 +2323,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (userJoined != null) {
@@ -2332,6 +2422,7 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
   }) {
     return groupFileUploaded(message);
   }
@@ -2351,6 +2442,7 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
   }) {
     return groupFileUploaded?.call(message);
   }
@@ -2370,6 +2462,7 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (groupFileUploaded != null) {
@@ -2393,6 +2486,8 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
     required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
   }) {
     return groupFileUploaded(this);
   }
@@ -2412,6 +2507,7 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
   }) {
     return groupFileUploaded?.call(this);
   }
@@ -2431,6 +2527,7 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
     TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
     required TResult orElse(),
   }) {
     if (groupFileUploaded != null) {
@@ -2447,6 +2544,211 @@ abstract class _GroupFileUploadedEvent implements GroupSessionEvent {
   GroupFileUploadedSM get message;
   @JsonKey(ignore: true)
   _$GroupFileUploadedEventCopyWith<_GroupFileUploadedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$deleteFileUploadedEventCopyWith<$Res> {
+  factory _$deleteFileUploadedEventCopyWith(_deleteFileUploadedEvent value,
+          $Res Function(_deleteFileUploadedEvent) then) =
+      __$deleteFileUploadedEventCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$deleteFileUploadedEventCopyWithImpl<$Res>
+    extends _$GroupSessionEventCopyWithImpl<$Res>
+    implements _$deleteFileUploadedEventCopyWith<$Res> {
+  __$deleteFileUploadedEventCopyWithImpl(_deleteFileUploadedEvent _value,
+      $Res Function(_deleteFileUploadedEvent) _then)
+      : super(_value, (v) => _then(v as _deleteFileUploadedEvent));
+
+  @override
+  _deleteFileUploadedEvent get _value =>
+      super._value as _deleteFileUploadedEvent;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_deleteFileUploadedEvent(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_deleteFileUploadedEvent implements _deleteFileUploadedEvent {
+  _$_deleteFileUploadedEvent({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'GroupSessionEvent.deleteFileUploaded(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _deleteFileUploadedEvent &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$deleteFileUploadedEventCopyWith<_deleteFileUploadedEvent> get copyWith =>
+      __$deleteFileUploadedEventCopyWithImpl<_deleteFileUploadedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GroupData groupData) init,
+    required TResult Function(GroupData groupData) uploadMedia,
+    required TResult Function() removeMedia,
+    required TResult Function(GroupData groupData) leaveGroup,
+    required TResult Function(GroupData groupData, UserSummary member)
+        deleteMember,
+    required TResult Function(GroupData groupData) deleteGroup,
+    required TResult Function() playMedia,
+    required TResult Function() pauseMedia,
+    required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
+    required TResult Function(String message) deleteFileUploaded,
+  }) {
+    return deleteFileUploaded(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
+  }) {
+    return deleteFileUploaded?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
+    TResult Function(String message)? deleteFileUploaded,
+    required TResult orElse(),
+  }) {
+    if (deleteFileUploaded != null) {
+      return deleteFileUploaded(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
+    required TResult Function(_UploadMediaEvent value) uploadMedia,
+    required TResult Function(_RemoveMediaEvent value) removeMedia,
+    required TResult Function(_LeaveGroupEvent value) leaveGroup,
+    required TResult Function(_DeleteMemberEvent value) deleteMember,
+    required TResult Function(_DeleteGroupEvent value) deleteGroup,
+    required TResult Function(_PlayMediaEvent value) playMedia,
+    required TResult Function(_PauseMediaEvent value) pauseMedia,
+    required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+    required TResult Function(_deleteFileUploadedEvent value)
+        deleteFileUploaded,
+  }) {
+    return deleteFileUploaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
+  }) {
+    return deleteFileUploaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    TResult Function(_deleteFileUploadedEvent value)? deleteFileUploaded,
+    required TResult orElse(),
+  }) {
+    if (deleteFileUploaded != null) {
+      return deleteFileUploaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _deleteFileUploadedEvent implements GroupSessionEvent {
+  factory _deleteFileUploadedEvent({required String message}) =
+      _$_deleteFileUploadedEvent;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$deleteFileUploadedEventCopyWith<_deleteFileUploadedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
