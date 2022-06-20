@@ -21,10 +21,14 @@ class MediaPlayer extends StatefulWidget {
 
 class _MediaPlayerState extends State<MediaPlayer> {
   late GroupSessionBloc _groupSessionBloc;
+  late GroupData _groupData;
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
 
-  void _updateMediaController() {
+  void _updateMediaController(GroupData groupData, BuildContext context) {
+    final isAdmin = groupData.groupOwner.synchrowiseId ==
+        context.synchrowiseUser.synchrowiseId;
+
     final media = _groupSessionBloc.state.failureOrMediaOption.fold(
       () => null,
       (fom) => fom.fold((l) => null, (media) => media),
@@ -38,6 +42,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
           videoPlayerController: _videoPlayerController!,
           allowPlaybackSpeedChanging: false,
           allowFullScreen: false,
+          showControls: isAdmin,
           showOptions: false,
           cupertinoProgressColors: ChewieProgressColors(
             playedColor: primaryColor,
@@ -83,8 +88,10 @@ class _MediaPlayerState extends State<MediaPlayer> {
 
   @override
   void initState() {
+    _groupData = context.read<GroupData>();
+
     _groupSessionBloc = context.read<GroupSessionBloc>();
-    _updateMediaController();
+    _updateMediaController(_groupData, context);
 
     super.initState();
   }
@@ -153,7 +160,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
       listenWhen: (p, c) => p.failureOrMediaOption != c.failureOrMediaOption,
       bloc: _groupSessionBloc,
       listener: (context, state) {
-        _updateMediaController();
+        _updateMediaController(_groupData, context);
       },
     );
   }
