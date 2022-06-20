@@ -9,6 +9,10 @@ import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
 import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
+import 'package:synchrowise/domain/socket/play_video_sm.dart';
+import 'package:synchrowise/domain/socket/skip_forward_sm.dart';
+import 'package:synchrowise/domain/socket/socket_message.dart';
+import 'package:synchrowise/domain/socket/stop_video_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
@@ -58,6 +62,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   StreamSubscription<UserLeftSM>? _userLeftSubscription;
   StreamSubscription<GroupFileUploadedSM>? _groupFileUploadedSubscription;
   StreamSubscription<String>? _deleteFileUploadedSubscription;
+  StreamSubscription<PlayVideoSM>? _playVideoSubscription;
+  StreamSubscription<StopVideoSM>? _stopVideoSubscription;
+  StreamSubscription<SkipForwardSM>? _skipForwardSubscription;
 
   GroupSessionBloc(
     this._iMediaFacade,
@@ -71,6 +78,11 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         init: (e) async {
           await _userJoinedSubscription?.cancel();
           await _userLeftSubscription?.cancel();
+          await _groupFileUploadedSubscription?.cancel();
+          await _deleteFileUploadedSubscription?.cancel();
+          await _playVideoSubscription?.cancel();
+          await _stopVideoSubscription?.cancel();
+          await _skipForwardSubscription?.cancel();
 
           _userJoinedSubscription =
               _iSocketFacade.userJoinedStream.listen((msg) {
@@ -327,6 +339,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
     await _userLeftSubscription?.cancel();
     await _groupFileUploadedSubscription?.cancel();
     await _deleteFileUploadedSubscription?.cancel();
+    await _playVideoSubscription?.cancel();
+    await _stopVideoSubscription?.cancel();
+    await _skipForwardSubscription?.cancel();
 
     return super.close();
   }

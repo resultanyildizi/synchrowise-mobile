@@ -2893,6 +2893,7 @@ class _$GroupSessionStateTearOff {
 
   _GroupSessionState call(
       {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
+      required Option<SocketMessage> incomingMessageOption,
       required Option<Either<GroupRepositoryFailure, Unit>>
           groupFailureOrUnitOption,
       required Option<Either<GroupFileRepositoryFailure, Unit>>
@@ -2903,6 +2904,7 @@ class _$GroupSessionStateTearOff {
       required bool isProgressing}) {
     return _GroupSessionState(
       failureOrMediaOption: failureOrMediaOption,
+      incomingMessageOption: incomingMessageOption,
       groupFailureOrUnitOption: groupFailureOrUnitOption,
       fileFailureOrUnitOption: fileFailureOrUnitOption,
       storageFailureOrUnitOption: storageFailureOrUnitOption,
@@ -2918,6 +2920,8 @@ const $GroupSessionState = _$GroupSessionStateTearOff();
 /// @nodoc
 mixin _$GroupSessionState {
   Option<Either<MediaFailure, Media>> get failureOrMediaOption =>
+      throw _privateConstructorUsedError;
+  Option<SocketMessage> get incomingMessageOption =>
       throw _privateConstructorUsedError;
   Option<Either<GroupRepositoryFailure, Unit>> get groupFailureOrUnitOption =>
       throw _privateConstructorUsedError;
@@ -2941,6 +2945,7 @@ abstract class $GroupSessionStateCopyWith<$Res> {
       _$GroupSessionStateCopyWithImpl<$Res>;
   $Res call(
       {Option<Either<MediaFailure, Media>> failureOrMediaOption,
+      Option<SocketMessage> incomingMessageOption,
       Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption,
       Option<Either<GroupFileRepositoryFailure, Unit>> fileFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -2961,6 +2966,7 @@ class _$GroupSessionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrMediaOption = freezed,
+    Object? incomingMessageOption = freezed,
     Object? groupFailureOrUnitOption = freezed,
     Object? fileFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
@@ -2972,6 +2978,10 @@ class _$GroupSessionStateCopyWithImpl<$Res>
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MediaFailure, Media>>,
+      incomingMessageOption: incomingMessageOption == freezed
+          ? _value.incomingMessageOption
+          : incomingMessageOption // ignore: cast_nullable_to_non_nullable
+              as Option<SocketMessage>,
       groupFailureOrUnitOption: groupFailureOrUnitOption == freezed
           ? _value.groupFailureOrUnitOption
           : groupFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -3005,6 +3015,7 @@ abstract class _$GroupSessionStateCopyWith<$Res>
   @override
   $Res call(
       {Option<Either<MediaFailure, Media>> failureOrMediaOption,
+      Option<SocketMessage> incomingMessageOption,
       Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption,
       Option<Either<GroupFileRepositoryFailure, Unit>> fileFailureOrUnitOption,
       Option<Either<SynchrowiseUserStorageFailure, Unit>>
@@ -3027,6 +3038,7 @@ class __$GroupSessionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failureOrMediaOption = freezed,
+    Object? incomingMessageOption = freezed,
     Object? groupFailureOrUnitOption = freezed,
     Object? fileFailureOrUnitOption = freezed,
     Object? storageFailureOrUnitOption = freezed,
@@ -3038,6 +3050,10 @@ class __$GroupSessionStateCopyWithImpl<$Res>
           ? _value.failureOrMediaOption
           : failureOrMediaOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<MediaFailure, Media>>,
+      incomingMessageOption: incomingMessageOption == freezed
+          ? _value.incomingMessageOption
+          : incomingMessageOption // ignore: cast_nullable_to_non_nullable
+              as Option<SocketMessage>,
       groupFailureOrUnitOption: groupFailureOrUnitOption == freezed
           ? _value.groupFailureOrUnitOption
           : groupFailureOrUnitOption // ignore: cast_nullable_to_non_nullable
@@ -3067,6 +3083,7 @@ class __$GroupSessionStateCopyWithImpl<$Res>
 class _$_GroupSessionState extends _GroupSessionState {
   const _$_GroupSessionState(
       {required this.failureOrMediaOption,
+      required this.incomingMessageOption,
       required this.groupFailureOrUnitOption,
       required this.fileFailureOrUnitOption,
       required this.storageFailureOrUnitOption,
@@ -3076,6 +3093,8 @@ class _$_GroupSessionState extends _GroupSessionState {
 
   @override
   final Option<Either<MediaFailure, Media>> failureOrMediaOption;
+  @override
+  final Option<SocketMessage> incomingMessageOption;
   @override
   final Option<Either<GroupRepositoryFailure, Unit>> groupFailureOrUnitOption;
   @override
@@ -3091,7 +3110,7 @@ class _$_GroupSessionState extends _GroupSessionState {
 
   @override
   String toString() {
-    return 'GroupSessionState(failureOrMediaOption: $failureOrMediaOption, groupFailureOrUnitOption: $groupFailureOrUnitOption, fileFailureOrUnitOption: $fileFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, membersOption: $membersOption, isProgressing: $isProgressing)';
+    return 'GroupSessionState(failureOrMediaOption: $failureOrMediaOption, incomingMessageOption: $incomingMessageOption, groupFailureOrUnitOption: $groupFailureOrUnitOption, fileFailureOrUnitOption: $fileFailureOrUnitOption, storageFailureOrUnitOption: $storageFailureOrUnitOption, membersOption: $membersOption, isProgressing: $isProgressing)';
   }
 
   @override
@@ -3101,6 +3120,8 @@ class _$_GroupSessionState extends _GroupSessionState {
             other is _GroupSessionState &&
             const DeepCollectionEquality()
                 .equals(other.failureOrMediaOption, failureOrMediaOption) &&
+            const DeepCollectionEquality()
+                .equals(other.incomingMessageOption, incomingMessageOption) &&
             const DeepCollectionEquality().equals(
                 other.groupFailureOrUnitOption, groupFailureOrUnitOption) &&
             const DeepCollectionEquality().equals(
@@ -3117,6 +3138,7 @@ class _$_GroupSessionState extends _GroupSessionState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failureOrMediaOption),
+      const DeepCollectionEquality().hash(incomingMessageOption),
       const DeepCollectionEquality().hash(groupFailureOrUnitOption),
       const DeepCollectionEquality().hash(fileFailureOrUnitOption),
       const DeepCollectionEquality().hash(storageFailureOrUnitOption),
@@ -3132,6 +3154,7 @@ class _$_GroupSessionState extends _GroupSessionState {
 abstract class _GroupSessionState extends GroupSessionState {
   const factory _GroupSessionState(
       {required Option<Either<MediaFailure, Media>> failureOrMediaOption,
+      required Option<SocketMessage> incomingMessageOption,
       required Option<Either<GroupRepositoryFailure, Unit>>
           groupFailureOrUnitOption,
       required Option<Either<GroupFileRepositoryFailure, Unit>>
@@ -3144,6 +3167,8 @@ abstract class _GroupSessionState extends GroupSessionState {
 
   @override
   Option<Either<MediaFailure, Media>> get failureOrMediaOption;
+  @override
+  Option<SocketMessage> get incomingMessageOption;
   @override
   Option<Either<GroupRepositoryFailure, Unit>> get groupFailureOrUnitOption;
   @override

@@ -42,8 +42,9 @@ class GroupSessionEvent with _$GroupSessionEvent {
   factory GroupSessionEvent.userJoined({required UserJoinedSM message}) =
       _UserJoinedEvent;
 
-  factory GroupSessionEvent.groupFileUploaded(
-      {required GroupFileUploadedSM message}) = _GroupFileUploadedEvent;
+  factory GroupSessionEvent.groupFileUploaded({
+    required GroupFileUploadedSM message,
+  }) = _GroupFileUploadedEvent;
 
   factory GroupSessionEvent.deleteFileUploaded({required String message}) =
       _deleteFileUploadedEvent;

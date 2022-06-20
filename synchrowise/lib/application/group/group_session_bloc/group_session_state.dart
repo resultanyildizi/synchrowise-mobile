@@ -6,6 +6,7 @@ class GroupSessionState with _$GroupSessionState {
 
   const factory GroupSessionState({
     required Option<Either<MediaFailure, Media>> failureOrMediaOption,
+    required Option<SocketMessage> incomingMessageOption,
     required Option<Either<GroupRepositoryFailure, Unit>>
         groupFailureOrUnitOption,
     required Option<Either<GroupFileRepositoryFailure, Unit>>
@@ -19,6 +20,7 @@ class GroupSessionState with _$GroupSessionState {
   factory GroupSessionState.initial() {
     return GroupSessionState(
       storageFailureOrUnitOption: none(),
+      incomingMessageOption: none(),
       failureOrMediaOption: none(),
       groupFailureOrUnitOption: none(),
       fileFailureOrUnitOption: none(),
