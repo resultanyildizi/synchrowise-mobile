@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
-import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
