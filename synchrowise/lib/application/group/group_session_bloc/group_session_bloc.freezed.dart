@@ -65,6 +65,18 @@ class _$GroupSessionEventTearOff {
   _SeekMediaEvent seekMedia() {
     return _SeekMediaEvent();
   }
+
+  _UserLeftEvent userLeft({required UserLeftSM message}) {
+    return _UserLeftEvent(
+      message: message,
+    );
+  }
+
+  _UserJoinedEvent userJoined({required UserLeftSM message}) {
+    return _UserJoinedEvent(
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -84,6 +96,8 @@ mixin _$GroupSessionEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +111,8 @@ mixin _$GroupSessionEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +126,8 @@ mixin _$GroupSessionEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +142,8 @@ mixin _$GroupSessionEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -137,6 +157,8 @@ mixin _$GroupSessionEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -150,6 +172,8 @@ mixin _$GroupSessionEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -246,6 +270,8 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return init(groupData);
   }
@@ -262,6 +288,8 @@ class _$_InitEvent implements _InitEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return init?.call(groupData);
   }
@@ -278,6 +306,8 @@ class _$_InitEvent implements _InitEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -298,6 +328,8 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return init(this);
   }
@@ -314,6 +346,8 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return init?.call(this);
   }
@@ -330,6 +364,8 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -423,6 +459,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return uploadMedia(groupData);
   }
@@ -439,6 +477,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return uploadMedia?.call(groupData);
   }
@@ -455,6 +495,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -475,6 +517,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return uploadMedia(this);
   }
@@ -491,6 +535,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return uploadMedia?.call(this);
   }
@@ -507,6 +553,8 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -577,6 +625,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return removeMedia();
   }
@@ -593,6 +643,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return removeMedia?.call();
   }
@@ -609,6 +661,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -629,6 +683,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return removeMedia(this);
   }
@@ -645,6 +701,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return removeMedia?.call(this);
   }
@@ -661,6 +719,8 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -749,6 +809,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return leaveGroup(groupData);
   }
@@ -765,6 +827,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return leaveGroup?.call(groupData);
   }
@@ -781,6 +845,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -801,6 +867,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return leaveGroup(this);
   }
@@ -817,6 +885,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return leaveGroup?.call(this);
   }
@@ -833,6 +903,8 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -936,6 +1008,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return deleteMember(groupData, member);
   }
@@ -952,6 +1026,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return deleteMember?.call(groupData, member);
   }
@@ -968,6 +1044,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -988,6 +1066,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return deleteMember(this);
   }
@@ -1004,6 +1084,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return deleteMember?.call(this);
   }
@@ -1020,6 +1102,8 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -1116,6 +1200,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return deleteGroup(groupData);
   }
@@ -1132,6 +1218,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return deleteGroup?.call(groupData);
   }
@@ -1148,6 +1236,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1168,6 +1258,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return deleteGroup(this);
   }
@@ -1184,6 +1276,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return deleteGroup?.call(this);
   }
@@ -1200,6 +1294,8 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1270,6 +1366,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return playMedia();
   }
@@ -1286,6 +1384,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return playMedia?.call();
   }
@@ -1302,6 +1402,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1322,6 +1424,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return playMedia(this);
   }
@@ -1338,6 +1442,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return playMedia?.call(this);
   }
@@ -1354,6 +1460,8 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1418,6 +1526,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return pauseMedia();
   }
@@ -1434,6 +1544,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return pauseMedia?.call();
   }
@@ -1450,6 +1562,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1470,6 +1584,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return pauseMedia(this);
   }
@@ -1486,6 +1602,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return pauseMedia?.call(this);
   }
@@ -1502,6 +1620,8 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1566,6 +1686,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function() playMedia,
     required TResult Function() pauseMedia,
     required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
   }) {
     return seekMedia();
   }
@@ -1582,6 +1704,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
   }) {
     return seekMedia?.call();
   }
@@ -1598,6 +1722,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function()? playMedia,
     TResult Function()? pauseMedia,
     TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1618,6 +1744,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function(_PlayMediaEvent value) playMedia,
     required TResult Function(_PauseMediaEvent value) pauseMedia,
     required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
   }) {
     return seekMedia(this);
   }
@@ -1634,6 +1762,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
   }) {
     return seekMedia?.call(this);
   }
@@ -1650,6 +1780,8 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_PlayMediaEvent value)? playMedia,
     TResult Function(_PauseMediaEvent value)? pauseMedia,
     TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1661,6 +1793,384 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
 
 abstract class _SeekMediaEvent implements GroupSessionEvent {
   factory _SeekMediaEvent() = _$_SeekMediaEvent;
+}
+
+/// @nodoc
+abstract class _$UserLeftEventCopyWith<$Res> {
+  factory _$UserLeftEventCopyWith(
+          _UserLeftEvent value, $Res Function(_UserLeftEvent) then) =
+      __$UserLeftEventCopyWithImpl<$Res>;
+  $Res call({UserLeftSM message});
+}
+
+/// @nodoc
+class __$UserLeftEventCopyWithImpl<$Res>
+    extends _$GroupSessionEventCopyWithImpl<$Res>
+    implements _$UserLeftEventCopyWith<$Res> {
+  __$UserLeftEventCopyWithImpl(
+      _UserLeftEvent _value, $Res Function(_UserLeftEvent) _then)
+      : super(_value, (v) => _then(v as _UserLeftEvent));
+
+  @override
+  _UserLeftEvent get _value => super._value as _UserLeftEvent;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_UserLeftEvent(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as UserLeftSM,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserLeftEvent implements _UserLeftEvent {
+  _$_UserLeftEvent({required this.message});
+
+  @override
+  final UserLeftSM message;
+
+  @override
+  String toString() {
+    return 'GroupSessionEvent.userLeft(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UserLeftEvent &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UserLeftEventCopyWith<_UserLeftEvent> get copyWith =>
+      __$UserLeftEventCopyWithImpl<_UserLeftEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GroupData groupData) init,
+    required TResult Function(GroupData groupData) uploadMedia,
+    required TResult Function() removeMedia,
+    required TResult Function(GroupData groupData) leaveGroup,
+    required TResult Function(GroupData groupData, UserSummary member)
+        deleteMember,
+    required TResult Function(GroupData groupData) deleteGroup,
+    required TResult Function() playMedia,
+    required TResult Function() pauseMedia,
+    required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
+  }) {
+    return userLeft(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
+  }) {
+    return userLeft?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
+    required TResult Function(_UploadMediaEvent value) uploadMedia,
+    required TResult Function(_RemoveMediaEvent value) removeMedia,
+    required TResult Function(_LeaveGroupEvent value) leaveGroup,
+    required TResult Function(_DeleteMemberEvent value) deleteMember,
+    required TResult Function(_DeleteGroupEvent value) deleteGroup,
+    required TResult Function(_PlayMediaEvent value) playMedia,
+    required TResult Function(_PauseMediaEvent value) pauseMedia,
+    required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
+  }) {
+    return userLeft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+  }) {
+    return userLeft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserLeftEvent implements GroupSessionEvent {
+  factory _UserLeftEvent({required UserLeftSM message}) = _$_UserLeftEvent;
+
+  UserLeftSM get message;
+  @JsonKey(ignore: true)
+  _$UserLeftEventCopyWith<_UserLeftEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UserJoinedEventCopyWith<$Res> {
+  factory _$UserJoinedEventCopyWith(
+          _UserJoinedEvent value, $Res Function(_UserJoinedEvent) then) =
+      __$UserJoinedEventCopyWithImpl<$Res>;
+  $Res call({UserLeftSM message});
+}
+
+/// @nodoc
+class __$UserJoinedEventCopyWithImpl<$Res>
+    extends _$GroupSessionEventCopyWithImpl<$Res>
+    implements _$UserJoinedEventCopyWith<$Res> {
+  __$UserJoinedEventCopyWithImpl(
+      _UserJoinedEvent _value, $Res Function(_UserJoinedEvent) _then)
+      : super(_value, (v) => _then(v as _UserJoinedEvent));
+
+  @override
+  _UserJoinedEvent get _value => super._value as _UserJoinedEvent;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_UserJoinedEvent(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as UserLeftSM,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserJoinedEvent implements _UserJoinedEvent {
+  _$_UserJoinedEvent({required this.message});
+
+  @override
+  final UserLeftSM message;
+
+  @override
+  String toString() {
+    return 'GroupSessionEvent.userJoined(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UserJoinedEvent &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UserJoinedEventCopyWith<_UserJoinedEvent> get copyWith =>
+      __$UserJoinedEventCopyWithImpl<_UserJoinedEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GroupData groupData) init,
+    required TResult Function(GroupData groupData) uploadMedia,
+    required TResult Function() removeMedia,
+    required TResult Function(GroupData groupData) leaveGroup,
+    required TResult Function(GroupData groupData, UserSummary member)
+        deleteMember,
+    required TResult Function(GroupData groupData) deleteGroup,
+    required TResult Function() playMedia,
+    required TResult Function() pauseMedia,
+    required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserLeftSM message) userJoined,
+  }) {
+    return userJoined(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
+  }) {
+    return userJoined?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserLeftSM message)? userJoined,
+    required TResult orElse(),
+  }) {
+    if (userJoined != null) {
+      return userJoined(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
+    required TResult Function(_UploadMediaEvent value) uploadMedia,
+    required TResult Function(_RemoveMediaEvent value) removeMedia,
+    required TResult Function(_LeaveGroupEvent value) leaveGroup,
+    required TResult Function(_DeleteMemberEvent value) deleteMember,
+    required TResult Function(_DeleteGroupEvent value) deleteGroup,
+    required TResult Function(_PlayMediaEvent value) playMedia,
+    required TResult Function(_PauseMediaEvent value) pauseMedia,
+    required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
+  }) {
+    return userJoined(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+  }) {
+    return userJoined?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    required TResult orElse(),
+  }) {
+    if (userJoined != null) {
+      return userJoined(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserJoinedEvent implements GroupSessionEvent {
+  factory _UserJoinedEvent({required UserLeftSM message}) = _$_UserJoinedEvent;
+
+  UserLeftSM get message;
+  @JsonKey(ignore: true)
+  _$UserJoinedEventCopyWith<_UserJoinedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

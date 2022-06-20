@@ -26,4 +26,10 @@ class GroupSessionEvent with _$GroupSessionEvent {
   factory GroupSessionEvent.pauseMedia() = _PauseMediaEvent;
 
   factory GroupSessionEvent.seekMedia() = _SeekMediaEvent;
+
+  factory GroupSessionEvent.userLeft({required UserLeftSM message}) =
+      _UserLeftEvent;
+
+  factory GroupSessionEvent.userJoined({required UserLeftSM message}) =
+      _UserJoinedEvent;
 }

@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -5,7 +8,8 @@ import 'package:kt_dart/kt.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
-import 'package:synchrowise/domain/group/group_file.dart';
+import 'package:synchrowise/domain/socket/user_joined_sm.dart';
+import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
@@ -46,6 +50,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   void pauseMedia() => add(GroupSessionEvent.pauseMedia());
   void seekMedia() => add(GroupSessionEvent.seekMedia());
 
+  StreamSubscription<UserJoinedSM>? _userJoinedSubscription;
+  StreamSubscription<UserLeftSM>? _userLeftSubscription;
+
   GroupSessionBloc(
     this._iMediaFacade,
     this._iGroupRepo,
@@ -55,7 +62,23 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   ) : super(GroupSessionState.initial()) {
     on<GroupSessionEvent>((event, emit) async {
       await event.map(
-        init: (e) async {},
+        init: (e) async {
+          await _userJoinedSubscription?.cancel();
+          await _userLeftSubscription?.cancel();
+
+          _userJoinedSubscription =
+              _iSocketFacade.userJoinedStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              log("User joined: ${msg.userSummary.synchrowiseId}");
+            }
+          });
+
+          _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              log("User left: ${msg.userSummary.synchrowiseId}");
+            }
+          });
+        },
         uploadMedia: (e) async {
           emit(state.copyWith(
             isProgressing: true,
@@ -212,7 +235,17 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         removeMedia: (e) async {
           emit(state.copyWith(failureOrMediaOption: none()));
         },
+        userJoined: (_) {},
+        userLeft: (_) {},
       );
     });
+  }
+
+  @override
+  Future<void> close() async {
+    await _userJoinedSubscription?.cancel();
+    await _userLeftSubscription?.cancel();
+
+    return super.close();
   }
 }
