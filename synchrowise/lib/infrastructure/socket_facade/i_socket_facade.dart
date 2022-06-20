@@ -6,6 +6,7 @@ abstract class ISocketFacade {
   Future<void> sendUploadMediaMessage(String fileGuid);
   Future<void> sendJoinGroupMessage();
   Future<void> sendLeaveGroupMessage();
+  Future<void> deleteFileUploadMessage();
 
   Stream<UserJoinedSM> get userJoinedStream;
   Stream<UserLeftSM> get userLeftStream;
