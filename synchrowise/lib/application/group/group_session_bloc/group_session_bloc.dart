@@ -254,6 +254,10 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               return const KtList<UserSummary>.empty();
             },
             (members) {
+              if (members.contains(e.message.userSummary)) {
+                return members;
+              }
+
               return members.plusElement(e.message.userSummary);
             },
           );
