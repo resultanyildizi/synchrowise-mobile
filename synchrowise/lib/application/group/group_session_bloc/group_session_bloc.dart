@@ -68,14 +68,16 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           _userJoinedSubscription =
               _iSocketFacade.userJoinedStream.listen((msg) {
+            log(msg.groupId);
             if (e.groupData.groupId == msg.groupId) {
-              GroupSessionEvent.userJoined(message: msg);
+              log(msg.groupId);
+              add(GroupSessionEvent.userJoined(message: msg));
             }
           });
 
           _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
             if (e.groupData.groupId == msg.groupId) {
-              GroupSessionEvent.userLeft(message: msg);
+              add(GroupSessionEvent.userLeft(message: msg));
             }
           });
         },
@@ -248,7 +250,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               return const KtList<UserSummary>.empty();
             },
             (members) {
-              return KtList.from(members.asList()..add(e.message.userSummary));
+              return members.plusElement(e.message.userSummary);
             },
           );
 
@@ -260,8 +262,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               return const KtList<UserSummary>.empty();
             },
             (members) {
-              return KtList.from(
-                  members.asList()..remove(e.message.userSummary));
+              return members.minusElement(e.message.userSummary);
             },
           );
 
