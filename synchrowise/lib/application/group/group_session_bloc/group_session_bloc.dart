@@ -320,6 +320,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
     await _userJoinedSubscription?.cancel();
     await _userLeftSubscription?.cancel();
     await _groupFileUploadedSubscription?.cancel();
+    await _deleteFileUploadedSubscription?.cancel();
 
     return super.close();
   }
