@@ -84,17 +84,19 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('StopVideo', (messages) {
-        // {
-        //   "groupId": "",
-        //   "stopTimeMs":""
-        // }
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          final stopVideoMsg = StopVideoSM.fromMap(message);
+          _stopVideoSubject.add(stopVideoMsg);
+        }
       });
 
       _connection!.on('SkipForward', (messages) {
-        // {
-        //   "groupId": "",
-        //   "forwardTimeMs":""
-        // }
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          final skipForwardMsg = SkipForwardSM.fromMap(message);
+          _skipForwardSubject.add(skipForwardMsg);
+        }
       });
     } catch (_) {
       await _connection?.stop();
