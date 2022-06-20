@@ -80,6 +80,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               add(GroupSessionEvent.userLeft(message: msg));
             }
           });
+
+          emit(state.copyWith(membersOption: some(e.groupData.members)));
         },
         uploadMedia: (e) async {
           emit(state.copyWith(
@@ -245,6 +247,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           emit(state.copyWith(failureOrMediaOption: none()));
         },
         userJoined: (e) {
+          log(e.message.userSummary.toString());
+
           final newList = state.membersOption.fold(
             () {
               return const KtList<UserSummary>.empty();
@@ -253,6 +257,8 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               return members.plusElement(e.message.userSummary);
             },
           );
+
+          log(newList.toString());
 
           emit(state.copyWith(membersOption: some(newList)));
         },
