@@ -1,3 +1,5 @@
+import 'package:synchrowise/domain/auth/avatar.dart';
+import 'package:synchrowise/domain/auth/premium.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/socket/socket_message.dart';
 
@@ -13,7 +15,16 @@ class UserLeftSM extends SocketMessage {
   factory UserLeftSM.fromMap(Map<String, dynamic> map) {
     return UserLeftSM(
       groupId: map['groupId'],
-      userSummary: UserSummary.fromSocketMap(map),
+      userSummary: UserSummary(
+        synchrowiseId: map['user']['Guid'],
+        avatar: Avatar(
+          url: map['user']['Avatar']['Url'],
+          id: map['user']['Avatar']['Guid'],
+        ),
+        username: map['user']['Username'],
+        email: map['user']['Email'],
+        premium: Premium.fromValue(map['user']['PremiumType']),
+      ),
     );
   }
 }

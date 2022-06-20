@@ -35,18 +35,28 @@ class SocketFacade implements ISocketFacade {
       await _connection!.start();
 
       _connection!.on('JoinedGroup', (messages) {
-        if ((messages ?? []).isNotEmpty) {
-          final message = json.decode(messages!.first) as Map<String, dynamic>;
-          _userJoinedSubject.add(UserJoinedSM.fromMap(message));
+        try {
+          if ((messages ?? []).isNotEmpty) {
+            final message =
+                json.decode(messages!.first) as Map<String, dynamic>;
+
+            final userJoinedMsg = UserJoinedSM.fromMap(message);
+
+            _userJoinedSubject.add(userJoinedMsg);
+          }
+        } catch (_) {
+          log(_.toString());
         }
       });
 
       _connection!.on('LeftGroup', (messages) {
         if ((messages ?? []).isNotEmpty) {
+          log(messages.toString());
+
           final message = json.decode(messages!.first) as Map<String, dynamic>;
-          _userLeftSubject.add(UserLeftSM.fromMap(message));
+          final userLeftMsg = UserLeftSM.fromMap(message);
+          _userLeftSubject.add(userLeftMsg);
         }
-        log(messages.toString());
       });
 
       _connection!.on('GroupFileUploaded', (messages) {
