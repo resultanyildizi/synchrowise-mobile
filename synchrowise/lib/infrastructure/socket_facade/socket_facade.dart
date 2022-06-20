@@ -52,6 +52,10 @@ class SocketFacade implements ISocketFacade {
       _connection!.on('GroupFileUploaded', (messages) {
         log(messages.toString());
       });
+
+      _connection!.on('GroupFileDeleted', (messages) {
+        log(messages.toString());
+      });
     } catch (_) {
       await _connection?.stop();
       _connection = null;
@@ -71,6 +75,11 @@ class SocketFacade implements ISocketFacade {
   @override
   Future<void> sendUploadMediaMessage(String fileGuid) {
     return _connection!.invoke('UploadGroupFile', args: [fileGuid]);
+  }
+
+  @override
+  Future<void> deleteFileUploadMessage() {
+    return _connection!.invoke('DeleteFileUploadMessage');
   }
 
   @override
