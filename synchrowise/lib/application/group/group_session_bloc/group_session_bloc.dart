@@ -295,7 +295,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         },
         groupFileUploaded: (e) async {
           final failureOrMedia =
-              await _iMediaFacade.downloadFromUrl(url: e.message.filePath);
+              await _iMediaFacade.downloadFromUrl(url: e.message.getHttpsPath);
 
           final newState = failureOrMedia.fold(
             (l) => state.copyWith(
