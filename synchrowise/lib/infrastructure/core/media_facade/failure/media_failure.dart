@@ -9,4 +9,6 @@ abstract class MediaFailure extends SynchrowiseFailure with _$MediaFailure {
   const factory MediaFailure.sizeFailure(double mediaSize) = _SizeFailure;
   const factory MediaFailure.unsupportedFailure(String ext) =
       _UnsupportedFailure;
+
+  const factory MediaFailure.downloadFailure() = _DownloadFailure;
 }

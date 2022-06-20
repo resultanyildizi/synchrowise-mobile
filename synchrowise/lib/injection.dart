@@ -104,7 +104,7 @@ Future<void> _setupInfrastructure() async {
     SynchrowiseFirebaseMessaging(),
   );
   getIt.registerSingleton<IMediaPickerFacade>(
-    MediaPickerFacade(getIt<FilePicker>()),
+    MediaPickerFacade(getIt<FilePicker>(), getIt<Client>()),
   );
   getIt.registerSingleton<IShareFacade>(ShareFacade());
 }

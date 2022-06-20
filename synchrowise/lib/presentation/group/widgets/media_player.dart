@@ -182,6 +182,12 @@ class _MediaPlayerState extends State<MediaPlayer> {
                       ToastGravity.BOTTOM,
                     );
                   },
+                  downloadFailure: (f) {
+                    showErrorToast(
+                      "media_download_error".tr(),
+                      ToastGravity.BOTTOM,
+                    );
+                  },
                 );
               },
               (_) {},

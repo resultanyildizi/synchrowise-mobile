@@ -35,6 +35,10 @@ class _$MediaFailureTearOff {
       ext,
     );
   }
+
+  _DownloadFailure downloadFailure() {
+    return const _DownloadFailure();
+  }
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ mixin _$MediaFailure {
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
     required TResult Function(String ext) unsupportedFailure,
+    required TResult Function() downloadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$MediaFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +67,7 @@ mixin _$MediaFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,6 +76,7 @@ mixin _$MediaFailure {
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
     required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+    required TResult Function(_DownloadFailure value) downloadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +84,7 @@ mixin _$MediaFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +92,7 @@ mixin _$MediaFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +181,7 @@ class _$_PickFailure implements _PickFailure {
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
     required TResult Function(String ext) unsupportedFailure,
+    required TResult Function() downloadFailure,
   }) {
     return pickFailure(message);
   }
@@ -181,6 +192,7 @@ class _$_PickFailure implements _PickFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
   }) {
     return pickFailure?.call(message);
   }
@@ -191,6 +203,7 @@ class _$_PickFailure implements _PickFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
     required TResult orElse(),
   }) {
     if (pickFailure != null) {
@@ -205,6 +218,7 @@ class _$_PickFailure implements _PickFailure {
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
     required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+    required TResult Function(_DownloadFailure value) downloadFailure,
   }) {
     return pickFailure(this);
   }
@@ -215,6 +229,7 @@ class _$_PickFailure implements _PickFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
   }) {
     return pickFailure?.call(this);
   }
@@ -225,6 +240,7 @@ class _$_PickFailure implements _PickFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
     required TResult orElse(),
   }) {
     if (pickFailure != null) {
@@ -310,6 +326,7 @@ class _$_SizeFailure implements _SizeFailure {
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
     required TResult Function(String ext) unsupportedFailure,
+    required TResult Function() downloadFailure,
   }) {
     return sizeFailure(mediaSize);
   }
@@ -320,6 +337,7 @@ class _$_SizeFailure implements _SizeFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
   }) {
     return sizeFailure?.call(mediaSize);
   }
@@ -330,6 +348,7 @@ class _$_SizeFailure implements _SizeFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
     required TResult orElse(),
   }) {
     if (sizeFailure != null) {
@@ -344,6 +363,7 @@ class _$_SizeFailure implements _SizeFailure {
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
     required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+    required TResult Function(_DownloadFailure value) downloadFailure,
   }) {
     return sizeFailure(this);
   }
@@ -354,6 +374,7 @@ class _$_SizeFailure implements _SizeFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
   }) {
     return sizeFailure?.call(this);
   }
@@ -364,6 +385,7 @@ class _$_SizeFailure implements _SizeFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
     required TResult orElse(),
   }) {
     if (sizeFailure != null) {
@@ -450,6 +472,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     required TResult Function(String? message) pickFailure,
     required TResult Function(double mediaSize) sizeFailure,
     required TResult Function(String ext) unsupportedFailure,
+    required TResult Function() downloadFailure,
   }) {
     return unsupportedFailure(ext);
   }
@@ -460,6 +483,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
   }) {
     return unsupportedFailure?.call(ext);
   }
@@ -470,6 +494,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     TResult Function(String? message)? pickFailure,
     TResult Function(double mediaSize)? sizeFailure,
     TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
     required TResult orElse(),
   }) {
     if (unsupportedFailure != null) {
@@ -484,6 +509,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     required TResult Function(_PickFailure value) pickFailure,
     required TResult Function(_SizeFailure value) sizeFailure,
     required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+    required TResult Function(_DownloadFailure value) downloadFailure,
   }) {
     return unsupportedFailure(this);
   }
@@ -494,6 +520,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
   }) {
     return unsupportedFailure?.call(this);
   }
@@ -504,6 +531,7 @@ class _$_UnsupportedFailure implements _UnsupportedFailure {
     TResult Function(_PickFailure value)? pickFailure,
     TResult Function(_SizeFailure value)? sizeFailure,
     TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
     required TResult orElse(),
   }) {
     if (unsupportedFailure != null) {
@@ -520,4 +548,121 @@ abstract class _UnsupportedFailure implements MediaFailure {
   @JsonKey(ignore: true)
   _$UnsupportedFailureCopyWith<_UnsupportedFailure> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DownloadFailureCopyWith<$Res> {
+  factory _$DownloadFailureCopyWith(
+          _DownloadFailure value, $Res Function(_DownloadFailure) then) =
+      __$DownloadFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DownloadFailureCopyWithImpl<$Res>
+    extends _$MediaFailureCopyWithImpl<$Res>
+    implements _$DownloadFailureCopyWith<$Res> {
+  __$DownloadFailureCopyWithImpl(
+      _DownloadFailure _value, $Res Function(_DownloadFailure) _then)
+      : super(_value, (v) => _then(v as _DownloadFailure));
+
+  @override
+  _DownloadFailure get _value => super._value as _DownloadFailure;
+}
+
+/// @nodoc
+
+class _$_DownloadFailure implements _DownloadFailure {
+  const _$_DownloadFailure();
+
+  @override
+  String toString() {
+    return 'MediaFailure.downloadFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _DownloadFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) pickFailure,
+    required TResult Function(double mediaSize) sizeFailure,
+    required TResult Function(String ext) unsupportedFailure,
+    required TResult Function() downloadFailure,
+  }) {
+    return downloadFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? pickFailure,
+    TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
+  }) {
+    return downloadFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? pickFailure,
+    TResult Function(double mediaSize)? sizeFailure,
+    TResult Function(String ext)? unsupportedFailure,
+    TResult Function()? downloadFailure,
+    required TResult orElse(),
+  }) {
+    if (downloadFailure != null) {
+      return downloadFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PickFailure value) pickFailure,
+    required TResult Function(_SizeFailure value) sizeFailure,
+    required TResult Function(_UnsupportedFailure value) unsupportedFailure,
+    required TResult Function(_DownloadFailure value) downloadFailure,
+  }) {
+    return downloadFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PickFailure value)? pickFailure,
+    TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
+  }) {
+    return downloadFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PickFailure value)? pickFailure,
+    TResult Function(_SizeFailure value)? sizeFailure,
+    TResult Function(_UnsupportedFailure value)? unsupportedFailure,
+    TResult Function(_DownloadFailure value)? downloadFailure,
+    required TResult orElse(),
+  }) {
+    if (downloadFailure != null) {
+      return downloadFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DownloadFailure implements MediaFailure {
+  const factory _DownloadFailure() = _$_DownloadFailure;
 }
