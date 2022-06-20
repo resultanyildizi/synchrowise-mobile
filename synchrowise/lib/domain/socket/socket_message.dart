@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 enum SocketMessageType {
   userJoined,
   userLeft,
@@ -9,7 +11,7 @@ enum SocketMessageType {
   mediaForwarded,
 }
 
-abstract class SocketMessage {
+abstract class SocketMessage extends Equatable {
   const SocketMessage();
   SocketMessageType get type;
 }

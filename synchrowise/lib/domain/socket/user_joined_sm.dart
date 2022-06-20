@@ -26,4 +26,7 @@ class UserJoinedSM extends SocketMessage {
           premium: Premium.fromValue(map['user']['PremiumType']),
         ));
   }
+
+  @override
+  List<Object?> get props => [groupId, userSummary];
 }

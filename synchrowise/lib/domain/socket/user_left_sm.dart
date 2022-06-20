@@ -12,4 +12,7 @@ class UserLeftSM extends SocketMessage {
   factory UserLeftSM.fromMap(Map<String, dynamic> map) {
     return UserLeftSM(groupId: map['groupId'], userId: map['userId']);
   }
+
+  @override
+  List<Object?> get props => [groupId, userId];
 }

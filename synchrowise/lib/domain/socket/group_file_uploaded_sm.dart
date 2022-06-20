@@ -24,4 +24,7 @@ class GroupFileUploadedSM extends SocketMessage {
     return GroupFileUploadedSM(
         groupId: map['groupId'], filePath: map['filePath']);
   }
+
+  @override
+  List<Object?> get props => [groupId, filePath];
 }

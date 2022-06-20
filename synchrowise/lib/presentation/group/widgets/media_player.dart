@@ -7,6 +7,9 @@ import 'package:synchrowise/application/group/group_session_bloc/group_session_b
 import 'package:synchrowise/constants.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/domain/socket/play_video_sm.dart';
+import 'package:synchrowise/domain/socket/skip_forward_sm.dart';
+import 'package:synchrowise/domain/socket/stop_video_sm.dart';
 import 'package:synchrowise/extensions/build_context_ext.dart';
 import 'package:synchrowise/presentation/core/functions/show_toast.dart';
 import 'package:synchrowise/presentation/helpers/wave_loading_indicator.dart';
@@ -117,6 +120,7 @@ class _MediaPlayerState extends State<MediaPlayer> {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
+        _getIncomingMessageBlocListener(),
         _getMediaChangedBlocListener(),
         _getMediaFailureBlocListener(),
       ],
@@ -170,6 +174,31 @@ class _MediaPlayerState extends State<MediaPlayer> {
       bloc: _groupSessionBloc,
       listener: (context, state) {
         _updateMediaController(_groupData, context);
+      },
+    );
+  }
+
+  BlocListener<GroupSessionBloc, GroupSessionState>
+      _getIncomingMessageBlocListener() {
+    return BlocListener<GroupSessionBloc, GroupSessionState>(
+      listenWhen: ((previous, current) =>
+          previous.incomingMessageOption != current.incomingMessageOption),
+      listener: (context, state) async {
+        state.incomingMessageOption.fold(
+          () {},
+          (message) async {
+            if (_videoPlayerController == null) return;
+            if (message is PlayVideoSM) {
+              await _videoPlayerController!.seekTo(message.playTime);
+              await _videoPlayerController!.play();
+            } else if (message is StopVideoSM) {
+              await _videoPlayerController!.seekTo(message.stopTime);
+              await _videoPlayerController!.pause();
+            } else if (message is SkipForwardSM) {
+              await _videoPlayerController!.seekTo(message.forwardTime);
+            }
+          },
+        );
       },
     );
   }

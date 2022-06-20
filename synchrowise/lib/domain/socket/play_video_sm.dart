@@ -1,21 +1,26 @@
-import 'package:equatable/equatable.dart';
+import 'package:synchrowise/domain/helper/duration_adapter.dart';
+import 'package:synchrowise/domain/socket/socket_message.dart';
 
-class PlayVideoSM extends Equatable {
+class PlayVideoSM extends SocketMessage {
   final String groupId;
-  final int playTimeMs;
+  final Duration playTime;
 
   const PlayVideoSM({
     required this.groupId,
-    required this.playTimeMs,
+    required this.playTime,
   });
 
   factory PlayVideoSM.fromMap(Map<String, dynamic> map) {
+    final playtime = DurationAdapter.fromMilliseconds(map['playTimeMs']);
     return PlayVideoSM(
       groupId: map['groupId'],
-      playTimeMs: map['playTimeMs'],
+      playTime: playtime,
     );
   }
 
   @override
-  List<Object?> get props => [groupId, playTimeMs];
+  SocketMessageType get type => SocketMessageType.mediaPlayed;
+
+  @override
+  List<Object?> get props => [groupId, playTime];
 }
