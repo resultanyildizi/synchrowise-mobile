@@ -63,10 +63,14 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('GroupFileDeleted', (messages) {
-        if ((messages ?? []).isNotEmpty) {
-          final message = json.decode(messages!.first) as Map<String, dynamic>;
-          final groupMediaMsg = message["groupId"];
-          _deleteFileUploadedSubject.add(groupMediaMsg);
+        try {
+          if ((messages ?? []).isNotEmpty) {
+            final message = messages![0]['groupId'] as String;
+
+            _deleteFileUploadedSubject.add(message);
+          }
+        } catch (e) {
+          log(e.toString());
         }
       });
     } catch (_) {
