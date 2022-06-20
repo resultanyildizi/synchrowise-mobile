@@ -69,13 +69,13 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           _userJoinedSubscription =
               _iSocketFacade.userJoinedStream.listen((msg) {
             if (e.groupData.groupId == msg.groupId) {
-              log("User joined: ${msg.userSummary.synchrowiseId}");
+              GroupSessionEvent.userJoined(message: msg);
             }
           });
 
           _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
             if (e.groupData.groupId == msg.groupId) {
-              log("User left: ${msg.userSummary.synchrowiseId}");
+              GroupSessionEvent.userLeft(message: msg);
             }
           });
         },
@@ -238,8 +238,31 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           emit(state.copyWith(failureOrMediaOption: none()));
         },
-        userJoined: (_) {},
-        userLeft: (_) {},
+        userJoined: (e) {
+          final newList = state.membersOption.fold(
+            () {
+              return const KtList<UserSummary>.empty();
+            },
+            (members) {
+              return KtList.from(members.asList()..add(e.message.userSummary));
+            },
+          );
+
+          emit(state.copyWith(membersOption: some(newList)));
+        },
+        userLeft: (e) {
+          final newList = state.membersOption.fold(
+            () {
+              return const KtList<UserSummary>.empty();
+            },
+            (members) {
+              return KtList.from(
+                  members.asList()..remove(e.message.userSummary));
+            },
+          );
+
+          emit(state.copyWith(membersOption: some(newList)));
+        },
       );
     });
   }

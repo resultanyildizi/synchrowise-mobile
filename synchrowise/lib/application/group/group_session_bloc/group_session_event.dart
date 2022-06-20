@@ -30,6 +30,6 @@ class GroupSessionEvent with _$GroupSessionEvent {
   factory GroupSessionEvent.userLeft({required UserLeftSM message}) =
       _UserLeftEvent;
 
-  factory GroupSessionEvent.userJoined({required UserLeftSM message}) =
+  factory GroupSessionEvent.userJoined({required UserJoinedSM message}) =
       _UserJoinedEvent;
 }
