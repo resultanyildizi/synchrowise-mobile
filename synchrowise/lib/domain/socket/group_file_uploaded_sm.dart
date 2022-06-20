@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:synchrowise/domain/socket/socket_message.dart';
 
 class GroupFileUploadedSM extends SocketMessage {
@@ -9,6 +8,14 @@ class GroupFileUploadedSM extends SocketMessage {
     required this.groupId,
     required this.filePath,
   });
+
+  String get getHttpsPath {
+    if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
+      return filePath.replaceAll('\\', '/');
+    } else {
+      return "https://${filePath.replaceAll("\\", "/")}";
+    }
+  }
 
   @override
   SocketMessageType get type => SocketMessageType.mediaUploaded;
