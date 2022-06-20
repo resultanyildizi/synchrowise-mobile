@@ -79,7 +79,7 @@ class SocketFacade implements ISocketFacade {
   }
 
   @override
-  Future<void> sendLeaveGroupMessage() {
+  Future<void> sendLeaveGroupMessage(String groupId) {
     return _connection!.invoke('LeaveGroup');
   }
 

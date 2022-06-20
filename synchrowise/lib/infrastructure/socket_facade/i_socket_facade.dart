@@ -5,7 +5,7 @@ abstract class ISocketFacade {
   Future<void> connectToSocket(String synchrowiseId);
   Future<void> sendUploadMediaMessage(String fileGuid);
   Future<void> sendJoinGroupMessage();
-  Future<void> sendLeaveGroupMessage();
+  Future<void> sendLeaveGroupMessage(String groupId);
   Future<void> deleteFileUploadMessage();
 
   Stream<UserJoinedSM> get userJoinedStream;

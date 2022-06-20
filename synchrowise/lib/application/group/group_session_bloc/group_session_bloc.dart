@@ -175,31 +175,35 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           final failureOrUser = await _iUserStorage.get();
 
-          final newState = await failureOrUser.fold((failure) async {
-            return state.copyWith(
-              storageFailureOrUnitOption: some(left(failure)),
-            );
-          }, (user) async {
-            final failureOrUnit = await _iGroupRepo.deleteMember(
-              groupData: e.groupData,
-              synchrowiseUserId: user.synchrowiseId,
-            );
+          final newState = await failureOrUser.fold(
+            (failure) async {
+              return state.copyWith(
+                storageFailureOrUnitOption: some(left(failure)),
+              );
+            },
+            (user) async {
+              final failureOrUnit = await _iGroupRepo.deleteMember(
+                groupData: e.groupData,
+                synchrowiseUserId: user.synchrowiseId,
+              );
 
-            return await failureOrUnit.fold(
-              (f) async {
-                return state.copyWith(
-                  groupFailureOrUnitOption: some(left(f)),
-                );
-              },
-              (_) async {
-                await _iSocketFacade.sendLeaveGroupMessage();
+              return await failureOrUnit.fold(
+                (f) async {
+                  return state.copyWith(
+                    groupFailureOrUnitOption: some(left(f)),
+                  );
+                },
+                (_) async {
+                  await _iSocketFacade
+                      .sendLeaveGroupMessage(e.groupData.groupId);
 
-                return state.copyWith(
-                  groupFailureOrUnitOption: some(right(unit)),
-                );
-              },
-            );
-          });
+                  return state.copyWith(
+                    groupFailureOrUnitOption: some(right(unit)),
+                  );
+                },
+              );
+            },
+          );
 
           emit(newState.copyWith(isProgressing: false));
         },
