@@ -21,11 +21,20 @@ class GroupSessionEvent with _$GroupSessionEvent {
   factory GroupSessionEvent.deleteGroup({required GroupData groupData}) =
       _DeleteGroupEvent;
 
-  factory GroupSessionEvent.playMedia() = _PlayMediaEvent;
+  factory GroupSessionEvent.playMedia({
+    required GroupData groupData,
+    required int timeMs,
+  }) = _PlayMediaEvent;
 
-  factory GroupSessionEvent.pauseMedia() = _PauseMediaEvent;
+  factory GroupSessionEvent.pauseMedia({
+    required GroupData groupData,
+    required int timeMs,
+  }) = _PauseMediaEvent;
 
-  factory GroupSessionEvent.seekMedia() = _SeekMediaEvent;
+  factory GroupSessionEvent.seekMedia({
+    required GroupData groupData,
+    required int timeMs,
+  }) = _SeekMediaEvent;
 
   factory GroupSessionEvent.userLeft({required UserLeftSM message}) =
       _UserLeftEvent;

@@ -54,16 +54,28 @@ class _$GroupSessionEventTearOff {
     );
   }
 
-  _PlayMediaEvent playMedia() {
-    return _PlayMediaEvent();
+  _PlayMediaEvent playMedia(
+      {required GroupData groupData, required int timeMs}) {
+    return _PlayMediaEvent(
+      groupData: groupData,
+      timeMs: timeMs,
+    );
   }
 
-  _PauseMediaEvent pauseMedia() {
-    return _PauseMediaEvent();
+  _PauseMediaEvent pauseMedia(
+      {required GroupData groupData, required int timeMs}) {
+    return _PauseMediaEvent(
+      groupData: groupData,
+      timeMs: timeMs,
+    );
   }
 
-  _SeekMediaEvent seekMedia() {
-    return _SeekMediaEvent();
+  _SeekMediaEvent seekMedia(
+      {required GroupData groupData, required int timeMs}) {
+    return _SeekMediaEvent(
+      groupData: groupData,
+      timeMs: timeMs,
+    );
   }
 
   _UserLeftEvent userLeft({required UserLeftSM message}) {
@@ -106,9 +118,9 @@ mixin _$GroupSessionEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -123,9 +135,9 @@ mixin _$GroupSessionEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -140,9 +152,9 @@ mixin _$GroupSessionEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -293,9 +305,9 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -313,9 +325,9 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -333,9 +345,9 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -495,9 +507,9 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -515,9 +527,9 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -535,9 +547,9 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -674,9 +686,9 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -694,9 +706,9 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -714,9 +726,9 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -871,9 +883,9 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -891,9 +903,9 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -911,9 +923,9 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1083,9 +1095,9 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -1103,9 +1115,9 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1123,9 +1135,9 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1288,9 +1300,9 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -1308,9 +1320,9 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1328,9 +1340,9 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1424,6 +1436,7 @@ abstract class _$PlayMediaEventCopyWith<$Res> {
   factory _$PlayMediaEventCopyWith(
           _PlayMediaEvent value, $Res Function(_PlayMediaEvent) then) =
       __$PlayMediaEventCopyWithImpl<$Res>;
+  $Res call({GroupData groupData, int timeMs});
 }
 
 /// @nodoc
@@ -1436,26 +1449,59 @@ class __$PlayMediaEventCopyWithImpl<$Res>
 
   @override
   _PlayMediaEvent get _value => super._value as _PlayMediaEvent;
+
+  @override
+  $Res call({
+    Object? groupData = freezed,
+    Object? timeMs = freezed,
+  }) {
+    return _then(_PlayMediaEvent(
+      groupData: groupData == freezed
+          ? _value.groupData
+          : groupData // ignore: cast_nullable_to_non_nullable
+              as GroupData,
+      timeMs: timeMs == freezed
+          ? _value.timeMs
+          : timeMs // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_PlayMediaEvent implements _PlayMediaEvent {
-  _$_PlayMediaEvent();
+  _$_PlayMediaEvent({required this.groupData, required this.timeMs});
+
+  @override
+  final GroupData groupData;
+  @override
+  final int timeMs;
 
   @override
   String toString() {
-    return 'GroupSessionEvent.playMedia()';
+    return 'GroupSessionEvent.playMedia(groupData: $groupData, timeMs: $timeMs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PlayMediaEvent);
+        (other.runtimeType == runtimeType &&
+            other is _PlayMediaEvent &&
+            const DeepCollectionEquality().equals(other.groupData, groupData) &&
+            const DeepCollectionEquality().equals(other.timeMs, timeMs));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(groupData),
+      const DeepCollectionEquality().hash(timeMs));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PlayMediaEventCopyWith<_PlayMediaEvent> get copyWith =>
+      __$PlayMediaEventCopyWithImpl<_PlayMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1467,15 +1513,15 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
     required TResult Function(String message) deleteFileUploaded,
   }) {
-    return playMedia();
+    return playMedia(groupData, timeMs);
   }
 
   @override
@@ -1487,15 +1533,15 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
     TResult Function(String message)? deleteFileUploaded,
   }) {
-    return playMedia?.call();
+    return playMedia?.call(groupData, timeMs);
   }
 
   @override
@@ -1507,9 +1553,9 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1517,7 +1563,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult orElse(),
   }) {
     if (playMedia != null) {
-      return playMedia();
+      return playMedia(groupData, timeMs);
     }
     return orElse();
   }
@@ -1589,7 +1635,14 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
 }
 
 abstract class _PlayMediaEvent implements GroupSessionEvent {
-  factory _PlayMediaEvent() = _$_PlayMediaEvent;
+  factory _PlayMediaEvent({required GroupData groupData, required int timeMs}) =
+      _$_PlayMediaEvent;
+
+  GroupData get groupData;
+  int get timeMs;
+  @JsonKey(ignore: true)
+  _$PlayMediaEventCopyWith<_PlayMediaEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1597,6 +1650,7 @@ abstract class _$PauseMediaEventCopyWith<$Res> {
   factory _$PauseMediaEventCopyWith(
           _PauseMediaEvent value, $Res Function(_PauseMediaEvent) then) =
       __$PauseMediaEventCopyWithImpl<$Res>;
+  $Res call({GroupData groupData, int timeMs});
 }
 
 /// @nodoc
@@ -1609,26 +1663,59 @@ class __$PauseMediaEventCopyWithImpl<$Res>
 
   @override
   _PauseMediaEvent get _value => super._value as _PauseMediaEvent;
+
+  @override
+  $Res call({
+    Object? groupData = freezed,
+    Object? timeMs = freezed,
+  }) {
+    return _then(_PauseMediaEvent(
+      groupData: groupData == freezed
+          ? _value.groupData
+          : groupData // ignore: cast_nullable_to_non_nullable
+              as GroupData,
+      timeMs: timeMs == freezed
+          ? _value.timeMs
+          : timeMs // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_PauseMediaEvent implements _PauseMediaEvent {
-  _$_PauseMediaEvent();
+  _$_PauseMediaEvent({required this.groupData, required this.timeMs});
+
+  @override
+  final GroupData groupData;
+  @override
+  final int timeMs;
 
   @override
   String toString() {
-    return 'GroupSessionEvent.pauseMedia()';
+    return 'GroupSessionEvent.pauseMedia(groupData: $groupData, timeMs: $timeMs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PauseMediaEvent);
+        (other.runtimeType == runtimeType &&
+            other is _PauseMediaEvent &&
+            const DeepCollectionEquality().equals(other.groupData, groupData) &&
+            const DeepCollectionEquality().equals(other.timeMs, timeMs));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(groupData),
+      const DeepCollectionEquality().hash(timeMs));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PauseMediaEventCopyWith<_PauseMediaEvent> get copyWith =>
+      __$PauseMediaEventCopyWithImpl<_PauseMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1640,15 +1727,15 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
     required TResult Function(String message) deleteFileUploaded,
   }) {
-    return pauseMedia();
+    return pauseMedia(groupData, timeMs);
   }
 
   @override
@@ -1660,15 +1747,15 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
     TResult Function(String message)? deleteFileUploaded,
   }) {
-    return pauseMedia?.call();
+    return pauseMedia?.call(groupData, timeMs);
   }
 
   @override
@@ -1680,9 +1767,9 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1690,7 +1777,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
-      return pauseMedia();
+      return pauseMedia(groupData, timeMs);
     }
     return orElse();
   }
@@ -1762,7 +1849,14 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
 }
 
 abstract class _PauseMediaEvent implements GroupSessionEvent {
-  factory _PauseMediaEvent() = _$_PauseMediaEvent;
+  factory _PauseMediaEvent(
+      {required GroupData groupData, required int timeMs}) = _$_PauseMediaEvent;
+
+  GroupData get groupData;
+  int get timeMs;
+  @JsonKey(ignore: true)
+  _$PauseMediaEventCopyWith<_PauseMediaEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1770,6 +1864,7 @@ abstract class _$SeekMediaEventCopyWith<$Res> {
   factory _$SeekMediaEventCopyWith(
           _SeekMediaEvent value, $Res Function(_SeekMediaEvent) then) =
       __$SeekMediaEventCopyWithImpl<$Res>;
+  $Res call({GroupData groupData, int timeMs});
 }
 
 /// @nodoc
@@ -1782,26 +1877,59 @@ class __$SeekMediaEventCopyWithImpl<$Res>
 
   @override
   _SeekMediaEvent get _value => super._value as _SeekMediaEvent;
+
+  @override
+  $Res call({
+    Object? groupData = freezed,
+    Object? timeMs = freezed,
+  }) {
+    return _then(_SeekMediaEvent(
+      groupData: groupData == freezed
+          ? _value.groupData
+          : groupData // ignore: cast_nullable_to_non_nullable
+              as GroupData,
+      timeMs: timeMs == freezed
+          ? _value.timeMs
+          : timeMs // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_SeekMediaEvent implements _SeekMediaEvent {
-  _$_SeekMediaEvent();
+  _$_SeekMediaEvent({required this.groupData, required this.timeMs});
+
+  @override
+  final GroupData groupData;
+  @override
+  final int timeMs;
 
   @override
   String toString() {
-    return 'GroupSessionEvent.seekMedia()';
+    return 'GroupSessionEvent.seekMedia(groupData: $groupData, timeMs: $timeMs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SeekMediaEvent);
+        (other.runtimeType == runtimeType &&
+            other is _SeekMediaEvent &&
+            const DeepCollectionEquality().equals(other.groupData, groupData) &&
+            const DeepCollectionEquality().equals(other.timeMs, timeMs));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(groupData),
+      const DeepCollectionEquality().hash(timeMs));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SeekMediaEventCopyWith<_SeekMediaEvent> get copyWith =>
+      __$SeekMediaEventCopyWithImpl<_SeekMediaEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1813,15 +1941,15 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
     required TResult Function(String message) deleteFileUploaded,
   }) {
-    return seekMedia();
+    return seekMedia(groupData, timeMs);
   }
 
   @override
@@ -1833,15 +1961,15 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
     TResult Function(String message)? deleteFileUploaded,
   }) {
-    return seekMedia?.call();
+    return seekMedia?.call(groupData, timeMs);
   }
 
   @override
@@ -1853,9 +1981,9 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -1863,7 +1991,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
-      return seekMedia();
+      return seekMedia(groupData, timeMs);
     }
     return orElse();
   }
@@ -1935,7 +2063,14 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
 }
 
 abstract class _SeekMediaEvent implements GroupSessionEvent {
-  factory _SeekMediaEvent() = _$_SeekMediaEvent;
+  factory _SeekMediaEvent({required GroupData groupData, required int timeMs}) =
+      _$_SeekMediaEvent;
+
+  GroupData get groupData;
+  int get timeMs;
+  @JsonKey(ignore: true)
+  _$SeekMediaEventCopyWith<_SeekMediaEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2010,9 +2145,9 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -2030,9 +2165,9 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2050,9 +2185,9 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2212,9 +2347,9 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -2232,9 +2367,9 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2252,9 +2387,9 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2416,9 +2551,9 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -2436,9 +2571,9 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2456,9 +2591,9 @@ class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2621,9 +2756,9 @@ class _$_deleteFileUploadedEvent implements _deleteFileUploadedEvent {
     required TResult Function(GroupData groupData, UserSummary member)
         deleteMember,
     required TResult Function(GroupData groupData) deleteGroup,
-    required TResult Function() playMedia,
-    required TResult Function() pauseMedia,
-    required TResult Function() seekMedia,
+    required TResult Function(GroupData groupData, int timeMs) playMedia,
+    required TResult Function(GroupData groupData, int timeMs) pauseMedia,
+    required TResult Function(GroupData groupData, int timeMs) seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
     required TResult Function(GroupFileUploadedSM message) groupFileUploaded,
@@ -2641,9 +2776,9 @@ class _$_deleteFileUploadedEvent implements _deleteFileUploadedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,
@@ -2661,9 +2796,9 @@ class _$_deleteFileUploadedEvent implements _deleteFileUploadedEvent {
     TResult Function(GroupData groupData)? leaveGroup,
     TResult Function(GroupData groupData, UserSummary member)? deleteMember,
     TResult Function(GroupData groupData)? deleteGroup,
-    TResult Function()? playMedia,
-    TResult Function()? pauseMedia,
-    TResult Function()? seekMedia,
+    TResult Function(GroupData groupData, int timeMs)? playMedia,
+    TResult Function(GroupData groupData, int timeMs)? pauseMedia,
+    TResult Function(GroupData groupData, int timeMs)? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
     TResult Function(GroupFileUploadedSM message)? groupFileUploaded,

@@ -47,9 +47,12 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         groupData: groupData,
         member: member,
       ));
-  void playMedia() => add(GroupSessionEvent.playMedia());
-  void pauseMedia() => add(GroupSessionEvent.pauseMedia());
-  void seekMedia() => add(GroupSessionEvent.seekMedia());
+  void playMedia({required GroupData groupData, required int timeMs}) =>
+      add(GroupSessionEvent.playMedia(groupData: groupData, timeMs: timeMs));
+  void pauseMedia({required GroupData groupData, required int timeMs}) =>
+      add(GroupSessionEvent.pauseMedia(groupData: groupData, timeMs: timeMs));
+  void seekMedia({required GroupData groupData, required int timeMs}) =>
+      add(GroupSessionEvent.seekMedia(groupData: groupData, timeMs: timeMs));
 
   StreamSubscription<UserJoinedSM>? _userJoinedSubscription;
   StreamSubscription<UserLeftSM>? _userLeftSubscription;
