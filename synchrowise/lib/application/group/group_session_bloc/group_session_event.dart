@@ -42,6 +42,15 @@ class GroupSessionEvent with _$GroupSessionEvent {
   factory GroupSessionEvent.userJoined({required UserJoinedSM message}) =
       _UserJoinedEvent;
 
+  factory GroupSessionEvent.mediaPaused({required StopVideoSM message}) =
+      _MediaPausedEvent;
+
+  factory GroupSessionEvent.mediaPlayed({required PlayVideoSM message}) =
+      _MediaPlayedEvent;
+
+  factory GroupSessionEvent.skipForward({required SkipForwardSM message}) =
+      _SkipForwardEvent;
+
   factory GroupSessionEvent.groupFileUploaded({
     required GroupFileUploadedSM message,
   }) = _GroupFileUploadedEvent;

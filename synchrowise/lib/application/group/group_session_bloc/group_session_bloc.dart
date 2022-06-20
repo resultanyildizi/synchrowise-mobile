@@ -329,6 +329,9 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
         deleteFileUploaded: (e) async {
           emit(state.copyWith(failureOrMediaOption: none()));
         },
+        skipForward: (e) {},
+        mediaPlayed: (e) {},
+        mediaPaused: (e) {},
       );
     });
   }
