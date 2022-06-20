@@ -272,7 +272,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               return const KtList<UserSummary>.empty();
             },
             (members) {
-              return members.minusElement(e.message.userSummary);
+              return members.filter((m) => m.synchrowiseId != e.message.userId);
             },
           );
 
