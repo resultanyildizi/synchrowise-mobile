@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
 import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
 import 'package:synchrowise/domain/socket/play_video_sm.dart';
+import 'package:synchrowise/domain/socket/skip_forward_sm.dart';
+import 'package:synchrowise/domain/socket/stop_video_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
@@ -24,6 +25,8 @@ class SocketFacade implements ISocketFacade {
   final _groupFileUploadedSubject = BehaviorSubject<GroupFileUploadedSM>();
   final _deleteFileUploadedSubject = BehaviorSubject<String>();
   final _playVideoSubject = BehaviorSubject<PlayVideoSM>();
+  final _stopVideoSubject = BehaviorSubject<StopVideoSM>();
+  final _skipForwardSubject = BehaviorSubject<SkipForwardSM>();
 
   @override
   Future<void> connectToSocket(String synchrowiseId) async {
@@ -150,4 +153,10 @@ class SocketFacade implements ISocketFacade {
 
   @override
   Stream<PlayVideoSM> get playVideoStream => _playVideoSubject.stream;
+
+  @override
+  Stream<StopVideoSM> get stopVideoStream => _stopVideoSubject.stream;
+
+  @override
+  Stream<SkipForwardSM> get skipForwardStream => _skipForwardSubject.stream;
 }
