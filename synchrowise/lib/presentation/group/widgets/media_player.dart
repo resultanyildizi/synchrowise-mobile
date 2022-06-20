@@ -65,13 +65,22 @@ class _MediaPlayerState extends State<MediaPlayer> {
             backgroundImage:
                 media.type == MediaType.audio ? appLogoMedium : null,
             onTapToPause: (currentPosition) {
-              _groupSessionBloc.pauseMedia();
+              _groupSessionBloc.pauseMedia(
+                groupData: groupData,
+                timeMs: currentPosition.inMilliseconds,
+              );
             },
             onTapToPlay: (currentPosition) {
-              _groupSessionBloc.playMedia();
+              _groupSessionBloc.playMedia(
+                groupData: groupData,
+                timeMs: currentPosition.inMilliseconds,
+              );
             },
             onTapToUpdateCurrentPosition: (currentPosition) {
-              _groupSessionBloc.seekMedia();
+              _groupSessionBloc.seekMedia(
+                groupData: groupData,
+                timeMs: currentPosition.inMilliseconds,
+              );
             },
           ),
         );
