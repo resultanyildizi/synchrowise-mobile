@@ -76,7 +76,8 @@ class SocketFacade implements ISocketFacade {
         }
       });
 
-      _connection!.on('PlayVideo', (messages) {
+      _connection!.on('PlayedVideo', (messages) {
+        log(messages.toString());
         if ((messages ?? []).isNotEmpty) {
           final message = json.decode(messages!.first) as Map<String, dynamic>;
           final playVideoMsg = PlayVideoSM.fromMap(message);
@@ -84,7 +85,7 @@ class SocketFacade implements ISocketFacade {
         }
       });
 
-      _connection!.on('StopVideo', (messages) {
+      _connection!.on('StoppedVideo', (messages) {
         if ((messages ?? []).isNotEmpty) {
           final message = json.decode(messages!.first) as Map<String, dynamic>;
           final stopVideoMsg = StopVideoSM.fromMap(message);
@@ -92,7 +93,7 @@ class SocketFacade implements ISocketFacade {
         }
       });
 
-      _connection!.on('SkipForward', (messages) {
+      _connection!.on('SkippedForward', (messages) {
         if ((messages ?? []).isNotEmpty) {
           final message = json.decode(messages!.first) as Map<String, dynamic>;
           final skipForwardMsg = SkipForwardSM.fromMap(message);
