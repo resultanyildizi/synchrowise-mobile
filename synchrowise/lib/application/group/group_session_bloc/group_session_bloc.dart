@@ -84,14 +84,15 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               );
 
               return failureOrFile.fold(
-                (f) {
+                (f) async {
                   return state.copyWith(
                     fileFailureOrUnitOption: some(left(f)),
                     failureOrMediaOption: some(right(media)),
                     storageFailureOrUnitOption: some(right(unit)),
                   );
                 },
-                (file) {
+                (file) async {
+                  await _iSocketFacade.sendUploadMediaMessage(file.guid);
                   return state.copyWith(
                     failureOrMediaOption: some(right(media)),
                     storageFailureOrUnitOption: some(right(unit)),
