@@ -5,6 +5,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/domain/group/group_file.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/i_synchrowise_user_storage.dart';
 import 'package:synchrowise/infrastructure/core/media_facade/failure/media_failure.dart';
@@ -77,12 +78,12 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
               );
             },
             (media) async {
-              final failureOrUnit = await _iGroupFileRepository.create(
+              final failureOrFile = await _iGroupFileRepository.create(
                 media: media.file,
                 groupData: e.groupData,
               );
 
-              return failureOrUnit.fold(
+              return failureOrFile.fold(
                 (f) {
                   return state.copyWith(
                     fileFailureOrUnitOption: some(left(f)),
@@ -90,7 +91,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
                     storageFailureOrUnitOption: some(right(unit)),
                   );
                 },
-                (_) {
+                (file) {
                   return state.copyWith(
                     failureOrMediaOption: some(right(media)),
                     storageFailureOrUnitOption: some(right(unit)),
