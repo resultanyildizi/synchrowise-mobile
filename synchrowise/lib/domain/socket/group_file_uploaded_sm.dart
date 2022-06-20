@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:synchrowise/domain/socket/socket_message.dart';
 
-class GroupMediaSM extends SocketMessage {
+class GroupFileUploadedSM extends SocketMessage {
   final String groupId;
   final String filePath;
 
-  const GroupMediaSM({
+  const GroupFileUploadedSM({
     required this.groupId,
     required this.filePath,
   });
@@ -13,7 +13,8 @@ class GroupMediaSM extends SocketMessage {
   @override
   SocketMessageType get type => SocketMessageType.mediaUploaded;
 
-  factory GroupMediaSM.fromMap(Map<String, dynamic> map) {
-    return GroupMediaSM(groupId: map['groupId'], filePath: map['filePath']);
+  factory GroupFileUploadedSM.fromMap(Map<String, dynamic> map) {
+    return GroupFileUploadedSM(
+        groupId: map['groupId'], filePath: map['filePath']);
   }
 }

@@ -8,7 +8,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
-import 'package:synchrowise/domain/socket/group_media.dart';
+import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
@@ -53,7 +53,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
   StreamSubscription<UserJoinedSM>? _userJoinedSubscription;
   StreamSubscription<UserLeftSM>? _userLeftSubscription;
-  StreamSubscription<GroupMediaSM>? _groupFileUploadedSubscription;
+  StreamSubscription<GroupFileUploadedSM>? _groupFileUploadedSubscription;
 
   GroupSessionBloc(
     this._iMediaFacade,

@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
-import 'package:synchrowise/domain/socket/group_media.dart';
+import 'package:synchrowise/domain/socket/group_file_uploaded_sm.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
@@ -20,7 +20,7 @@ class SocketFacade implements ISocketFacade {
 
   final _userJoinedSubject = BehaviorSubject<UserJoinedSM>();
   final _userLeftSubject = BehaviorSubject<UserLeftSM>();
-  final _groupFileUploadedSubject = BehaviorSubject<String>();
+  final _groupFileUploadedSubject = BehaviorSubject<GroupFileUploadedSM>();
 
   @override
   Future<void> connectToSocket(String synchrowiseId) async {
@@ -36,24 +36,17 @@ class SocketFacade implements ISocketFacade {
       await _connection!.start();
 
       _connection!.on('JoinedGroup', (messages) {
-        try {
-          if ((messages ?? []).isNotEmpty) {
-            final message =
-                json.decode(messages!.first) as Map<String, dynamic>;
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
 
-            final userJoinedMsg = UserJoinedSM.fromMap(message);
+          final userJoinedMsg = UserJoinedSM.fromMap(message);
 
-            _userJoinedSubject.add(userJoinedMsg);
-          }
-        } catch (_) {
-          log(_.toString());
+          _userJoinedSubject.add(userJoinedMsg);
         }
       });
 
       _connection!.on('LeftGroup', (messages) {
         if ((messages ?? []).isNotEmpty) {
-          log(messages.toString());
-
           final message = json.decode(messages!.first) as Map<String, dynamic>;
           final userLeftMsg = UserLeftSM.fromMap(message);
           _userLeftSubject.add(userLeftMsg);
@@ -61,7 +54,11 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('GroupFileUploaded', (messages) {
-        log(messages.toString());
+        if ((messages ?? []).isNotEmpty) {
+          final message = json.decode(messages!.first) as Map<String, dynamic>;
+          final groupMediaMsg = GroupFileUploadedSM.fromMap(message);
+          _groupFileUploadedSubject.add(groupMediaMsg);
+        }
       });
 
       _connection!.on('GroupFileDeleted', (messages) {
@@ -100,6 +97,6 @@ class SocketFacade implements ISocketFacade {
   Stream<UserLeftSM> get userLeftStream => _userLeftSubject.stream;
 
   @override
-  Stream<GroupMediaSM> get groupFileUploadedStream =>
+  Stream<GroupFileUploadedSM> get groupFileUploadedStream =>
       _groupFileUploadedSubject.stream;
 }
