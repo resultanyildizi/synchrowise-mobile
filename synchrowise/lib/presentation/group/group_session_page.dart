@@ -31,6 +31,7 @@ class GroupSessionPage extends StatelessWidget {
     return BlocProvider<GroupSessionBloc>(
       create: (context) {
         final bloc = getIt<GroupSessionBloc>();
+        bloc.init(groupData: groupData);
         _groupSessionBloc = bloc;
         return bloc;
       },
