@@ -50,6 +50,7 @@ class SocketFacade implements ISocketFacade {
       });
 
       _connection!.on('LeftGroup', (messages) {
+        log("asdfojasdfjasdf poasdkfopasdkfopaskf ");
         if ((messages ?? []).isNotEmpty) {
           log(messages.toString());
 
