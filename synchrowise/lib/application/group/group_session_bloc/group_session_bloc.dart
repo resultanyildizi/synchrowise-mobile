@@ -8,6 +8,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:synchrowise/domain/auth/user_summary.dart';
 import 'package:synchrowise/domain/core/media.dart';
 import 'package:synchrowise/domain/group/group_data.dart';
+import 'package:synchrowise/domain/socket/group_media.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/auth/synchrowise_user_storage/failure/synchrowise_user_storage_failure.dart';
@@ -52,7 +53,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
   StreamSubscription<UserJoinedSM>? _userJoinedSubscription;
   StreamSubscription<UserLeftSM>? _userLeftSubscription;
-  StreamSubscription<String>? _groupFileUploadedSubscription;
+  StreamSubscription<GroupMediaSM>? _groupFileUploadedSubscription;
 
   GroupSessionBloc(
     this._iMediaFacade,
@@ -63,228 +64,229 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   ) : super(GroupSessionState.initial()) {
     on<GroupSessionEvent>((event, emit) async {
       await event.map(
-        init: (e) async {
-          await _userJoinedSubscription?.cancel();
-          await _userLeftSubscription?.cancel();
+          init: (e) async {
+            await _userJoinedSubscription?.cancel();
+            await _userLeftSubscription?.cancel();
 
-          _userJoinedSubscription =
-              _iSocketFacade.userJoinedStream.listen((msg) {
-            log(msg.groupId);
-            if (e.groupData.groupId == msg.groupId) {
+            _userJoinedSubscription =
+                _iSocketFacade.userJoinedStream.listen((msg) {
               log(msg.groupId);
-              add(GroupSessionEvent.userJoined(message: msg));
-            }
-          });
-
-          _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
-            if (e.groupData.groupId == msg.groupId) {
-              add(GroupSessionEvent.userLeft(message: msg));
-            }
-          });
-
-          _groupFileUploadedSubscription =
-              _iSocketFacade.groupFileUploadedStream.listen((msg) {
-            if (e.groupData.groupId == msg.groupId) {
-              add(GroupSessionEvent.groupFileUploaded(message: msg));
-            }
-          });
-
-          emit(state.copyWith(membersOption: some(e.groupData.members)));
-        },
-        uploadMedia: (e) async {
-          emit(state.copyWith(
-            isProgressing: true,
-            failureOrMediaOption: none(),
-            fileFailureOrUnitOption: none(),
-            storageFailureOrUnitOption: none(),
-          ));
-
-          final failureOrMedia = await _iMediaFacade.uploadFromDevice();
-
-          final newState = await failureOrMedia.fold(
-            (f) async {
-              return f.maybeMap(
-                pickFailure: (_) {
-                  return state;
-                },
-                orElse: () {
-                  return state.copyWith(failureOrMediaOption: some(left(f)));
-                },
-              );
-            },
-            (media) async {
-              final failureOrFile = await _iGroupFileRepository.create(
-                media: media.file,
-                groupData: e.groupData,
-              );
-
-              return failureOrFile.fold(
-                (f) async {
-                  return state.copyWith(
-                    fileFailureOrUnitOption: some(left(f)),
-                    failureOrMediaOption: some(right(media)),
-                    storageFailureOrUnitOption: some(right(unit)),
-                  );
-                },
-                (file) async {
-                  await _iSocketFacade.sendUploadMediaMessage(file.guid);
-                  return state.copyWith(
-                    failureOrMediaOption: some(right(media)),
-                    storageFailureOrUnitOption: some(right(unit)),
-                    fileFailureOrUnitOption: some(right(unit)),
-                  );
-                },
-              );
-            },
-          );
-
-          emit(newState.copyWith(isProgressing: false));
-        },
-        deleteGroup: (e) async {
-          emit(state.copyWith(
-            isProgressing: true,
-            groupFailureOrUnitOption: none(),
-            storageFailureOrUnitOption: none(),
-            failureOrMediaOption: state.failureOrMediaOption.fold(
-              () => none(),
-              (a) => a.fold((l) => none(), (r) => some(a)),
-            ),
-          ));
-
-          final failureOrUser = await _iUserStorage.get();
-
-          final newState = await failureOrUser.fold((failure) async {
-            return state.copyWith(
-              storageFailureOrUnitOption: some(left(failure)),
-            );
-          }, (user) async {
-            late Either<GroupRepositoryFailure, Unit> failureOrUnit;
-
-            failureOrUnit = await _iGroupRepo.delete(
-              groupData: e.groupData,
-              synchrowiseUserId: user.synchrowiseId,
-            );
-
-            return failureOrUnit.fold((f) {
-              return state.copyWith(
-                groupFailureOrUnitOption: some(left(f)),
-              );
-            }, (_) {
-              return state.copyWith(
-                groupFailureOrUnitOption: some(right(unit)),
-              );
+              if (e.groupData.groupId == msg.groupId) {
+                log(msg.groupId);
+                add(GroupSessionEvent.userJoined(message: msg));
+              }
             });
-          });
 
-          emit(newState.copyWith(isProgressing: false));
-        },
-        leaveGroup: (e) async {
-          emit(state.copyWith(
-            isProgressing: true,
-            groupFailureOrUnitOption: none(),
-            storageFailureOrUnitOption: none(),
-          ));
+            _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
+              if (e.groupData.groupId == msg.groupId) {
+                add(GroupSessionEvent.userLeft(message: msg));
+              }
+            });
 
-          final failureOrUser = await _iUserStorage.get();
+            _groupFileUploadedSubscription =
+                _iSocketFacade.groupFileUploadedStream.listen((msg) {
+              if (e.groupData.groupId == msg.groupId) {
+                add(GroupSessionEvent.groupFileUploaded(message: msg));
+              }
+            });
 
-          final newState = await failureOrUser.fold(
-            (failure) async {
+            emit(state.copyWith(membersOption: some(e.groupData.members)));
+          },
+          uploadMedia: (e) async {
+            emit(state.copyWith(
+              isProgressing: true,
+              failureOrMediaOption: none(),
+              fileFailureOrUnitOption: none(),
+              storageFailureOrUnitOption: none(),
+            ));
+
+            final failureOrMedia = await _iMediaFacade.uploadFromDevice();
+
+            final newState = await failureOrMedia.fold(
+              (f) async {
+                return f.maybeMap(
+                  pickFailure: (_) {
+                    return state;
+                  },
+                  orElse: () {
+                    return state.copyWith(failureOrMediaOption: some(left(f)));
+                  },
+                );
+              },
+              (media) async {
+                final failureOrFile = await _iGroupFileRepository.create(
+                  media: media.file,
+                  groupData: e.groupData,
+                );
+
+                return failureOrFile.fold(
+                  (f) async {
+                    return state.copyWith(
+                      fileFailureOrUnitOption: some(left(f)),
+                      failureOrMediaOption: some(right(media)),
+                      storageFailureOrUnitOption: some(right(unit)),
+                    );
+                  },
+                  (file) async {
+                    await _iSocketFacade.sendUploadMediaMessage(file.guid);
+                    return state.copyWith(
+                      failureOrMediaOption: some(right(media)),
+                      storageFailureOrUnitOption: some(right(unit)),
+                      fileFailureOrUnitOption: some(right(unit)),
+                    );
+                  },
+                );
+              },
+            );
+
+            emit(newState.copyWith(isProgressing: false));
+          },
+          deleteGroup: (e) async {
+            emit(state.copyWith(
+              isProgressing: true,
+              groupFailureOrUnitOption: none(),
+              storageFailureOrUnitOption: none(),
+              failureOrMediaOption: state.failureOrMediaOption.fold(
+                () => none(),
+                (a) => a.fold((l) => none(), (r) => some(a)),
+              ),
+            ));
+
+            final failureOrUser = await _iUserStorage.get();
+
+            final newState = await failureOrUser.fold((failure) async {
               return state.copyWith(
                 storageFailureOrUnitOption: some(left(failure)),
               );
-            },
-            (user) async {
-              final failureOrUnit = await _iGroupRepo.deleteMember(
+            }, (user) async {
+              late Either<GroupRepositoryFailure, Unit> failureOrUnit;
+
+              failureOrUnit = await _iGroupRepo.delete(
                 groupData: e.groupData,
                 synchrowiseUserId: user.synchrowiseId,
               );
 
-              return await failureOrUnit.fold(
-                (f) async {
-                  return state.copyWith(
-                    groupFailureOrUnitOption: some(left(f)),
-                  );
-                },
-                (_) async {
-                  await _iSocketFacade
-                      .sendLeaveGroupMessage(e.groupData.groupId);
+              return failureOrUnit.fold((f) {
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(left(f)),
+                );
+              }, (_) {
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(right(unit)),
+                );
+              });
+            });
 
-                  return state.copyWith(
-                    groupFailureOrUnitOption: some(right(unit)),
-                  );
-                },
-              );
-            },
-          );
+            emit(newState.copyWith(isProgressing: false));
+          },
+          leaveGroup: (e) async {
+            emit(state.copyWith(
+              isProgressing: true,
+              groupFailureOrUnitOption: none(),
+              storageFailureOrUnitOption: none(),
+            ));
 
-          emit(newState.copyWith(isProgressing: false));
-        },
-        deleteMember: (e) async {
-          emit(state.copyWith(
-            isProgressing: true,
-            groupFailureOrUnitOption: none(),
-            storageFailureOrUnitOption: none(),
-          ));
+            final failureOrUser = await _iUserStorage.get();
 
-          final failureOrUnit = await _iGroupRepo.deleteMember(
-            groupData: e.groupData,
-            synchrowiseUserId: e.member.synchrowiseId,
-          );
+            final newState = await failureOrUser.fold(
+              (failure) async {
+                return state.copyWith(
+                  storageFailureOrUnitOption: some(left(failure)),
+                );
+              },
+              (user) async {
+                final failureOrUnit = await _iGroupRepo.deleteMember(
+                  groupData: e.groupData,
+                  synchrowiseUserId: user.synchrowiseId,
+                );
 
-          final newState = failureOrUnit.fold(
-            (f) {
-              return state.copyWith(
-                groupFailureOrUnitOption: some(left(f)),
-              );
-            },
-            (_) {
-              return state.copyWith(
-                groupFailureOrUnitOption: some(right(unit)),
-              );
-            },
-          );
+                return await failureOrUnit.fold(
+                  (f) async {
+                    return state.copyWith(
+                      groupFailureOrUnitOption: some(left(f)),
+                    );
+                  },
+                  (_) async {
+                    await _iSocketFacade
+                        .sendLeaveGroupMessage(e.groupData.groupId);
 
-          emit(newState.copyWith(isProgressing: false));
-        },
-        playMedia: (e) async {},
-        pauseMedia: (e) async {},
-        seekMedia: (e) async {},
-        removeMedia: (e) async {
-          await _iSocketFacade.deleteFileUploadMessage();
+                    return state.copyWith(
+                      groupFailureOrUnitOption: some(right(unit)),
+                    );
+                  },
+                );
+              },
+            );
 
-          emit(state.copyWith(failureOrMediaOption: none()));
-        },
-        userJoined: (e) {
-          log(e.message.userSummary.toString());
+            emit(newState.copyWith(isProgressing: false));
+          },
+          deleteMember: (e) async {
+            emit(state.copyWith(
+              isProgressing: true,
+              groupFailureOrUnitOption: none(),
+              storageFailureOrUnitOption: none(),
+            ));
 
-          final newList = state.membersOption.fold(
-            () {
-              return const KtList<UserSummary>.empty();
-            },
-            (members) {
-              if (members.contains(e.message.userSummary)) {
-                return members;
-              }
+            final failureOrUnit = await _iGroupRepo.deleteMember(
+              groupData: e.groupData,
+              synchrowiseUserId: e.member.synchrowiseId,
+            );
 
-              return members.plusElement(e.message.userSummary);
-            },
-          );
+            final newState = failureOrUnit.fold(
+              (f) {
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(left(f)),
+                );
+              },
+              (_) {
+                return state.copyWith(
+                  groupFailureOrUnitOption: some(right(unit)),
+                );
+              },
+            );
 
-          emit(state.copyWith(membersOption: some(newList)));
-        },
-        userLeft: (e) {
-          final newList = state.membersOption.fold(
-            () {
-              return const KtList<UserSummary>.empty();
-            },
-            (members) {
-              return members.filter((m) => m.synchrowiseId != e.message.userId);
-            },
-          );
+            emit(newState.copyWith(isProgressing: false));
+          },
+          playMedia: (e) async {},
+          pauseMedia: (e) async {},
+          seekMedia: (e) async {},
+          removeMedia: (e) async {
+            await _iSocketFacade.deleteFileUploadMessage();
 
-          emit(state.copyWith(membersOption: some(newList)));
-        },
-      );
+            emit(state.copyWith(failureOrMediaOption: none()));
+          },
+          userJoined: (e) {
+            log(e.message.userSummary.toString());
+
+            final newList = state.membersOption.fold(
+              () {
+                return const KtList<UserSummary>.empty();
+              },
+              (members) {
+                if (members.contains(e.message.userSummary)) {
+                  return members;
+                }
+
+                return members.plusElement(e.message.userSummary);
+              },
+            );
+
+            emit(state.copyWith(membersOption: some(newList)));
+          },
+          userLeft: (e) {
+            final newList = state.membersOption.fold(
+              () {
+                return const KtList<UserSummary>.empty();
+              },
+              (members) {
+                return members
+                    .filter((m) => m.synchrowiseId != e.message.userId);
+              },
+            );
+
+            emit(state.copyWith(membersOption: some(newList)));
+          },
+          groupFileUploaded: (e) async {});
     });
   }
 
@@ -292,7 +294,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   Future<void> close() async {
     await _userJoinedSubscription?.cancel();
     await _userLeftSubscription?.cancel();
-    await _fileUploadSubscription?.cancel();
+    await _groupFileUploadedSubscription?.cancel();
 
     return super.close();
   }

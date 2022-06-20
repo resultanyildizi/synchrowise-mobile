@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
+import 'package:synchrowise/domain/socket/group_media.dart';
 import 'package:synchrowise/domain/socket/user_joined_sm.dart';
 import 'package:synchrowise/domain/socket/user_left_sm.dart';
 import 'package:synchrowise/infrastructure/socket_facade/i_socket_facade.dart';
@@ -99,6 +100,6 @@ class SocketFacade implements ISocketFacade {
   Stream<UserLeftSM> get userLeftStream => _userLeftSubject.stream;
 
   @override
-  Stream<String> get groupFileUploadedStream =>
+  Stream<GroupMediaSM> get groupFileUploadedStream =>
       _groupFileUploadedSubject.stream;
 }
