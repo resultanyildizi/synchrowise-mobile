@@ -31,6 +31,16 @@ class UserSummary extends Equatable {
     );
   }
 
+  factory UserSummary.fromSocketMap(Map<String, dynamic> map) {
+    return UserSummary(
+      synchrowiseId: map['Guid'],
+      avatar: Avatar.fromMap(map['Avatar']),
+      username: map['Username'],
+      email: map['Email'],
+      premium: Premium.fromValue(map['PremiumType']),
+    );
+  }
+
   factory UserSummary.fromSynchrowiseUser(SynchrowiseUser user) {
     return UserSummary(
       synchrowiseId: user.synchrowiseId,
