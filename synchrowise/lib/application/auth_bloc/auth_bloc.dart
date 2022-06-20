@@ -50,10 +50,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             return const AuthState.unauthorized();
           },
           (u) async {
-            await _iSocketFacade.connectToSocket(
-              synchrowiseId: u.synchrowiseId,
-            );
-
+            await _iSocketFacade.connectToSocket(u.synchrowiseId);
             return AuthState.authorized(user: u);
           },
         );
