@@ -289,9 +289,15 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
           emit(newState.copyWith(isProgressing: false));
         },
-        playMedia: (e) async {},
-        pauseMedia: (e) async {},
-        seekMedia: (e) async {},
+        playMedia: (e) async {
+          await _iSocketFacade.sendPlayMesage(e.timeMs);
+        },
+        pauseMedia: (e) async {
+          await _iSocketFacade.sendPauseMessage(e.timeMs);
+        },
+        seekMedia: (e) async {
+          await _iSocketFacade.sendSeekMessage(e.timeMs);
+        },
         removeMedia: (e) async {
           await _iSocketFacade.deleteFileUploadMessage();
 

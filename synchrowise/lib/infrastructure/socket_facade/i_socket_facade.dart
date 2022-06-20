@@ -12,9 +12,9 @@ abstract class ISocketFacade {
   Future<void> sendLeaveGroupMessage(String groupId);
   Future<void> deleteFileUploadMessage();
 
-  Future<void> sendPlayMesage();
-  Future<void> sendPauseMessage();
-  Future<void> sendSeekMessage();
+  Future<void> sendPlayMesage(int timeMs);
+  Future<void> sendPauseMessage(int timeMs);
+  Future<void> sendSeekMessage(int timeMs);
 
   Stream<UserJoinedSM> get userJoinedStream;
   Stream<UserLeftSM> get userLeftStream;

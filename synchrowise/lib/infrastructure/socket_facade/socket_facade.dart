@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:rxdart/subjects.dart';
 import 'package:signalr_core/signalr_core.dart';
@@ -125,18 +126,19 @@ class SocketFacade implements ISocketFacade {
   }
 
   @override
-  Future<void> sendPauseMessage() {
-    return _connection!.invoke('StopVideo');
+  Future<void> sendPauseMessage(int timeMs) {
+    return _connection!.invoke('StopVideo', args: [timeMs]);
   }
 
   @override
-  Future<void> sendPlayMesage() {
-    return _connection!.invoke('PlayVideo');
+  Future<void> sendPlayMesage(int timeMs) {
+    log("sending PlayVideo");
+    return _connection!.invoke('PlayVideo', args: [timeMs]);
   }
 
   @override
-  Future<void> sendSeekMessage() {
-    return _connection!.invoke('SkipForwardVideo');
+  Future<void> sendSeekMessage(int timeMs) {
+    return _connection!.invoke('SkipForwardVideo', args: [timeMs]);
   }
 
   @override
