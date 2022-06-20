@@ -24,7 +24,7 @@ class Media extends Equatable {
   }
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [file];
 }
 
 enum MediaType { audio, video, unknown }
