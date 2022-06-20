@@ -10,4 +10,5 @@ abstract class ISocketFacade {
 
   Stream<UserJoinedSM> get userJoinedStream;
   Stream<UserLeftSM> get userLeftStream;
+  Stream<String> get groupFileUploadedStream;
 }

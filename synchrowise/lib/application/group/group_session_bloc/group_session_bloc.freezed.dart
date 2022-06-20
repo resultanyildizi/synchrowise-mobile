@@ -77,6 +77,12 @@ class _$GroupSessionEventTearOff {
       message: message,
     );
   }
+
+  _GroupFileUploadedEvent groupFileUploaded({required String message}) {
+    return _GroupFileUploadedEvent(
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ mixin _$GroupSessionEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +120,7 @@ mixin _$GroupSessionEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +136,7 @@ mixin _$GroupSessionEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +153,7 @@ mixin _$GroupSessionEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -159,6 +169,7 @@ mixin _$GroupSessionEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -174,6 +185,7 @@ mixin _$GroupSessionEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -272,6 +284,7 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return init(groupData);
   }
@@ -290,6 +303,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return init?.call(groupData);
   }
@@ -308,6 +322,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -330,6 +345,7 @@ class _$_InitEvent implements _InitEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return init(this);
   }
@@ -348,6 +364,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return init?.call(this);
   }
@@ -366,6 +383,7 @@ class _$_InitEvent implements _InitEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -461,6 +479,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return uploadMedia(groupData);
   }
@@ -479,6 +498,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return uploadMedia?.call(groupData);
   }
@@ -497,6 +517,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -519,6 +540,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return uploadMedia(this);
   }
@@ -537,6 +559,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return uploadMedia?.call(this);
   }
@@ -555,6 +578,7 @@ class _$_UploadMediaEvent implements _UploadMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -627,6 +651,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return removeMedia();
   }
@@ -645,6 +670,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return removeMedia?.call();
   }
@@ -663,6 +689,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -685,6 +712,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return removeMedia(this);
   }
@@ -703,6 +731,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return removeMedia?.call(this);
   }
@@ -721,6 +750,7 @@ class _$_RemoveMediaEvent implements _RemoveMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (removeMedia != null) {
@@ -811,6 +841,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return leaveGroup(groupData);
   }
@@ -829,6 +860,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return leaveGroup?.call(groupData);
   }
@@ -847,6 +879,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -869,6 +902,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return leaveGroup(this);
   }
@@ -887,6 +921,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return leaveGroup?.call(this);
   }
@@ -905,6 +940,7 @@ class _$_LeaveGroupEvent implements _LeaveGroupEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (leaveGroup != null) {
@@ -1010,6 +1046,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return deleteMember(groupData, member);
   }
@@ -1028,6 +1065,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return deleteMember?.call(groupData, member);
   }
@@ -1046,6 +1084,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -1068,6 +1107,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return deleteMember(this);
   }
@@ -1086,6 +1126,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return deleteMember?.call(this);
   }
@@ -1104,6 +1145,7 @@ class _$_DeleteMemberEvent implements _DeleteMemberEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteMember != null) {
@@ -1202,6 +1244,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return deleteGroup(groupData);
   }
@@ -1220,6 +1263,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return deleteGroup?.call(groupData);
   }
@@ -1238,6 +1282,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1260,6 +1305,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return deleteGroup(this);
   }
@@ -1278,6 +1324,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return deleteGroup?.call(this);
   }
@@ -1296,6 +1343,7 @@ class _$_DeleteGroupEvent implements _DeleteGroupEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (deleteGroup != null) {
@@ -1368,6 +1416,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return playMedia();
   }
@@ -1386,6 +1435,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return playMedia?.call();
   }
@@ -1404,6 +1454,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1426,6 +1477,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return playMedia(this);
   }
@@ -1444,6 +1496,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return playMedia?.call(this);
   }
@@ -1462,6 +1515,7 @@ class _$_PlayMediaEvent implements _PlayMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (playMedia != null) {
@@ -1528,6 +1582,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return pauseMedia();
   }
@@ -1546,6 +1601,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return pauseMedia?.call();
   }
@@ -1564,6 +1620,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1586,6 +1643,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return pauseMedia(this);
   }
@@ -1604,6 +1662,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return pauseMedia?.call(this);
   }
@@ -1622,6 +1681,7 @@ class _$_PauseMediaEvent implements _PauseMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (pauseMedia != null) {
@@ -1688,6 +1748,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return seekMedia();
   }
@@ -1706,6 +1767,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return seekMedia?.call();
   }
@@ -1724,6 +1786,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1746,6 +1809,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return seekMedia(this);
   }
@@ -1764,6 +1828,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return seekMedia?.call(this);
   }
@@ -1782,6 +1847,7 @@ class _$_SeekMediaEvent implements _SeekMediaEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (seekMedia != null) {
@@ -1872,6 +1938,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return userLeft(message);
   }
@@ -1890,6 +1957,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return userLeft?.call(message);
   }
@@ -1908,6 +1976,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (userLeft != null) {
@@ -1930,6 +1999,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return userLeft(this);
   }
@@ -1948,6 +2018,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return userLeft?.call(this);
   }
@@ -1966,6 +2037,7 @@ class _$_UserLeftEvent implements _UserLeftEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (userLeft != null) {
@@ -2061,6 +2133,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     required TResult Function() seekMedia,
     required TResult Function(UserLeftSM message) userLeft,
     required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
   }) {
     return userJoined(message);
   }
@@ -2079,6 +2152,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
   }) {
     return userJoined?.call(message);
   }
@@ -2097,6 +2171,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function()? seekMedia,
     TResult Function(UserLeftSM message)? userLeft,
     TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (userJoined != null) {
@@ -2119,6 +2194,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     required TResult Function(_SeekMediaEvent value) seekMedia,
     required TResult Function(_UserLeftEvent value) userLeft,
     required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
   }) {
     return userJoined(this);
   }
@@ -2137,6 +2213,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
   }) {
     return userJoined?.call(this);
   }
@@ -2155,6 +2232,7 @@ class _$_UserJoinedEvent implements _UserJoinedEvent {
     TResult Function(_SeekMediaEvent value)? seekMedia,
     TResult Function(_UserLeftEvent value)? userLeft,
     TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
     required TResult orElse(),
   }) {
     if (userJoined != null) {
@@ -2171,6 +2249,203 @@ abstract class _UserJoinedEvent implements GroupSessionEvent {
   UserJoinedSM get message;
   @JsonKey(ignore: true)
   _$UserJoinedEventCopyWith<_UserJoinedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GroupFileUploadedEventCopyWith<$Res> {
+  factory _$GroupFileUploadedEventCopyWith(_GroupFileUploadedEvent value,
+          $Res Function(_GroupFileUploadedEvent) then) =
+      __$GroupFileUploadedEventCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$GroupFileUploadedEventCopyWithImpl<$Res>
+    extends _$GroupSessionEventCopyWithImpl<$Res>
+    implements _$GroupFileUploadedEventCopyWith<$Res> {
+  __$GroupFileUploadedEventCopyWithImpl(_GroupFileUploadedEvent _value,
+      $Res Function(_GroupFileUploadedEvent) _then)
+      : super(_value, (v) => _then(v as _GroupFileUploadedEvent));
+
+  @override
+  _GroupFileUploadedEvent get _value => super._value as _GroupFileUploadedEvent;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_GroupFileUploadedEvent(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GroupFileUploadedEvent implements _GroupFileUploadedEvent {
+  _$_GroupFileUploadedEvent({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'GroupSessionEvent.groupFileUploaded(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GroupFileUploadedEvent &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$GroupFileUploadedEventCopyWith<_GroupFileUploadedEvent> get copyWith =>
+      __$GroupFileUploadedEventCopyWithImpl<_GroupFileUploadedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GroupData groupData) init,
+    required TResult Function(GroupData groupData) uploadMedia,
+    required TResult Function() removeMedia,
+    required TResult Function(GroupData groupData) leaveGroup,
+    required TResult Function(GroupData groupData, UserSummary member)
+        deleteMember,
+    required TResult Function(GroupData groupData) deleteGroup,
+    required TResult Function() playMedia,
+    required TResult Function() pauseMedia,
+    required TResult Function() seekMedia,
+    required TResult Function(UserLeftSM message) userLeft,
+    required TResult Function(UserJoinedSM message) userJoined,
+    required TResult Function(String message) groupFileUploaded,
+  }) {
+    return groupFileUploaded(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
+  }) {
+    return groupFileUploaded?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GroupData groupData)? init,
+    TResult Function(GroupData groupData)? uploadMedia,
+    TResult Function()? removeMedia,
+    TResult Function(GroupData groupData)? leaveGroup,
+    TResult Function(GroupData groupData, UserSummary member)? deleteMember,
+    TResult Function(GroupData groupData)? deleteGroup,
+    TResult Function()? playMedia,
+    TResult Function()? pauseMedia,
+    TResult Function()? seekMedia,
+    TResult Function(UserLeftSM message)? userLeft,
+    TResult Function(UserJoinedSM message)? userJoined,
+    TResult Function(String message)? groupFileUploaded,
+    required TResult orElse(),
+  }) {
+    if (groupFileUploaded != null) {
+      return groupFileUploaded(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
+    required TResult Function(_UploadMediaEvent value) uploadMedia,
+    required TResult Function(_RemoveMediaEvent value) removeMedia,
+    required TResult Function(_LeaveGroupEvent value) leaveGroup,
+    required TResult Function(_DeleteMemberEvent value) deleteMember,
+    required TResult Function(_DeleteGroupEvent value) deleteGroup,
+    required TResult Function(_PlayMediaEvent value) playMedia,
+    required TResult Function(_PauseMediaEvent value) pauseMedia,
+    required TResult Function(_SeekMediaEvent value) seekMedia,
+    required TResult Function(_UserLeftEvent value) userLeft,
+    required TResult Function(_UserJoinedEvent value) userJoined,
+    required TResult Function(_GroupFileUploadedEvent value) groupFileUploaded,
+  }) {
+    return groupFileUploaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+  }) {
+    return groupFileUploaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_UploadMediaEvent value)? uploadMedia,
+    TResult Function(_RemoveMediaEvent value)? removeMedia,
+    TResult Function(_LeaveGroupEvent value)? leaveGroup,
+    TResult Function(_DeleteMemberEvent value)? deleteMember,
+    TResult Function(_DeleteGroupEvent value)? deleteGroup,
+    TResult Function(_PlayMediaEvent value)? playMedia,
+    TResult Function(_PauseMediaEvent value)? pauseMedia,
+    TResult Function(_SeekMediaEvent value)? seekMedia,
+    TResult Function(_UserLeftEvent value)? userLeft,
+    TResult Function(_UserJoinedEvent value)? userJoined,
+    TResult Function(_GroupFileUploadedEvent value)? groupFileUploaded,
+    required TResult orElse(),
+  }) {
+    if (groupFileUploaded != null) {
+      return groupFileUploaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GroupFileUploadedEvent implements GroupSessionEvent {
+  factory _GroupFileUploadedEvent({required String message}) =
+      _$_GroupFileUploadedEvent;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$GroupFileUploadedEventCopyWith<_GroupFileUploadedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -52,6 +52,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
 
   StreamSubscription<UserJoinedSM>? _userJoinedSubscription;
   StreamSubscription<UserLeftSM>? _userLeftSubscription;
+  StreamSubscription<String>? _groupFileUploadedSubscription;
 
   GroupSessionBloc(
     this._iMediaFacade,
@@ -78,6 +79,13 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
           _userLeftSubscription = _iSocketFacade.userLeftStream.listen((msg) {
             if (e.groupData.groupId == msg.groupId) {
               add(GroupSessionEvent.userLeft(message: msg));
+            }
+          });
+
+          _groupFileUploadedSubscription =
+              _iSocketFacade.groupFileUploadedStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              add(GroupSessionEvent.groupFileUploaded(message: msg));
             }
           });
 
@@ -262,8 +270,6 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             },
           );
 
-          log(newList.toString());
-
           emit(state.copyWith(membersOption: some(newList)));
         },
         userLeft: (e) {
@@ -286,6 +292,7 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
   Future<void> close() async {
     await _userJoinedSubscription?.cancel();
     await _userLeftSubscription?.cancel();
+    await _fileUploadSubscription?.cancel();
 
     return super.close();
   }
