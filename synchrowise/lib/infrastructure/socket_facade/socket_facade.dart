@@ -73,6 +73,27 @@ class SocketFacade implements ISocketFacade {
           log(e.toString());
         }
       });
+
+      _connection!.on('PlayVideo', (messages) {
+        // {
+        //   "groupId": "",
+        //   "playTimeMs":""
+        // }
+      });
+
+      _connection!.on('StopVideo', (messages) {
+        // {
+        //   "groupId": "",
+        //   "stopTimeMs":""
+        // }
+      });
+
+      _connection!.on('SkipForward', (messages) {
+        // {
+        //   "groupId": "",
+        //   "forwardTimeMs":""
+        // }
+      });
     } catch (_) {
       await _connection?.stop();
       _connection = null;
@@ -112,4 +133,19 @@ class SocketFacade implements ISocketFacade {
   @override
   Stream<String> get deleteFileUploadStream =>
       _deleteFileUploadedSubject.stream;
+
+  @override
+  Future<void> sendPauseMessage() {
+    return _connection!.invoke('StopVideo');
+  }
+
+  @override
+  Future<void> sendPlayMesage() {
+    return _connection!.invoke('PlayVideo');
+  }
+
+  @override
+  Future<void> sendSeekMessage() {
+    return _connection!.invoke('SkipForwardVideo');
+  }
 }
