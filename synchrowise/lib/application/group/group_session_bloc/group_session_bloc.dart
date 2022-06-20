@@ -113,6 +113,25 @@ class GroupSessionBloc extends Bloc<GroupSessionEvent, GroupSessionState> {
             }
           });
 
+          _playVideoSubscription = _iSocketFacade.playVideoStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              add(GroupSessionEvent.mediaPlayed(message: msg));
+            }
+          });
+
+          _stopVideoSubscription = _iSocketFacade.stopVideoStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              add(GroupSessionEvent.mediaPaused(message: msg));
+            }
+          });
+
+          _skipForwardSubscription =
+              _iSocketFacade.skipForwardStream.listen((msg) {
+            if (e.groupData.groupId == msg.groupId) {
+              add(GroupSessionEvent.skipForward(message: msg));
+            }
+          });
+
           emit(state.copyWith(membersOption: some(e.groupData.members)));
         },
         uploadMedia: (e) async {
