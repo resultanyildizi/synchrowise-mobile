@@ -203,8 +203,8 @@ class AuthFacade implements IAuthFacade {
   @override
   Future<Either<AuthFacadeFailure, Unit>> deleteAccount() async {
     try {
-      await _googleSignIn.signOut();
       await _firebaseAuth.currentUser?.delete();
+      await _googleSignIn.signOut();
 
       return right(unit);
     } on FirebaseAuthException catch (_) {
